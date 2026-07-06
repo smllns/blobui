@@ -12,6 +12,7 @@ const navItems = [
   { label: 'Avatar', to: '/avatar' },
   { label: 'Card', to: '/card' },
   { label: 'Tooltip', to: '/tooltip' },
+  { label: 'Toast', to: '/toast' },
 ];
 
 export function Sidebar() {

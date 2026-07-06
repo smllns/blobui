@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { Button } from '../../components/button';
 import { ChevronDown } from '../../ui/ChevronDown';
+import { Toast } from '../../components/toast';
+
+type ToastItem = {
+  id: string;
+};
 
 type CodeBlockProps = {
   code: string;
@@ -10,9 +15,20 @@ export function CodeBlock({ code }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const [toasts, setToasts] = useState<ToastItem[]>([]);
+
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
+
     setCopied(true);
+
+    const id = crypto.randomUUID();
+    setToasts((prev) => [...prev, { id }]);
+
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 2000);
+
     setTimeout(() => setCopied(false), 1500);
   };
 
@@ -67,13 +83,34 @@ export function CodeBlock({ code }: CodeBlockProps) {
             className='flex items-center gap-1 shadow-md'
           >
             <ChevronDown
-              className={`w-3 h-3 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+              className={`w-3 h-3 transition-transform duration-300 ${
+                open ? 'rotate-180' : ''
+              }`}
             />
 
             {open ? 'Hide' : 'Show'}
           </Button>
         </div>
       </div>
+
+      {/* TOAST STACK (FIXED POSITION) */}
+      {toasts.length > 0 && (
+        <div className='fixed bottom-4 right-4 z-50 flex flex-col gap-2'>
+          {toasts.map((toast) => (
+            <Toast
+              key={toast.id}
+              variant='success'
+              size='md'
+              title='Copied!'
+              description='Code copied to clipboard'
+              icon='✅'
+              onClose={() =>
+                setToasts((prev) => prev.filter((t) => t.id !== toast.id))
+              }
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
