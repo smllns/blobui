@@ -5,6 +5,7 @@ import { Toast } from '../../components/toast';
 
 type ToastItem = {
   id: string;
+  closing?: boolean;
 };
 
 type CodeBlockProps = {
@@ -26,7 +27,11 @@ export function CodeBlock({ code }: CodeBlockProps) {
     setToasts((prev) => [...prev, { id }]);
 
     setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
+      setToasts((prev) =>
+        prev.map((toast) =>
+          toast.id === id ? { ...toast, closing: true } : toast,
+        ),
+      );
     }, 2000);
 
     setTimeout(() => setCopied(false), 1500);
@@ -104,6 +109,7 @@ export function CodeBlock({ code }: CodeBlockProps) {
               title='Copied!'
               description='Code copied to clipboard'
               icon='✅'
+              closing={toast.closing}
               onClose={() =>
                 setToasts((prev) => prev.filter((t) => t.id !== toast.id))
               }

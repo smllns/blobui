@@ -11,4 +11,5 @@ export interface ToastProps extends VariantProps<typeof toastStyles> {
 
   onClose?: () => void;
   className?: string;
+  closing?: boolean;
 }

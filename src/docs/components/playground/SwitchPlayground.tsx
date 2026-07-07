@@ -7,7 +7,7 @@ import { PlaygroundShell } from './PlaygroundShell';
 import {
   SWITCH_INITIAL_STATE,
   switchControls,
-} from './constants/switchCnstants';
+} from './constants/switchConstants';
 import { generateSwitchCode } from './codeGenerators/generateSwitchCode';
 import { Switch } from '../../../components/switch';
 

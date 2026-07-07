@@ -1,16 +1,28 @@
 import { forwardRef, useEffect, useRef } from 'react';
+
 import { cn } from '../../lib/cn';
+import { Button } from '../button';
+
 import { toastStyles, toastIconStyles } from './toast.styles';
 import type { ToastProps } from './toast.types';
-import { Button } from '../button';
-import { gsap } from 'gsap';
+import { animateToastIn, animateToastOut } from './toast.animation';
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
-    { variant, size, title, description, icon, action, className, onClose },
+    {
+      variant,
+      size,
+      title,
+      description,
+      icon,
+      action,
+      className,
+      closing,
+      onClose,
+    },
     ref,
   ) => {
-    const localRef = useRef<HTMLDivElement>(null);
+    const localRef = useRef<HTMLDivElement | null>(null);
 
     const setRefs = (node: HTMLDivElement | null) => {
       localRef.current = node;
@@ -18,36 +30,37 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       if (typeof ref === 'function') {
         ref(node);
       } else if (ref) {
-        (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+        (ref as React.RefObject<HTMLDivElement | null>).current = node;
       }
     };
 
-    // ENTER animation
     useEffect(() => {
       if (!localRef.current) return;
 
-      gsap.fromTo(
-        localRef.current,
-        {
-          opacity: 0,
-          y: 16,
-          scale: 0.96,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.25,
-          ease: 'power2.out',
-        },
-      );
+      animateToastIn(localRef.current);
     }, []);
 
+    useEffect(() => {
+      const element = localRef.current;
+
+      if (!closing || !element) return;
+
+      animateToastOut(element, () => {
+        onClose?.();
+      });
+    }, [closing, onClose]);
+
     const handleClose = () => {
-      if (!localRef.current) {
+      const element = localRef.current;
+
+      if (!element) {
         onClose?.();
         return;
       }
+
+      animateToastOut(element, () => {
+        onClose?.();
+      });
     };
 
     return (

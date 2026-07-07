@@ -1,7 +1,5 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-
+import { useRef, useState } from 'react';
 import type { TooltipProps } from './tooltip.types';
 import {
   tooltipArrowStyles,
@@ -9,6 +7,7 @@ import {
   tooltipInnerStyles,
 } from './tooltip.styles';
 import { cn } from '../../lib/cn';
+import { animateTooltipIn, animateTooltipOut } from './tooltip.animation';
 
 export function Tooltip({
   children,
@@ -26,56 +25,44 @@ export function Tooltip({
   const [open, setOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  // ENTER animation
-  useEffect(() => {
-    if (!open || !contentRef.current) return;
-    const el = contentRef.current;
-    gsap.set(el, {
-      opacity: 0,
-      y: 6,
-      scale: 0.96,
-    });
-    gsap.to(el, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.18,
-      ease: 'power2.out',
-    });
-  }, [open]);
+  const handleContentRef = (element: HTMLDivElement | null) => {
+    contentRef.current = element;
 
-  const handleOpenChange = (next: boolean) => {
-    if (next) {
+    if (!element) return;
+
+    animateTooltipIn(element);
+  };
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (nextOpen) {
       setOpen(true);
       return;
     }
 
-    // EXIT animation BEFORE unmount
-    if (!contentRef.current) {
+    const element = contentRef.current;
+
+    if (!element) {
       setOpen(false);
       return;
     }
 
-    gsap.to(contentRef.current, {
-      opacity: 0,
-      y: 6,
-      scale: 0.96,
-      duration: 0.12,
-      ease: 'power2.in',
-      onComplete: () => {
-        setOpen(false);
-      },
+    animateTooltipOut(element, () => {
+      setOpen(false);
     });
   };
 
   return (
     <TooltipPrimitive.Provider delayDuration={delayDuration}>
-      <TooltipPrimitive.Root open={open} onOpenChange={handleOpenChange}>
+      <TooltipPrimitive.Root
+        open={open}
+        onOpenChange={handleOpenChange}
+        delayDuration={delayDuration}
+      >
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
 
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
-            ref={contentRef}
+            ref={handleContentRef}
             side={side}
             align={align}
             sideOffset={8}
