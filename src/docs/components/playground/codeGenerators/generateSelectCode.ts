@@ -3,38 +3,41 @@ import type { SelectPlaygroundState } from '../constants/selectConstants';
 export function generateSelectCode({
   variant,
   size,
-  fullWidth,
+  width,
   disabled,
   error,
-  leftIcon,
-  rightIcon,
 }: SelectPlaygroundState) {
   const props = [
     variant !== 'default' && `variant="${variant}"`,
     size !== 'md' && `size="${size}"`,
-    fullWidth && 'fullWidth',
+    width !== 'md' && `width="${width}"`,
     disabled && 'disabled',
     error && 'error',
-    leftIcon && 'leftIcon={<Icon />}',
-    rightIcon && 'rightIcon={<Icon />}',
   ].filter(Boolean);
 
+  const selectItems = `
+  <SelectItem value="react">
+    React
+  </SelectItem>
+
+  <SelectItem value="vue">
+    Vue
+  </SelectItem>
+
+  <SelectItem value="angular">
+    Angular
+  </SelectItem>`.trim();
+
   if (!props.length) {
-    return `<Select defaultValue="">
-  <option value="">Choose option</option>
-  <option value="react">React</option>
-  <option value="vue">Vue</option>
-  <option value="angular">Angular</option>
+    return `<Select defaultValue="react">
+  ${selectItems}
 </Select>`;
   }
 
   return `<Select
   ${props.join('\n  ')}
-  defaultValue=""
+  defaultValue="react"
 >
-  <option value="">Choose option</option>
-  <option value="react">React</option>
-  <option value="vue">Vue</option>
-  <option value="angular">Angular</option>
+  ${selectItems}
 </Select>`;
 }

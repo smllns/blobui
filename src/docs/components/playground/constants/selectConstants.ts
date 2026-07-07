@@ -1,6 +1,7 @@
 import type {
   SelectSize,
   SelectVariant,
+  SelectWidth,
 } from '../../../../components/select/select.types';
 import type { Control } from '../controls/ControlsRenderer';
 import { SIZES } from './btnConstants';
@@ -9,21 +10,17 @@ import { VARIANTS } from './inputConstants';
 export type SelectPlaygroundState = {
   variant: SelectVariant;
   size: SelectSize;
-  fullWidth: boolean;
+  width: SelectWidth;
   disabled: boolean;
   error: boolean;
-  leftIcon: boolean;
-  rightIcon: boolean;
 };
 
 export const SELECT_INITIAL_STATE: SelectPlaygroundState = {
   variant: 'default',
   size: 'md',
-  fullWidth: false,
+  width: 'md',
   disabled: false,
   error: false,
-  leftIcon: false,
-  rightIcon: false,
 };
 
 export const SELECT_CONTROLS: Control<SelectPlaygroundState>[] = [
@@ -40,9 +37,10 @@ export const SELECT_CONTROLS: Control<SelectPlaygroundState>[] = [
     options: SIZES,
   },
   {
-    type: 'checkbox',
-    key: 'fullWidth',
-    label: 'Full width',
+    type: 'select',
+    key: 'width',
+    label: 'Width',
+    options: ['auto', 'sm', 'md', 'lg', 'full'],
   },
   {
     type: 'checkbox',
@@ -53,15 +51,5 @@ export const SELECT_CONTROLS: Control<SelectPlaygroundState>[] = [
     type: 'checkbox',
     key: 'error',
     label: 'Error',
-  },
-  {
-    type: 'checkbox',
-    key: 'leftIcon',
-    label: 'Left icon',
-  },
-  {
-    type: 'checkbox',
-    key: 'rightIcon',
-    label: 'Right icon',
   },
 ] as const;

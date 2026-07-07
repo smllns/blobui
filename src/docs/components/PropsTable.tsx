@@ -8,13 +8,14 @@ type Prop = {
 };
 
 type PropsTableProps = {
+  title?: string;
   props: Prop[];
 };
 
-export function PropsTable({ props }: PropsTableProps) {
+export function PropsTable({ title, props }: PropsTableProps) {
   return (
     <section className='space-y-4'>
-      <h2 className='text-xl font-semibold pb-2'>Props Table</h2>
+      <h2 className='text-xl font-semibold pb-2'>{title} Props Table</h2>
 
       <div className='overflow-hidden rounded-xl border border-neutral-200'>
         <table className='w-full text-sm'>

@@ -2,14 +2,20 @@ import type { ReactNode } from 'react';
 import PageHeader from './PageHeader';
 import { ComponentPreview } from './ComponentPreview';
 import { PropsTable } from './PropsTable';
-
+type ComponentProp = {
+  name: string;
+  type: string;
+  default: string;
+  description: string;
+};
 type Props = {
   header: string;
   description: string;
-
   preview?: ReactNode;
   playground?: ReactNode;
-  props?: any[];
+  props?: ComponentProp[];
+  subElementProps?: ComponentProp[];
+  subElementHeader?: string;
 };
 
 export function DocsPage({
@@ -18,6 +24,8 @@ export function DocsPage({
   preview,
   playground,
   props,
+  subElementProps,
+  subElementHeader,
 }: Props) {
   return (
     <div className='flex flex-col gap-4'>
@@ -40,7 +48,10 @@ export function DocsPage({
 
       {playground}
 
-      {props && <PropsTable props={props} />}
+      {props && <PropsTable title={header} props={props} />}
+      {subElementProps && (
+        <PropsTable title={subElementHeader} props={subElementProps} />
+      )}
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import { DocsPage } from '../components/DocsPage';
 import { SelectPlayground } from '../components/playground/SelectPlayground';
 import { Select } from '../../components/select';
-import { selectProps } from '../../lib/selectProps';
+import { selectItemProps, selectProps } from '../../lib/selectProps';
+import { SelectItem } from '../../components/select/SelectItem';
 
 const SELECT_VARIANTS = ['default', 'filled', 'outline', 'ghost'] as const;
+
 const OPTIONS = [
   { value: 'option1', label: 'Option 1' },
   { value: 'option2', label: 'Option 2' },
@@ -14,15 +16,20 @@ function SelectPreview() {
   return (
     <>
       {SELECT_VARIANTS.map((variant) => (
-        <Select key={variant} variant={variant} defaultValue={variant}>
-          <option value={variant}>
+        <Select
+          size='md'
+          key={variant}
+          variant={variant}
+          defaultValue={variant}
+        >
+          <SelectItem value={variant}>
             {variant.charAt(0).toUpperCase() + variant.slice(1)}
-          </option>
+          </SelectItem>
 
           {OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
+            <SelectItem key={opt.value} value={opt.value}>
               {opt.label}
-            </option>
+            </SelectItem>
           ))}
         </Select>
       ))}
@@ -38,6 +45,8 @@ export function SelectDocs() {
       preview={<SelectPreview />}
       playground={<SelectPlayground />}
       props={selectProps}
+      subElementProps={selectItemProps}
+      subElementHeader='Select Item'
     />
   );
 }

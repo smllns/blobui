@@ -1,43 +1,86 @@
+import * as SelectPrimitive from '@radix-ui/react-select';
+
 import type { SelectProps } from './select.types';
-import { selectStyles, selectWrapperStyles } from './select.styles';
-import { cn } from '../../lib/cn';
 import { ChevronDown } from '../../ui/ChevronDown';
+import {
+  selectContentStyles,
+  selectTriggerStyles,
+  selectViewportStyles,
+} from './select.styles';
+import { cn } from '../../lib/cn';
+import { useRef, useState } from 'react';
+import { animateSelectEnter, animateSelectExit } from './select.animation';
 
 export function Select({
-  variant,
-  size,
-  fullWidth,
-  error,
-  disabled,
-  leftIcon,
-  rightIcon,
-  className,
   children,
+  variant = 'default',
+  size = 'md',
+  width = 'md',
+  error,
+  placeholder,
   ...props
 }: SelectProps) {
+  const [open, setOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  const setContentRef = (node: HTMLDivElement | null) => {
+    if (!node) {
+      contentRef.current = null;
+      return;
+    }
+
+    contentRef.current = node;
+    animateSelectEnter(node);
+  };
+
+  const handleOpenChange = (next: boolean) => {
+    if (next) {
+      setOpen(true);
+      return;
+    }
+
+    if (!contentRef.current) {
+      setOpen(false);
+      return;
+    }
+
+    animateSelectExit(contentRef.current, () => {
+      setOpen(false);
+    });
+  };
   return (
-    <div
-      className={cn(
-        selectWrapperStyles({
-          variant,
-          size,
-          fullWidth,
-          error,
-          disabled,
-        }),
-      )}
+    <SelectPrimitive.Root
+      open={open}
+      onOpenChange={handleOpenChange}
+      {...props}
     >
-      {leftIcon}
-
-      <select
-        disabled={disabled}
-        className={cn(selectStyles(), className)}
-        {...props}
+      <SelectPrimitive.Trigger
+        className={cn(
+          selectTriggerStyles({
+            variant,
+            size,
+            width,
+            error,
+          }),
+        )}
       >
-        {children}
-      </select>
+        <SelectPrimitive.Value placeholder={placeholder} />
 
-      {rightIcon ?? <ChevronDown />}
-    </div>
+        <SelectPrimitive.Icon>
+          <ChevronDown className='h-4 w-4' />
+        </SelectPrimitive.Icon>
+      </SelectPrimitive.Trigger>
+
+      <SelectPrimitive.Portal>
+        <SelectPrimitive.Content
+          ref={setContentRef}
+          className={cn(selectContentStyles())}
+        >
+          <SelectPrimitive.Viewport className={cn(selectViewportStyles())}>
+            {children}
+          </SelectPrimitive.Viewport>
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Portal>
+    </SelectPrimitive.Root>
   );
 }

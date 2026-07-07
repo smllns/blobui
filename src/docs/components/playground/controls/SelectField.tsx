@@ -1,4 +1,5 @@
 import { Select } from '../../../../components/select';
+import { SelectItem } from '../../../../components/select/SelectItem';
 
 type Props<T extends string> = {
   label: string;
@@ -18,12 +19,15 @@ export function SelectField<T extends string>({
       <p className='text-neutral-600'>{label}</p>
 
       <Select
+        width='full'
         variant='outline'
         value={value}
-        onChange={(e) => onChange(e.target.value as T)}
+        onValueChange={onChange}
       >
         {options.map((option) => (
-          <option key={option}>{option}</option>
+          <SelectItem key={option} value={option}>
+            {option}
+          </SelectItem>
         ))}
       </Select>
     </div>

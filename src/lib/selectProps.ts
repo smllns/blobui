@@ -12,10 +12,10 @@ export const selectProps = [
     description: 'Controls select size',
   },
   {
-    name: 'fullWidth',
-    type: 'boolean',
-    default: 'false',
-    description: 'Makes select take full width',
+    name: 'width',
+    type: "'auto' | 'sm' | 'md' | 'lg' | 'full'",
+    default: 'md',
+    description: 'Controls select width',
   },
   {
     name: 'error',
@@ -30,39 +30,53 @@ export const selectProps = [
     description: 'Disables select interaction',
   },
   {
-    name: 'leftIcon',
-    type: 'ReactNode',
+    name: 'placeholder',
+    type: 'string',
     default: '-',
-    description: 'Icon displayed before select content',
-  },
-  {
-    name: 'rightIcon',
-    type: 'ReactNode',
-    default: 'chevron',
-    description: 'Icon displayed after select content',
+    description: 'Placeholder displayed when no value is selected',
   },
   {
     name: 'children',
     type: 'ReactNode',
     default: '-',
-    description: 'Select options',
+    description: 'Select items rendered inside the dropdown',
   },
   {
     name: 'value',
     type: 'string',
     default: '-',
-    description: 'Controlled select value',
+    description: 'Controlled selected value',
   },
   {
     name: 'defaultValue',
     type: 'string',
     default: '-',
-    description: 'Initial uncontrolled value',
+    description: 'Initial uncontrolled selected value',
   },
   {
-    name: 'onChange',
-    type: '(e: React.ChangeEvent<HTMLSelectElement>) => void',
+    name: 'onValueChange',
+    type: '(value: string) => void',
     default: '-',
-    description: 'Change handler for select value',
+    description: 'Callback fired when selected value changes',
+  },
+];
+export const selectItemProps = [
+  {
+    name: 'value',
+    type: 'string',
+    default: '-',
+    description: 'Unique value of the item',
+  },
+  {
+    name: 'children',
+    type: 'ReactNode',
+    default: '-',
+    description: 'Item label',
+  },
+  {
+    name: 'disabled',
+    type: 'boolean',
+    default: 'false',
+    description: 'Disables item selection',
   },
 ];

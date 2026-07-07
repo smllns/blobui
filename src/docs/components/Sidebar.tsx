@@ -4,13 +4,13 @@ import { ChevronDown } from '../../ui/ChevronDown';
 const navItems = [
   { label: 'Button', to: '/button' },
   { label: 'Input', to: '/input' },
-  { label: 'Select', to: '/select' },
   { label: 'Checkbox', to: '/checkbox' },
   { label: 'Radio', to: '/radio' },
   { label: 'Switch', to: '/switch' },
   { label: 'Badge', to: '/badge' },
   { label: 'Avatar', to: '/avatar' },
   { label: 'Card', to: '/card' },
+  { label: 'Select', to: '/select' },
   { label: 'Tooltip', to: '/tooltip' },
   { label: 'Toast', to: '/toast' },
 ];

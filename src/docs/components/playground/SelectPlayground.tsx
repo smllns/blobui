@@ -4,12 +4,15 @@ import { Select } from '../../../components/select';
 import { CodeBlock } from '../CodeBlock';
 import { PlaygroundShell } from './PlaygroundShell';
 import { ControlsRenderer } from './controls/ControlsRenderer';
+
 import {
   SELECT_CONTROLS,
   SELECT_INITIAL_STATE,
   type SelectPlaygroundState,
 } from './constants/selectConstants';
+
 import { generateSelectCode } from './codeGenerators/generateSelectCode';
+import { SelectItem } from '../../../components/select/SelectItem';
 
 export function SelectPlayground() {
   const [state, setState] = useState(SELECT_INITIAL_STATE);
@@ -39,17 +42,17 @@ export function SelectPlayground() {
         <Select
           variant={state.variant}
           size={state.size}
-          fullWidth={state.fullWidth}
+          width={state.width}
           disabled={state.disabled}
           error={state.error}
-          leftIcon={state.leftIcon ? <span>💖</span> : undefined}
-          rightIcon={state.rightIcon ? <span>💖</span> : undefined}
-          defaultValue=''
+          placeholder='Choose option'
+          defaultValue='react'
         >
-          <option value=''>Choose option</option>
-          <option value='react'>React</option>
-          <option value='vue'>Vue</option>
-          <option value='angular'>Angular</option>
+          <SelectItem value='react'>React</SelectItem>
+
+          <SelectItem value='vue'>Vue</SelectItem>
+
+          <SelectItem value='angular'>Angular</SelectItem>
         </Select>
       }
       code={<CodeBlock code={code} />}
