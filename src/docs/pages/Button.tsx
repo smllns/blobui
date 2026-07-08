@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { ButtonPlayground } from '../components/playground/ButtonPlayground';
 import { buttonProps } from '../../lib/buttonProps';
-import { Button } from '../../components/button';
+import { Button } from '../../components/button/Button';
 
 export function ButtonDocs() {
   return (

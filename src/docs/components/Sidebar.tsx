@@ -13,6 +13,7 @@ const navItems = [
   { label: 'Select', to: '/select' },
   { label: 'Tooltip', to: '/tooltip' },
   { label: 'Toast', to: '/toast' },
+  { label: 'Dropdown', to: '/dropdown' },
 ];
 
 export function Sidebar() {

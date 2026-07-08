@@ -9,8 +9,8 @@ import {
   AVATAR_CONTROLS,
 } from './constants/avatarConstants';
 
-import { Avatar } from '../../../components/avatar';
 import { generateAvatarCode } from './codeGenerators/generateAvatarCode';
+import { Avatar } from '../../../components/avatar/Avatar';
 
 export function AvatarPlayground() {
   const [state, setState] = useState(AVATAR_INITIAL_STATE);

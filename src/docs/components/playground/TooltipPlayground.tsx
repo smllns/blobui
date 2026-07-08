@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Tooltip } from '../../../components/tooltip';
-import { Button } from '../../../components/button';
+import { Tooltip } from '../../../components/tooltip/Tooltip';
+import { Button } from '../../../components/button/Button';
 
 import { ControlsRenderer } from './controls/ControlsRenderer';
 import { CodeBlock } from '../CodeBlock';

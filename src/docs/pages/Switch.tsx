@@ -1,5 +1,5 @@
 import { DocsPage } from '../components/DocsPage';
-import { Switch } from '../../components/switch';
+import { Switch } from '../../components/switch/Switch';
 import { SwitchPlayground } from '../components/playground/SwitchPlayground';
 import { switchProps } from '../../lib/switchProps';
 

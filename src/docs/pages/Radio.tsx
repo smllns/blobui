@@ -1,5 +1,5 @@
 import { DocsPage } from '../components/DocsPage';
-import { Radio } from '../../components/radio';
+import { Radio } from '../../components/radio/Radio';
 import { RadioPlayground } from '../components/playground/RadioPlayground';
 import { radioProps } from '../../lib/radioProps';
 

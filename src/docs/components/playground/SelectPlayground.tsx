@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { Select } from '../../../components/select';
 import { CodeBlock } from '../CodeBlock';
 import { PlaygroundShell } from './PlaygroundShell';
 import { ControlsRenderer } from './controls/ControlsRenderer';
@@ -13,6 +12,7 @@ import {
 
 import { generateSelectCode } from './codeGenerators/generateSelectCode';
 import { SelectItem } from '../../../components/select/SelectItem';
+import { Select } from '../../../components/select/Select';
 
 export function SelectPlayground() {
   const [state, setState] = useState(SELECT_INITIAL_STATE);

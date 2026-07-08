@@ -1,5 +1,5 @@
 import { DocsPage } from '../components/DocsPage';
-import { Toast } from '../../components/toast';
+import { Toast } from '../../components/toast/Toast';
 import { ToastPlayground } from '../components/playground/ToastPlayground';
 import { toastProps } from '../../lib/toastProps';
 

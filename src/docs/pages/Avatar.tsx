@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
-import { Avatar } from '../../components/avatar';
 import { AvatarPlayground } from '../components/playground/AvatarPlayground';
 import { avatarProps } from '../../lib/avatarProps';
+import { Avatar } from '../../components/avatar/Avatar';
 
 export function AvatarDocs() {
   return (

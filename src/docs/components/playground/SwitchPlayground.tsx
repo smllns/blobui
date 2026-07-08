@@ -9,7 +9,7 @@ import {
   switchControls,
 } from './constants/switchConstants';
 import { generateSwitchCode } from './codeGenerators/generateSwitchCode';
-import { Switch } from '../../../components/switch';
+import { Switch } from '../../../components/switch/Switch';
 
 export function SwitchPlayground() {
   const [state, setState] = useState(SWITCH_INITIAL_STATE);

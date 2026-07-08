@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import { Card } from '../../../components/card';
 import { CodeBlock } from '../CodeBlock';
 import { PlaygroundShell } from './PlaygroundShell';
 import { ControlsRenderer } from './controls/ControlsRenderer';
 
 import { CARD_CONTROLS, CARD_INITIAL_STATE } from './constants/cardConstants';
 import { generateCardCode } from './codeGenerators/generateCardCode';
+import { Card } from '../../../components/card/Card';
 
 export function CardPlayground() {
   const [state, setState] = useState(CARD_INITIAL_STATE);

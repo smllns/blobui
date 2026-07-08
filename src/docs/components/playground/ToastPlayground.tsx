@@ -10,8 +10,8 @@ import {
 } from './constants/toastConstants';
 
 import { generateToastCode } from './codeGenerators/generateToastCode';
-import { Toast } from '../../../components/toast';
-import { Button } from '../../../components/button';
+import { Toast } from '../../../components/toast/Toast';
+import { Button } from '../../../components/button/Button';
 
 export function ToastPlayground() {
   const [state, setState] = useState(TOAST_INITIAL_STATE);

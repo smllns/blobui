@@ -1,4 +1,7 @@
-import type { RadioSize, RadioVariant } from '../../../../components/radio';
+import type {
+  RadioSize,
+  RadioVariant,
+} from '../../../../components/radio/radio.types';
 import type { Control } from '../controls/ControlsRenderer';
 
 export type RadioPlaygroundState = {

@@ -1,7 +1,7 @@
 import type {
   TooltipSize,
   TooltipVariant,
-} from '../../../../components/tooltip';
+} from '../../../../components/tooltip/tooltip.types';
 import type { Control } from '../controls/ControlsRenderer';
 
 export type TooltipPlaygroundState = {

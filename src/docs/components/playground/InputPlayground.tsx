@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { CodeBlock } from '../CodeBlock';
 
-import { Input } from '../../../components/input';
+import { Input } from '../../../components/input/Input';
 
 import { PlaygroundShell } from './PlaygroundShell';
 import { generateInputCode } from './codeGenerators/generateInputCode';

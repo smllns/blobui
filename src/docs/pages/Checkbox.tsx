@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { CheckboxPlayground } from '../components/playground/CheckBoxPlayground';
 import { checkboxProps } from '../../lib/checkboxProps';
-import { Checkbox } from '../../components/checkbox';
+import { Checkbox } from '../../components/checkbox/CheckBox';
 
 export function CheckboxDocs() {
   return (

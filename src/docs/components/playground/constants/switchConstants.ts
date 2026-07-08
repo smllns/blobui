@@ -1,4 +1,7 @@
-import type { SwitchSize, SwitchVariant } from '../../../../components/switch';
+import type {
+  SwitchSize,
+  SwitchVariant,
+} from '../../../../components/switch/switch.types';
 import type { Control } from '../controls/ControlsRenderer';
 
 export type SwitchPlaygroundState = {

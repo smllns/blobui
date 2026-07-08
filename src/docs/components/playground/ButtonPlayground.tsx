@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BTN_INITIAL_STATE, btnControls } from './constants/btnConstants';
-import { Button } from '../../../components/button';
+import { Button } from '../../../components/button/Button';
 import { CodeBlock } from '../CodeBlock';
 import { generateButtonCode } from './codeGenerators/generateButtonCode';
 import { PlaygroundShell } from './PlaygroundShell';

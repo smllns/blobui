@@ -1,8 +1,8 @@
 import { DocsPage } from '../components/DocsPage';
 import { SelectPlayground } from '../components/playground/SelectPlayground';
-import { Select } from '../../components/select';
 import { selectItemProps, selectProps } from '../../lib/selectProps';
 import { SelectItem } from '../../components/select/SelectItem';
+import { Select } from '../../components/select/Select';
 
 const SELECT_VARIANTS = ['default', 'filled', 'outline', 'ghost'] as const;
 

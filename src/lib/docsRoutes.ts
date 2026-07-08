@@ -10,6 +10,7 @@ import { AvatarDocs } from '../docs/pages/Avatar';
 import { CardDocs } from '../docs/pages/Card';
 import { TooltipDocs } from '../docs/pages/Tooltip';
 import { ToastDocs } from '../docs/pages/Toast';
+import { DropdownMenuDocs } from '../docs/pages/DropdownMenu';
 
 export const docsRoutes = [
   { path: '/', element: Home, index: true },
@@ -25,4 +26,5 @@ export const docsRoutes = [
   { path: 'card', element: CardDocs, index: false },
   { path: 'tooltip', element: TooltipDocs, index: false },
   { path: 'toast', element: ToastDocs, index: false },
+  { path: 'dropdown', element: DropdownMenuDocs },
 ];

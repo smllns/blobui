@@ -9,8 +9,8 @@ import {
   BADGE_CONTROLS,
 } from './constants/badgeConstants';
 
-import { Badge } from '../../../components/badge';
 import { generateBadgeCode } from './codeGenerators/generateBadgeCode';
+import { Badge } from '../../../components/badge/Badge';
 
 export function BadgePlayground() {
   const [state, setState] = useState(BADGE_INITIAL_STATE);

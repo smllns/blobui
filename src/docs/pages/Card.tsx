@@ -1,5 +1,5 @@
 import { DocsPage } from '../components/DocsPage';
-import { Card } from '../../components/card';
+import { Card } from '../../components/card/Card';
 import { CardPlayground } from '../components/playground/CardPlayground';
 import { cardProps } from '../../lib/cardProps';
 

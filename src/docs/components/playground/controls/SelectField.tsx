@@ -1,4 +1,4 @@
-import { Select } from '../../../../components/select';
+import { Select } from '../../../../components/select/Select';
 import { SelectItem } from '../../../../components/select/SelectItem';
 
 type Props<T extends string> = {

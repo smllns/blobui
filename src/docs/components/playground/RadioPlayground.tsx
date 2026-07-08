@@ -6,7 +6,7 @@ import { CodeBlock } from '../CodeBlock';
 import { PlaygroundShell } from './PlaygroundShell';
 import { RADIO_INITIAL_STATE, radioControls } from './constants/radioConstants';
 import { generateRadioCode } from './codeGenerators/generateRadioCode';
-import { Radio } from '../../../components/radio';
+import { Radio } from '../../../components/radio/Radio';
 
 export function RadioPlayground() {
   const [state, setState] = useState(RADIO_INITIAL_STATE);

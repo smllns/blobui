@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Checkbox } from '../../../components/checkbox';
+import { Checkbox } from '../../../components/checkbox/CheckBox';
 import { CodeBlock } from '../CodeBlock';
 import { PlaygroundShell } from './PlaygroundShell';
 import { ControlsRenderer } from './controls/ControlsRenderer';

@@ -1,11 +1,11 @@
 import { forwardRef, useEffect, useRef } from 'react';
 
 import { cn } from '../../lib/cn';
-import { Button } from '../button';
 
 import { toastStyles, toastIconStyles } from './toast.styles';
 import type { ToastProps } from './toast.types';
 import { animateToastIn, animateToastOut } from './toast.animation';
+import { Button } from '../button/Button';
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (

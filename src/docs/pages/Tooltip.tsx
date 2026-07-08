@@ -1,8 +1,8 @@
 import { DocsPage } from '../components/DocsPage';
 import { TooltipPlayground } from '../components/playground/TooltipPlayground';
 import { tooltipProps } from '../../lib/tooltipProps';
-import { Tooltip } from '../../components/tooltip';
-import { Button } from '../../components/button';
+import { Tooltip } from '../../components/tooltip/Tooltip';
+import { Button } from '../../components/button/Button';
 
 export function TooltipDocs() {
   return (

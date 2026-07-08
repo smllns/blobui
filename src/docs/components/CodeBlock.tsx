@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Button } from '../../components/button';
 import { ChevronDown } from '../../ui/ChevronDown';
-import { Toast } from '../../components/toast';
+import { Toast } from '../../components/toast/Toast';
+import { Button } from '../../components/button/Button';
 
 type ToastItem = {
   id: string;

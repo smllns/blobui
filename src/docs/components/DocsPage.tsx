@@ -16,6 +16,8 @@ type Props = {
   props?: ComponentProp[];
   subElementProps?: ComponentProp[];
   subElementHeader?: string;
+  secondSubElementProps?: ComponentProp[];
+  secondSubElementHeader?: string;
 };
 
 export function DocsPage({
@@ -26,6 +28,8 @@ export function DocsPage({
   props,
   subElementProps,
   subElementHeader,
+  secondSubElementProps,
+  secondSubElementHeader,
 }: Props) {
   return (
     <div className='flex flex-col gap-4'>
@@ -51,6 +55,12 @@ export function DocsPage({
       {props && <PropsTable title={header} props={props} />}
       {subElementProps && (
         <PropsTable title={subElementHeader} props={subElementProps} />
+      )}
+      {secondSubElementProps && (
+        <PropsTable
+          title={secondSubElementHeader}
+          props={secondSubElementProps}
+        />
       )}
     </div>
   );

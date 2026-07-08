@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
-import { Badge } from '../../components/badge';
 import { BadgePlayground } from '../components/playground/BadgePlayground';
 import { badgeProps } from '../../lib/badgeProps';
+import { Badge } from '../../components/badge/Badge';
 
 export function BadgeDocs() {
   return (

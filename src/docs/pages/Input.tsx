@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { InputPlayground } from '../components/playground/InputPlayground';
 import { inputProps } from '../../lib/inputProps';
-import { Input } from '../../components/input';
+import { Input } from '../../components/input/Input';
 
 export function InputDocs() {
   return (
