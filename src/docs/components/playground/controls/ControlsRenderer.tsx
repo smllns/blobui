@@ -12,6 +12,7 @@ export type Control<T> =
       type: 'checkbox';
       key: keyof T;
       label: string;
+      disabled?: boolean;
     };
 
 type Props<T> = {
@@ -55,6 +56,7 @@ export function ControlsRenderer<T>({ state, update, controls }: Props<T>) {
               key={control.key as string}
               label={control.label}
               checked={value as boolean}
+              disabled={control.disabled as boolean}
               onChange={(v) => update(control.key, v as T[keyof T])}
             />
           );
