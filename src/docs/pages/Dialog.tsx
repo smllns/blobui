@@ -1,17 +1,18 @@
 import { DocsPage } from '../components/DocsPage';
 import { Button } from '../../components/button/Button';
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from '../../components/dialog/dialog';
+
 import { DialogClose } from '@radix-ui/react-dialog';
 import { DialogPlayground } from '../components/playground/DialogPlayground';
 import { dialogProps } from '../../lib/dialogProps';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../../components/dialog/Dialog';
 const dialogs = [
   {
     label: 'Open small dialog',

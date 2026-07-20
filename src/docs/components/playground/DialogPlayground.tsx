@@ -17,7 +17,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter,
-} from '../../../components/dialog/dialog';
+} from '../../../components/dialog/Dialog';
 import { DialogClose } from '@radix-ui/react-dialog';
 
 export function DialogPlayground() {
