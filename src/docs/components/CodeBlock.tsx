@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from '../../ui/ChevronDown';
 import { Toast } from '../../components/toast/Toast';
 import { Button } from '../../components/button/Button';
@@ -17,6 +17,14 @@ export function CodeBlock({ code }: CodeBlockProps) {
   const [open, setOpen] = useState(false);
 
   const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const [height, setHeight] = useState('60px');
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(open ? `${contentRef.current.scrollHeight}px` : '60px');
+    }
+  }, [open, code]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -50,14 +58,17 @@ export function CodeBlock({ code }: CodeBlockProps) {
 
       {/* BODY */}
       <div
+        style={{
+          maxHeight: height,
+        }}
         className={`
           relative overflow-hidden
           transition-all duration-300 ease-in-out
-          ${open ? 'max-h-125' : 'max-h-15'}
         `}
       >
         {/* CODE */}
         <div
+          ref={contentRef}
           className={`
             transition-all duration-900 ease-in-out
             ${open ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-1'}

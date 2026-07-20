@@ -12,6 +12,7 @@ import { TooltipDocs } from '../docs/pages/Tooltip';
 import { ToastDocs } from '../docs/pages/Toast';
 import { DropdownMenuDocs } from '../docs/pages/DropdownMenu';
 import { AccordionDocs } from '../docs/pages/Accordion';
+import { DialogDocs } from '../docs/pages/Dialog';
 
 export const docsRoutes = [
   { path: '/', element: Home, index: true },
@@ -29,4 +30,5 @@ export const docsRoutes = [
   { path: 'toast', element: ToastDocs, index: false },
   { path: 'dropdown', element: DropdownMenuDocs, index: false },
   { path: 'accordion', element: AccordionDocs, index: false },
+  { path: 'dialog', element: DialogDocs, index: false },
 ];
