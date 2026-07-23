@@ -16,6 +16,7 @@ const navItems = [
   { label: 'Dropdown', to: '/dropdown' },
   { label: 'Accordion', to: '/accordion' },
   { label: 'Dialog', to: '/dialog' },
+  { label: 'Popover', to: '/popover' },
 ];
 
 export function Sidebar() {

@@ -22,7 +22,6 @@ export const tooltipContentStyles = cva(
         default: 'bg-neutral-900 text-white',
         light: 'bg-white text-neutral-900 border border-neutral-200',
         success: 'bg-emerald-50 text-emerald-800 border-emerald-200/60',
-
         destructive: 'bg-red-50 text-red-700 border-red-200/60',
       },
 

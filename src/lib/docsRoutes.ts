@@ -13,6 +13,7 @@ import { ToastDocs } from '../docs/pages/Toast';
 import { DropdownMenuDocs } from '../docs/pages/DropdownMenu';
 import { AccordionDocs } from '../docs/pages/Accordion';
 import { DialogDocs } from '../docs/pages/Dialog';
+import { PopoverDocs } from '../docs/pages/Popover';
 
 export const docsRoutes = [
   { path: '/', element: Home, index: true },
@@ -31,4 +32,5 @@ export const docsRoutes = [
   { path: 'dropdown', element: DropdownMenuDocs, index: false },
   { path: 'accordion', element: AccordionDocs, index: false },
   { path: 'dialog', element: DialogDocs, index: false },
+  { path: 'popover', element: PopoverDocs, index: false },
 ];
