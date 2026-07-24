@@ -18,7 +18,7 @@ export const TOOLTIP_INITIAL_STATE: TooltipPlaygroundState = {
   content: 'This is a tooltip!',
   variant: 'default',
   size: 'md',
-  side: 'top',
+  side: 'bottom',
   align: 'center',
 
   startIcon: false,

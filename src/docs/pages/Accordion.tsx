@@ -2,7 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { Accordion } from '../../components/accordion/Accordion';
 import { AccordionPlayground } from '../components/playground/AccordionPlayground';
 import { AccordionItems } from '../components/playground/constants/accordionConstants';
-import { accordionProps } from '../../lib/accordionProps';
+import { componentProps } from '../../lib/props';
 
 export function AccordionDocs() {
   return (
@@ -29,7 +29,7 @@ export function AccordionDocs() {
         </div>
       }
       playground={<AccordionPlayground />}
-      props={accordionProps}
+      props={componentProps.accordion}
     />
   );
 }

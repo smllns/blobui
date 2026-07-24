@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Card } from '../../components/card/Card';
 import { CardPlayground } from '../components/playground/CardPlayground';
-import { cardProps } from '../../lib/cardProps';
+import { componentProps } from '../../lib/props';
 
 export function CardDocs() {
   const cardVariants = [
@@ -36,7 +36,7 @@ export function CardDocs() {
         </>
       }
       playground={<CardPlayground />}
-      props={cardProps}
+      props={componentProps.card}
     />
   );
 }

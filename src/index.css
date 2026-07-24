@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-/* ===========================
-   Design Tokens
-=========================== */
-
 :root {
   color-scheme: light;
 
@@ -19,10 +15,6 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
 }
-
-/* ===========================
-   Reset
-=========================== */
 
 *,
 *::before,

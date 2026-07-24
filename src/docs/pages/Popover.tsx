@@ -7,7 +7,7 @@ import {
 } from '../../components/popover/Popover';
 import { Button } from '../../components/button/Button';
 import { PopoverPlayground } from '../components/playground/PopoverPlayground';
-import { popoverProps } from '../../lib/popoverProps';
+import { componentProps } from '../../lib/props';
 
 const PreviewPopover = ({
   variant,
@@ -73,7 +73,7 @@ export function PopoverDocs() {
         </>
       }
       playground={<PopoverPlayground />}
-      props={popoverProps}
+      props={componentProps.popover}
     />
   );
 }

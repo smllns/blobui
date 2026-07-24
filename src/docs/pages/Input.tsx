@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { InputPlayground } from '../components/playground/InputPlayground';
-import { inputProps } from '../../lib/inputProps';
 import { Input } from '../../components/input/Input';
+import { componentProps } from '../../lib/props';
 
 export function InputDocs() {
   return (
@@ -17,7 +17,7 @@ export function InputDocs() {
         </>
       }
       playground={<InputPlayground />}
-      props={inputProps}
+      props={componentProps.input}
     />
   );
 }

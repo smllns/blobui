@@ -3,7 +3,6 @@ import { Button } from '../../components/button/Button';
 
 import { DialogClose } from '@radix-ui/react-dialog';
 import { DialogPlayground } from '../components/playground/DialogPlayground';
-import { dialogProps } from '../../lib/dialogProps';
 import {
   Dialog,
   DialogContent,
@@ -13,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '../../components/dialog/Dialog';
+import { componentProps } from '../../lib/props';
 const dialogs = [
   {
     label: 'Open small dialog',
@@ -65,7 +65,9 @@ export function DialogDocs() {
         </>
       }
       playground={<DialogPlayground />}
-      props={dialogProps}
+      props={componentProps.dialog.root}
+      subElementHeader='Dialog Content'
+      subElementProps={componentProps.dialog.item}
     />
   );
 }

@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Toast } from '../../components/toast/Toast';
 import { ToastPlayground } from '../components/playground/ToastPlayground';
-import { toastProps } from '../../lib/toastProps';
+import { componentProps } from '../../lib/props';
 
 export function ToastDocs() {
   return (
@@ -40,7 +40,7 @@ export function ToastDocs() {
         </>
       }
       playground={<ToastPlayground />}
-      props={toastProps}
+      props={componentProps.toast}
     />
   );
 }

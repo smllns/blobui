@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Switch } from '../../components/switch/Switch';
 import { SwitchPlayground } from '../components/playground/SwitchPlayground';
-import { switchProps } from '../../lib/switchProps';
+import { componentProps } from '../../lib/props';
 
 export function SwitchDocs() {
   return (
@@ -17,7 +17,7 @@ export function SwitchDocs() {
         </>
       }
       playground={<SwitchPlayground />}
-      props={switchProps}
+      props={componentProps.switch}
     />
   );
 }

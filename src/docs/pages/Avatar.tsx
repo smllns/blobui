@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { AvatarPlayground } from '../components/playground/AvatarPlayground';
-import { avatarProps } from '../../lib/avatarProps';
 import { Avatar } from '../../components/avatar/Avatar';
+import { componentProps } from '../../lib/props';
 
 export function AvatarDocs() {
   return (
@@ -17,7 +17,7 @@ export function AvatarDocs() {
         </>
       }
       playground={<AvatarPlayground />}
-      props={avatarProps}
+      props={componentProps.avatar}
     />
   );
 }

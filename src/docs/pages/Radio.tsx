@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Radio } from '../../components/radio/Radio';
 import { RadioPlayground } from '../components/playground/RadioPlayground';
-import { radioProps } from '../../lib/radioProps';
+import { componentProps } from '../../lib/props';
 
 export function RadioDocs() {
   return (
@@ -30,7 +30,7 @@ export function RadioDocs() {
         </>
       }
       playground={<RadioPlayground />}
-      props={radioProps}
+      props={componentProps.radio}
     />
   );
 }

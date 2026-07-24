@@ -1,8 +1,8 @@
 import { DocsPage } from '../components/DocsPage';
 import { TooltipPlayground } from '../components/playground/TooltipPlayground';
-import { tooltipProps } from '../../lib/tooltipProps';
 import { Tooltip } from '../../components/tooltip/Tooltip';
 import { Button } from '../../components/button/Button';
+import { componentProps } from '../../lib/props';
 
 export function TooltipDocs() {
   return (
@@ -33,7 +33,7 @@ export function TooltipDocs() {
         </>
       }
       playground={<TooltipPlayground />}
-      props={tooltipProps}
+      props={componentProps.tooltip}
     />
   );
 }

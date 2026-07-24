@@ -1,0 +1,32 @@
+import {
+  childrenProp,
+  classNameProp,
+  disabledProp,
+  errorProp,
+  fieldProps,
+} from './commonProps';
+import { prop } from './helpers';
+
+export const radioProps = [
+  prop(
+    'checked',
+    'boolean',
+    '-',
+    'Controlled checked state of the radio button',
+  ),
+
+  prop(
+    'onChange',
+    '(e: React.ChangeEvent<HTMLInputElement>) => void',
+    '-',
+    'Callback fired when radio selection changes',
+  ),
+
+  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls radio button size'),
+
+  errorProp,
+  ...fieldProps,
+  disabledProp,
+  classNameProp,
+  childrenProp,
+];

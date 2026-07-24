@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { BadgePlayground } from '../components/playground/BadgePlayground';
-import { badgeProps } from '../../lib/badgeProps';
 import { Badge } from '../../components/badge/Badge';
+import { componentProps } from '../../lib/props';
 
 export function BadgeDocs() {
   return (
@@ -17,7 +17,7 @@ export function BadgeDocs() {
         </>
       }
       playground={<BadgePlayground />}
-      props={badgeProps}
+      props={componentProps.badge}
     />
   );
 }

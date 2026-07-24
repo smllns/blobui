@@ -1,8 +1,8 @@
 import { DocsPage } from '../components/DocsPage';
 import { SelectPlayground } from '../components/playground/SelectPlayground';
-import { selectItemProps, selectProps } from '../../lib/selectProps';
 import { SelectItem } from '../../components/select/SelectItem';
 import { Select } from '../../components/select/Select';
+import { componentProps } from '../../lib/props';
 
 const SELECT_VARIANTS = ['default', 'filled', 'outline', 'ghost'] as const;
 
@@ -44,8 +44,8 @@ export function SelectDocs() {
       description='A select component for capturing user data.'
       preview={<SelectPreview />}
       playground={<SelectPlayground />}
-      props={selectProps}
-      subElementProps={selectItemProps}
+      props={componentProps.select.root}
+      subElementProps={componentProps.select.item}
       subElementHeader='Select Item'
     />
   );

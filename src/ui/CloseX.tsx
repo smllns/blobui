@@ -1,3 +1,4 @@
+// close icon
 const CloseX = () => {
   return (
     <svg

@@ -3,11 +3,7 @@ import { DropdownMenu } from '../../components/dropdown-menu/DropdownMenu';
 import { DropdownMenuItem } from '../../components/dropdown-menu/DropdownMenuItem';
 import { DropdownMenuSeparator } from '../../components/dropdown-menu/DropdownMenuSeparator';
 import { DropdownMenuPlayground } from '../components/playground/DropdownMenuPlayground';
-import {
-  dropdownMenuItemProps,
-  dropdownMenuProps,
-  dropdownMenuSeparatorProps,
-} from '../../lib/dropdownMenuProps';
+import { componentProps } from '../../lib/props';
 
 const MENU_ITEMS = (
   <>
@@ -45,10 +41,10 @@ export function DropdownMenuDocs() {
         </>
       }
       playground={<DropdownMenuPlayground />}
-      props={dropdownMenuProps}
-      subElementProps={dropdownMenuItemProps}
+      props={componentProps.dropdown.root}
+      subElementProps={componentProps.dropdown.item}
       subElementHeader='Dropdown Menu Item'
-      secondSubElementProps={dropdownMenuSeparatorProps}
+      secondSubElementProps={componentProps.dropdown.item2}
       secondSubElementHeader='Dropdown Menu Separator'
     />
   );

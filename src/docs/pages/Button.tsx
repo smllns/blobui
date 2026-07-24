@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { ButtonPlayground } from '../components/playground/ButtonPlayground';
-import { buttonProps } from '../../lib/buttonProps';
 import { Button } from '../../components/button/Button';
+import { componentProps } from '../../lib/props';
 
 export function ButtonDocs() {
   return (
@@ -18,7 +18,7 @@ export function ButtonDocs() {
         </>
       }
       playground={<ButtonPlayground />}
-      props={buttonProps}
+      props={componentProps.button}
     />
   );
 }

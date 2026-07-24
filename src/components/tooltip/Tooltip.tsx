@@ -12,7 +12,7 @@ import { animateTooltipIn, animateTooltipOut } from './tooltip.animation';
 export function Tooltip({
   children,
   content,
-  side = 'top',
+  side = 'bottom',
   align = 'center',
   delayDuration = 200,
   variant,
