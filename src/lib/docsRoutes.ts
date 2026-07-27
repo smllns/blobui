@@ -1,19 +1,19 @@
 import { Home } from '../docs/pages/Home';
-import { ButtonDocs } from '../docs/pages/Button';
-import { InputDocs } from '../docs/pages/Input';
-import { SelectDocs } from '../docs/pages/Select';
-import { CheckboxDocs } from '../docs/pages/Checkbox';
-import { RadioDocs } from '../docs/pages/Radio';
-import { SwitchDocs } from '../docs/pages/Switch';
-import { BadgeDocs } from '../docs/pages/Badge';
-import { AvatarDocs } from '../docs/pages/Avatar';
-import { CardDocs } from '../docs/pages/Card';
-import { TooltipDocs } from '../docs/pages/Tooltip';
-import { ToastDocs } from '../docs/pages/Toast';
-import { DropdownMenuDocs } from '../docs/pages/DropdownMenu';
-import { AccordionDocs } from '../docs/pages/Accordion';
-import { DialogDocs } from '../docs/pages/Dialog';
-import { PopoverDocs } from '../docs/pages/Popover';
+import { InputDocs } from '../docs/input/InputPage';
+import { SelectDocs } from '../docs/select/SelectPage';
+import { RadioDocs } from '../docs/radio/RadioPage';
+import { SwitchDocs } from '../docs/switch/SwitchPage';
+import { ToastDocs } from '../docs/toast/ToastPage';
+import { DialogDocs } from '../docs/dialog/DialogPage';
+import { PopoverDocs } from '../docs/popover/PopoverPage';
+import { AccordionDocs } from '../docs/accordion/AccordionPage';
+import { AvatarDocs } from '../docs/avatar/AvatarPage';
+import { BadgeDocs } from '../docs/badge/BadgePage';
+import { ButtonDocs } from '../docs/button/ButtonPage';
+import { CardDocs } from '../docs/card/CardPage';
+import { CheckboxDocs } from '../docs/checkbox/CheckboxPage';
+import { DropdownMenuDocs } from '../docs/dropdown-menu/DropdownMenuPage';
+import { TooltipDocs } from '../docs/tooltip/TooltipPage';
 
 export const docsRoutes = [
   { path: '/', element: Home, index: true },
