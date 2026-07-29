@@ -10,7 +10,6 @@ export type BadgeVariant =
   | 'success'
   | 'destructive'
   | 'warning';
-export type BadgeSize = 'sm' | 'md' | 'lg';
 
 export interface BadgeProps
   extends ComponentPropsWithoutRef<'span'>, VariantProps<typeof badgeStyles> {

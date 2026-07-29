@@ -4,8 +4,6 @@ import { radioStyles } from './radio.styles';
 
 type NativeRadioProps = Omit<ComponentPropsWithoutRef<'input'>, 'size'>;
 
-export type RadioVariant = 'default' | 'filled' | 'outline' | 'ghost';
-export type RadioSize = 'sm' | 'md' | 'lg';
 export interface RadioProps
   extends NativeRadioProps, VariantProps<typeof radioStyles> {
   label?: ReactNode;

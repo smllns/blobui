@@ -1,22 +1,22 @@
 import { cva } from 'class-variance-authority';
+import { disabledStyles } from '../styles';
 
 export const inputWrapperStyles = cva(
   [
-    'flex items-center gap-2 rounded-lg',
-    'transition-all duration-300',
+    'flex items-center gap-2 rounded-lg border',
+    'transition-all duration-300 shadow-sm',
     'focus-within:ring-1 focus-within:ring-neutral-300',
-    'shadow-sm',
   ].join(' '),
   {
     variants: {
       variant: {
-        default: 'bg-neutral-50 border border-white/70 hover:bg-white',
+        default: 'bg-neutral-50 border-white/70 hover:bg-white',
 
-        filled: 'bg-white border border-transparent hover:bg-neutral-50',
+        filled: 'bg-white border-transparent hover:bg-neutral-50',
 
-        outline: 'bg-white/20  border border-white hover:bg-white/40',
+        outline: 'bg-white/20 border-white hover:bg-white/40',
 
-        ghost: 'bg-transparent  hover:bg-neutral-50/30',
+        ghost: 'bg-transparent border-transparent hover:bg-neutral-50/30',
       },
 
       size: {
@@ -37,7 +37,7 @@ export const inputWrapperStyles = cva(
       },
 
       disabled: {
-        true: 'opacity-50 cursor-not-allowed',
+        true: disabledStyles.base,
         false: '',
       },
     },

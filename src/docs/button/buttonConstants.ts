@@ -1,7 +1,5 @@
-import type {
-  ButtonSize,
-  ButtonVariant,
-} from '../../components/button/button.types';
+import type { ButtonVariant } from '../../components/button/button.types';
+import type { ExtendedSize } from '../../components/types';
 import type { Control } from '../components/playground/controls/ControlsRenderer';
 
 export const VARIANTS: ButtonVariant[] = [
@@ -12,11 +10,11 @@ export const VARIANTS: ButtonVariant[] = [
   'destructive',
 ];
 
-export const SIZES: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+export const SIZES: ExtendedSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 export type PlaygroundState = {
   variant: ButtonVariant;
-  size: ButtonSize;
+  size: ExtendedSize;
   loading: boolean;
   disabled: boolean;
   fullWidth: boolean;

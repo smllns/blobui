@@ -6,6 +6,5 @@ export interface AvatarProps
   extends ComponentPropsWithoutRef<'div'>, VariantProps<typeof avatarStyles> {
   src?: string;
   alt?: string;
-
   fallback?: ReactNode;
 }

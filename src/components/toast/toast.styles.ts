@@ -2,11 +2,8 @@ import { cva } from 'class-variance-authority';
 
 export const toastStyles = cva(
   [
-    'flex items-start gap-3',
-    'rounded-lg',
-    'px-4 py-3',
-    'shadow-lg',
-    'border',
+    'flex items-start gap-3 border',
+    'rounded-lg px-4 py-3 shadow-lg',
     'animate-in fade-in-0 slide-in-from-bottom-2',
     'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
   ].join(' '),

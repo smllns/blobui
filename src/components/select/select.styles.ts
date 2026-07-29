@@ -1,22 +1,21 @@
 import { cva } from 'class-variance-authority';
+import { disabledStyles } from '../styles';
 
 export const selectTriggerStyles = cva(
   [
-    'flex items-center justify-between gap-2',
-    'rounded-lg shadow-sm',
-    'transition-colors duration-300',
-    'focus:outline-none',
-    'focus:ring-1 focus:ring-neutral-300',
-    'disabled:cursor-not-allowed disabled:opacity-50',
+    'flex items-center justify-between gap-2 border',
+    'rounded-lg shadow-sm transition-colors duration-300',
+    'focus:outline-none focus:ring-1 focus:ring-neutral-300',
+    disabledStyles.html,
     'data-[state=open]:ring-1 data-[state=open]:ring-neutral-300',
   ],
   {
     variants: {
       variant: {
-        default: 'bg-neutral-50 border border-white/70 hover:bg-white',
-        filled: 'bg-white border border-transparent hover:bg-neutral-50',
-        outline: 'bg-white/20 border border-white hover:bg-white/40',
-        ghost: 'bg-transparent hover:bg-neutral-50/30',
+        default: 'bg-neutral-50 border-white/70 hover:bg-white',
+        filled: 'bg-white border-transparent hover:bg-neutral-50',
+        outline: 'bg-white/20 border-white hover:bg-white/40',
+        ghost: 'bg-transparent border-transparent hover:bg-neutral-50/30',
       },
 
       size: {
@@ -48,60 +47,23 @@ export const selectTriggerStyles = cva(
     },
   },
 );
-export const selectContentStyles = cva([
-  'z-50',
-  'w-(--radix-select-trigger-width)',
-  'overflow-hidden',
-
-  'rounded-lg',
-  'border border-neutral-200',
-
-  'bg-white',
-  'shadow-lg',
-
-  'p-1',
-
-  // animation
+export const selectContentStyles = [
+  'z-50 w-(--radix-select-trigger-width)',
+  'overflow-hidden rounded-lg shadow-lg',
+  'border border-neutral-200 bg-white p-1',
   'animate-in fade-in-0',
-  'data-[state=closed]:animate-out',
-  'data-[state=closed]:fade-out-0',
-
-  // placement
+  'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
   'data-[side=bottom]:slide-in-from-top-2',
   'data-[side=top]:slide-in-from-bottom-2',
-]);
+];
 
-export const selectViewportStyles = cva(['max-h-72', 'overflow-y-auto']);
+export const selectViewportStyles = 'max-h-72 overflow-y-auto';
 
-export const selectItemStyles = cva([
-  'relative flex items-center',
-
-  'w-full',
-  'cursor-pointer',
-
-  'rounded-md',
-
-  'px-3 py-2',
-
-  'text-sm',
-  'text-neutral-700',
-
-  'outline-none',
-  'select-none',
-
-  'transition-colors',
-
-  // hover/focus
-  'data-[highlighted]:bg-neutral-100',
-  'data-[highlighted]:text-neutral-900',
-
-  // selected
-  'data-[state=checked]:bg-neutral-100',
-  'data-[state=checked]:font-medium',
-
-  // disabled
-  'data-[disabled]:pointer-events-none',
-  'data-[disabled]:opacity-50',
-]);
-
-export const selectIconStyles = cva(['h-4 w-4', 'opacity-50']);
+export const selectItemStyles = [
+  'relative flex items-center w-full cursor-pointer',
+  'rounded-md px-3 py-2 text-sm text-neutral-700',
+  'outline-none select-none transition-colors duration-200',
+  'data-[highlighted]:bg-neutral-100 data-[highlighted]:text-neutral-900',
+  'data-[state=checked]:bg-neutral-100 data-[state=checked]:font-medium',
+  disabledStyles.data,
+];

@@ -2,12 +2,7 @@ import { cva } from 'class-variance-authority';
 
 export const tooltipContentStyles = cva(
   [
-    'z-50',
-    'rounded-md',
-    'shadow-lg',
-    'animate-in',
-    'fade-in-0',
-    'zoom-in-95',
+    'z-50 rounded-md shadow-lg animate-in fade-in-0 zoom-in-95 border',
     'data-[state=closed]:animate-out',
     'data-[state=closed]:fade-out-0',
     'data-[state=closed]:zoom-out-95',
@@ -20,7 +15,7 @@ export const tooltipContentStyles = cva(
     variants: {
       variant: {
         default: 'bg-neutral-900 text-white',
-        light: 'bg-white text-neutral-900 border border-neutral-200',
+        light: 'bg-white text-neutral-900 border-neutral-200',
         success: 'bg-emerald-50 text-emerald-800 border-emerald-200/60',
         destructive: 'bg-red-50 text-red-700 border-red-200/60',
       },
@@ -53,4 +48,4 @@ export const tooltipArrowStyles = cva('', {
   },
 });
 
-export const tooltipInnerStyles = ['flex', 'items-center', 'gap-2'].join(' ');
+export const tooltipInnerStyles = 'flex items-center gap-2';

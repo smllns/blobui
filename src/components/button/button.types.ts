@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ExtendedSize } from '../types';
 
 export type ButtonVariant =
   | 'primary'
@@ -7,17 +8,12 @@ export type ButtonVariant =
   | 'ghost'
   | 'destructive';
 
-export type ButtonSize = 'xs'|'sm' | 'md' | 'lg'|'xl';
-
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-
   variant?: ButtonVariant;
-  size?: ButtonSize;
-
+  size?: ExtendedSize;
   loading?: boolean;
   fullWidth?: boolean;
-
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
 }

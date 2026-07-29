@@ -2,12 +2,8 @@ import { cva } from 'class-variance-authority';
 
 export const avatarStyles = cva(
   [
-    'relative inline-flex items-center justify-center',
-    'overflow-hidden',
-    'rounded-full',
-    'bg-neutral-100',
-    'text-neutral-700',
-    'font-medium',
+    'relative inline-flex items-center justify-center overflow-hidden',
+    'rounded-full bg-neutral-100 text-neutral-700 font-medium',
   ].join(' '),
   {
     variants: {
@@ -22,7 +18,7 @@ export const avatarStyles = cva(
       variant: {
         default: 'border border-neutral-200',
         outline: 'border-2 border-neutral-300',
-        soft: 'bg-neutral-200 text-neutral-800',
+        filled: 'bg-white text-neutral-800',
         ghost: 'bg-transparent border border-neutral-200',
       },
     },

@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const popoverContentStyles = cva(
-  ['z-50', 'w-72', 'border', 'p-4', 'shadow-lg', 'outline-none'],
+  'z-50 w-72 border p-4 shadow-lg outline-none',
   {
     variants: {
       variant: {

@@ -64,7 +64,7 @@ export function DropdownMenu({
           ref={setContentRef}
           side={side}
           sideOffset={6}
-          className={dropdownMenuContentStyles()}
+          className={dropdownMenuContentStyles}
         >
           {children}
         </DropdownMenuPrimitive.Content>

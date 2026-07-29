@@ -74,9 +74,9 @@ export function Select({
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
           ref={setContentRef}
-          className={cn(selectContentStyles())}
+          className={cn(selectContentStyles)}
         >
-          <SelectPrimitive.Viewport className={cn(selectViewportStyles())}>
+          <SelectPrimitive.Viewport className={cn(selectViewportStyles)}>
             {children}
           </SelectPrimitive.Viewport>
         </SelectPrimitive.Content>

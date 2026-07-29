@@ -20,7 +20,7 @@ export const AVATAR_CONTROLS: Control<AvatarPlaygroundState>[] = [
     type: 'select',
     key: 'variant',
     label: 'Variant',
-    options: ['default', 'outline', 'soft', 'ghost'],
+    options: ['default', 'outline', 'filled', 'ghost'],
   },
   {
     type: 'select',

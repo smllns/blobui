@@ -1,25 +1,25 @@
 import type * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-
-export type DropdownMenuVariant = 'default' | 'filled' | 'outline' | 'ghost';
-
-export type DropdownMenuSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+import type {
+  BasicSize,
+  CommonStylingVariant,
+  ExtendedSize,
+  Side,
+} from '../types';
 
 export type DropdownMenuProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.Root
 > & {
   trigger: React.ReactNode;
-  variant?: DropdownMenuVariant;
-  size?: DropdownMenuSize;
-  side?: 'top' | 'right' | 'bottom' | 'left';
+  variant?: CommonStylingVariant;
+  size?: ExtendedSize;
+  side?: Side;
 };
 
 export type DropdownMenuItemVariant = 'default' | 'destructive';
-
-export type DropdownMenuItemSize = 'sm' | 'md' | 'lg';
 
 export type DropdownMenuItemProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.Item
 > & {
   variant?: DropdownMenuItemVariant;
-  size?: DropdownMenuItemSize;
+  size?: BasicSize;
 };

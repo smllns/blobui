@@ -1,16 +1,12 @@
 import { cva } from 'class-variance-authority';
+import { disabledStyles } from '../styles';
 
 export const switchStyles = cva(
   [
     'relative inline-flex items-center flex-shrink-0',
-    'rounded-full',
-    'transition-colors duration-300',
-    'cursor-pointer',
-    'focus:outline-none',
-    'focus-visible:ring-2',
-    'focus-visible:ring-neutral-300',
-    'disabled:opacity-50',
-    'disabled:cursor-not-allowed',
+    'rounded-full transition-colors duration-300 cursor-pointer',
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300',
+    disabledStyles.html,
   ].join(' '),
   {
     variants: {
@@ -45,14 +41,14 @@ export const switchStyles = cva(
 
 export const switchThumbStyles = cva(
   [
-    'inline-block bg-white rounded-full shadow-sm transform transition-transform duration-300',
+    'inline-block bg-white rounded-full shadow-sm transform transition-transform duration-300 translate-x-1',
   ].join(' '),
   {
     variants: {
       size: {
-        sm: 'h-3 w-3 translate-x-1 data-[state=checked]:translate-x-4',
-        md: 'h-4 w-4 translate-x-1 data-[state=checked]:translate-x-5',
-        lg: 'h-5 w-5 translate-x-1 data-[state=checked]:translate-x-6',
+        sm: 'h-3 w-3 data-[state=checked]:translate-x-4',
+        md: 'h-4 w-4 data-[state=checked]:translate-x-5',
+        lg: 'h-5 w-5 data-[state=checked]:translate-x-6',
       },
     },
     defaultVariants: {

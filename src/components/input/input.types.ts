@@ -1,25 +1,18 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-
-export type InputVariant = 'default' | 'filled' | 'outline' | 'ghost';
-
-export type InputSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+import type { CommonStylingVariant, ExtendedSize } from '../types';
 
 export interface InputProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'size'
 > {
-  variant?: InputVariant;
-  size?: InputSize;
-
+  variant?: CommonStylingVariant;
+  size?: ExtendedSize;
   fullWidth?: boolean;
   error?: boolean;
-
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-
   label?: string;
   description?: string;
   errorMessage?: string;
-
   id?: string;
 }

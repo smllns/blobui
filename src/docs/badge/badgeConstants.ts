@@ -28,8 +28,9 @@ export const BADGE_CONTROLS: Control<BadgePlaygroundState>[] = [
     label: 'Variant',
     options: [
       'default',
-      'primary',
       'secondary',
+      'outline',
+      'ghost',
       'success',
       'warning',
       'destructive',

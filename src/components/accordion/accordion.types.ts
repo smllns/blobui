@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
+import type { CommonStylingVariant } from '../types';
 
-export type AccordionVariant = 'default' | 'outline' | 'ghost';
-
-export interface AccordionItemProps {
+interface AccordionItemProps {
   value: string;
   title: ReactNode;
   children: ReactNode;
@@ -11,7 +10,7 @@ export interface AccordionItemProps {
 
 interface BaseAccordionProps {
   items: AccordionItemProps[];
-  variant?: AccordionVariant;
+  variant?: CommonStylingVariant;
 }
 
 interface SingleAccordionProps extends BaseAccordionProps {

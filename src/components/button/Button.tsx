@@ -20,7 +20,12 @@ export function Button({
     <button
       disabled={isDisabled}
       className={cn(
-        buttonStyles({ variant, size, fullWidth, state: isDisabled ? (loading ? 'loading' : 'disabled') : 'idle' }),
+        buttonStyles({
+          variant,
+          size,
+          fullWidth,
+          state: isDisabled ? (loading ? 'loading' : 'disabled') : 'idle',
+        }),
         'inline-flex items-center gap-2',
         className,
       )}

@@ -20,7 +20,7 @@ export const ACCORDION_CONTROLS: Control<AccordionPlaygroundState>[] = [
     type: 'select',
     key: 'variant',
     label: 'Variant',
-    options: ['default', 'outline', 'ghost'],
+    options: ['default', 'filled', 'outline', 'ghost'],
   },
   {
     type: 'select',

@@ -1,9 +1,9 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDown } from '../../ui/ChevronDown';
 import {
+  accordionContentStyles,
+  accordionItemStyles,
   accordionStyles,
-  contentStyles,
-  itemStyles,
   triggerStyles,
 } from './accordion.styles';
 import type { AccordionProps } from './accordion.types';
@@ -39,26 +39,18 @@ export function Accordion(props: AccordionProps) {
           key={item.value}
           value={item.value}
           disabled={item.disabled}
-          className={itemStyles()}
+          className={accordionItemStyles}
         >
           <AccordionPrimitive.Header>
             <AccordionPrimitive.Trigger
               className={cn(triggerStyles({ variant }))}
             >
               <span>{item.title}</span>
-
-              <ChevronDown
-                className='
-                  size-4
-                  shrink-0
-                  transition-transform
-                  duration-200
-                '
-              />
+              <ChevronDown className='size-4 shrink-0 transition-transform duration-200' />
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
 
-          <AccordionContent className={contentStyles({ variant })}>
+          <AccordionContent className={accordionContentStyles}>
             {item.children}
           </AccordionContent>
         </AccordionPrimitive.Item>

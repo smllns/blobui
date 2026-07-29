@@ -1,11 +1,11 @@
 import { cva } from 'class-variance-authority';
+import { disabledStyles } from '../styles';
 
 export const checkboxWrapperStyles = cva(
   [
     'flex items-center gap-2 rounded-md',
     'transition-all duration-200',
-    'cursor-pointer',
-    'select-none',
+    'cursor-pointer select-none',
   ].join(' '),
   {
     variants: {
@@ -18,11 +18,11 @@ export const checkboxWrapperStyles = cva(
       },
 
       disabled: {
-        true: 'opacity-50 cursor-not-allowed',
+        true: disabledStyles.base,
       },
 
       error: {
-        true: 'text-red-600 ',
+        true: 'text-red-600',
       },
 
       fullWidth: {

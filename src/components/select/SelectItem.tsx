@@ -11,7 +11,7 @@ export function SelectItem({
   value: string;
 }) {
   return (
-    <SelectPrimitive.Item value={value} className={cn(selectItemStyles())}>
+    <SelectPrimitive.Item value={value} className={cn(selectItemStyles)}>
       <SelectPrimitive.ItemIndicator className='absolute left-2'>
         <ChevronDown />
       </SelectPrimitive.ItemIndicator>
