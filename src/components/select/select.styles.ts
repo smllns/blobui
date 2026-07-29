@@ -55,7 +55,7 @@ export const selectContentStyles = [
   'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
   'data-[side=bottom]:slide-in-from-top-2',
   'data-[side=top]:slide-in-from-bottom-2',
-];
+].join(' ');
 
 export const selectViewportStyles = 'max-h-72 overflow-y-auto';
 
@@ -66,4 +66,4 @@ export const selectItemStyles = [
   'data-[highlighted]:bg-neutral-100 data-[highlighted]:text-neutral-900',
   'data-[state=checked]:bg-neutral-100 data-[state=checked]:font-medium',
   disabledStyles.data,
-];
+].join(' ');

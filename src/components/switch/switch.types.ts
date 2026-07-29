@@ -9,10 +9,8 @@ export interface SwitchProps
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
-
   label?: ReactNode;
   description?: ReactNode;
   errorMessage?: ReactNode;
-
   disabled?: boolean;
 }

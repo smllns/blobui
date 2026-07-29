@@ -35,7 +35,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           className,
         )}
       >
-        {/* CHECKBOX ROW */}
         <div className='flex items-center gap-2'>
           <div
             className={checkboxBoxStyles({
@@ -75,5 +74,3 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
   },
 );
-
-Checkbox.displayName = 'Checkbox';

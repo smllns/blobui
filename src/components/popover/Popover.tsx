@@ -1,52 +1,23 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { createContext, forwardRef, useContext, useRef, useState } from 'react';
-
+import { createContext, forwardRef } from 'react';
 import { cn } from '../../lib/cn';
-
 import type { PopoverArrowProps, PopoverContentProps } from './popover.types';
-
 import { popoverArrowStyles, popoverContentStyles } from './popover.styles';
-
 import { animatePopoverEnter, animatePopoverExit } from './popover.animations';
+import { useAnimatedOpen } from '../../hooks/useAnimatedOpen';
 
 type PopoverContextValue = {
-  contentRef: React.MutableRefObject<HTMLDivElement | null>;
+  contentRef: React.RefObject<HTMLDivElement | null>;
 };
 
 const PopoverContext = createContext<PopoverContextValue | null>(null);
 
-function usePopoverContext() {
-  const context = useContext(PopoverContext);
-
-  if (!context) {
-    throw new Error('Popover components must be used inside Popover');
-  }
-
-  return context;
-}
-
 const Popover = ({ children, ...props }: PopoverPrimitive.PopoverProps) => {
-  const [open, setOpen] = useState(false);
-
-  const contentRef = useRef<HTMLDivElement | null>(null);
-
-  const handleOpenChange = (next: boolean) => {
-    if (next) {
-      setOpen(true);
-      return;
-    }
-
-    const content = contentRef.current;
-
-    if (!content) {
-      setOpen(false);
-      return;
-    }
-
-    animatePopoverExit(content, () => {
-      setOpen(false);
+  const { open, contentRef, handleOpenChange } =
+    useAnimatedOpen<HTMLDivElement>({
+      animateEnter: animatePopoverEnter,
+      animateExit: animatePopoverExit,
     });
-  };
 
   return (
     <PopoverContext.Provider
@@ -74,51 +45,33 @@ const PopoverPortal = PopoverPrimitive.Portal;
 const PopoverContent = forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
->(
-  (
-    { className, variant, size, rounded, sideOffset = 8, ...props },
-    forwardedRef,
-  ) => {
-    const { contentRef } = usePopoverContext();
+>(({ className, variant, size, rounded, sideOffset = 8, ...props }) => {
+  const { setContentRef } = useAnimatedOpen<HTMLDivElement>({
+    animateEnter: animatePopoverEnter,
+    animateExit: animatePopoverExit,
+  });
 
-    const setContentRef = (node: HTMLDivElement | null) => {
-      contentRef.current = node;
-
-      if (node) {
-        animatePopoverEnter(node);
-      }
-
-      if (typeof forwardedRef === 'function') {
-        forwardedRef(node);
-      } else if (forwardedRef) {
-        forwardedRef.current = node;
-      }
-    };
-
-    return (
-      <PopoverPortal>
-        <PopoverPrimitive.Content
-          ref={setContentRef}
-          sideOffset={sideOffset}
-          className={cn(
-            popoverContentStyles({
-              variant,
-              size,
-              rounded,
-            }),
-            className,
-          )}
-          {...props}
-        />
-      </PopoverPortal>
-    );
-  },
-);
-
-PopoverContent.displayName = PopoverPrimitive.Content.displayName;
+  return (
+    <PopoverPortal>
+      <PopoverPrimitive.Content
+        ref={setContentRef}
+        sideOffset={sideOffset}
+        className={cn(
+          popoverContentStyles({
+            variant,
+            size,
+            rounded,
+          }),
+          className,
+        )}
+        {...props}
+      />
+    </PopoverPortal>
+  );
+});
 
 const PopoverArrow = forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Arrow>,
+  React.ComponentRef<typeof PopoverPrimitive.Arrow>,
   PopoverArrowProps
 >(({ className, variant, ...props }, ref) => (
   <PopoverPrimitive.Arrow
@@ -132,8 +85,6 @@ const PopoverArrow = forwardRef<
     {...props}
   />
 ));
-
-PopoverArrow.displayName = PopoverPrimitive.Arrow.displayName;
 
 export {
   Popover,

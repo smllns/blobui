@@ -12,17 +12,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       fullWidth,
       error,
       disabled,
-
       leftIcon,
       rightIcon,
-
       label,
       description,
       errorMessage,
-
       id,
       className,
-
       ...props
     },
     ref,
@@ -33,7 +29,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={cn('flex flex-col gap-1', fullWidth && 'w-full')}>
-        {/* LABEL */}
         {label && (
           <label
             htmlFor={inputId}
@@ -43,15 +38,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
 
-        {/* DESCRIPTION */}
         {description && !isError && (
           <p className='text-xs text-neutral-500'>{description}</p>
         )}
 
-        {/* ERROR */}
         {errorMessage && <p className='text-xs text-red-500'>{errorMessage}</p>}
 
-        {/* INPUT WRAPPER */}
         <div
           className={cn(
             inputWrapperStyles({
@@ -82,5 +74,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
-
-Input.displayName = 'Input';

@@ -1,11 +1,10 @@
 import { forwardRef, useEffect, useRef } from 'react';
-
 import { cn } from '../../lib/cn';
-
 import { toastStyles, toastIconStyles } from './toast.styles';
 import type { ToastProps } from './toast.types';
 import { animateToastIn, animateToastOut } from './toast.animation';
 import { Button } from '../button/Button';
+import { mergeRefs } from '../../lib/mergeRefs';
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
@@ -24,15 +23,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   ) => {
     const localRef = useRef<HTMLDivElement | null>(null);
 
-    const setRefs = (node: HTMLDivElement | null) => {
-      localRef.current = node;
-
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) {
-        (ref as React.RefObject<HTMLDivElement | null>).current = node;
-      }
-    };
+    const setRefs = mergeRefs(localRef, ref);
 
     useEffect(() => {
       if (!localRef.current) return;
@@ -40,17 +31,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       animateToastIn(localRef.current);
     }, []);
 
-    useEffect(() => {
-      const element = localRef.current;
-
-      if (!closing || !element) return;
-
-      animateToastOut(element, () => {
-        onClose?.();
-      });
-    }, [closing, onClose]);
-
-    const handleClose = () => {
+    const closeToast = () => {
       const element = localRef.current;
 
       if (!element) {
@@ -62,6 +43,12 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         onClose?.();
       });
     };
+
+    useEffect(() => {
+      if (closing) {
+        closeToast();
+      }
+    }, [closing]);
 
     return (
       <div
@@ -83,7 +70,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         {action && <div className='ml-auto flex items-center'>{action}</div>}
 
         {onClose && (
-          <Button onClick={handleClose} size='xs' variant='outline'>
+          <Button onClick={closeToast} size='xs' variant='outline'>
             ✕
           </Button>
         )}
@@ -91,5 +78,3 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
     );
   },
 );
-
-Toast.displayName = 'Toast';

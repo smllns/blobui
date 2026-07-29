@@ -1,5 +1,4 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { useRef, useState } from 'react';
 import type { TooltipProps } from './tooltip.types';
 import {
   tooltipArrowStyles,
@@ -8,6 +7,7 @@ import {
 } from './tooltip.styles';
 import { cn } from '../../lib/cn';
 import { animateTooltipIn, animateTooltipOut } from './tooltip.animation';
+import { useAnimatedOpen } from '../../hooks/useAnimatedOpen';
 
 export function Tooltip({
   children,
@@ -22,34 +22,11 @@ export function Tooltip({
   className,
   ...props
 }: TooltipProps) {
-  const [open, setOpen] = useState(false);
-  const contentRef = useRef<HTMLDivElement | null>(null);
-
-  const handleContentRef = (element: HTMLDivElement | null) => {
-    contentRef.current = element;
-
-    if (!element) return;
-
-    animateTooltipIn(element);
-  };
-
-  const handleOpenChange = (nextOpen: boolean) => {
-    if (nextOpen) {
-      setOpen(true);
-      return;
-    }
-
-    const element = contentRef.current;
-
-    if (!element) {
-      setOpen(false);
-      return;
-    }
-
-    animateTooltipOut(element, () => {
-      setOpen(false);
+  const { open, setContentRef, handleOpenChange } =
+    useAnimatedOpen<HTMLDivElement>({
+      animateEnter: animateTooltipIn,
+      animateExit: animateTooltipOut,
     });
-  };
 
   return (
     <TooltipPrimitive.Provider delayDuration={delayDuration}>
@@ -62,7 +39,7 @@ export function Tooltip({
 
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
-            ref={handleContentRef}
+            ref={setContentRef}
             side={side}
             align={align}
             sideOffset={8}
