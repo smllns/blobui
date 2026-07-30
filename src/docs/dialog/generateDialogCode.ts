@@ -1,9 +1,6 @@
-export function generateDialogCode(state: {
-  size: string;
-  variant: string;
-  overlay: string;
-  showCloseButton: boolean;
-}) {
+import type { DialogPlaygroundState } from './dialogConstants';
+
+export function generateDialogCode(state: DialogPlaygroundState) {
   return `<Dialog>
   <DialogTrigger asChild>
     <Button>

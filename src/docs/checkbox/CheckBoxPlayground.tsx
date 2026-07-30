@@ -1,11 +1,9 @@
 import { useState } from 'react';
-
 import {
   CHECKBOX_INITIAL_STATE,
-  checkboxControls,
+  CHECKBOX_CONTROLS,
   type CheckboxPlaygroundState,
 } from './checkboxConstants';
-
 import { generateCheckboxCode } from './generateCheckboxCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
@@ -47,7 +45,7 @@ export function CheckboxPlayground() {
         <ControlsRenderer
           state={state}
           update={update}
-          controls={checkboxControls}
+          controls={CHECKBOX_CONTROLS}
         />
       }
       preview={

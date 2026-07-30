@@ -1,30 +1,22 @@
-import { useState } from 'react';
-import { TOOLTIP_INITIAL_STATE, tooltipControls } from './tooltipConstants';
+import { TOOLTIP_CONTROLS, TOOLTIP_INITIAL_STATE } from './tooltipConstants';
 import { generateTooltipCode } from './generateTooltipCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { Tooltip } from '../../components/tooltip/Tooltip';
 import { Button } from '../../components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
+import { usePlaygroundState } from '../../hooks/usePlaygroundState';
 
 export function TooltipPlayground() {
-  const [state, setState] = useState(TOOLTIP_INITIAL_STATE);
-
+  const { state, update } = usePlaygroundState(TOOLTIP_INITIAL_STATE);
   const code = generateTooltipCode(state);
-
-  const update = (key: string, value: any) => {
-    setState((prev) => {
-      return { ...prev, [key]: value };
-    });
-  };
-
   return (
     <PlaygroundShell
       controls={
         <ControlsRenderer
           state={state}
           update={update}
-          controls={tooltipControls}
+          controls={TOOLTIP_CONTROLS}
         />
       }
       preview={

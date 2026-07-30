@@ -1,6 +1,10 @@
 import type { ButtonVariant } from '../../components/button/button.types';
 import type { ExtendedSize } from '../../components/types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import { SIZE_OPTIONS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export const VARIANTS: ButtonVariant[] = [
   'primary',
@@ -10,9 +14,7 @@ export const VARIANTS: ButtonVariant[] = [
   'destructive',
 ];
 
-export const SIZES: ExtendedSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
-
-export type PlaygroundState = {
+export type BtnPlaygroundState = {
   variant: ButtonVariant;
   size: ExtendedSize;
   loading: boolean;
@@ -21,7 +23,7 @@ export type PlaygroundState = {
   leftIcon: boolean;
   rightIcon: boolean;
 };
-export const BTN_INITIAL_STATE: PlaygroundState = {
+export const BTN_INITIAL_STATE: BtnPlaygroundState = {
   variant: 'primary',
   size: 'md',
   loading: false,
@@ -31,42 +33,12 @@ export const BTN_INITIAL_STATE: PlaygroundState = {
   rightIcon: false,
 };
 
-export const btnControls: Control<PlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: VARIANTS,
-  },
-  {
-    type: 'select',
-    key: 'size',
-    label: 'Size',
-    options: SIZES,
-  },
-  {
-    type: 'checkbox',
-    key: 'loading',
-    label: 'Loading',
-  },
-  {
-    type: 'checkbox',
-    key: 'disabled',
-    label: 'Disabled',
-  },
-  {
-    type: 'checkbox',
-    key: 'fullWidth',
-    label: 'Full width',
-  },
-  {
-    type: 'checkbox',
-    key: 'leftIcon',
-    label: 'Left icon',
-  },
-  {
-    type: 'checkbox',
-    key: 'rightIcon',
-    label: 'Right icon',
-  },
+export const BTN_CONTROLS = [
+  selectControl<BtnPlaygroundState>('variant', 'Variant', VARIANTS),
+  selectControl<BtnPlaygroundState>('size', 'Size', SIZE_OPTIONS),
+  checkboxControl<BtnPlaygroundState>('loading', 'Loading'),
+  checkboxControl<BtnPlaygroundState>('disabled', 'Disabled'),
+  checkboxControl<BtnPlaygroundState>('fullWidth', 'Full width'),
+  checkboxControl<BtnPlaygroundState>('leftIcon', 'Left Icon'),
+  checkboxControl<BtnPlaygroundState>('rightIcon', 'Right Icon'),
 ];

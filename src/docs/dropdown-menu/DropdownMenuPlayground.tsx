@@ -1,10 +1,7 @@
-import { useState } from 'react';
-
 import {
   DROPDOWN_MENU_INITIAL_STATE,
   DROPDOWN_MENU_CONTROLS,
 } from './dropdownMenuConstants';
-
 import { generateDropdownMenuCode } from './generateDropdownMenuCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
@@ -12,19 +9,11 @@ import { DropdownMenu } from '../../components/dropdown-menu/DropdownMenu';
 import { DropdownMenuItem } from '../../components/dropdown-menu/DropdownMenuItem';
 import { DropdownMenuSeparator } from '../../components/dropdown-menu/DropdownMenuSeparator';
 import { CodeBlock } from '../components/CodeBlock';
+import { usePlaygroundState } from '../../hooks/usePlaygroundState';
 
 export function DropdownMenuPlayground() {
-  const [state, setState] = useState(DROPDOWN_MENU_INITIAL_STATE);
-
+  const { state, update } = usePlaygroundState(DROPDOWN_MENU_INITIAL_STATE);
   const code = generateDropdownMenuCode(state);
-
-  const update = (key: string, value: any) => {
-    setState((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
   return (
     <PlaygroundShell
       controls={

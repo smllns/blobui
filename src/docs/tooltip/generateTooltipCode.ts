@@ -1,4 +1,6 @@
-export function generateTooltipCode(state: any) {
+import type { TooltipPlaygroundState } from './tooltipConstants';
+
+export function generateTooltipCode(state: TooltipPlaygroundState) {
   const props = [
     `content="${state.content}"`,
     `variant="${state.variant}"`,

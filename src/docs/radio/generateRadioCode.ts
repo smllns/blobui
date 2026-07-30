@@ -1,4 +1,6 @@
-export function generateRadioCode(state: any) {
+import type { RadioPlaygroundState } from './radioConstants';
+
+export function generateRadioCode(state: RadioPlaygroundState) {
   const props = [
     `variant="${state.variant}"`,
     `size="${state.size}"`,

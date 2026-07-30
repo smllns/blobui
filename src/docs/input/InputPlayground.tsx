@@ -6,7 +6,7 @@ import { generateInputCode } from './generateInputCode';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import {
   INPUT_INITIAL_STATE,
-  inputControls,
+  INPUT_CONTROLS,
   type InputPlaygroundState,
 } from './inputConstants';
 
@@ -49,7 +49,7 @@ export function InputPlayground() {
           <ControlsRenderer
             state={state}
             update={update}
-            controls={inputControls}
+            controls={INPUT_CONTROLS}
           />
         </>
       }

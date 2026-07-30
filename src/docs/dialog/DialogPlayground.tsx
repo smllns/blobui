@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { DialogClose } from '@radix-ui/react-dialog';
 import { DIALOG_CONTROLS, DIALOG_INITIAL_STATE } from './dialogConstants';
 import { generateDialogCode } from './generateDialogCode';
@@ -16,19 +14,11 @@ import {
 } from '../../components/dialog/Dialog';
 import { Button } from '../../components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
+import { usePlaygroundState } from '../../hooks/usePlaygroundState';
 
 export function DialogPlayground() {
-  const [state, setState] = useState(DIALOG_INITIAL_STATE);
-
+  const { state, update } = usePlaygroundState(DIALOG_INITIAL_STATE);
   const code = generateDialogCode(state);
-
-  const update = (key: string, value: any) => {
-    setState((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
   return (
     <PlaygroundShell
       controls={

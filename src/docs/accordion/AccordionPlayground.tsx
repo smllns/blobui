@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { CodeBlock } from '../components/CodeBlock';
-
 import { generateAccordionCode } from './generateAccordionCode';
 import { Accordion } from '../../components/accordion/Accordion';
 import {
@@ -16,7 +15,10 @@ export function AccordionPlayground() {
   const [openValue, setOpenValue] = useState<string | string[]>('item-1');
   const code = generateAccordionCode(state);
 
-  const update = (key: string, value: any) => {
+  const update = <K extends keyof typeof state>(
+    key: K,
+    value: (typeof state)[K],
+  ) => {
     setState((prev) => ({
       ...prev,
       [key]: value,
@@ -36,6 +38,7 @@ export function AccordionPlayground() {
       });
     }
   };
+
   const controls = ACCORDION_CONTROLS.map((control) => {
     if (control.key === 'collapsible') {
       return {

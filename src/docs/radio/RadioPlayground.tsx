@@ -1,10 +1,8 @@
 import { useState } from 'react';
-
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { CodeBlock } from '../components/CodeBlock';
-
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
-import { RADIO_INITIAL_STATE, radioControls } from './radioConstants';
+import { RADIO_INITIAL_STATE, RADIO_CONTROLS } from './radioConstants';
 import { generateRadioCode } from './generateRadioCode';
 import { Radio } from '../../components/radio/Radio';
 
@@ -13,7 +11,10 @@ export function RadioPlayground() {
 
   const code = generateRadioCode(state);
 
-  const update = (key: string, value: any) => {
+  const update = <K extends keyof typeof state>(
+    key: K,
+    value: (typeof state)[K],
+  ) => {
     setState((prev) => {
       const next = { ...prev, [key]: value };
 
@@ -40,7 +41,7 @@ export function RadioPlayground() {
         <ControlsRenderer
           state={state}
           update={update}
-          controls={radioControls}
+          controls={RADIO_CONTROLS}
         />
       }
       preview={

@@ -1,12 +1,6 @@
 import { Select } from '../../components/select/Select';
 import { SelectItem } from '../../components/select/SelectItem';
-
-export const SELECT_VARIANTS = [
-  'default',
-  'filled',
-  'outline',
-  'ghost',
-] as const;
+import { COMMON_VARIANTS } from '../../lib/options';
 
 export const OPTIONS = [
   { value: 'option1', label: 'Option 1' },
@@ -17,7 +11,7 @@ export const OPTIONS = [
 export function SelectPreview() {
   return (
     <>
-      {SELECT_VARIANTS.map((variant) => (
+      {COMMON_VARIANTS.map((variant) => (
         <Select
           size='md'
           key={variant}

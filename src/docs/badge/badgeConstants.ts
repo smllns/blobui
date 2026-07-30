@@ -1,9 +1,14 @@
 import type { BadgeProps } from '../../components/badge/badge.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import type { BasicSize } from '../../components/types';
+import { BASIC_SIZE_OPTIONS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type BadgePlaygroundState = {
   variant: NonNullable<BadgeProps['variant']>;
-  size: NonNullable<BadgeProps['size']>;
+  size: BasicSize;
   leftIcon: boolean;
   rightIcon: boolean;
 };
@@ -15,41 +20,17 @@ export const BADGE_INITIAL_STATE: BadgePlaygroundState = {
   rightIcon: false,
 };
 
-export const BADGE_SIZES = [
-  { label: 'Small', value: 'sm' },
-  { label: 'Medium', value: 'md' },
-  { label: 'Large', value: 'lg' },
-] as const;
-
-export const BADGE_CONTROLS: Control<BadgePlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: [
-      'default',
-      'secondary',
-      'outline',
-      'ghost',
-      'success',
-      'warning',
-      'destructive',
-    ],
-  },
-  {
-    type: 'select',
-    key: 'size',
-    label: 'Size',
-    options: ['sm', 'md', 'lg'],
-  },
-  {
-    type: 'checkbox',
-    key: 'leftIcon',
-    label: 'Left icon',
-  },
-  {
-    type: 'checkbox',
-    key: 'rightIcon',
-    label: 'Right icon',
-  },
-] as const;
+export const BADGE_CONTROLS = [
+  selectControl<BadgePlaygroundState>('variant', 'Variant', [
+    'default',
+    'secondary',
+    'outline',
+    'ghost',
+    'success',
+    'warning',
+    'destructive',
+  ]),
+  selectControl<BadgePlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
+  checkboxControl<BadgePlaygroundState>('leftIcon', 'Left Icon'),
+  checkboxControl<BadgePlaygroundState>('rightIcon', 'Right Icon'),
+];

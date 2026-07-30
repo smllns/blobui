@@ -1,23 +1,14 @@
-import { useState } from 'react';
 import { CARD_CONTROLS, CARD_INITIAL_STATE } from './cardConstants';
 import { generateCardCode } from './generateCardCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { Card } from '../../components/card/Card';
 import { CodeBlock } from '../components/CodeBlock';
+import { usePlaygroundState } from '../../hooks/usePlaygroundState';
 
 export function CardPlayground() {
-  const [state, setState] = useState(CARD_INITIAL_STATE);
-
+  const { state, update } = usePlaygroundState(CARD_INITIAL_STATE);
   const code = generateCardCode(state);
-
-  const update = (key: string, value: any) => {
-    setState((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
   return (
     <PlaygroundShell
       controls={

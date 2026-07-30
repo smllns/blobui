@@ -1,9 +1,14 @@
 import type { ToastProps } from '../../components/toast/toast.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import type { BasicSize } from '../../components/types';
+import { BASIC_SIZE_OPTIONS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type ToastPlaygroundState = {
   variant: NonNullable<ToastProps['variant']>;
-  size: NonNullable<ToastProps['size']>;
+  size: BasicSize;
   title: string;
   description: boolean;
   icon: boolean;
@@ -21,38 +26,17 @@ export const TOAST_INITIAL_STATE: ToastPlaygroundState = {
   showClose: true,
 };
 
-export const TOAST_CONTROLS: Control<ToastPlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: ['default', 'success', 'warning', 'destructive', 'info'],
-  },
-  {
-    type: 'select',
-    key: 'size',
-    label: 'Size',
-    options: ['sm', 'md', 'lg'],
-  },
-
-  {
-    type: 'checkbox',
-    key: 'description',
-    label: 'Show description',
-  },
-  {
-    type: 'checkbox',
-    key: 'icon',
-    label: 'Show icon',
-  },
-  {
-    type: 'checkbox',
-    key: 'action',
-    label: 'Show action button',
-  },
-  {
-    type: 'checkbox',
-    key: 'showClose',
-    label: 'Show close button',
-  },
+export const TOAST_CONTROLS = [
+  selectControl<ToastPlaygroundState>('variant', 'Variant', [
+    'default',
+    'success',
+    'warning',
+    'destructive',
+    'info',
+  ]),
+  selectControl<ToastPlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
+  checkboxControl<ToastPlaygroundState>('description', 'Description'),
+  checkboxControl<ToastPlaygroundState>('icon', 'Show Icon'),
+  checkboxControl<ToastPlaygroundState>('action', 'Show Action Button'),
+  checkboxControl<ToastPlaygroundState>('showClose', 'Show Close Button'),
 ];

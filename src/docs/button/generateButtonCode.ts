@@ -1,4 +1,4 @@
-import type { PlaygroundState } from './buttonConstants';
+import type { BtnPlaygroundState } from './buttonConstants';
 
 export function generateButtonCode({
   variant,
@@ -8,7 +8,7 @@ export function generateButtonCode({
   fullWidth,
   leftIcon,
   rightIcon,
-}: PlaygroundState) {
+}: BtnPlaygroundState) {
   const props = [
     variant !== 'primary' && `variant="${variant}"`,
     size !== 'md' && `size="${size}"`,

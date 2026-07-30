@@ -4,7 +4,7 @@ import { ControlsRenderer } from '../components/playground/controls/ControlsRend
 import { CodeBlock } from '../components/CodeBlock';
 
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
-import { SWITCH_INITIAL_STATE, switchControls } from './switchConstants';
+import { SWITCH_CONTROLS, SWITCH_INITIAL_STATE } from './switchConstants';
 import { generateSwitchCode } from './generateSwitchCode';
 import { Switch } from '../../components/switch/Switch';
 
@@ -13,7 +13,10 @@ export function SwitchPlayground() {
 
   const code = generateSwitchCode(state);
 
-  const update = (key: string, value: any) => {
+  const update = <K extends keyof typeof state>(
+    key: K,
+    value: (typeof state)[K],
+  ) => {
     setState((prev) => {
       const next = { ...prev, [key]: value };
 
@@ -40,7 +43,7 @@ export function SwitchPlayground() {
         <ControlsRenderer
           state={state}
           update={update}
-          controls={switchControls}
+          controls={SWITCH_CONTROLS}
         />
       }
       preview={

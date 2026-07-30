@@ -1,18 +1,28 @@
+import type { DropdownMenuItemVariant } from '../../components/dropdown-menu/dropdown-menu.types';
 import type {
-  DropdownMenuItemSize,
-  DropdownMenuItemVariant,
-  DropdownMenuSize,
-  DropdownMenuVariant,
-} from '../../components/dropdown-menu/dropdown-menu.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+  BasicSize,
+  CommonStylingVariant,
+  ExtendedSize,
+  Side,
+} from '../../components/types';
+import {
+  BASIC_SIZE_OPTIONS,
+  COMMON_VARIANTS,
+  SIDE_OPTIONS,
+  SIZE_OPTIONS,
+} from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type DropdownMenuPlaygroundState = {
-  variant: DropdownMenuVariant;
-  size: DropdownMenuSize;
+  variant: CommonStylingVariant;
+  size: ExtendedSize;
   itemVariant: DropdownMenuItemVariant;
-  itemSize: DropdownMenuItemSize;
+  itemSize: BasicSize;
   disabled: boolean;
-  side: 'top' | 'right' | 'bottom' | 'left';
+  side: Side;
 };
 
 export const DROPDOWN_MENU_INITIAL_STATE: DropdownMenuPlaygroundState = {
@@ -24,40 +34,30 @@ export const DROPDOWN_MENU_INITIAL_STATE: DropdownMenuPlaygroundState = {
   side: 'bottom',
 };
 
-export const DROPDOWN_MENU_CONTROLS: Control<DropdownMenuPlaygroundState>[] = [
-  {
-    key: 'variant',
-    label: 'Trigger Variant',
-    type: 'select',
-    options: ['default', 'filled', 'outline', 'ghost'],
-  },
-  {
-    key: 'size',
-    label: 'Trigger Size',
-    type: 'select',
-    options: ['xs', 'sm', 'md', 'lg', 'xl'],
-  },
-  {
-    key: 'side',
-    label: 'Side',
-    type: 'select',
-    options: ['top', 'right', 'bottom', 'left'],
-  },
-  {
-    key: 'itemVariant',
-    label: 'First Item Variant',
-    type: 'select',
-    options: ['default', 'destructive'],
-  },
-  {
-    key: 'itemSize',
-    label: 'First Item Size',
-    type: 'select',
-    options: ['sm', 'md', 'lg'],
-  },
-  {
-    key: 'disabled',
-    label: 'Add a Disabled Item',
-    type: 'checkbox',
-  },
-] as const;
+export const DROPDOWN_MENU_CONTROLS = [
+  selectControl<DropdownMenuPlaygroundState>(
+    'variant',
+    'Trigger Variant',
+    COMMON_VARIANTS,
+  ),
+  selectControl<DropdownMenuPlaygroundState>(
+    'size',
+    'Trigger Size',
+    SIZE_OPTIONS,
+  ),
+  selectControl<DropdownMenuPlaygroundState>('side', 'Side', SIDE_OPTIONS),
+  selectControl<DropdownMenuPlaygroundState>(
+    'itemVariant',
+    'First Item Variant',
+    ['default', 'destructive'],
+  ),
+  selectControl<DropdownMenuPlaygroundState>(
+    'itemSize',
+    'First Item Size',
+    BASIC_SIZE_OPTIONS,
+  ),
+  checkboxControl<DropdownMenuPlaygroundState>(
+    'disabled',
+    'Add a Disabled Item',
+  ),
+];

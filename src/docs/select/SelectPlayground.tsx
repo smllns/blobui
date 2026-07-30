@@ -1,31 +1,15 @@
-import { useState } from 'react';
-import {
-  SELECT_CONTROLS,
-  SELECT_INITIAL_STATE,
-  type SelectPlaygroundState,
-} from './selectConstants';
+import { SELECT_CONTROLS, SELECT_INITIAL_STATE } from './selectConstants';
 import { generateSelectCode } from './generateSelectCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { Select } from '../../components/select/Select';
 import { SelectItem } from '../../components/select/SelectItem';
 import { CodeBlock } from '../components/CodeBlock';
+import { usePlaygroundState } from '../../hooks/usePlaygroundState';
 
 export function SelectPlayground() {
-  const [state, setState] = useState(SELECT_INITIAL_STATE);
-
+  const { state, update } = usePlaygroundState(SELECT_INITIAL_STATE);
   const code = generateSelectCode(state);
-
-  const update = <K extends keyof SelectPlaygroundState>(
-    key: K,
-    value: SelectPlaygroundState[K],
-  ) => {
-    setState((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
   return (
     <PlaygroundShell
       controls={

@@ -1,9 +1,16 @@
-import type { AvatarProps } from '../../components/avatar/avatar.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import type {
+  CommonStylingVariant,
+  ExtendedSize,
+} from '../../components/types';
+import { COMMON_VARIANTS, SIZE_OPTIONS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type AvatarPlaygroundState = {
-  variant: NonNullable<AvatarProps['variant']>;
-  size: NonNullable<AvatarProps['size']>;
+  variant: CommonStylingVariant;
+  size: ExtendedSize;
   showImage: boolean;
   fallback: boolean;
 };
@@ -15,27 +22,9 @@ export const AVATAR_INITIAL_STATE: AvatarPlaygroundState = {
   fallback: true,
 };
 
-export const AVATAR_CONTROLS: Control<AvatarPlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: ['default', 'outline', 'filled', 'ghost'],
-  },
-  {
-    type: 'select',
-    key: 'size',
-    label: 'Size',
-    options: ['xs', 'sm', 'md', 'lg', 'xl'],
-  },
-  {
-    type: 'checkbox',
-    key: 'showImage',
-    label: 'Show image',
-  },
-  {
-    type: 'checkbox',
-    key: 'fallback',
-    label: 'Fallback',
-  },
-] as const;
+export const AVATAR_CONTROLS = [
+  selectControl<AvatarPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
+  selectControl<AvatarPlaygroundState>('size', 'Size', SIZE_OPTIONS),
+  checkboxControl<AvatarPlaygroundState>('showImage', 'Show Image'),
+  checkboxControl<AvatarPlaygroundState>('fallback', 'Fallback'),
+];

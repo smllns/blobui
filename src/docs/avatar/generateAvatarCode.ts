@@ -1,4 +1,6 @@
-export function generateAvatarCode(state: any) {
+import type { AvatarPlaygroundState } from './avatarConstants';
+
+export function generateAvatarCode(state: AvatarPlaygroundState) {
   const props = [
     state.variant !== 'default' && `variant="${state.variant}"`,
     state.size !== 'md' && `size="${state.size}"`,

@@ -12,7 +12,7 @@ export function AvatarDocs() {
         <>
           <Avatar variant='default' fallback='A' />
           <Avatar variant='outline' fallback='B' />
-          <Avatar variant='soft' fallback='C' />
+          <Avatar variant='filled' fallback='C' />
           <Avatar variant='ghost' fallback='D' />
         </>
       }

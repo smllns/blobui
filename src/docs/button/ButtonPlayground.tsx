@@ -1,10 +1,9 @@
 import { useState } from 'react';
-
 import { Button } from '../../components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
-import { BTN_INITIAL_STATE, btnControls } from './buttonConstants';
+import { BTN_CONTROLS, BTN_INITIAL_STATE } from './buttonConstants';
 import { generateButtonCode } from './generateButtonCode';
 
 export function ButtonPlayground() {
@@ -12,7 +11,10 @@ export function ButtonPlayground() {
 
   const code = generateButtonCode(state);
 
-  const update = (key: string, value: any) => {
+  const update = <K extends keyof typeof state>(
+    key: K,
+    value: (typeof state)[K],
+  ) => {
     setState((prev) => {
       const next = { ...prev, [key]: value };
 
@@ -29,7 +31,7 @@ export function ButtonPlayground() {
         <ControlsRenderer
           state={state}
           update={update}
-          controls={btnControls}
+          controls={BTN_CONTROLS}
         />
       }
       preview={

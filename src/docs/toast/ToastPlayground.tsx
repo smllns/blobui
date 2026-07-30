@@ -1,27 +1,15 @@
-import { useState } from 'react';
-
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { CodeBlock } from '../components/CodeBlock';
-
 import { TOAST_CONTROLS, TOAST_INITIAL_STATE } from './toastConstants';
-
 import { generateToastCode } from './generateToastCode';
 import { Toast } from '../../components/toast/Toast';
 import { Button } from '../../components/button/Button';
+import { usePlaygroundState } from '../../hooks/usePlaygroundState';
 
 export function ToastPlayground() {
-  const [state, setState] = useState(TOAST_INITIAL_STATE);
-
+  const { state, update } = usePlaygroundState(TOAST_INITIAL_STATE);
   const code = generateToastCode(state);
-
-  const update = (key: string, value: any) => {
-    setState((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
   return (
     <PlaygroundShell
       controls={

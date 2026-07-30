@@ -1,15 +1,17 @@
+import type { SelectWidth } from '../../components/select/select.types';
 import type {
-  SelectSize,
-  SelectVariant,
-  SelectWidth,
-} from '../../components/select/select.types';
-import { SIZES } from '../button/buttonConstants';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
-import { VARIANTS } from '../input/inputConstants';
+  CommonStylingVariant,
+  ExtendedSize,
+} from '../../components/types';
+import { COMMON_VARIANTS, SIZE_OPTIONS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type SelectPlaygroundState = {
-  variant: SelectVariant;
-  size: SelectSize;
+  variant: CommonStylingVariant;
+  size: ExtendedSize;
   width: SelectWidth;
   disabled: boolean;
   error: boolean;
@@ -23,33 +25,16 @@ export const SELECT_INITIAL_STATE: SelectPlaygroundState = {
   error: false,
 };
 
-export const SELECT_CONTROLS: Control<SelectPlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: VARIANTS,
-  },
-  {
-    type: 'select',
-    key: 'size',
-    label: 'Size',
-    options: SIZES,
-  },
-  {
-    type: 'select',
-    key: 'width',
-    label: 'Width',
-    options: ['auto', 'sm', 'md', 'lg', 'full'],
-  },
-  {
-    type: 'checkbox',
-    key: 'disabled',
-    label: 'Disabled',
-  },
-  {
-    type: 'checkbox',
-    key: 'error',
-    label: 'Error',
-  },
-] as const;
+export const SELECT_CONTROLS = [
+  selectControl<SelectPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
+  selectControl<SelectPlaygroundState>('size', 'Size', SIZE_OPTIONS),
+  selectControl<SelectPlaygroundState>('width', 'Width', [
+    'auto',
+    'sm',
+    'md',
+    'lg',
+    'full',
+  ]),
+  checkboxControl<SelectPlaygroundState>('disabled', 'Disabled'),
+  checkboxControl<SelectPlaygroundState>('error', 'Error'),
+];

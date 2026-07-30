@@ -1,4 +1,6 @@
-export function generateBadgeCode(state: any) {
+import type { BadgePlaygroundState } from './badgeConstants';
+
+export function generateBadgeCode(state: BadgePlaygroundState) {
   const props = [
     state.variant !== 'default' && `variant="${state.variant}"`,
     state.size !== 'md' && `size="${state.size}"`,

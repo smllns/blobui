@@ -1,23 +1,14 @@
-import { useState } from 'react';
 import { BADGE_CONTROLS, BADGE_INITIAL_STATE } from './badgeConstants';
 import { generateBadgeCode } from './generateBadgeCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { Badge } from '../../components/badge/Badge';
 import { CodeBlock } from '../components/CodeBlock';
+import { usePlaygroundState } from '../../hooks/usePlaygroundState';
 
 export function BadgePlayground() {
-  const [state, setState] = useState(BADGE_INITIAL_STATE);
-
+  const { state, update } = usePlaygroundState(BADGE_INITIAL_STATE);
   const code = generateBadgeCode(state);
-
-  const update = (key: string, value: any) => {
-    setState((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
   return (
     <PlaygroundShell
       controls={

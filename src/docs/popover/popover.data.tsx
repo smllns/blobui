@@ -5,10 +5,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '../../components/popover/Popover';
-import type { PopoverContentProps } from '../../components/popover/popover.types';
+import type { CommonStylingVariant } from '../../components/types';
 
 export const previewPopovers: {
-  variant: NonNullable<PopoverContentProps['variant']>;
+  variant: CommonStylingVariant;
   title: string;
   description: string;
 }[] = [
@@ -39,7 +39,7 @@ export const PreviewPopover = ({
   title,
   description,
 }: {
-  variant: 'default' | 'filled' | 'outline' | 'ghost';
+  variant: CommonStylingVariant;
   title: string;
   description: string;
 }) => (

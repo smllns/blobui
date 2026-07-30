@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { Button } from '../../components/button/Button';
 import {
   Popover,
@@ -7,13 +6,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '../../components/popover/Popover';
-
 import { CodeBlock } from '../components/CodeBlock';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
-
-import { POPOVER_INITIAL_STATE, popoverControls } from './popoverConstants';
-
+import { POPOVER_INITIAL_STATE, POPOVER_CONTROLS } from './popoverConstants';
 import { generatePopoverCode } from './generatePopoverCode';
 
 export function PopoverPlayground() {
@@ -21,7 +17,10 @@ export function PopoverPlayground() {
 
   const code = generatePopoverCode(state);
 
-  const update = (key: string, value: any) => {
+  const update = <K extends keyof typeof state>(
+    key: K,
+    value: (typeof state)[K],
+  ) => {
     setState((prev) => {
       const next = {
         ...prev,
@@ -47,7 +46,7 @@ export function PopoverPlayground() {
         <ControlsRenderer
           state={state}
           update={update}
-          controls={popoverControls}
+          controls={POPOVER_CONTROLS}
         />
       }
       preview={

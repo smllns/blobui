@@ -1,5 +1,5 @@
 import type { CardProps } from '../../components/card/card.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import { selectControl } from '../components/playground/controls/controlHelpers';
 
 export type CardPlaygroundState = {
   variant: NonNullable<CardProps['variant']>;
@@ -11,17 +11,18 @@ export const CARD_INITIAL_STATE: CardPlaygroundState = {
   padding: 'md',
 };
 
-export const CARD_CONTROLS: Control<CardPlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: ['default', 'filled', 'outline', 'ghost', 'elevated'],
-  },
-  {
-    type: 'select',
-    key: 'padding',
-    label: 'Padding',
-    options: ['none', 'sm', 'md', 'lg'],
-  },
-] as const;
+export const CARD_CONTROLS = [
+  selectControl<CardPlaygroundState>('variant', 'Variant', [
+    'default',
+    'filled',
+    'outline',
+    'ghost',
+    'elevated',
+  ]),
+  selectControl<CardPlaygroundState>('padding', 'Padding', [
+    'none',
+    'sm',
+    'md',
+    'lg',
+  ]),
+];

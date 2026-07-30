@@ -1,19 +1,16 @@
 import type {
-  InputSize,
-  InputVariant,
-} from '../../components/input/input.types';
-import { SIZES } from '../button/buttonConstants';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+  CommonStylingVariant,
+  ExtendedSize,
+} from '../../components/types';
+import { COMMON_VARIANTS, SIZE_OPTIONS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
-export const VARIANTS: InputVariant[] = [
-  'default',
-  'filled',
-  'outline',
-  'ghost',
-];
 export type InputPlaygroundState = {
-  variant: InputVariant;
-  size: InputSize;
+  variant: CommonStylingVariant;
+  size: ExtendedSize;
   fullWidth: boolean;
   error: boolean;
   leftIcon: boolean;
@@ -37,57 +34,15 @@ export const INPUT_INITIAL_STATE: InputPlaygroundState = {
   errorMessage: false,
 };
 
-export const inputControls: Control<InputPlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: VARIANTS,
-  },
-  {
-    type: 'select',
-    key: 'size',
-    label: 'Size',
-    options: SIZES,
-  },
-  {
-    type: 'checkbox',
-    key: 'error',
-    label: 'Error',
-  },
-  {
-    type: 'checkbox',
-    key: 'disabled',
-    label: 'Disabled',
-  },
-  {
-    type: 'checkbox',
-    key: 'fullWidth',
-    label: 'Full width',
-  },
-  {
-    type: 'checkbox',
-    key: 'leftIcon',
-    label: 'Left icon',
-  },
-  {
-    type: 'checkbox',
-    key: 'rightIcon',
-    label: 'Right icon',
-  },
-  {
-    type: 'checkbox',
-    key: 'label',
-    label: 'Label',
-  },
-  {
-    type: 'checkbox',
-    key: 'description',
-    label: 'Description',
-  },
-  {
-    type: 'checkbox',
-    key: 'errorMessage',
-    label: 'Error message',
-  },
+export const INPUT_CONTROLS = [
+  selectControl<InputPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
+  selectControl<InputPlaygroundState>('size', 'Size', SIZE_OPTIONS),
+  checkboxControl<InputPlaygroundState>('error', 'Error'),
+  checkboxControl<InputPlaygroundState>('disabled', 'Disabled'),
+  checkboxControl<InputPlaygroundState>('fullWidth', 'Full width'),
+  checkboxControl<InputPlaygroundState>('leftIcon', 'Left Icon'),
+  checkboxControl<InputPlaygroundState>('rightIcon', 'Right Icon'),
+  checkboxControl<InputPlaygroundState>('label', 'Label'),
+  checkboxControl<InputPlaygroundState>('description', 'Description'),
+  checkboxControl<InputPlaygroundState>('errorMessage', 'Error Message'),
 ];

@@ -1,14 +1,28 @@
-import type { PopoverContentProps } from '../../components/popover/popover.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import type {
+  Align,
+  BasicSize,
+  CommonStylingVariant,
+  Side,
+} from '../../components/types';
+import {
+  ALIGN_OPTIONS,
+  BASIC_SIZE_OPTIONS,
+  COMMON_VARIANTS,
+  SIDE_OPTIONS,
+} from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type PopoverPlaygroundState = {
   title: string;
   description: string;
-  variant: NonNullable<PopoverContentProps['variant']>;
-  size: NonNullable<PopoverContentProps['size']>;
-  rounded: NonNullable<PopoverContentProps['rounded']>;
-  side: 'top' | 'right' | 'bottom' | 'left';
-  align: 'start' | 'center' | 'end';
+  variant: CommonStylingVariant;
+  size: BasicSize;
+  rounded: BasicSize;
+  side: Side;
+  align: Align;
   sideOffset: string;
   showArrow: boolean;
 };
@@ -24,53 +38,23 @@ export const POPOVER_INITIAL_STATE: PopoverPlaygroundState = {
   sideOffset: '8',
   showArrow: true,
 };
-
-export const popoverControls: Control<PopoverPlaygroundState>[] = [
-  {
-    key: 'variant',
-    label: 'Variant',
-    type: 'select',
-    options: ['default', 'filled', 'outline', 'ghost'],
-  },
-
-  {
-    key: 'size',
-    label: 'Size',
-    type: 'select',
-    options: ['sm', 'md', 'lg'],
-  },
-
-  {
-    key: 'rounded',
-    label: 'Rounded',
-    type: 'select',
-    options: ['sm', 'md', 'lg'],
-  },
-
-  {
-    key: 'side',
-    label: 'Side',
-    type: 'select',
-    options: ['top', 'right', 'bottom', 'left'],
-  },
-
-  {
-    key: 'align',
-    label: 'Align',
-    type: 'select',
-    options: ['start', 'center', 'end'],
-  },
-
-  {
-    key: 'sideOffset',
-    label: 'Offset',
-    type: 'select',
-    options: ['0', '4', '8', '12', '16', '24'],
-  },
-
-  {
-    key: 'showArrow',
-    label: 'Arrow',
-    type: 'checkbox',
-  },
+export const POPOVER_CONTROLS = [
+  selectControl<PopoverPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
+  selectControl<PopoverPlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
+  selectControl<PopoverPlaygroundState>(
+    'rounded',
+    'Rounded',
+    BASIC_SIZE_OPTIONS,
+  ),
+  selectControl<PopoverPlaygroundState>('side', 'Side', SIDE_OPTIONS),
+  selectControl<PopoverPlaygroundState>('align', 'Align', ALIGN_OPTIONS),
+  selectControl<PopoverPlaygroundState>('sideOffset', 'Offset', [
+    '0',
+    '4',
+    '8',
+    '12',
+    '16',
+    '24',
+  ]),
+  checkboxControl<PopoverPlaygroundState>('showArrow', 'Arrow'),
 ];

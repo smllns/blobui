@@ -1,12 +1,13 @@
-import type {
-  SwitchSize,
-  SwitchVariant,
-} from '../../components/switch/switch.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import type { BasicSize, CommonStylingVariant } from '../../components/types';
+import { BASIC_SIZE_OPTIONS, COMMON_VARIANTS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type SwitchPlaygroundState = {
-  variant: SwitchVariant;
-  size: SwitchSize;
+  variant: CommonStylingVariant;
+  size: BasicSize;
   checked: boolean;
   disabled: boolean;
   label: string;
@@ -24,51 +25,14 @@ export const SWITCH_INITIAL_STATE: SwitchPlaygroundState = {
   error: false,
   errorMessage: '',
 };
-export const switchControls: Control<SwitchPlaygroundState>[] = [
-  {
-    key: 'variant',
-    type: 'select',
-    label: 'Variant',
-    options: ['default', 'filled', 'outline', 'ghost'],
-  },
 
-  {
-    key: 'size',
-    type: 'select',
-    label: 'Size',
-    options: ['sm', 'md', 'lg'],
-  },
-
-  {
-    key: 'checked',
-    type: 'checkbox',
-    label: 'Checked',
-  },
-  {
-    key: 'disabled',
-    type: 'checkbox',
-    label: 'Disabled',
-  },
-  {
-    key: 'label',
-    type: 'checkbox',
-    label: 'Label',
-  },
-
-  {
-    key: 'description',
-    type: 'checkbox',
-    label: 'Description',
-  },
-
-  {
-    key: 'error',
-    type: 'checkbox',
-    label: 'Error',
-  },
-  {
-    key: 'errorMessage',
-    type: 'checkbox',
-    label: 'Error Message',
-  },
+export const SWITCH_CONTROLS = [
+  selectControl<SwitchPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
+  selectControl<SwitchPlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
+  checkboxControl<SwitchPlaygroundState>('checked', 'Checked'),
+  checkboxControl<SwitchPlaygroundState>('disabled', 'Disabled'),
+  checkboxControl<SwitchPlaygroundState>('label', 'Label'),
+  checkboxControl<SwitchPlaygroundState>('description', 'Description'),
+  checkboxControl<SwitchPlaygroundState>('error', 'Error'),
+  checkboxControl<SwitchPlaygroundState>('errorMessage', 'Error Message'),
 ];

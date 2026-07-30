@@ -1,8 +1,13 @@
 import type { AccordionProps } from '../../components/accordion/accordion.types';
-import type { Control } from '../components/playground/controls/ControlsRenderer';
+import type { CommonStylingVariant } from '../../components/types';
+import { COMMON_VARIANTS } from '../../lib/options';
+import {
+  checkboxControl,
+  selectControl,
+} from '../components/playground/controls/controlHelpers';
 
 export type AccordionPlaygroundState = {
-  variant: NonNullable<AccordionProps['variant']>;
+  variant: CommonStylingVariant;
   type: NonNullable<AccordionProps['type']>;
   collapsible: boolean;
   disabledItem: boolean;
@@ -15,27 +20,16 @@ export const ACCORDION_INITIAL_STATE: AccordionPlaygroundState = {
   disabledItem: false,
 };
 
-export const ACCORDION_CONTROLS: Control<AccordionPlaygroundState>[] = [
-  {
-    type: 'select',
-    key: 'variant',
-    label: 'Variant',
-    options: ['default', 'filled', 'outline', 'ghost'],
-  },
-  {
-    type: 'select',
-    key: 'type',
-    label: 'Type',
-    options: ['single', 'multiple'],
-  },
-  {
-    type: 'checkbox',
-    key: 'collapsible',
-    label: 'Collapsible',
-  },
-  {
-    type: 'checkbox',
-    key: 'disabledItem',
-    label: 'Disabled item',
-  },
-] as const;
+export const ACCORDION_CONTROLS = [
+  selectControl<AccordionPlaygroundState>(
+    'variant',
+    'Variant',
+    COMMON_VARIANTS,
+  ),
+  selectControl<AccordionPlaygroundState>('type', 'Type', [
+    'single',
+    'multiple',
+  ]),
+  checkboxControl<AccordionPlaygroundState>('collapsible', 'Collapsible'),
+  checkboxControl<AccordionPlaygroundState>('disabledItem', 'Disabled Item'),
+];
