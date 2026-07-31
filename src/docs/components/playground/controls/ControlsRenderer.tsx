@@ -21,46 +21,56 @@ type Props<T> = {
   controls: Control<T>[];
 };
 
+type SelectControl<T> = Extract<Control<T>, { type: 'select' }>;
+type CheckboxControl<T> = Extract<Control<T>, { type: 'checkbox' }>;
+
+function isSelectControl<T>(control: Control<T>): control is SelectControl<T> {
+  return control.type === 'select';
+}
+
+function isCheckboxControl<T>(
+  control: Control<T>,
+): control is CheckboxControl<T> {
+  return control.type === 'checkbox';
+}
+
 export function ControlsRenderer<T>({ state, update, controls }: Props<T>) {
-  const checkboxes = controls.filter((c) => c.type === 'checkbox');
-  const selects = controls.filter((c) => c.type === 'select');
+  const renderSelect = (control: SelectControl<T>) => {
+    return (
+      <SelectField
+        key={String(control.key)}
+        label={control.label}
+        value={String(state[control.key])}
+        options={control.options}
+        onChange={(value) =>
+          update(control.key, value as T[typeof control.key])
+        }
+      />
+    );
+  };
+
+  const renderCheckbox = (control: CheckboxControl<T>) => {
+    return (
+      <CheckboxField
+        key={String(control.key)}
+        label={control.label}
+        checked={Boolean(state[control.key])}
+        disabled={control.disabled as boolean}
+        onChange={(value) =>
+          update(control.key, value as T[typeof control.key])
+        }
+      />
+    );
+  };
 
   return (
     <>
       <div className='flex flex-col gap-4'>
-        {selects.map((control) => {
-          const value = state[control.key];
-
-          if (control.type !== 'select') return null;
-
-          return (
-            <SelectField
-              key={control.key as string}
-              label={control.label}
-              value={value as string}
-              options={control.options}
-              onChange={(v) => update(control.key, v as T[keyof T])}
-            />
-          );
-        })}
+        {controls.filter(isSelectControl).map(renderSelect)}
       </div>
 
       <div className='flex flex-wrap gap-4 pt-2'>
-        {checkboxes.map((control) => {
-          const value = state[control.key];
-
-          if (control.type !== 'checkbox') return null;
-
-          return (
-            <CheckboxField
-              key={control.key as string}
-              label={control.label}
-              checked={value as boolean}
-              disabled={control.disabled as boolean}
-              onChange={(v) => update(control.key, v as T[keyof T])}
-            />
-          );
-        })}
+        {controls.filter(isCheckboxControl).map(renderCheckbox)}
       </div>
     </>
   );

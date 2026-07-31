@@ -47,7 +47,6 @@ export function CodeBlock({ code }: CodeBlockProps) {
 
   return (
     <div className='rounded-xl border border-neutral-200 bg-olive-400/10 overflow-hidden'>
-      {/* HEADER */}
       <div className='flex items-center justify-between px-4 py-3 border-b border-neutral-200 bg-olive-500/10'>
         <p className='text-sm font-semibold'>Code</p>
 
@@ -55,8 +54,6 @@ export function CodeBlock({ code }: CodeBlockProps) {
           {copied ? 'Copied' : 'Copy'}
         </Button>
       </div>
-
-      {/* BODY */}
       <div
         style={{
           maxHeight: height,
@@ -66,7 +63,6 @@ export function CodeBlock({ code }: CodeBlockProps) {
           transition-all duration-300 ease-in-out
         `}
       >
-        {/* CODE */}
         <div
           ref={contentRef}
           className={`
@@ -79,12 +75,10 @@ export function CodeBlock({ code }: CodeBlockProps) {
           </pre>
         </div>
 
-        {/* FADE */}
         {!open && (
           <div className='absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-olive-400/10 to-transparent pointer-events-none' />
         )}
 
-        {/* TOGGLE BUTTON */}
         <div
           className={`
             absolute left-1/2 -translate-x-1/2
@@ -109,7 +103,6 @@ export function CodeBlock({ code }: CodeBlockProps) {
         </div>
       </div>
 
-      {/* TOAST STACK (FIXED POSITION) */}
       {toasts.length > 0 && (
         <div className='fixed bottom-4 right-4 z-50 flex flex-col gap-2'>
           {toasts.map((toast) => (

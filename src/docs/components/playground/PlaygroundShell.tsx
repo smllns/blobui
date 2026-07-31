@@ -17,16 +17,11 @@ export function PlaygroundShell({
 
       <div className='flex flex-col gap-2 rounded-xl border border-neutral-200 bg-olive-400/10 p-6'>
         <div className='grid grid-cols-2 gap-6 p-6'>
-          {/* CONTROLS */}
           <div className='flex flex-col gap-4'>{controls}</div>
-
-          {/* PREVIEW */}
           <div className='flex items-center justify-center rounded-lg border border-dashed border-neutral-200 bg-olive-400/30 p-6'>
             {preview}
           </div>
         </div>
-
-        {/* CODE */}
         {code}
       </div>
     </section>
