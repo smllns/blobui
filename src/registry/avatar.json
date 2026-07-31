@@ -1,0 +1,24 @@
+{
+  "name": "avatar",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/avatar/Avatar.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/avatar/avatar.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/avatar/avatar.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

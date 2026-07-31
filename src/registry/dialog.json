@@ -1,0 +1,36 @@
+{
+  "name": "dialog",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-dialog", "gsap", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/dialog/Dialog.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/dialog/dialog.animations.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/dialog/dialog.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/dialog/dialog.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/CloseX.tsx",
+      "type": "shared"
+    }
+  ]
+}

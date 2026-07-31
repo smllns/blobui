@@ -1,0 +1,32 @@
+{
+  "name": "popover",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-popover", "gsap", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/popover/Popover.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/popover/popover.animations.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/popover/popover.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/popover/popover.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "hooks/useAnimatedOpen.ts",
+      "type": "hook"
+    }
+  ]
+}

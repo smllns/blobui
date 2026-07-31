@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-
 import type { CheckboxProps } from './checkbox.types';
 import { checkboxWrapperStyles, checkboxBoxStyles } from './checkbox.styles';
 import { cn } from '../../lib/cn';

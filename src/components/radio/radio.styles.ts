@@ -1,11 +1,5 @@
 import { cva } from 'class-variance-authority';
 
-export const labelSizeMap = {
-  sm: 'text-xs leading-4',
-  md: 'text-sm leading-5',
-  lg: 'text-base leading-6',
-} as const;
-
 export const radioStyles = cva(
   [
     'appearance-none rounded-full border',

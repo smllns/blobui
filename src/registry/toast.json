@@ -1,0 +1,32 @@
+{
+  "name": "toast",
+  "type": "registry:ui",
+  "registryDependencies": ["button"],
+  "dependencies": ["gsap", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/toast/Toast.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/toast/toast.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/toast/toast.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/toast/toast.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    }
+  ]
+}

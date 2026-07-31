@@ -2,7 +2,7 @@ import { forwardRef, useState } from 'react';
 import { cn } from '../../lib/cn';
 import { switchStyles, switchThumbStyles } from './switch.styles';
 import type { SwitchProps } from './switch.types';
-import { labelSizeMap } from '../radio/radio.styles';
+import { labelSizeMap } from '../styles';
 
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
   (

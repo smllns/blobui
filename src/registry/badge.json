@@ -1,0 +1,24 @@
+{
+  "name": "badge",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/badge/Badge.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/badge/badge.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/badge/badge.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

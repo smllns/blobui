@@ -1,0 +1,49 @@
+{
+  "name": "accordion",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": [
+    "@radix-ui/react-accordion",
+    "gsap",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "components/accordion/Accordion.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/accordion/AccordionContent.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/accordion/accordion.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/accordion/accordion.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/accordion/accordion.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/ChevronDown.tsx",
+      "type": "shared"
+    }
+  ]
+}

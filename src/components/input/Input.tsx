@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-
 import { cn } from '../../lib/cn';
 import { inputWrapperStyles } from './input.styles';
 import type { InputProps } from './input.types';

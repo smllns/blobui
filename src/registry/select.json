@@ -1,0 +1,48 @@
+{
+  "name": "select",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-select", "gsap", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/select/Select.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/select/SelectItem.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/select/select.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/select/select.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/select/select.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/ChevronDown.tsx",
+      "type": "shared"
+    },
+    {
+      "path": "hooks/useAnimatedOpen.ts",
+      "type": "hook"
+    }
+  ]
+}

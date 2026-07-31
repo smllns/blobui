@@ -1,0 +1,53 @@
+{
+  "name": "dropdownMenu",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": [
+    "@radix-ui/react-dropdown-menu",
+    "gsap",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "components/dropdown-menu/DropdownMenu.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/dropdown-menu/DropdownMenuItem.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/dropdown-menu/DropdownMenuSeparator.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/dropdown-menu/dropdown-menu.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/dropdown-menu/dropdown-menu.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/dropdown-menu/dropdown-menu.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "hooks/useAnimatedOpen.ts",
+      "type": "hook"
+    }
+  ]
+}

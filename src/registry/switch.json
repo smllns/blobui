@@ -1,0 +1,28 @@
+{
+  "name": "switch",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/switch/Switch.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/switch/switch.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/switch/switch.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/checkbox/Checkbox.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/checkbox/checkbox.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/checkbox/checkbox.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

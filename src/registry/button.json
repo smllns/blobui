@@ -1,0 +1,36 @@
+{
+  "name": "button",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/button/Button.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/button/button.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/button/button.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/Spinner.tsx",
+      "type": "shared"
+    }
+  ]
+}

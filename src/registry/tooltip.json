@@ -1,0 +1,37 @@
+{
+  "name": "tooltip",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-tooltip", "gsap", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/tooltip/Tooltip.tsx",
+      "type": "component"
+    },
+
+    {
+      "path": "components/tooltip/tooltip.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/tooltip/tooltip.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/tooltip/tooltip.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "hooks/useAnimatedOpen.ts",
+      "type": "hook"
+    }
+  ]
+}

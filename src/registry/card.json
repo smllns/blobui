@@ -1,0 +1,24 @@
+{
+  "name": "card",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/card/Card.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/card/card.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/card/card.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

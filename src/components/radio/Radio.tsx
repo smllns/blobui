@@ -1,7 +1,8 @@
 import { forwardRef } from 'react';
 import { cn } from '../../lib/cn';
-import { labelSizeMap, radioStyles } from './radio.styles';
+import { radioStyles } from './radio.styles';
 import type { RadioProps } from './radio.types';
+import { labelSizeMap } from '../styles';
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (

@@ -1,0 +1,28 @@
+{
+  "name": "radio",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "components/radio/Radio.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/radio/radio.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/radio/radio.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

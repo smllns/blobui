@@ -1,0 +1,64 @@
+{
+  "components": [
+    {
+      "name": "accordion",
+      "path": "./accordion.json"
+    },
+    {
+      "name": "avatar",
+      "path": "./avatar.json"
+    },
+    {
+      "name": "badge",
+      "path": "./badge.json"
+    },
+    {
+      "name": "button",
+      "path": "./button.json"
+    },
+    {
+      "name": "card",
+      "path": "./card.json"
+    },
+    {
+      "name": "checkbox",
+      "path": "./checkbox.json"
+    },
+    {
+      "name": "dialog",
+      "path": "./dialog.json"
+    },
+    {
+      "name": "dropdownMenu",
+      "path": "./dropdownMenu.json"
+    },
+    {
+      "name": "input",
+      "path": "./input.json"
+    },
+    {
+      "name": "popover",
+      "path": "./popover.json"
+    },
+    {
+      "name": "radio",
+      "path": "./radio.json"
+    },
+    {
+      "name": "select",
+      "path": "./select.json"
+    },
+    {
+      "name": "switch",
+      "path": "./switch.json"
+    },
+    {
+      "name": "toast",
+      "path": "./toast.json"
+    },
+    {
+      "name": "tooltip",
+      "path": "./tooltip.json"
+    }
+  ]
+}
