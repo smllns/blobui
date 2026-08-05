@@ -9,8 +9,8 @@ import { handleError } from './utils/handleError.js';
 import { removeComponent } from './commands/remove.js';
 const program = new Command();
 program
-    .name('smllns-ui')
-    .description('Install smllns ui components')
+    .name('blobui')
+    .description('Install blobui components')
     .version('0.1.0');
 program.showSuggestionAfterError();
 program
@@ -41,7 +41,7 @@ program
 });
 program
     .command('init')
-    .description('Initialize smllns ui')
+    .description('Initialize blobui')
     .action(async () => {
     await initProject();
 });

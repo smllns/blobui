@@ -44,7 +44,7 @@ async function getComponent(name: string, index: RegistryIndex) {
     }
 
     throw new Error(
-      `Component "${name}" not found.\nRun "smllns-ui list" to see available components.`,
+      `Component "${name}" not found.\nRun "blobui list" to see available components.`,
     );
   }
 

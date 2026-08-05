@@ -14,7 +14,7 @@ async function getComponent(name, index) {
         if (suggestion) {
             throw new Error(`Component "${name}" not found.\n\nDid you mean "${suggestion}"?`);
         }
-        throw new Error(`Component "${name}" not found.\nRun "smllns-ui list" to see available components.`);
+        throw new Error(`Component "${name}" not found.\nRun "blobui list" to see available components.`);
     }
     return fetchJson(`${REGISTRY_URL}/${component.path.replace('./', '')}`);
 }

@@ -7,7 +7,7 @@ export async function getConfig() {
         content = await readFile(configPath, 'utf-8');
     }
     catch {
-        throw new Error('components.json not found. Run "smllns-ui init" first.');
+        throw new Error('components.json not found. Run "blobui init" first.');
     }
     try {
         const config = JSON.parse(content);

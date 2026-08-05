@@ -10,7 +10,7 @@ export async function viewComponent(name) {
         if (suggestion) {
             throw new Error(`Component "${name}" not found.\n\nDid you mean "${suggestion}"?`);
         }
-        throw new Error(`Component "${name}" not found.\nRun "smllns-ui list" to see available components.`);
+        throw new Error(`Component "${name}" not found.\nRun "blobui list" to see available components.`);
     }
     const registryItem = await fetchJson(`${REGISTRY_URL}/${component.path.replace('./', '')}`);
     console.log(`\n${colors.bold(colors.component(registryItem.name))}\n`);

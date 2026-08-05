@@ -39,7 +39,7 @@ export async function viewComponent(name: string) {
     }
 
     throw new Error(
-      `Component "${name}" not found.\nRun "smllns-ui list" to see available components.`,
+      `Component "${name}" not found.\nRun "blobui list" to see available components.`,
     );
   }
 

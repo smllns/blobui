@@ -6,9 +6,9 @@ export function generatePopoverCode(state: PopoverPlaygroundState) {
   PopoverTrigger,
   PopoverContent,
   PopoverArrow,
-} from '@smllns/ui';
+} from '@blobui';
 
-import { Button } from '@smllns/ui';
+import { Button } from '@blobui';
 
 <Popover>
   <PopoverTrigger asChild>

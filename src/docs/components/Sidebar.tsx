@@ -23,7 +23,7 @@ export function Sidebar() {
   return (
     <aside className='w-64 border-r border-neutral-200 bg-neutral-200 p-6'>
       <NavLink to='/' className='block text-xl font-semibold'>
-        smllns ui
+        blobui
       </NavLink>
 
       <div>
