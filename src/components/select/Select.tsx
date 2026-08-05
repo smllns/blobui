@@ -6,7 +6,7 @@ import {
   selectTriggerStyles,
   selectViewportStyles,
 } from './select.styles';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import { animateSelectEnter, animateSelectExit } from './select.animation';
 import { useAnimatedOpen } from '../../hooks/useAnimatedOpen';
 

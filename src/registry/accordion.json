@@ -6,7 +6,8 @@
     "@radix-ui/react-accordion",
     "gsap",
     "clsx",
-    "tailwind-merge"
+    "tailwind-merge",
+    "class-variance-authority"
   ],
   "files": [
     {

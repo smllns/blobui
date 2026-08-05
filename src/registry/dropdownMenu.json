@@ -6,6 +6,7 @@
     "@radix-ui/react-dropdown-menu",
     "gsap",
     "clsx",
+    "class-variance-authority",
     "tailwind-merge"
   ],
   "files": [

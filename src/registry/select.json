@@ -2,7 +2,13 @@
   "name": "select",
   "type": "registry:ui",
   "registryDependencies": [],
-  "dependencies": ["@radix-ui/react-select", "gsap", "clsx", "tailwind-merge"],
+  "dependencies": [
+    "@radix-ui/react-select",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "components/select/Select.tsx",

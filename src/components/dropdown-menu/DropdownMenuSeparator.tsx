@@ -1,5 +1,5 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 
 export function DropdownMenuSeparator({
   className,

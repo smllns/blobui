@@ -2,7 +2,13 @@
   "name": "dialog",
   "type": "registry:ui",
   "registryDependencies": [],
-  "dependencies": ["@radix-ui/react-dialog", "gsap", "clsx", "tailwind-merge"],
+  "dependencies": [
+    "@radix-ui/react-dialog",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "components/dialog/Dialog.tsx",

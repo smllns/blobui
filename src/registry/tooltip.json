@@ -2,7 +2,13 @@
   "name": "tooltip",
   "type": "registry:ui",
   "registryDependencies": [],
-  "dependencies": ["@radix-ui/react-tooltip", "gsap", "clsx", "tailwind-merge"],
+  "dependencies": [
+    "@radix-ui/react-tooltip",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "components/tooltip/Tooltip.tsx",

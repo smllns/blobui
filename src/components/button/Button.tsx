@@ -1,6 +1,6 @@
 import type { ButtonProps } from './button.types';
 import { buttonStyles } from './button.styles';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import { Spinner } from '../../ui/Spinner';
 
 export function Button({

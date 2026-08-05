@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import { radioStyles } from './radio.styles';
 import type { RadioProps } from './radio.types';
 import { labelSizeMap } from '../styles';

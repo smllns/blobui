@@ -1,6 +1,6 @@
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDown } from '../../ui/ChevronDown';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import { selectItemStyles } from './select.styles';
 
 export function SelectItem({

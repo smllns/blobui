@@ -7,8 +7,8 @@ import {
   triggerStyles,
 } from './accordion.styles';
 import type { AccordionProps } from './accordion.types';
-import { cn } from '../../lib/cn';
 import { AccordionContent } from './AccordionContent';
+import { cn } from '@/lib/cn';
 
 export function Accordion(props: AccordionProps) {
   const { items, variant = 'default' } = props;

@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef } from 'react';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import { toastStyles, toastIconStyles } from './toast.styles';
 import type { ToastProps } from './toast.types';
 import { animateToastIn, animateToastOut } from './toast.animation';

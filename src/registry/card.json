@@ -2,7 +2,7 @@
   "name": "card",
   "type": "registry:ui",
   "registryDependencies": [],
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
   "files": [
     {
       "path": "components/card/Card.tsx",

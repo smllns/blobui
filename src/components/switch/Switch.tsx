@@ -1,5 +1,5 @@
 import { forwardRef, useState } from 'react';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import { switchStyles, switchThumbStyles } from './switch.styles';
 import type { SwitchProps } from './switch.types';
 import { labelSizeMap } from '../styles';

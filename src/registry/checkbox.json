@@ -5,7 +5,7 @@
   "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {
-      "path": "components/checkbox/Checkbox.tsx",
+      "path": "components/checkbox/CheckBox.tsx",
       "type": "component"
     },
     {

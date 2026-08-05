@@ -2,7 +2,12 @@
   "name": "toast",
   "type": "registry:ui",
   "registryDependencies": ["button"],
-  "dependencies": ["gsap", "clsx", "tailwind-merge"],
+  "dependencies": [
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "components/toast/Toast.tsx",

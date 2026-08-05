@@ -1,6 +1,6 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { createContext, forwardRef } from 'react';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import type { PopoverArrowProps, PopoverContentProps } from './popover.types';
 import { popoverArrowStyles, popoverContentStyles } from './popover.styles';
 import { animatePopoverEnter, animatePopoverExit } from './popover.animations';

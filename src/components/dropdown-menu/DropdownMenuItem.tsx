@@ -1,7 +1,7 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import type { DropdownMenuItemProps } from './dropdown-menu.types';
 import { dropdownMenuItemStyles } from './dropdown-menu.styles';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 
 export function DropdownMenuItem({
   variant,
