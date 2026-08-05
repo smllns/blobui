@@ -23,8 +23,8 @@ export async function downloadFile(filePath, config) {
         });
         await writeFile(destination, content, 'utf-8');
     }
-    catch {
-        throw new Error(`Failed to write file "${destination}"`);
+    catch (error) {
+        throw new Error(`Failed to write file "${destination}": ${error instanceof Error ? error.message : ''}`);
     }
     console.log(`${colors.success('✔')} ${filePath}`);
 }

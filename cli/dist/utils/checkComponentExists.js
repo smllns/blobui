@@ -1,15 +1,10 @@
-import { access } from 'node:fs/promises';
 import { getDestination } from './getDestination.js';
+import { exists } from './exists.js';
 export async function checkComponentExists(files, config) {
-    const componentFiles = files.filter((file) => file.type === 'component' || file.path.startsWith('components/'));
-    for (const file of componentFiles) {
-        try {
-            await access(getDestination(file.path, config));
-            return true;
-        }
-        catch {
-            // continue
-        }
+    const componentFiles = files.filter((file) => file.type === 'component');
+    if (!componentFiles.length) {
+        return false;
     }
-    return false;
+    const results = await Promise.all(componentFiles.map((file) => exists(getDestination(file.path, config))));
+    return results.every(Boolean);
 }

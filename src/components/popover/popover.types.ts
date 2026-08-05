@@ -1,6 +1,6 @@
 import type * as PopoverPrimitive from '@radix-ui/react-popover';
 import type { VariantProps } from 'class-variance-authority';
-import { popoverArrowStyles, popoverContentStyles } from './popover.styles.ts';
+import { popoverArrowStyles, popoverContentStyles } from './popover.styles';
 
 export interface PopoverContentProps
   extends

@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 import type { PopoverArrowProps, PopoverContentProps } from './popover.types';
 import { popoverArrowStyles, popoverContentStyles } from './popover.styles';
 import { animatePopoverEnter, animatePopoverExit } from './popover.animations';
-import { useAnimatedOpen } from '../../hooks/useAnimatedOpen';
+import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
 
 type PopoverContextValue = {
   contentRef: React.RefObject<HTMLDivElement | null>;

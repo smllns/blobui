@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Accordion } from '../../components/accordion/Accordion';
 import { AccordionPlayground } from './AccordionPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { AccordionItems } from './accordion.data';
 
 export function AccordionDocs() {

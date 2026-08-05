@@ -8,7 +8,7 @@ import {
   animateDropdownEnter,
   animateDropdownExit,
 } from './dropdown-menu.animation';
-import { useAnimatedOpen } from '../../hooks/useAnimatedOpen';
+import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
 
 export function DropdownMenu({
   children,

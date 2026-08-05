@@ -1,21 +1,17 @@
-import { access, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import { writeFile } from 'node:fs/promises';
 import prompts from 'prompts';
-
 import { colors } from '../utils/colors.js';
 import { updateTsConfig } from '../utils/updateTsConfig.js';
+import { getConfigPath } from '../utils/getConfigPath.js';
+import { exists } from '../utils/exists.js';
 
 export async function initProject() {
-  const configPath = path.join(process.cwd(), 'components.json');
+  const configPath = getConfigPath();
 
-  try {
-    await access(configPath);
-
+  if (await exists(configPath)) {
     console.log(`${colors.warning('⚠')} components.json already exists`);
 
     return;
-  } catch {
-    // file does not exist, continue
   }
 
   const answers = await prompts([
@@ -31,9 +27,15 @@ export async function initProject() {
       message: 'Where should utilities be installed?',
       initial: 'src/lib',
     },
+    {
+      type: 'text',
+      name: 'hooks',
+      message: 'Where should hooks be installed?',
+      initial: 'src/hooks',
+    },
   ]);
 
-  if (!answers.components || !answers.lib) {
+  if (!answers.components || !answers.lib || !answers.hooks) {
     console.log(`${colors.warning('⚠')} Initialization cancelled`);
 
     return;
@@ -43,12 +45,12 @@ export async function initProject() {
     aliases: {
       components: answers.components,
       lib: answers.lib,
+      hooks: answers.hooks,
     },
   };
 
-  await writeFile(configPath, JSON.stringify(config, null, 2));
-
   await updateTsConfig();
+  await writeFile(configPath, JSON.stringify(config, null, 2) + '\n');
 
   console.log(`${colors.success('✨ Created')} components.json`);
 }

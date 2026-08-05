@@ -1,51 +1,10 @@
-import { REGISTRY_URL } from '../config.js';
 import { colors } from '../utils/colors.js';
-import { findClosest } from '../utils/findClosest.js';
-import { fetchJson } from '../utils/fetchJson.js';
-
-type RegistryIndex = {
-  components: {
-    name: string;
-    path: string;
-  }[];
-};
-
-type RegistryComponent = {
-  name: string;
-  type: string;
-  dependencies?: string[];
-  registryDependencies?: string[];
-  files: {
-    path: string;
-    type: string;
-  }[];
-};
+import { getRegistryComponent } from '../utils/getRegistryComponent.js';
+import { getRegistryIndex } from '../utils/getRegistryIndex.js';
 
 export async function viewComponent(name: string) {
-  const index = await fetchJson<RegistryIndex>(`${REGISTRY_URL}/index.json`);
-
-  const component = index.components.find((item) => item.name === name);
-
-  if (!component) {
-    const suggestion = findClosest(
-      name,
-      index.components.map((item) => item.name),
-    );
-
-    if (suggestion) {
-      throw new Error(
-        `Component "${name}" not found.\n\nDid you mean "${suggestion}"?`,
-      );
-    }
-
-    throw new Error(
-      `Component "${name}" not found.\nRun "blobui list" to see available components.`,
-    );
-  }
-
-  const registryItem = await fetchJson<RegistryComponent>(
-    `${REGISTRY_URL}/${component.path.replace('./', '')}`,
-  );
+  const index = await getRegistryIndex();
+  const registryItem = await getRegistryComponent(name, index);
 
   console.log(`\n${colors.bold(colors.component(registryItem.name))}\n`);
 

@@ -1,77 +1,37 @@
-import { unlink, access, rm } from 'node:fs/promises';
-
+import { rm } from 'node:fs/promises';
 import prompts from 'prompts';
 
-import { REGISTRY_URL } from '../config.js';
-import { fetchJson } from '../utils/fetchJson.js';
-import { getDestination } from '../utils/getDestination.js';
-import { getConfig } from '../utils/getConfig.js';
 import { colors } from '../utils/colors.js';
-import { getComponentDirectory } from '../utils/getComponentDirectory.js';
-
-type RegistryIndex = {
-  components: {
-    name: string;
-    path: string;
-  }[];
-};
-
-type RegistryComponent = {
-  name: string;
-  files: {
-    path: string;
-    type: string;
-  }[];
-};
-
-async function fileExists(filePath: string) {
-  try {
-    await access(filePath);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function getComponent(name: string, index: RegistryIndex) {
-  const component = index.components.find((item) => item.name === name);
-
-  if (!component) {
-    throw new Error(`Component "${name}" not found.`);
-  }
-
-  return fetchJson<RegistryComponent>(
-    `${REGISTRY_URL}/${component.path.replace('./', '')}`,
-  );
-}
+import { exists } from '../utils/exists.js';
+import { getConfig } from '../utils/getConfig.js';
+import { getRegistryIndex } from '../utils/getRegistryIndex.js';
+import { getRegistryComponent } from '../utils/getRegistryComponent.js';
+import { getDestination } from '../utils/getDestination.js';
 
 export async function removeComponent(name: string) {
+  const index = await getRegistryIndex();
+  const registryItem = await getRegistryComponent(name, index);
   const config = await getConfig();
 
-  const index = await fetchJson<RegistryIndex>(`${REGISTRY_URL}/index.json`);
-
-  const registryItem = await getComponent(name, index);
-
-  const files = registryItem.files.filter(
-    (file) =>
-      file.type === 'component' || file.path.startsWith(`components/${name}/`),
+  const componentFile = registryItem.files.find((file) =>
+    file.path.startsWith('components/'),
   );
 
-  const existingFiles = [];
+  if (!componentFile) {
+    console.log(`${colors.warning('⚠')} Cannot determine component directory`);
 
-  for (const file of files) {
-    const destination = getDestination(file.path, config);
-
-    if (await fileExists(destination)) {
-      existingFiles.push({
-        path: file.path,
-        destination,
-      });
-    }
+    return;
   }
 
-  if (!existingFiles.length) {
-    console.log(`${colors.warning('⚠')} ${name} is not installed`);
+  const componentDirectory = getDestination(componentFile.path, config).replace(
+    /\/[^/]+$/,
+    '',
+  );
+
+  if (!(await exists(componentDirectory))) {
+    console.log(
+      `${colors.warning('⚠')} ${colors.component(name)} is not installed`,
+    );
 
     return;
   }
@@ -79,7 +39,7 @@ export async function removeComponent(name: string) {
   const { confirm } = await prompts({
     type: 'confirm',
     name: 'confirm',
-    message: `Remove ${name}?`,
+    message: `Remove ${colors.component(name)}?`,
     initial: false,
   });
 
@@ -89,13 +49,7 @@ export async function removeComponent(name: string) {
     return;
   }
 
-  for (const file of existingFiles) {
-    await unlink(file.destination);
-
-    console.log(`${colors.warning('−')} Removed ${file.path}`);
-  }
-
-  await rm(getComponentDirectory(name, config), {
+  await rm(componentDirectory, {
     recursive: true,
     force: true,
   });

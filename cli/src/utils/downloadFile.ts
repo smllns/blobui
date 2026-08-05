@@ -1,6 +1,5 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-
 import { BASE_URL } from '../config.js';
 import { colors } from './colors.js';
 import { getDestination } from './getDestination.js';
@@ -33,8 +32,12 @@ export async function downloadFile(filePath: string, config: Config) {
     });
 
     await writeFile(destination, content, 'utf-8');
-  } catch {
-    throw new Error(`Failed to write file "${destination}"`);
+  } catch (error) {
+    throw new Error(
+      `Failed to write file "${destination}": ${
+        error instanceof Error ? error.message : ''
+      }`,
+    );
   }
 
   console.log(`${colors.success('✔')} ${filePath}`);

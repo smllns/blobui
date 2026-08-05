@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
-import path from 'node:path';
+import { getConfigPath } from './getConfigPath.js';
 export async function getConfig() {
-    const configPath = path.join(process.cwd(), 'components.json');
+    const configPath = getConfigPath();
     let content;
     try {
         content = await readFile(configPath, 'utf-8');
@@ -11,7 +11,9 @@ export async function getConfig() {
     }
     try {
         const config = JSON.parse(content);
-        if (!config.aliases?.components || !config.aliases?.lib) {
+        if (!config.aliases?.components ||
+            !config.aliases?.lib ||
+            !config.aliases?.hooks) {
             throw new Error('Invalid components.json format.');
         }
         return config;

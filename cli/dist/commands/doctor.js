@@ -1,21 +1,14 @@
-import { access, readFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { colors } from '../utils/colors.js';
-async function exists(filePath) {
-    try {
-        await access(filePath);
-        return true;
-    }
-    catch {
-        return false;
-    }
-}
+import { exists } from '../utils/exists.js';
+import { getConfigPath } from '../utils/getConfigPath.js';
 export async function doctor() {
     const cwd = process.cwd();
     console.log(`\n${colors.bold('🩺 Checking your project...')}\n`);
     let hasErrors = false;
     // components.json
-    const componentsConfig = path.join(cwd, 'components.json');
+    const componentsConfig = getConfigPath();
     if (await exists(componentsConfig)) {
         console.log(`${colors.success('✔')} components.json found`);
     }

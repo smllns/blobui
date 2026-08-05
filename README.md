@@ -1,75 +1,266 @@
-# React + TypeScript + Vite
+# blobui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A customizable React component library powered by a component registry.
 
-Currently, two official plugins are available:
+blobui provides beautifully designed, accessible, and reusable UI components that you can install directly into your project and fully customize.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Unlike traditional component libraries, blobui does not ship components as a dependency. Instead, components are copied into your codebase, giving you full ownership and control.
 
-## React Compiler
+Inspired by the registry approach pioneered by tools like shadcn/ui.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- Copy components directly into your project
+- Full component ownership and customization
+- TypeScript-first
+- Tailwind CSS support
+- Accessible primitives powered by Radix UI
+- Built-in animations
+- Component registry system
+- CLI-based installation
+- No runtime dependency on blobui
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Install the CLI
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install -g blobui
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Initialize your project
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Inside your React project:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+blobui init
+```
+
+This creates a `components.json` file that defines where blobui installs files.
+
+Example:
+
+```json
+{
+  "aliases": {
+    "components": "src/components/ui",
+    "lib": "src/lib",
+    "hooks": "src/hooks"
+  }
+}
+```
+
+### Install a component
+
+```bash
+blobui add button
+```
+
+The CLI will:
+
+- download component source files
+- install required dependencies
+- install registry dependencies
+- place files according to your configuration
+
+Example result:
 
 ```
+src/
+├── components/
+│   └── ui/
+│       └── button/
+│           ├── Button.tsx
+│           ├── button.styles.ts
+│           └── button.types.ts
+│
+├── lib/
+│   └── cn.ts
+│
+└── hooks/
+    └── useAnimatedOpen.ts
+```
+
+You now own the component code and can modify it however you want.
+
+---
+
+# Components
+
+blobui components are built with:
+
+- React
+- TypeScript
+- Tailwind CSS
+- Radix UI primitives
+- GSAP animations
+
+Available components:
+
+- Button
+- Input
+- Select
+- Dialog
+- Dropdown Menu
+- Accordion
+- Toast
+- Avatar
+- Card
+- Tooltip
+- Switch
+- Radio
+- and more
+
+To see available components:
+
+```bash
+blobui list
+```
+
+To inspect a component:
+
+```bash
+blobui view button
+```
+
+---
+
+# Registry
+
+blobui uses a registry system to store component metadata.
+
+Each component contains:
+
+- component information
+- dependencies
+- registry dependencies
+- source file paths
+
+Example:
+
+```json
+{
+  "name": "button",
+  "type": "registry:ui",
+  "dependencies": ["class-variance-authority"],
+  "files": [
+    {
+      "path": "components/button/Button.tsx",
+      "type": "component"
+    }
+  ]
+}
+```
+
+The registry allows the CLI to fetch and install only the components you need.
+
+---
+
+# Repository Structure
+
+This repository contains the complete blobui ecosystem:
+
+```
+blobui/
+│
+├── components/
+│   └── UI component source files
+│
+├── registry/
+│   └── Component metadata and registry definitions
+│
+├── cli/
+│   └── Command-line interface
+│
+└── docs/
+    └── Documentation and examples
+```
+
+## CLI
+
+The blobui CLI is responsible for:
+
+- initializing projects
+- installing components
+- removing components
+- managing dependencies
+- interacting with the registry
+
+Available commands:
+
+```bash
+blobui init
+blobui add <component>
+blobui remove <component>
+blobui list
+blobui view <component>
+blobui doctor
+```
+
+For CLI documentation, see:
+
+`cli/README.md`
+
+---
+
+# Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/smllns/blobui.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Build the CLI:
+
+```bash
+npm run build
+```
+
+Link locally:
+
+```bash
+npm link
+```
+
+Test the CLI inside another project:
+
+```bash
+blobui add button
+```
+
+---
+
+# Philosophy
+
+blobui follows the idea that UI components should belong to the application using them.
+
+Instead of installing a black-box component package:
+
+```
+node_modules/
+└── blobui/
+    └── Button
+```
+
+blobui gives you:
+
+```
+src/
+└── components/
+    └── Button.tsx
+```
+
+You can read it, modify it, extend it, and make it fit your project.
+
+---
+
+# License
+
+MIT

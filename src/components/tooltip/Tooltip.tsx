@@ -7,7 +7,7 @@ import {
 } from './tooltip.styles';
 import { cn } from '@/lib/cn';
 import { animateTooltipIn, animateTooltipOut } from './tooltip.animation';
-import { useAnimatedOpen } from '../../hooks/useAnimatedOpen';
+import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
 
 export function Tooltip({
   children,

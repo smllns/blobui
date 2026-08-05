@@ -28,7 +28,7 @@ import {
   animateOverlayEnter,
   animateOverlayExit,
 } from './dialog.animations';
-import { mergeRefs } from '../../lib/mergeRefs';
+import { mergeRefs } from '@/lib/mergeRefs';
 
 type DialogContextValue = {
   contentRef: React.RefObject<HTMLDivElement | null>;

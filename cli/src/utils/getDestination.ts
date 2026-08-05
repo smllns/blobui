@@ -1,27 +1,38 @@
 import path from 'node:path';
-
 import type { Config } from './getConfig.js';
+
+function resolveAlias(cwd: string, alias: string, filePath: string) {
+  return path.join(cwd, alias, filePath);
+}
 
 export function getDestination(filePath: string, config: Config): string {
   const cwd = process.cwd();
 
   if (filePath.startsWith('components/')) {
-    return path.join(
+    return resolveAlias(
       cwd,
       config.aliases.components,
-      filePath.slice('components/'.length),
+      filePath.replace('components/', ''),
+    );
+  }
+
+  if (filePath.startsWith('ui/')) {
+    return resolveAlias(
+      cwd,
+      config.aliases.components,
+      filePath.replace('ui/', ''),
     );
   }
 
   if (filePath.startsWith('lib/')) {
-    return path.join(cwd, config.aliases.lib, filePath.slice('lib/'.length));
+    return resolveAlias(cwd, config.aliases.lib, filePath.replace('lib/', ''));
   }
 
-  if (filePath.startsWith('ui/')) {
-    return path.join(
+  if (filePath.startsWith('hooks/')) {
+    return resolveAlias(
       cwd,
-      config.aliases.components,
-      filePath.slice('ui/'.length),
+      config.aliases.hooks,
+      filePath.replace('hooks/', ''),
     );
   }
 

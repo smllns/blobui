@@ -4,7 +4,7 @@ import { toastStyles, toastIconStyles } from './toast.styles';
 import type { ToastProps } from './toast.types';
 import { animateToastIn, animateToastOut } from './toast.animation';
 import { Button } from '../button/Button';
-import { mergeRefs } from '../../lib/mergeRefs';
+import { mergeRefs } from '@/lib/mergeRefs';
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (

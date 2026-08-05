@@ -1,14 +1,20 @@
 import path from 'node:path';
+function resolveAlias(cwd, alias, filePath) {
+    return path.join(cwd, alias, filePath);
+}
 export function getDestination(filePath, config) {
     const cwd = process.cwd();
     if (filePath.startsWith('components/')) {
-        return path.join(cwd, config.aliases.components, filePath.slice('components/'.length));
-    }
-    if (filePath.startsWith('lib/')) {
-        return path.join(cwd, config.aliases.lib, filePath.slice('lib/'.length));
+        return resolveAlias(cwd, config.aliases.components, filePath.replace('components/', ''));
     }
     if (filePath.startsWith('ui/')) {
-        return path.join(cwd, config.aliases.components, filePath.slice('ui/'.length));
+        return resolveAlias(cwd, config.aliases.components, filePath.replace('ui/', ''));
+    }
+    if (filePath.startsWith('lib/')) {
+        return resolveAlias(cwd, config.aliases.lib, filePath.replace('lib/', ''));
+    }
+    if (filePath.startsWith('hooks/')) {
+        return resolveAlias(cwd, config.aliases.hooks, filePath.replace('hooks/', ''));
     }
     return path.join(cwd, filePath);
 }

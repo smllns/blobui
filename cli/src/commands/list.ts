@@ -1,18 +1,12 @@
-import { REGISTRY_URL } from '../config.js';
 import { colors } from '../utils/colors.js';
-import { fetchJson } from '../utils/fetchJson.js';
-
-type RegistryIndex = {
-  components: {
-    name: string;
-    path: string;
-  }[];
-};
+import { getRegistryIndex } from '../utils/getRegistryIndex.js';
 
 export async function listComponents() {
-  const index = await fetchJson<RegistryIndex>(`${REGISTRY_URL}/index.json`);
+  const index = await getRegistryIndex();
 
-  console.log(`\n${colors.bold('Available components:')}\n`);
+  console.log(
+    `${colors.bold('Available components')} ${colors.dim(`(${index.components.length})`)}\n`,
+  );
 
   if (!index.components.length) {
     console.log(`${colors.warning('⚠')} No components found`);
