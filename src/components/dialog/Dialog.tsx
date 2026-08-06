@@ -1,5 +1,12 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { createContext, forwardRef, useContext, useRef, useState } from 'react';
+import {
+  createContext,
+  forwardRef,
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+} from 'react';
 import { cn } from '@/lib/cn';
 import CloseX from '../../ui/CloseX';
 
@@ -143,15 +150,16 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
   ) => {
     const { contentRef, overlayRef } = useDialogContext();
 
-    const contentRefs = mergeRefs(contentRef, forwardedRef);
+    const setContentRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        mergeRefs(contentRef, forwardedRef)(node);
 
-    const setContentRef = (node: HTMLDivElement) => {
-      contentRefs(node);
-
-      if (node) {
-        animateDialogEnter(node);
-      }
-    };
+        if (node) {
+          animateDialogEnter(node);
+        }
+      },
+      [contentRef, forwardedRef],
+    );
 
     const setOverlayRef = (node: HTMLDivElement | null) => {
       overlayRef.current = node;

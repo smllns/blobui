@@ -1,12 +1,7 @@
 import { Select } from '../../components/select/Select';
 import { SelectItem } from '../../components/select/SelectItem';
 import { COMMON_VARIANTS } from '../../lib/options';
-
-export const OPTIONS = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3' },
-];
+import { OPTIONS } from './select.data';
 
 export function SelectPreview() {
   return (

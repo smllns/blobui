@@ -20,7 +20,7 @@ export function InputPlayground() {
     value: InputPlaygroundState[K],
   ) => {
     setState((prev) => {
-      let next = {
+      const next = {
         ...prev,
         [key]: value,
       };

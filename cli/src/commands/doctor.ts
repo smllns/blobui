@@ -4,6 +4,11 @@ import { colors } from '../utils/colors.js';
 import { exists } from '../utils/exists.js';
 import { getConfigPath } from '../utils/getConfigPath.js';
 
+type PackageJson = {
+  dependencies?: Record<string, string>;
+  devDependencies?: Record<string, string>;
+};
+
 export async function doctor() {
   const cwd = process.cwd();
 
@@ -25,7 +30,7 @@ export async function doctor() {
   // package.json
   const packageJsonPath = path.join(cwd, 'package.json');
 
-  let packageJson: any = null;
+  let packageJson: PackageJson | null = null;
 
   if (await exists(packageJsonPath)) {
     console.log(`${colors.success('✔')} package.json found`);

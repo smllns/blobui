@@ -16,12 +16,14 @@ export async function getConfig(): Promise<Config> {
 
   try {
     content = await readFile(configPath, 'utf-8');
-  } catch {
-    throw new Error('components.json not found. Run "blobui init" first.');
+  } catch (error) {
+    throw new Error('components.json not found. Run "blobui init" first.', {
+      cause: error,
+    });
   }
 
   try {
-    const config = JSON.parse(content);
+    const config = JSON.parse(content) as Config;
 
     if (
       !config.aliases?.components ||
@@ -34,7 +36,9 @@ export async function getConfig(): Promise<Config> {
     return config;
   } catch (error) {
     if (error instanceof SyntaxError) {
-      throw new Error('components.json contains invalid JSON.');
+      throw new Error('components.json contains invalid JSON.', {
+        cause: error,
+      });
     }
 
     throw error;

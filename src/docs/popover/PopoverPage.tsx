@@ -1,7 +1,8 @@
 import { DocsPage } from '../components/DocsPage';
 import { PopoverPlayground } from './PopoverPlayground';
 import { componentProps } from '../../lib/props';
-import { PreviewPopover, previewPopovers } from './popover.data';
+import { previewPopovers } from './popover.data';
+import { PreviewPopover } from './PreviewPopover';
 
 export function PopoverDocs() {
   return (

@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { cn } from '@/lib/cn';
 import { toastStyles, toastIconStyles } from './toast.styles';
 import type { ToastProps } from './toast.types';
@@ -31,7 +31,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       animateToastIn(localRef.current);
     }, []);
 
-    const closeToast = () => {
+    const closeToast = useCallback(() => {
       const element = localRef.current;
 
       if (!element) {
@@ -42,13 +42,13 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       animateToastOut(element, () => {
         onClose?.();
       });
-    };
+    }, [onClose]);
 
     useEffect(() => {
       if (closing) {
         closeToast();
       }
-    }, [closing]);
+    }, [closing, closeToast]);
 
     return (
       <div
