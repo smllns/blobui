@@ -1,5 +1,6 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { applyEdits, modify } from 'jsonc-parser';
 import { colors } from './colors.js';
 
 const TS_CONFIG_FILES = ['tsconfig.app.json', 'tsconfig.json'];
@@ -19,20 +20,28 @@ export async function updateTsConfig() {
 
   const content = await readFile(configPath, 'utf8');
 
-  const config = JSON.parse(content);
+  const edits = modify(
+    content,
+    ['compilerOptions', 'paths', '@/*'],
+    ['./src/*'],
+    {
+      formattingOptions: {
+        insertSpaces: true,
+        tabSize: 2,
+      },
+      getInsertionIndex: () => -1,
+    },
+  );
 
-  config.compilerOptions ??= {};
-  config.compilerOptions.paths ??= {};
-
-  if (config.compilerOptions.paths['@/*']) {
+  if (!edits.length) {
     console.log(`${colors.warning('⚠')} @/* alias already exists`);
 
     return;
   }
 
-  config.compilerOptions.paths['@/*'] = ['./src/*'];
+  const updated = applyEdits(content, edits);
 
-  await writeFile(configPath, JSON.stringify(config, null, 2) + '\n');
+  await writeFile(configPath, updated);
 
   console.log(
     `${colors.success('✔')} Added @/* alias to ${path.basename(configPath)}`,
@@ -46,7 +55,9 @@ async function findTsConfig(cwd: string) {
     try {
       await access(fullPath);
       return fullPath;
-    } catch {}
+    } catch {
+      // continue
+    }
   }
 
   return null;
