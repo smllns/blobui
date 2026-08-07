@@ -2,6 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { Badge } from '../../components/badge/Badge';
 import { componentProps } from '../../lib/props';
 import { BadgePlayground } from './BadgePlayground';
+import { getInstallation } from '../utils/getInstallation';
 
 export function BadgeDocs() {
   return (
@@ -17,6 +18,7 @@ export function BadgeDocs() {
         </>
       }
       playground={<BadgePlayground />}
+      installation={getInstallation('badge')}
       props={componentProps.badge}
     />
   );

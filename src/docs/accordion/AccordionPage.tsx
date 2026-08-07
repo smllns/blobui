@@ -3,6 +3,7 @@ import { Accordion } from '../../components/accordion/Accordion';
 import { AccordionPlayground } from './AccordionPlayground';
 import { componentProps } from '@/lib/props';
 import { AccordionItems } from './accordion.data';
+import { getInstallation } from '../utils/getInstallation';
 
 export function AccordionDocs() {
   return (
@@ -29,6 +30,7 @@ export function AccordionDocs() {
         </div>
       }
       playground={<AccordionPlayground />}
+      installation={getInstallation('accordion')}
       props={componentProps.accordion}
     />
   );

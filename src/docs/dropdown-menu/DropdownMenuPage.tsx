@@ -3,6 +3,7 @@ import { DropdownMenu } from '../../components/dropdown-menu/DropdownMenu';
 import { DropdownMenuPlayground } from './DropdownMenuPlayground';
 import { componentProps } from '../../lib/props';
 import { MENU_ITEMS, VARIANTS } from './dropdownMenu.data';
+import { getInstallation } from '../utils/getInstallation';
 
 export function DropdownMenuDocs() {
   return (
@@ -24,6 +25,7 @@ export function DropdownMenuDocs() {
         </>
       }
       playground={<DropdownMenuPlayground />}
+      installation={getInstallation('dropdownMenu')}
       props={componentProps.dropdown.root}
       subElementProps={componentProps.dropdown.item}
       subElementHeader='Dropdown Menu Item'

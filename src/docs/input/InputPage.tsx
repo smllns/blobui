@@ -2,6 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { InputPlayground } from './InputPlayground';
 import { Input } from '../../components/input/Input';
 import { componentProps } from '../../lib/props';
+import { getInstallation } from '../utils/getInstallation';
 
 export function InputDocs() {
   return (
@@ -17,6 +18,7 @@ export function InputDocs() {
         </>
       }
       playground={<InputPlayground />}
+      installation={getInstallation('input')}
       props={componentProps.input}
     />
   );

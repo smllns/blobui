@@ -2,6 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { ButtonPlayground } from './ButtonPlayground';
 import { Button } from '../../components/button/Button';
 import { componentProps } from '../../lib/props';
+import { getInstallation } from '../utils/getInstallation';
 
 export function ButtonDocs() {
   return (
@@ -18,6 +19,7 @@ export function ButtonDocs() {
         </>
       }
       playground={<ButtonPlayground />}
+      installation={getInstallation('button')}
       props={componentProps.button}
     />
   );

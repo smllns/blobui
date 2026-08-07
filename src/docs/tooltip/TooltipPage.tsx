@@ -4,6 +4,7 @@ import { Tooltip } from '../../components/tooltip/Tooltip';
 import { Button } from '../../components/button/Button';
 import { componentProps } from '../../lib/props';
 import { previewTooltips } from './tooltip.data';
+import { getInstallation } from '../utils/getInstallation';
 
 export function TooltipDocs() {
   return (
@@ -20,6 +21,7 @@ export function TooltipDocs() {
         </>
       }
       playground={<TooltipPlayground />}
+      installation={getInstallation('tooltip')}
       props={componentProps.tooltip}
     />
   );

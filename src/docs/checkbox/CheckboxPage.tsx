@@ -2,6 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { CheckboxPlayground } from './CheckBoxPlayground';
 import { Checkbox } from '../../components/checkbox/CheckBox';
 import { componentProps } from '../../lib/props';
+import { getInstallation } from '../utils/getInstallation';
 
 export function CheckboxDocs() {
   return (
@@ -17,6 +18,7 @@ export function CheckboxDocs() {
         </>
       }
       playground={<CheckboxPlayground />}
+      installation={getInstallation('checkbox')}
       props={componentProps.checkbox}
     />
   );

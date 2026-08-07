@@ -3,6 +3,7 @@ import { Toast } from '../../components/toast/Toast';
 import { ToastPlayground } from './ToastPlayground';
 import { componentProps } from '../../lib/props';
 import { previewToasts } from './toast.data';
+import { getInstallation } from '../utils/getInstallation';
 
 export function ToastDocs() {
   return (
@@ -17,6 +18,7 @@ export function ToastDocs() {
         </>
       }
       playground={<ToastPlayground />}
+      installation={getInstallation('toast')}
       props={componentProps.toast}
     />
   );

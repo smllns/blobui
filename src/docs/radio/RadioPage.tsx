@@ -2,6 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { Radio } from '../../components/radio/Radio';
 import { RadioPlayground } from './RadioPlayground';
 import { componentProps } from '../../lib/props';
+import { getInstallation } from '../utils/getInstallation';
 
 export function RadioDocs() {
   return (
@@ -27,6 +28,7 @@ export function RadioDocs() {
         </>
       }
       playground={<RadioPlayground />}
+      installation={getInstallation('radio')}
       props={componentProps.radio}
     />
   );

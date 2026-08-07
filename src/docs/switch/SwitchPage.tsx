@@ -2,6 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { Switch } from '../../components/switch/Switch';
 import { SwitchPlayground } from './SwitchPlayground';
 import { componentProps } from '../../lib/props';
+import { getInstallation } from '../utils/getInstallation';
 
 export function SwitchDocs() {
   return (
@@ -17,6 +18,7 @@ export function SwitchDocs() {
         </>
       }
       playground={<SwitchPlayground />}
+      installation={getInstallation('switch')}
       props={componentProps.switch}
     />
   );

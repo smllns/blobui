@@ -10,9 +10,10 @@ type ToastItem = {
 
 type CodeBlockProps = {
   code: string;
+  title?: string;
 };
 
-export function CodeBlock({ code }: CodeBlockProps) {
+export function CodeBlock({ code, title }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -20,11 +21,13 @@ export function CodeBlock({ code }: CodeBlockProps) {
   const [height, setHeight] = useState('60px');
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const isShortCode = code.split('\n').length <= 5;
+
   useEffect(() => {
-    if (contentRef.current) {
-      setHeight(open ? `${contentRef.current.scrollHeight}px` : '60px');
-    }
-  }, [open, code]);
+    if (!contentRef.current || isShortCode) return;
+
+    setHeight(open ? `${contentRef.current.scrollHeight}px` : '60px');
+  }, [open, isShortCode]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -48,7 +51,7 @@ export function CodeBlock({ code }: CodeBlockProps) {
   return (
     <div className='rounded-xl border border-neutral-200 bg-olive-400/10 overflow-hidden'>
       <div className='flex items-center justify-between px-4 py-3 border-b border-neutral-200 bg-olive-500/10'>
-        <p className='text-sm font-semibold'>Code</p>
+        <p className='text-sm font-semibold'>{title || 'Code'}</p>
 
         <Button variant='secondary' size='xs' onClick={handleCopy}>
           {copied ? 'Copied' : 'Copy'}
@@ -75,32 +78,34 @@ export function CodeBlock({ code }: CodeBlockProps) {
           </pre>
         </div>
 
-        {!open && (
+        {!open && !isShortCode && (
           <div className='absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-olive-400/10 to-transparent pointer-events-none' />
         )}
 
-        <div
-          className={`
+        {!isShortCode && (
+          <div
+            className={`
             absolute left-1/2 -translate-x-1/2
             transition-all duration-300 ease-in-out
             ${open ? 'bottom-2' : 'bottom-1/2 translate-y-1/2'}
           `}
-        >
-          <Button
-            variant='secondary'
-            size='xs'
-            onClick={() => setOpen((v) => !v)}
-            className='flex items-center gap-1 shadow-md'
           >
-            <ChevronDown
-              className={`w-3 h-3 transition-transform duration-300 ${
-                open ? 'rotate-180' : ''
-              }`}
-            />
+            <Button
+              variant='secondary'
+              size='xs'
+              onClick={() => setOpen((v) => !v)}
+              className='flex items-center gap-1 shadow-md'
+            >
+              <ChevronDown
+                className={`w-3 h-3 transition-transform duration-300 ${
+                  open ? 'rotate-180' : ''
+                }`}
+              />
 
-            {open ? 'Hide' : 'Show'}
-          </Button>
-        </div>
+              {open ? 'Hide' : 'Show'}
+            </Button>
+          </div>
+        )}
       </div>
 
       {toasts.length > 0 && (

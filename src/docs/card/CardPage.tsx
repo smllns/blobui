@@ -3,6 +3,7 @@ import { Card } from '../../components/card/Card';
 import { CardPlayground } from './CardPlayground';
 import { componentProps } from '../../lib/props';
 import { cardVariants } from './card.data';
+import { getInstallation } from '../utils/getInstallation';
 
 export function CardDocs() {
   return (
@@ -20,6 +21,7 @@ export function CardDocs() {
         </>
       }
       playground={<CardPlayground />}
+      installation={getInstallation('card')}
       props={componentProps.card}
     />
   );

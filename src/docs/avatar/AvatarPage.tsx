@@ -2,6 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { AvatarPlayground } from './AvatarPlayground';
 import { Avatar } from '../../components/avatar/Avatar';
 import { componentProps } from '../../lib/props';
+import { getInstallation } from '../utils/getInstallation';
 
 export function AvatarDocs() {
   return (
@@ -17,6 +18,7 @@ export function AvatarDocs() {
         </>
       }
       playground={<AvatarPlayground />}
+      installation={getInstallation('avatar')}
       props={componentProps.avatar}
     />
   );

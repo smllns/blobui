@@ -3,6 +3,7 @@ import { PopoverPlayground } from './PopoverPlayground';
 import { componentProps } from '../../lib/props';
 import { previewPopovers } from './popover.data';
 import { PreviewPopover } from './PreviewPopover';
+import { getInstallation } from '../utils/getInstallation';
 
 export function PopoverDocs() {
   return (
@@ -17,6 +18,7 @@ export function PopoverDocs() {
         </>
       }
       playground={<PopoverPlayground />}
+      installation={getInstallation('popover')}
       props={componentProps.popover}
     />
   );

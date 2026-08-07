@@ -13,6 +13,7 @@ import {
 } from '../../components/dialog/Dialog';
 import { componentProps } from '../../lib/props';
 import { dialogs } from './dialog.data';
+import { getInstallation } from '../utils/getInstallation';
 
 export function DialogDocs() {
   return (
@@ -51,6 +52,7 @@ export function DialogDocs() {
         </>
       }
       playground={<DialogPlayground />}
+      installation={getInstallation('dialog')}
       props={componentProps.dialog.root}
       subElementHeader='Dialog Content'
       subElementProps={componentProps.dialog.item}

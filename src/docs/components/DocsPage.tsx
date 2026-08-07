@@ -2,12 +2,20 @@ import type { ReactNode } from 'react';
 import PageHeader from './PageHeader';
 import { ComponentPreview } from './ComponentPreview';
 import { PropsTable } from './PropsTable';
+import { InstallationBlock } from './InstallationBlock';
+
 type ComponentProp = {
   name: string;
   type: string;
   default: string;
   description: string;
 };
+
+export type InstallationFile = {
+  path: string;
+  code: string;
+};
+
 type Props = {
   header: string;
   description: string;
@@ -18,6 +26,11 @@ type Props = {
   subElementHeader?: string;
   secondSubElementProps?: ComponentProp[];
   secondSubElementHeader?: string;
+  installation?: {
+    component: string;
+    files: InstallationFile[];
+    dependencies?: string[];
+  };
 };
 
 export function DocsPage({
@@ -30,6 +43,7 @@ export function DocsPage({
   subElementHeader,
   secondSubElementProps,
   secondSubElementHeader,
+  installation,
 }: Props) {
   return (
     <div className='flex flex-col gap-4'>
@@ -51,6 +65,14 @@ export function DocsPage({
       )}
 
       {playground}
+
+      {installation && (
+        <InstallationBlock
+          component={installation.component}
+          files={installation.files}
+          dependencies={installation.dependencies}
+        />
+      )}
 
       {props && <PropsTable title={header} props={props} />}
       {subElementProps && (

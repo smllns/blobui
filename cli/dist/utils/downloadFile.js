@@ -10,8 +10,10 @@ export async function downloadFile(filePath, config) {
     try {
         response = await fetch(url);
     }
-    catch {
-        throw new Error(`Failed to connect to registry while downloading "${filePath}"`);
+    catch (error) {
+        throw new Error(`Failed to connect to registry while downloading "${filePath}"`, {
+            cause: error,
+        });
     }
     if (!response.ok) {
         throw new Error(`Failed to download "${filePath}" (${response.status})`);
@@ -24,7 +26,9 @@ export async function downloadFile(filePath, config) {
         await writeFile(destination, content, 'utf-8');
     }
     catch (error) {
-        throw new Error(`Failed to write file "${destination}": ${error instanceof Error ? error.message : ''}`);
+        throw new Error(`Failed to write file "${destination}"`, {
+            cause: error,
+        });
     }
     console.log(`${colors.success('✔')} ${filePath}`);
 }
