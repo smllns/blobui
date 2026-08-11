@@ -7,7 +7,7 @@ import {
   checkboxRowStyles,
   checkboxStyles,
 } from './checkbox.styles';
-import { helperErrorStyles, helperStyles } from '../shared/styles';
+import { helperErrorStyles, helperStyles } from '@/components/shared/styles';
 import { cn } from '@/lib/cn';
 import { mergeRefs } from '@/lib/mergeRefs';
 import { Check } from '@/ui/icons/Check';

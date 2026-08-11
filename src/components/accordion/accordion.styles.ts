@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { disabledStyles, motion } from '../shared/styles';
+import { disabledStyles, motion } from '@/components/shared/styles';
 
 export const accordionStyles = cva('w-full rounded-xl overflow-hidden', {
   variants: {

@@ -12,14 +12,14 @@ import {
   helperStyles,
   labelStyles,
   requiredStyles,
-} from '../shared/styles';
+} from '@/components/shared/styles';
 import { cn } from '@/lib/cn';
 import { animateSelectEnter, animateSelectExit } from './select.animation';
 import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
 import {
   fieldInsideLabelStyles,
   fieldStackStyles,
-} from '../shared/field.styles';
+} from '@/components/shared/field.styles';
 import { ChevronDown } from '@/ui/icons/ChevronDown';
 
 export function Select({

@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { motion, transitionControl } from '../shared/styles';
+import { motion, transitionControl } from '@/components/shared/styles';
 
 export const radioStyles = cva(
   [

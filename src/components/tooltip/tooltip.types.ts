@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { tooltipStyles } from './tooltip.styles';
-import type { Align, Side } from '../shared/types';
+import type { Align, Side } from '@/components/shared/types';
 
 export interface TooltipProps
   extends

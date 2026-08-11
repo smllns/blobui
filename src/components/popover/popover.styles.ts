@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { surfaceStyles } from '../shared/surface.styles';
+import { surfaceStyles } from '@/components/shared/surface.styles';
 
 export const popoverContentStyles = cva('z-50 outline-none', {
   variants: {

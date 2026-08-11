@@ -1,11 +1,11 @@
 import { cva } from 'class-variance-authority';
-import { fieldShellStyles } from '../shared/field.styles';
+import { fieldShellStyles } from '@/components/shared/field.styles';
 import {
   menuItemStyles,
   menuStyles,
   surfaceStyles,
-} from '../shared/surface.styles';
-import { motion } from '../shared/styles';
+} from '@/components/shared/surface.styles';
+import { motion } from '@/components/shared/styles';
 
 export const selectTriggerStyles = cva(
   [

@@ -5,7 +5,7 @@ import {
   helperStyles,
   labelStyles,
   requiredStyles,
-} from '../shared/styles';
+} from '@/components/shared/styles';
 import type { InputProps } from './input.types';
 import {
   fieldControlStyles,
@@ -13,7 +13,7 @@ import {
   fieldInsideLabelStyles,
   fieldShellStyles,
   fieldStackStyles,
-} from '../shared/field.styles';
+} from '@/components/shared/field.styles';
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (

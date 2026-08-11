@@ -1,6 +1,10 @@
 import { cva } from 'class-variance-authority';
-import { disabledStyles, motion, transitionControl } from '../shared/styles';
-import { menuStyles, surfaceStyles } from '../shared/surface.styles';
+import {
+  disabledStyles,
+  motion,
+  transitionControl,
+} from '@/components/shared/styles';
+import { menuStyles, surfaceStyles } from '@/components/shared/surface.styles';
 
 export const dropdownMenuContentStyles = [
   surfaceStyles(),

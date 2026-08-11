@@ -10,7 +10,10 @@ import {
   animateDropdownExit,
 } from './dropdown-menu.animation';
 import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
-import { menuLabelStyles, menuShortcutStyles } from '../shared/surface.styles';
+import {
+  menuLabelStyles,
+  menuShortcutStyles,
+} from '@/components/shared/surface.styles';
 
 export function DropdownMenu({
   children,

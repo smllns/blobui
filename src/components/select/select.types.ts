@@ -4,7 +4,7 @@ import type {
   CommonStylingVariant,
   ExtendedSize,
   LabelPlacement,
-} from '../shared/types';
+} from '@/components/shared/types';
 
 export type SelectWidth = 'auto' | 'sm' | 'md' | 'lg' | 'full';
 

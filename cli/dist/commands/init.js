@@ -72,9 +72,10 @@ export async function initProject() {
     await updateTsConfig();
     await updateViteConfig();
     console.log(`${colors.success('✨ Created')} components.json`);
-    console.log(`\n${colors.warning('→')}  Add the theme styles to your CSS entry, after \`@import "tailwindcss"\`:\n` +
-        `    @import './${answers.styles || 'src/styles'}/palette.css';\n` +
-        `    @import './${answers.styles || 'src/styles'}/tokens.css';\n` +
-        `    @import './${answers.styles || 'src/styles'}/theme.css';\n` +
-        `    @import './${answers.styles || 'src/styles'}/base.css';\n`);
+    console.log(`\n${colors.warning('→')} Add the theme styles to your CSS entry, after \`@import "tailwindcss"\`:\n` +
+        `    Import the following files from your \`styles\` directory:\n` +
+        `    • palette.css\n` +
+        `    • tokens.css\n` +
+        `    • theme.css\n` +
+        `    • base.css\n`);
 }

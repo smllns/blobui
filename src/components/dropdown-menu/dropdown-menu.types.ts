@@ -4,7 +4,7 @@ import type {
   CommonStylingVariant,
   ExtendedSize,
   Side,
-} from '../shared/types';
+} from '@/components/shared/types';
 
 export type DropdownMenuProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.Root

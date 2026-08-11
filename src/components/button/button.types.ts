@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import type { ExtendedSize } from '../shared/types';
+import type { ExtendedSize } from '@/components/shared/types';
 
 export type ButtonVariant =
   | 'primary'

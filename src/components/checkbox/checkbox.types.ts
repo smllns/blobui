@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import type { ChoiceSize } from '../shared/types';
+import type { ChoiceSize } from '@/components/shared/types';
 
 export interface CheckboxProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,

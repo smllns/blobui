@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { motion } from '../shared/styles';
+import { motion } from '@/components/shared/styles';
 
 export const cardStyles = cva(
   [

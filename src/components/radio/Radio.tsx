@@ -6,7 +6,7 @@ import {
   radioRowStyles,
   radioStyles,
 } from './radio.styles';
-import { helperErrorStyles, helperStyles } from '../shared/styles';
+import { helperErrorStyles, helperStyles } from '@/components/shared/styles';
 import type { RadioProps } from './radio.types';
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(

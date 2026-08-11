@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { motion, transitionControl } from '../shared/styles';
+import { motion, transitionControl } from '@/components/shared/styles';
 
 export const dialogOverlayStyles = cva(
   'fixed inset-0 z-50 backdrop-blur-[2px]',

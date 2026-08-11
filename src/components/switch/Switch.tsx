@@ -6,7 +6,7 @@ import {
   switchStyles,
   switchThumbStyles,
 } from './switch.styles';
-import { helperErrorStyles, helperStyles } from '../shared/styles';
+import { helperErrorStyles, helperStyles } from '@/components/shared/styles';
 import type { SwitchProps } from './switch.types';
 
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(

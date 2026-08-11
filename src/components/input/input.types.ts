@@ -3,7 +3,7 @@ import type {
   CommonStylingVariant,
   ExtendedSize,
   LabelPlacement,
-} from '../shared/types';
+} from '@/components/shared/types';
 
 export interface InputProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
