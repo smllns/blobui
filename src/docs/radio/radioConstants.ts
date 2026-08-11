@@ -1,13 +1,12 @@
-import type { BasicSize, CommonStylingVariant } from '../../components/types';
-import { BASIC_SIZE_OPTIONS, COMMON_VARIANTS } from '../../lib/options';
+import type { ChoiceSize } from '@/components/shared/types';
+import { CHOICE_SIZE_OPTIONS } from '../../lib/options';
 import {
   checkboxControl,
   selectControl,
 } from '../components/playground/controls/controlHelpers';
 
 export type RadioPlaygroundState = {
-  variant: CommonStylingVariant;
-  size: BasicSize;
+  size: ChoiceSize;
   checked: boolean;
   disabled: boolean;
   label: string;
@@ -17,7 +16,6 @@ export type RadioPlaygroundState = {
 };
 
 export const RADIO_INITIAL_STATE: RadioPlaygroundState = {
-  variant: 'default',
   checked: false,
   disabled: false,
   size: 'md',
@@ -28,8 +26,7 @@ export const RADIO_INITIAL_STATE: RadioPlaygroundState = {
 };
 
 export const RADIO_CONTROLS = [
-  selectControl<RadioPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
-  selectControl<RadioPlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
+  selectControl<RadioPlaygroundState>('size', 'Size', CHOICE_SIZE_OPTIONS),
   checkboxControl<RadioPlaygroundState>('checked', 'Checked'),
   checkboxControl<RadioPlaygroundState>('disabled', 'Disabled'),
   checkboxControl<RadioPlaygroundState>('label', 'Label'),

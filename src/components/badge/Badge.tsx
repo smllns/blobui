@@ -1,24 +1,37 @@
 import { forwardRef } from 'react';
 import { cn } from '@/lib/cn';
-import { badgeStyles } from './badge.styles';
+import { badgeDotStyles, badgeStyles } from './badge.styles';
 import type { BadgeProps } from './badge.types';
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
-    { variant, size, className, children, leftIcon, rightIcon, ...props },
+    {
+      tone,
+      emphasis,
+      shape,
+      size,
+      dot,
+      className,
+      children,
+      leftIcon,
+      rightIcon,
+      ...props
+    },
     ref,
   ) => {
     return (
       <span
         ref={ref}
-        className={cn(badgeStyles({ variant, size }), className)}
+        className={cn(badgeStyles({ tone, emphasis, shape, size }), className)}
         {...props}
       >
-        {leftIcon && <span className='flex items-center'>{leftIcon}</span>}
+        {dot && <span aria-hidden='true' className={badgeDotStyles} />}
+
+        {leftIcon}
 
         <span className='flex items-center'>{children}</span>
 
-        {rightIcon && <span className='flex items-center'>{rightIcon}</span>}
+        {rightIcon}
       </span>
     );
   },

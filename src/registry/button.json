@@ -1,7 +1,7 @@
 {
   "name": "button",
   "type": "registry:ui",
-  "registryDependencies": [],
+  "registryDependencies": ["theme"],
   "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
   "files": [
     {
@@ -17,11 +17,11 @@
       "type": "type"
     },
     {
-      "path": "components/styles.ts",
+      "path": "components/shared/styles.ts",
       "type": "shared"
     },
     {
-      "path": "components/types.ts",
+      "path": "components/shared/types.ts",
       "type": "shared"
     },
     {
@@ -29,8 +29,12 @@
       "type": "lib"
     },
     {
-      "path": "ui/Spinner.tsx",
-      "type": "shared"
+      "path": "ui/icons/Spinner.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
     }
   ]
 }

@@ -2,7 +2,10 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { switchStyles } from './switch.styles';
 
-type NativeSwitchProps = Omit<ComponentPropsWithoutRef<'button'>, 'onChange'>;
+type NativeSwitchProps = Omit<
+  ComponentPropsWithoutRef<'button'>,
+  'onChange' | 'children'
+>;
 
 export interface SwitchProps
   extends NativeSwitchProps, VariantProps<typeof switchStyles> {

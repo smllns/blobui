@@ -11,7 +11,7 @@ import { prop } from './helpers';
 export const buttonProps = [
   prop(
     'variant',
-    "'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'",
+    "'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'destructive' | 'link'",
     'primary',
     'Visual style of the button',
   ),
@@ -27,7 +27,14 @@ export const buttonProps = [
     'loading',
     'boolean',
     'false',
-    'Shows loading state and disables interaction',
+    'Shows a spinner in place of the leading icon and disables interaction',
+  ),
+
+  prop(
+    'iconOnly',
+    'boolean',
+    'false',
+    'Square icon-only button. Needs an aria-label',
   ),
 
   fullWidthProp,

@@ -1,16 +1,17 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import type { ExtendedSize } from '../types';
+import type { ChoiceSize } from '../shared/types';
 
 export interface CheckboxProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'size'
 > {
-  label?: string;
-  size?: ExtendedSize;
+  label?: ReactNode;
+  size?: ChoiceSize;
   error?: boolean;
   disabled?: boolean;
-  description?: string;
-  errorMessage?: string;
+  description?: ReactNode;
+  errorMessage?: ReactNode;
   fullWidth?: boolean;
-  leftIcon?: ReactNode;
+  indeterminate?: boolean;
+  icon?: ReactNode;
 }

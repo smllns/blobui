@@ -2,7 +2,6 @@ import type { SwitchPlaygroundState } from './switchConstants';
 
 export function generateSwitchCode(state: SwitchPlaygroundState) {
   const props = [
-    `variant="${state.variant}"`,
     `size="${state.size}"`,
     state.checked && 'checked',
     state.disabled && 'disabled',

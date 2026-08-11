@@ -3,10 +3,10 @@ import { prop } from './helpers';
 
 export const toastProps = [
   prop(
-    'variant',
-    "'default' | 'success' | 'warning' | 'destructive' | 'info'",
-    'default',
-    'Visual style of the toast',
+    'tone',
+    "'neutral' | 'success' | 'warning' | 'danger' | 'info'",
+    'neutral',
+    'Colours the icon. The panel stays neutral',
   ),
 
   prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls toast size'),

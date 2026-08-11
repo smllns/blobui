@@ -1,8 +1,13 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import { cn } from '@/lib/cn';
-import { switchStyles, switchThumbStyles } from './switch.styles';
+import {
+  switchLabelStyles,
+  switchRowStyles,
+  switchStyles,
+  switchThumbStyles,
+} from './switch.styles';
+import { helperErrorStyles, helperStyles } from '../shared/styles';
 import type { SwitchProps } from './switch.types';
-import { labelSizeMap } from '../styles';
 
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
   (
@@ -14,17 +19,22 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
       description,
       error,
       errorMessage,
-      variant,
       size = 'md',
       disabled,
       className,
+      id,
       ...props
     },
     ref,
   ) => {
     const [internal, setInternal] = useState(defaultChecked ?? false);
-    const safeSize = size ?? 'md';
     const isChecked = checked ?? internal;
+    const isError = error || !!errorMessage;
+
+    const generatedId = useId();
+    const switchId = id ?? generatedId;
+
+    const state = isChecked ? 'checked' : 'unchecked';
 
     const handleToggle = () => {
       if (disabled) return;
@@ -39,44 +49,49 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     };
 
     return (
-      <div className='flex items-center flex-col gap-2'>
-        <div className='flex h-6 flex-row gap-2 items-center '>
+      <div className={cn('flex flex-col gap-1.5', className)}>
+        <div className={switchRowStyles}>
           <button
             ref={ref}
+            id={switchId}
             type='button'
             role='switch'
             aria-checked={isChecked}
-            data-state={isChecked ? 'checked' : 'unchecked'}
+            aria-invalid={isError || undefined}
+            aria-labelledby={label ? `${switchId}-label` : undefined}
+            aria-describedby={
+              description || errorMessage ? `${switchId}-helper` : undefined
+            }
+            data-state={state}
             disabled={disabled}
             onClick={handleToggle}
-            className={cn(
-              switchStyles({ variant, size, error: error || !!errorMessage }),
-              className,
-            )}
+            className={cn(switchStyles({ size, error: isError }))}
             {...props}
           >
-            <span
-              data-state={isChecked ? 'checked' : 'unchecked'}
-              className={cn(switchThumbStyles({ size }))}
-            />
+            <span data-state={state} className={cn(switchThumbStyles)} />
           </button>
-          {label && (
-            <span className={cn('text-neutral-900 ', labelSizeMap[safeSize])}>
-              {label}
-            </span>
-          )}{' '}
-        </div>
 
-        {(description || errorMessage) && (
-          <span
-            className={cn(
-              'text-xs',
-              errorMessage ? 'text-red-500' : 'text-neutral-500',
+          <div className='flex flex-col'>
+            {label && (
+              <span
+                id={`${switchId}-label`}
+                onClick={handleToggle}
+                className={switchLabelStyles({ disabled })}
+              >
+                {label}
+              </span>
             )}
-          >
-            {errorMessage ?? description}
-          </span>
-        )}
+
+            {(description || errorMessage) && (
+              <p
+                id={`${switchId}-helper`}
+                className={cn(errorMessage ? helperErrorStyles : helperStyles)}
+              >
+                {errorMessage ?? description}
+              </p>
+            )}
+          </div>
+        </div>
       </div>
     );
   },

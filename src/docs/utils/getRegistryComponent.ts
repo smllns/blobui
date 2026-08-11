@@ -1,4 +1,4 @@
-import { registry } from '../../lib/registry';
+import { registry } from '@/lib/registry';
 
 export type RegistryComponent = {
   name: string;

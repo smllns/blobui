@@ -3,13 +3,13 @@ import type {
   BasicSize,
   CommonStylingVariant,
   Side,
-} from '../../components/types';
+} from '../../components/shared/types';
 import {
   ALIGN_OPTIONS,
   BASIC_SIZE_OPTIONS,
   COMMON_VARIANTS,
   SIDE_OPTIONS,
-} from '../../lib/options';
+} from '@/lib/options';
 import {
   checkboxControl,
   selectControl,

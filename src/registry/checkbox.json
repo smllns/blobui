@@ -1,7 +1,7 @@
 {
   "name": "checkbox",
   "type": "registry:ui",
-  "registryDependencies": [],
+  "registryDependencies": ["theme"],
   "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {
@@ -17,16 +17,28 @@
       "type": "type"
     },
     {
-      "path": "components/styles.ts",
+      "path": "components/shared/styles.ts",
       "type": "shared"
     },
     {
-      "path": "components/types.ts",
+      "path": "components/shared/types.ts",
       "type": "shared"
     },
     {
       "path": "lib/cn.ts",
       "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/icons/Check.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
     }
   ]
 }

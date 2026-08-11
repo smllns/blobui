@@ -19,9 +19,9 @@ export function InstallationBlock({
   return (
     <section className='space-y-6'>
       <div>
-        <h2 className='text-2xl font-semibold'>Installation</h2>
+        <h2 className='text-heading-xl text-fg'>Installation</h2>
 
-        <p className='py-2 text-neutral-600'>
+        <p className='py-2 text-fg-secondary'>
           Install this component with the BlobUI CLI or copy the source files
           manually.
         </p>
@@ -30,7 +30,7 @@ export function InstallationBlock({
       <div className='inline-flex p-2 gap-4'>
         <Button
           size='md'
-          variant={tab === 'cli' ? 'outline' : 'secondary'}
+          variant={tab === 'cli' ? 'primary' : 'secondary'}
           onClick={() => setTab('cli')}
         >
           CLI
@@ -38,7 +38,7 @@ export function InstallationBlock({
 
         <Button
           size='md'
-          variant={tab === 'manual' ? 'outline' : 'secondary'}
+          variant={tab === 'manual' ? 'primary' : 'secondary'}
           onClick={() => setTab('manual')}
         >
           Manual
@@ -52,7 +52,7 @@ export function InstallationBlock({
 
         {tab === 'manual' && (
           <div className='flex flex-col gap-6'>
-            <p className='text-lg font-normal text-neutral-700'>
+            <p className='text-body-lg text-fg-secondary'>
               Install the following dependencies in your project before copying
               the source files:
             </p>
@@ -60,7 +60,7 @@ export function InstallationBlock({
               title='npm'
               code={`npm install ${dependencies?.join(' ')}`}
             />
-            <p className='text-lg font-normal text-neutral-700'>
+            <p className='text-body-lg text-fg-secondary'>
               Copy the following source files into your project:
             </p>
             {files.map((file) => (

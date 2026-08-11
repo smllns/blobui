@@ -1,20 +1,21 @@
-import { DialogClose } from '@radix-ui/react-dialog';
 import { DIALOG_CONTROLS, DIALOG_INITIAL_STATE } from './dialogConstants';
 import { generateDialogCode } from './generateDialogCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from '../../components/dialog/Dialog';
 import { Button } from '../../components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
-import { usePlaygroundState } from '../../hooks/usePlaygroundState';
+import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 
 export function DialogPlayground() {
   const { state, update } = usePlaygroundState(DIALOG_INITIAL_STATE);
@@ -49,6 +50,13 @@ export function DialogPlayground() {
                   This action cannot be undone.
                 </DialogDescription>
               </DialogHeader>
+
+              <DialogBody>
+                <p>
+                  This is the main content of the dialog. You can put text,
+                  forms, inputs, or any other content here.
+                </p>
+              </DialogBody>
 
               <DialogFooter>
                 <DialogClose asChild>

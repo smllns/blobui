@@ -1,7 +1,7 @@
 {
   "name": "select",
   "type": "registry:ui",
-  "registryDependencies": [],
+  "registryDependencies": ["theme"],
   "dependencies": [
     "@radix-ui/react-select",
     "gsap",
@@ -31,11 +31,11 @@
       "type": "type"
     },
     {
-      "path": "components/styles.ts",
+      "path": "components/shared/styles.ts",
       "type": "shared"
     },
     {
-      "path": "components/types.ts",
+      "path": "components/shared/types.ts",
       "type": "shared"
     },
     {
@@ -43,12 +43,28 @@
       "type": "lib"
     },
     {
-      "path": "ui/ChevronDown.tsx",
-      "type": "shared"
+      "path": "ui/icons/ChevronDown.tsx",
+      "type": "ui"
     },
     {
       "path": "hooks/useAnimatedOpen.ts",
       "type": "hook"
+    },
+    {
+      "path": "components/shared/field.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/shared/surface.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "ui/icons/Check.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
     }
   ]
 }

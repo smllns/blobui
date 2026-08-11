@@ -19,6 +19,63 @@ Inspired by the registry approach pioneered by tools like shadcn/ui.
 - Component registry system
 - CLI-based installation
 - No runtime dependency on blobui
+- A three-layer design token system: two themes, four swappable accents, five
+  responsive type breakpoints
+
+---
+
+# Design tokens
+
+Components in this fork do not hold colors. They read a semantic token layer,
+and that is what makes theme swapping, re-branding and a Figma port a change of
+one file rather than a rewrite.
+
+```
+src/styles/palette.css   GENERATED primitives. 22 families x 25-950, OKLCH.
+src/styles/tokens.css    Semantic layer + the light/dark mirror table.
+src/styles/theme.css     Maps the semantic layer onto Tailwind's @theme.
+src/styles/base.css      Page floor + the focus-ring utility.
+src/index.css            Imports the four, in that order, after Tailwind.
+```
+
+| Layer         | Example                                                 | Who uses it             |
+| ------------- | ------------------------------------------------------- | ----------------------- |
+| **Primitive** | `--gray-300`, `--brand-600`, `--surface-900`            | Only the semantic layer |
+| **Semantic**  | `--border-default`, `--primary-solid`, `--text-primary` | The theme bridge        |
+| **Utility**   | `border-border`, `bg-primary`, `text-fg`                | Components              |
+| **Component** | `--btn-h`, `--field-px`, `--sw-thumb`                   | One component each      |
+
+**One rule holds the whole thing together:** nothing in `src/components/` names
+a primitive. A component that writes `bg-blue-600` instead of `bg-primary` is a
+component that breaks on the next accent swap and reads wrong in dark mode.
+
+### The two attributes
+
+`data-theme="dark"` on `<html>` re-points every semantic token at a different
+step of the same palette. The palette itself never inverts — `gray-50` is the
+lightest grey in both themes. The mapping is a table, not a formula:
+`text-primary` moves 850 steps, `border-default` moves 400, `text-placeholder`
+does not move at all.
+
+`data-accent="violet | teal | orange"` re-points `--brand-*` at another family.
+Because the semantic layer aliases `--brand-600` rather than `--blue-600`, every
+button, focus ring, link and selected row follows. The two compose. Warm accents
+also move the brand _decisions_ — fill toward the light end, ink to dark —
+because a bright warm fill cannot carry white text at any usable saturation.
+
+Both are wired to the sidebar controls in the docs app; flip them and watch a
+component file change nothing.
+
+### One naming note
+
+Tailwind puts text and background colours in one namespace, so `--text-primary`
+(ink) and `--primary-solid` (brand fill) would collide on the name `primary`.
+Ink is exposed as `fg` (`text-fg`, `text-fg-secondary`); the brand role keeps
+`primary` (`bg-primary`, `text-on-primary`). Nothing else is renamed.
+
+`src/lib/cn.ts` extends tailwind-merge with this system's type scale. Without
+it, tailwind-merge treats an unrecognised `text-*` as a colour and silently
+deletes `text-fg` when `text-body-md` sits next to it.
 
 ## 🚀 Getting Started
 
@@ -91,7 +148,7 @@ blobui components are built with:
 
 - React
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS, driven by the semantic token layer above
 - Radix UI primitives
 - GSAP animations
 
@@ -135,6 +192,10 @@ Each component contains:
 - dependencies
 - registry dependencies
 - source file paths
+
+Every component declares `theme` as a registry dependency, so `blobui add
+button` also installs the four token files. A component copied without them has
+no colours at all.
 
 Example:
 

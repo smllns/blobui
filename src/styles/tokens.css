@@ -1,0 +1,511 @@
+/* DESIGN TOKENS */
+:root {
+  /* --- Backgrounds and surfaces -----------------------------------------
+  --bg-canvas:        var(--white);        /* the page floor                 */
+  --bg-sunken: var(--surface-50); /* wells, code blocks, columns    */
+  --bg-surface: var(--white); /* default card / panel           */
+  --bg-raised: var(--white); /* emphasised, draggable card     */
+  --bg-overlay: var(--white); /* dialog, menu, popover, tooltip */
+  --bg-input: var(--white); /* field interior                 */
+
+  --bg-subtle: var(--gray-100); /* zebra rows, flat neutral fill  */
+  --bg-hover: var(--gray-100);
+  --bg-active: var(--gray-200);
+  --bg-disabled: var(--gray-100);
+  --bg-inverse: var(--gray-900); /* dark tooltip in a light theme  */
+  --bg-scrim: var(--alpha-black-40);
+
+  /* --- Text -------------------------------------------------------------- */
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-700);
+  --text-tertiary: var(--gray-600);
+  --text-placeholder: var(--gray-500);
+  --text-disabled: var(--gray-400);
+  --text-inverse: var(--white); /* sits on --bg-inverse           */
+  --text-on-solid: var(--white); /* sits on any solid status fill  */
+  --text-link: var(--brand-700);
+
+  /* --- Borders ------------------------------------------------------------   */
+  --border-subtle: var(--gray-200);
+  --border-default: var(--gray-300);
+  --border-strong: var(--gray-500);
+  --border-focus: var(--brand-500);
+  --border-disabled: var(--gray-200);
+
+  /* --- The brand decisions ------------------------------------------------  */
+  --brand-fill: var(--brand-600);
+  --brand-fill-hover: var(--brand-700);
+  --brand-fill-active: var(--brand-800);
+  --brand-ink: var(--white);
+
+  /* --- Primary — the single brand role ------------------------------------   */
+  --primary-subtle: var(--brand-50);
+  --primary-muted: var(--brand-100);
+  --primary-muted-hover: var(--brand-200);
+  --primary-muted-active: var(--brand-300);
+  --primary-border: var(--brand-500);
+  --primary-solid: var(--brand-fill);
+  --primary-solid-hover: var(--brand-fill-hover);
+  --primary-solid-active: var(--brand-fill-active);
+  --primary-text: var(--brand-700);
+  --primary-text-strong: var(--brand-900);
+  --text-on-primary: var(--brand-ink);
+
+  /* --- Status -------------------------------------------------------------- */
+  --success-subtle: var(--green-50);
+  --success-border: var(--green-500);
+  --success-solid: var(--green-600);
+  --success-solid-hover: var(--green-700);
+  --success-text: var(--green-700);
+
+  --warning-subtle: var(--amber-50);
+  --warning-border: var(--amber-500);
+  --warning-solid: var(--amber-400);
+  --warning-solid-hover: var(--amber-500);
+  --warning-text: var(--amber-800);
+  --text-on-warning: var(--amber-950);
+
+  --danger-subtle: var(--red-50);
+  --danger-subtle-hover: var(--red-100);
+  --danger-border: var(--red-500);
+  --danger-solid: var(--red-600);
+  --danger-solid-hover: var(--red-700);
+  --danger-text: var(--red-700);
+
+  --info-subtle: var(--sky-50);
+  --info-border: var(--sky-500);
+  --info-solid: var(--sky-600);
+  --info-text: var(--sky-700);
+
+  /* --- Control chrome ------------------------------------------------------    */
+  --control-off: var(--gray-500);
+  --control-off-hover: var(--gray-600);
+  --control-thumb: var(--white);
+
+  /* --- Focus ring — one definition for the whole system ------------------- */
+  --focus-ring:
+    0 0 0 var(--focus-ring-offset) var(--bg-surface),
+    0 0 0 calc(var(--focus-ring-offset) + var(--focus-ring-width)) var(--border-focus);
+}
+
+/* ==========================================================================
+   2. SEMANTIC — DARK THEME
+   ========================================================================== */
+
+[data-theme="dark"] {
+  /* Surfaces climb toward the light end as they rise. */
+  --bg-canvas: var(--surface-950);
+  --bg-sunken: var(--surface-975);
+  --bg-surface: var(--surface-900);
+  --bg-raised: var(--surface-850);
+  --bg-overlay: var(--surface-800);
+  --bg-input: var(--surface-950);
+
+  --bg-subtle: var(--surface-850);
+  --bg-hover: var(--surface-850);
+  --bg-active: var(--surface-800);
+  --bg-disabled: var(--surface-850);
+  --bg-inverse: var(--gray-50);
+  --bg-scrim: var(--alpha-black-70);
+
+  --text-primary: var(--gray-50);
+  --text-secondary: var(--gray-300);
+  --text-tertiary: var(--gray-400);
+  --text-placeholder: var(--gray-500);
+  --text-disabled: var(--gray-600);
+  --text-inverse: var(--gray-900);
+  --text-on-solid: var(--white);
+  --text-link: var(--brand-300);
+
+  --border-subtle: var(--surface-800);
+  --border-default: var(--gray-700);
+  --border-strong: var(--gray-500);
+  --border-focus: var(--brand-400);
+  --border-disabled: var(--gray-800);
+
+  --brand-fill: var(--brand-600);
+  --brand-fill-hover: var(--brand-500);
+  --brand-fill-active: var(--brand-400);
+
+  --primary-subtle: var(--brand-950);
+  --primary-muted: var(--brand-900);
+  --primary-muted-hover: var(--brand-800);
+  --primary-muted-active: var(--brand-700);
+  --primary-border: var(--brand-400);
+  --primary-solid: var(--brand-fill);
+  --primary-solid-hover: var(--brand-fill-hover);
+  --primary-solid-active: var(--brand-fill-active);
+  --primary-text: var(--brand-300);
+  --primary-text-strong: var(--brand-100);
+
+  --success-subtle: var(--green-950);
+  --success-border: var(--green-400);
+  --success-solid: var(--green-600);
+  --success-solid-hover: var(--green-500);
+  --success-text: var(--green-300);
+
+  --warning-subtle: var(--amber-950);
+  --warning-border: var(--amber-400);
+  --warning-solid: var(--amber-400);
+  --warning-solid-hover: var(--amber-300);
+  --warning-text: var(--amber-300);
+  --text-on-warning: var(--amber-950);
+
+  --danger-subtle: var(--red-950);
+  --danger-subtle-hover: var(--red-900);
+  --danger-border: var(--red-400);
+  --danger-solid: var(--red-600);
+  --danger-solid-hover: var(--red-500);
+  --danger-text: var(--red-300);
+
+  --info-subtle: var(--sky-950);
+  --info-border: var(--sky-400);
+  --info-solid: var(--sky-600);
+  --info-text: var(--sky-300);
+
+  --control-off: var(--gray-600);
+  --control-off-hover: var(--gray-500);
+  --control-thumb: var(--gray-50);
+}
+
+/* 3. ACCENT SWAP */
+
+[data-accent="violet"] {
+  --brand-25: var(--violet-25);
+  --brand-50: var(--violet-50);
+  --brand-100: var(--violet-100);
+  --brand-200: var(--violet-200);
+  --brand-300: var(--violet-300);
+  --brand-400: var(--violet-400);
+  --brand-500: var(--violet-500);
+  --brand-600: var(--violet-600);
+  --brand-700: var(--violet-700);
+  --brand-800: var(--violet-800);
+  --brand-900: var(--violet-900);
+  --brand-950: var(--violet-950);
+}
+
+[data-accent="teal"] {
+  --brand-25: var(--teal-25);
+  --brand-50: var(--teal-50);
+  --brand-100: var(--teal-100);
+  --brand-200: var(--teal-200);
+  --brand-300: var(--teal-300);
+  --brand-400: var(--teal-400);
+  --brand-500: var(--teal-500);
+  --brand-600: var(--teal-600);
+  --brand-700: var(--teal-700);
+  --brand-800: var(--teal-800);
+  --brand-900: var(--teal-900);
+  --brand-950: var(--teal-950);
+}
+
+[data-accent="orange"] {
+  --brand-25: var(--orange-25);
+  --brand-50: var(--orange-50);
+  --brand-100: var(--orange-100);
+  --brand-200: var(--orange-200);
+  --brand-300: var(--orange-300);
+  --brand-400: var(--orange-400);
+  --brand-500: var(--orange-500);
+  --brand-600: var(--orange-600);
+  --brand-700: var(--orange-700);
+  --brand-800: var(--orange-800);
+  --brand-900: var(--orange-900);
+  --brand-950: var(--orange-950);
+  --brand-fill: var(--brand-400);
+  --brand-fill-hover: var(--brand-500);
+  --brand-fill-active: var(--brand-600);
+  --brand-ink: var(--brand-950);
+}
+[data-theme="dark"][data-accent="orange"] {
+  --brand-fill: var(--brand-400);
+  --brand-fill-hover: var(--brand-300);
+  --brand-fill-active: var(--brand-200);
+  --brand-ink: var(--brand-950);
+}
+
+/* 4. TYPOGRAPHY, SPACE, RADIUS, ELEVATION, MOTION */
+
+:root {
+  /* --- Font families ----------------------------------------------------- */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* --- Breakpoints -------------------------------------------------------   */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+
+  /* --- Type — values below are the MOBILE step --------------------------- */
+  --text-display-2xl: 2rem;
+  --leading-display-2xl: 2.375rem;
+  --tracking-display-2xl: -0.018em;
+  --text-display-xl: 1.75rem;
+  --leading-display-xl: 2.125rem;
+  --tracking-display-xl: -0.017em;
+  --text-display-lg: 1.5rem;
+  --leading-display-lg: 1.875rem;
+  --tracking-display-lg: -0.016em;
+  --text-heading-xl: 1.3125rem;
+  --leading-heading-xl: 1.75rem;
+  --tracking-heading-xl: -0.013em;
+  --text-heading-lg: 1.125rem;
+  --leading-heading-lg: 1.625rem;
+  --tracking-heading-lg: -0.01em;
+  --text-heading-md: 1.0625rem;
+  --leading-heading-md: 1.5rem;
+  --tracking-heading-md: -0.008em;
+  --text-body-lg: 1rem;
+  --leading-body-lg: 1.5rem;
+  --tracking-body-lg: -0.006em;
+  --text-body-md: 0.875rem;
+  --leading-body-md: 1.25rem;
+  --tracking-body-md: -0.003em;
+  --text-body-sm: 0.8125rem;
+  --leading-body-sm: 1.125rem;
+  --tracking-body-sm: 0em;
+  --text-caption: 0.75rem;
+  --leading-caption: 1rem;
+  --tracking-caption: 0.002em;
+  --text-micro: 0.6875rem;
+  --leading-micro: 0.875rem;
+  --tracking-micro: 0.04em;
+
+  /* 16px below the tablet breakpoint stops iOS Safari zooming on focus. */
+  --text-field: 1rem;
+
+  /* --- Responsive layout -------------------------------------------------- */
+  --layout-gutter: var(--space-7);
+  --layout-section: var(--space-11);
+  --layout-max-width: 100%;
+
+  /* --- Weights ------------------------------------------------------------ */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* --- Space — 4px base with a 2px half-step ------------------------------ */
+  --space-0: 0rem;
+  --space-1: 0.125rem;
+  --space-2: 0.25rem;
+  --space-3: 0.375rem;
+  --space-4: 0.5rem;
+  --space-5: 0.625rem;
+  --space-6: 0.75rem;
+  --space-7: 1rem;
+  --space-8: 1.25rem;
+  --space-9: 1.5rem;
+  --space-10: 2rem;
+  --space-11: 2.5rem;
+  --space-12: 3rem;
+  --space-13: 4rem;
+  --space-14: 5rem;
+  --space-15: 6rem;
+
+  /* --- Radius -------------------------------------------------------------- */
+  --radius-xs: 0.25rem; /*  4px */
+  --radius-sm: 0.375rem; /*  6px */
+  --radius-md: 0.5rem; /*  8px */
+  --radius-lg: 0.625rem; /* 10px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-3xl: 1.25rem; /* 20px */
+  --radius-full: 9999px;
+
+  /* --- Borders ------------------------------------------------------------- */
+  --border-width-thin: 1px;
+  --border-width-thick: 1.5px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
+  /* --- Elevation ----------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px 0 oklch(22% 0.02 264 / 0.05);
+  --shadow-sm: 0 1px 2px 0 oklch(22% 0.02 264 / 0.06), 0 1px 3px 0 oklch(22% 0.02 264 / 0.1);
+  --shadow-md: 0 2px 4px -2px oklch(22% 0.02 264 / 0.06), 0 4px 8px -2px oklch(22% 0.02 264 / 0.1);
+  --shadow-lg: 0 4px 6px -2px oklch(22% 0.02 264 / 0.03), 0 12px 16px -4px oklch(22% 0.02 264 / 0.08);
+  --shadow-xl: 0 8px 8px -4px oklch(22% 0.02 264 / 0.04), 0 20px 24px -4px oklch(22% 0.02 264 / 0.1);
+  --shadow-2xl: 0 24px 48px -12px oklch(22% 0.02 264 / 0.18);
+
+  /* --- Motion -------------------------------------------------------------- */
+  --duration-instant: 80ms;
+  --duration-fast: 140ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Icon sizes ----------------------------------------------------------   */
+  --icon-xs: 0.75rem; /* 12px — inline with caption text        */
+  --icon-sm: 0.875rem; /* 14px — dense UI, small button          */
+  --icon-md: 1rem; /* 16px — the default                     */
+  --icon-lg: 1.25rem; /* 20px — large button, section header    */
+  --icon-xl: 1.5rem; /* 24px — empty states, feature rows      */
+  --icon-2xl: 2rem; /* 32px — hero, illustration slot         */
+
+  /* --- Control sizes -------------------------------------------------------- */
+  --control-height-sm: 2.25rem; /* 36px */
+  --control-height-md: 2.5rem; /* 40px */
+  --control-height-lg: 2.75rem; /* 44px */
+  --control-height-xl: 3.125rem; /* 50px */
+
+  /* --- Z-index --------------------------------------------------------------- */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-toast: 600;
+  --z-tooltip: 700;
+}
+
+/* Dark mode . */
+[data-theme="dark"] {
+  --shadow-xs: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
+  --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.32), 0 1px 3px 0 oklch(0% 0 0 / 0.4);
+  --shadow-md: 0 2px 4px -2px oklch(0% 0 0 / 0.36), 0 4px 8px -2px oklch(0% 0 0 / 0.44);
+  --shadow-lg: 0 4px 6px -2px oklch(0% 0 0 / 0.32), 0 12px 16px -4px oklch(0% 0 0 / 0.48);
+  --shadow-xl: 0 8px 8px -4px oklch(0% 0 0 / 0.36), 0 20px 24px -4px oklch(0% 0 0 / 0.52);
+  --shadow-2xl: 0 24px 48px -12px oklch(0% 0 0 / 0.64);
+}
+
+/* 5. RESPONSIVE TYPE & LAYOUT — 5 breakpoints */
+
+@media (min-width: 480px) {
+  :root {
+    --text-display-2xl: 2.25rem;
+    --leading-display-2xl: 2.625rem;
+    --text-display-xl: 1.875rem;
+    --leading-display-xl: 2.25rem;
+    --text-display-lg: 1.625rem;
+    --leading-display-lg: 2rem;
+    --text-heading-xl: 1.375rem;
+    --leading-heading-xl: 1.875rem;
+    --layout-gutter: var(--space-8);
+    --layout-section: var(--space-12);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --text-display-2xl: 2.75rem;
+    --leading-display-2xl: 3.125rem;
+    --tracking-display-2xl: -0.02em;
+    --text-display-xl: 2.125rem;
+    --leading-display-xl: 2.5rem;
+    --tracking-display-xl: -0.019em;
+    --text-display-lg: 1.75rem;
+    --leading-display-lg: 2.25rem;
+    --tracking-display-lg: -0.017em;
+    --text-heading-xl: 1.5rem;
+    --leading-heading-xl: 2rem;
+    --tracking-heading-xl: -0.014em;
+    --text-heading-lg: 1.25rem;
+    --leading-heading-lg: 1.75rem;
+    --tracking-heading-lg: -0.011em;
+    --text-heading-md: 1.125rem;
+    --leading-heading-md: 1.625rem;
+
+    --text-field: var(--text-body-md);
+
+    --layout-gutter: var(--space-9);
+    --layout-section: var(--space-13);
+    --layout-max-width: 46rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-display-2xl: 3rem;
+    --leading-display-2xl: 3.5rem;
+    --tracking-display-2xl: -0.021em;
+    --text-display-xl: 2.25rem;
+    --leading-display-xl: 2.75rem;
+    --tracking-display-xl: -0.02em;
+    --text-display-lg: 1.875rem;
+    --leading-display-lg: 2.375rem;
+    --tracking-display-lg: -0.018em;
+    --layout-gutter: var(--space-10);
+    --layout-max-width: 62rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --text-display-2xl: 3.5rem;
+    --leading-display-2xl: 4rem;
+    --tracking-display-2xl: -0.022em;
+    --text-display-xl: 2.5rem;
+    --leading-display-xl: 3rem;
+    --text-display-lg: 2rem;
+    --leading-display-lg: 2.5rem;
+    --text-heading-xl: 1.625rem;
+    --leading-heading-xl: 2.125rem;
+    --layout-gutter: var(--space-11);
+    --layout-section: var(--space-14);
+    --layout-max-width: 75rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --text-display-2xl: 4rem;
+    --leading-display-2xl: 4.5rem;
+    --tracking-display-2xl: -0.024em;
+    --text-display-xl: 3rem;
+    --leading-display-xl: 3.5rem;
+    --tracking-display-xl: -0.022em;
+    --text-display-lg: 2.25rem;
+    --leading-display-lg: 2.75rem;
+    --tracking-display-lg: -0.02em;
+    --text-heading-xl: 1.75rem;
+    --leading-heading-xl: 2.25rem;
+    --text-heading-lg: 1.375rem;
+    --leading-heading-lg: 1.875rem;
+    --text-body-lg: 1.0625rem;
+    --leading-body-lg: 1.625rem;
+    --text-body-md: 0.9375rem;
+    --leading-body-md: 1.375rem;
+    --text-field: 0.9375rem;
+    --layout-gutter: var(--space-12);
+    --layout-max-width: 84rem;
+  }
+}
+
+/* 6. LARGE DISPLAYS — scaling the whole system, not just the type */
+
+@media (min-width: 1920px) {
+  :root {
+    font-size: 17px; /* 1.0625x */
+    --layout-max-width: 90rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    font-size: 18.5px; /* 1.156x  */
+    --layout-max-width: 96rem;
+    --layout-gutter: var(--space-13);
+  }
+}
+
+@media (min-width: 3840px) {
+  :root {
+    font-size: 20px; /* 1.25x   */
+    --layout-max-width: 104rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

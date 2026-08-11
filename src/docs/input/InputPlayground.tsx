@@ -25,6 +25,10 @@ export function InputPlayground() {
         [key]: value,
       };
 
+      if (key === 'labelPlacement' && value === 'infield') {
+        next.label = true;
+      }
+
       if (key === 'errorMessage' && value) {
         next.error = true;
         next.description = false;
@@ -55,9 +59,12 @@ export function InputPlayground() {
       }
       preview={
         <Input
-          placeholder='Type something...'
+          placeholder={
+            state.labelPlacement === 'infield' ? undefined : 'Type something...'
+          }
           variant={state.variant}
           size={state.size}
+          labelPlacement={state.labelPlacement}
           fullWidth={state.fullWidth}
           error={state.error}
           leftIcon={state.leftIcon ? <span>💖</span> : undefined}

@@ -19,6 +19,20 @@ export const inputProps = [
 
   prop('size', "'xs' | 'sm' | 'md' | 'lg' | 'xl'", 'md', 'Controls input size'),
 
+  prop(
+    'labelPlacement',
+    "'above' | 'infield'",
+    'above',
+    'Where the label sits. infield lifts it on focus. Pins the field to xl',
+  ),
+
+  prop(
+    'readOnly',
+    'boolean',
+    'false',
+    'Keeps the value readable and focusable, without the edit affordance',
+  ),
+
   fullWidthProp,
   errorProp,
   leftIconProp,

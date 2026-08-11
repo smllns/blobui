@@ -13,7 +13,14 @@ export const cardProps = [
     'padding',
     "'none' | 'sm' | 'md' | 'lg'",
     'md',
-    'Controls internal spacing of the card content',
+    'Inner spacing. Use none when building from CardHeader / CardBody / CardFooter',
+  ),
+
+  prop(
+    'interactive',
+    'boolean',
+    'false',
+    'Makes the whole surface a target: hover lift and focus ring',
   ),
 
   classNameProp,

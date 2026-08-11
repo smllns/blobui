@@ -1,27 +1,127 @@
 import { cva } from 'class-variance-authority';
-import { disabledStyles } from '../styles';
+import { motion, transitionControl } from '../shared/styles';
 
 export const buttonStyles = cva(
-  `inline-flex items-center justify-center gap-2
-  rounded-lg font-medium shadow-sm hover:shadow-md border
-  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-transparent 
-  ${disabledStyles.html} active:scale-[0.99] active:translate-y-[1px] transition-all duration-300`,
+  [
+    '[--btn-h:var(--control-height-md)]',
+    '[--btn-px:var(--space-7)]',
+    '[--btn-gap:var(--space-4)]',
+    '[--btn-icon:var(--icon-md)]',
+    '[--btn-trim:var(--space-1)]',
+
+    'inline-flex items-center justify-center whitespace-nowrap no-underline select-none',
+    'h-[var(--btn-h)] px-[var(--btn-px)] gap-[var(--btn-gap)]',
+    'border border-transparent rounded-lg',
+    'text-body-md font-medium leading-none',
+
+    '[&_svg]:size-[var(--btn-icon)] [&_svg]:shrink-0',
+
+    'data-[lead]:ps-[calc(var(--btn-px)-var(--btn-trim))]',
+    'data-[trail]:pe-[calc(var(--btn-px)-var(--btn-trim))]',
+
+    'data-[icon-only]:w-[var(--btn-h)] data-[icon-only]:px-0',
+
+    transitionControl,
+    motion.fast,
+    'focus-visible:focus-ring',
+    'enabled:active:translate-y-[0.5px]',
+  ].join(' '),
   {
     variants: {
+      size: {
+        xs: [
+          '[--btn-h:1.75rem]',
+          '[--btn-px:var(--space-5)]',
+          '[--btn-gap:var(--space-2)]',
+          '[--btn-icon:var(--icon-xs)]',
+          'rounded-sm text-caption',
+        ].join(' '),
+
+        sm: [
+          '[--btn-h:var(--control-height-sm)]',
+          '[--btn-px:var(--space-6)]',
+          '[--btn-gap:var(--space-3)]',
+          '[--btn-icon:var(--icon-sm)]',
+          'rounded-md text-body-sm',
+        ].join(' '),
+
+        md: [
+          '[--btn-h:var(--control-height-md)]',
+          '[--btn-px:var(--space-7)]',
+          '[--btn-gap:var(--space-4)]',
+          '[--btn-icon:var(--icon-md)]',
+          'rounded-lg text-body-md',
+        ].join(' '),
+
+        lg: [
+          '[--btn-h:var(--control-height-lg)]',
+          '[--btn-px:var(--space-8)]',
+          '[--btn-gap:var(--space-4)]',
+          '[--btn-icon:var(--icon-lg)]',
+          'rounded-lg text-body-lg',
+        ].join(' '),
+
+        xl: [
+          '[--btn-h:var(--control-height-xl)]',
+          '[--btn-px:var(--space-9)]',
+          '[--btn-gap:var(--space-5)]',
+          '[--btn-icon:var(--icon-xl)]',
+          'rounded-xl text-body-lg',
+        ].join(' '),
+      },
+
       variant: {
-        primary:
-          'bg-neutral-50 text-neutral-900  border-white/70 hover:bg-white',
+        primary: [
+          'bg-primary text-on-primary',
+          'shadow-[var(--shadow-xs),inset_0_1px_0_0_var(--alpha-white-16)]',
+          'enabled:hover:bg-primary-hover',
+          'enabled:active:bg-primary-active enabled:active:shadow-none',
+          'disabled:bg-disabled disabled:text-fg-disabled disabled:shadow-none',
+        ].join(' '),
 
-        secondary:
-          'bg-white/50 text-neutral-700  border-neutral-200 hover:bg-neutral-50',
+        secondary: [
+          'bg-surface border-border text-fg shadow-xs',
+          'enabled:hover:bg-hover enabled:hover:border-border-strong',
+          'enabled:active:bg-active enabled:active:shadow-none',
+          'disabled:bg-surface disabled:border-border-disabled disabled:text-fg-disabled disabled:shadow-none',
+        ].join(' '),
 
-        outline:
-          'bg-white/20 text-neutral-800  border-neutral-400 hover:bg-white/40',
+        soft: [
+          'bg-primary-muted text-primary-fg',
+          'enabled:hover:bg-primary-muted-hover',
+          'enabled:active:bg-primary-muted-active',
+          'disabled:bg-disabled disabled:text-fg-disabled',
+        ].join(' '),
 
-        ghost:
-          'bg-transparent text-neutral-600 border-transparent hover:bg-neutral-50/30',
+        outline: [
+          'bg-transparent border-border-strong text-fg',
+          'enabled:hover:bg-subtle',
+          'enabled:active:bg-hover',
+          'disabled:border-border-disabled disabled:text-fg-disabled',
+        ].join(' '),
 
-        destructive: 'bg-red-50 text-red-700  border-red-200 hover:bg-red-100',
+        ghost: [
+          'bg-transparent text-fg-secondary',
+          'enabled:hover:bg-subtle enabled:hover:text-fg',
+          'enabled:active:bg-hover',
+          'disabled:text-fg-disabled',
+        ].join(' '),
+
+        destructive: [
+          'bg-danger text-on-solid',
+          'shadow-[var(--shadow-xs),inset_0_1px_0_0_var(--alpha-white-16)]',
+          'enabled:hover:bg-danger-hover',
+          'enabled:active:shadow-none',
+          'focus-visible:focus-ring-danger',
+          'disabled:bg-disabled disabled:text-fg-disabled disabled:shadow-none',
+        ].join(' '),
+
+        link: [
+          '[--btn-px:0px] [--btn-trim:0px]',
+          'h-auto rounded-xs bg-transparent text-primary-fg',
+          'enabled:hover:underline underline-offset-[3px]',
+          'disabled:text-fg-disabled',
+        ].join(' '),
       },
 
       state: {
@@ -29,17 +129,12 @@ export const buttonStyles = cva(
         loading: 'cursor-wait',
         disabled: 'cursor-not-allowed',
       },
-      size: {
-        xs: 'h-6 px-2 text-xs',
-        sm: 'h-8 px-3 text-sm',
-        md: 'h-10 px-4 text-base',
-        lg: 'h-12 px-6 text-lg',
-        xl: 'h-14 px-8 text-xl',
-      },
+
       fullWidth: {
         true: 'w-full',
       },
     },
+
     defaultVariants: {
       variant: 'primary',
       size: 'md',
@@ -47,3 +142,6 @@ export const buttonStyles = cva(
     },
   },
 );
+
+export const buttonLabelStyles =
+  'inline-flex items-center gap-[var(--btn-gap)] data-[loading]:opacity-70';

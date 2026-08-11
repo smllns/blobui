@@ -1,12 +1,14 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import type { ExtendedSize } from '../types';
+import type { ExtendedSize } from '../shared/types';
 
 export type ButtonVariant =
   | 'primary'
   | 'secondary'
+  | 'soft'
   | 'outline'
   | 'ghost'
-  | 'destructive';
+  | 'destructive'
+  | 'link';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -16,4 +18,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  iconOnly?: boolean;
 }

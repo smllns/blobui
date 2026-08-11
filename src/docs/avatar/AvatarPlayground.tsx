@@ -4,7 +4,7 @@ import { CodeBlock } from '../components/CodeBlock';
 import { generateAvatarCode } from './generateAvatarCode';
 import { Avatar } from '../../components/avatar/Avatar';
 import { AVATAR_CONTROLS, AVATAR_INITIAL_STATE } from './avatarConstants';
-import { usePlaygroundState } from '../../hooks/usePlaygroundState';
+import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 
 export function AvatarPlayground() {
   const { state, update } = usePlaygroundState(AVATAR_INITIAL_STATE);
@@ -22,8 +22,9 @@ export function AvatarPlayground() {
       preview={
         <div className='flex items-center justify-center  gap-6'>
           <Avatar
-            variant={state.variant}
+            shape={state.shape}
             size={state.size}
+            status={state.status === 'none' ? undefined : state.status}
             src={
               state.showImage ? 'https://i.pravatar.cc/150?img=3' : undefined
             }

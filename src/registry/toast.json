@@ -1,7 +1,7 @@
 {
   "name": "toast",
   "type": "registry:ui",
-  "registryDependencies": ["button"],
+  "registryDependencies": ["theme", "button"],
   "dependencies": [
     "gsap",
     "clsx",
@@ -32,6 +32,30 @@
     {
       "path": "lib/mergeRefs.ts",
       "type": "lib"
+    },
+    {
+      "path": "ui/icons/Close.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/Info.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/CheckCircle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/AlertTriangle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/CloseCircle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
     }
   ]
 }

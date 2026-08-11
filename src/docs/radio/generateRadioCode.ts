@@ -2,7 +2,6 @@ import type { RadioPlaygroundState } from './radioConstants';
 
 export function generateRadioCode(state: RadioPlaygroundState) {
   const props = [
-    `variant="${state.variant}"`,
     `size="${state.size}"`,
     state.checked && 'checked',
     state.disabled && 'disabled',

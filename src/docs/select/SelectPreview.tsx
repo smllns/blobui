@@ -1,6 +1,6 @@
 import { Select } from '../../components/select/Select';
 import { SelectItem } from '../../components/select/SelectItem';
-import { COMMON_VARIANTS } from '../../lib/options';
+import { COMMON_VARIANTS } from '@/lib/options';
 import { OPTIONS } from './select.data';
 
 export function SelectPreview() {

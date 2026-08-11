@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { CommonStylingVariant } from '../types';
+import type { CommonStylingVariant } from '../shared/types';
 
 interface AccordionItemProps {
   value: string;

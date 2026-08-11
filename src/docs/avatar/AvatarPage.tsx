@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { AvatarPlayground } from './AvatarPlayground';
 import { Avatar } from '../../components/avatar/Avatar';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
 
 export function AvatarDocs() {
@@ -11,10 +11,10 @@ export function AvatarDocs() {
       description='Avatars are used to display a small piece of information.'
       preview={
         <>
-          <Avatar variant='default' fallback='A' />
-          <Avatar variant='outline' fallback='B' />
-          <Avatar variant='filled' fallback='C' />
-          <Avatar variant='ghost' fallback='D' />
+          <Avatar fallback='A' />
+          <Avatar fallback='B' shape='square' />
+          <Avatar fallback='C' status='online' />
+          <Avatar fallback='D' status='busy' />
         </>
       }
       playground={<AvatarPlayground />}

@@ -22,7 +22,12 @@ export const radioProps = [
     'Callback fired when radio selection changes',
   ),
 
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls radio button size'),
+  prop(
+    'size',
+    "'md' | 'lg'",
+    'md',
+    'Controls radio button size',
+  ),
 
   errorProp,
   ...fieldProps,

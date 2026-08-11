@@ -1,7 +1,11 @@
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import type { VariantProps } from 'class-variance-authority';
 
-import { dialogContentStyles, dialogOverlayStyles } from './dialog.styles';
+import {
+  dialogContentStyles,
+  dialogFooterStyles,
+  dialogOverlayStyles,
+} from './dialog.styles';
 
 export interface DialogContentProps
   extends
@@ -18,7 +22,12 @@ export interface DialogOverlayProps
 
 export type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
-export type DialogFooterProps = React.HTMLAttributes<HTMLDivElement>;
+export type DialogBodyProps = React.HTMLAttributes<HTMLDivElement>;
+
+export interface DialogFooterProps
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof dialogFooterStyles> {}
 
 export type DialogTitleProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Title

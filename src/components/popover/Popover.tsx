@@ -2,7 +2,7 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { createContext, forwardRef } from 'react';
 import { cn } from '@/lib/cn';
 import type { PopoverArrowProps, PopoverContentProps } from './popover.types';
-import { popoverArrowStyles, popoverContentStyles } from './popover.styles';
+import { popoverArrowStyles, popoverContent } from './popover.styles';
 import { animatePopoverEnter, animatePopoverExit } from './popover.animations';
 import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
 
@@ -57,7 +57,7 @@ const PopoverContent = forwardRef<
         ref={setContentRef}
         sideOffset={sideOffset}
         className={cn(
-          popoverContentStyles({
+          popoverContent({
             variant,
             size,
             rounded,
@@ -76,6 +76,8 @@ const PopoverArrow = forwardRef<
 >(({ className, variant, ...props }, ref) => (
   <PopoverPrimitive.Arrow
     ref={ref}
+    width={12}
+    height={6}
     className={cn(
       popoverArrowStyles({
         variant,

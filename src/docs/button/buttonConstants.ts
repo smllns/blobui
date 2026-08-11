@@ -1,18 +1,12 @@
 import type { ButtonVariant } from '../../components/button/button.types';
-import type { ExtendedSize } from '../../components/types';
-import { SIZE_OPTIONS } from '../../lib/options';
+import type { ExtendedSize } from '../../components/shared/types';
+import { BUTTON_VARIANTS, SIZE_OPTIONS } from '@/lib/options';
 import {
   checkboxControl,
   selectControl,
 } from '../components/playground/controls/controlHelpers';
 
-export const VARIANTS: ButtonVariant[] = [
-  'primary',
-  'secondary',
-  'outline',
-  'ghost',
-  'destructive',
-];
+const VARIANTS: ButtonVariant[] = BUTTON_VARIANTS;
 
 export type BtnPlaygroundState = {
   variant: ButtonVariant;

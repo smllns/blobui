@@ -1,13 +1,12 @@
-import type { BasicSize, CommonStylingVariant } from '../../components/types';
-import { BASIC_SIZE_OPTIONS, COMMON_VARIANTS } from '../../lib/options';
+import type { ExtendedSize } from '../../components/shared/types';
+import { SWITCH_SIZE_OPTIONS } from '@/lib/options';
 import {
   checkboxControl,
   selectControl,
 } from '../components/playground/controls/controlHelpers';
 
 export type SwitchPlaygroundState = {
-  variant: CommonStylingVariant;
-  size: BasicSize;
+  size: Exclude<ExtendedSize, 'xs'>;
   checked: boolean;
   disabled: boolean;
   label: string;
@@ -16,7 +15,6 @@ export type SwitchPlaygroundState = {
   errorMessage: string;
 };
 export const SWITCH_INITIAL_STATE: SwitchPlaygroundState = {
-  variant: 'default',
   checked: false,
   disabled: false,
   size: 'md',
@@ -27,8 +25,7 @@ export const SWITCH_INITIAL_STATE: SwitchPlaygroundState = {
 };
 
 export const SWITCH_CONTROLS = [
-  selectControl<SwitchPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
-  selectControl<SwitchPlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
+  selectControl<SwitchPlaygroundState>('size', 'Size', SWITCH_SIZE_OPTIONS),
   checkboxControl<SwitchPlaygroundState>('checked', 'Checked'),
   checkboxControl<SwitchPlaygroundState>('disabled', 'Disabled'),
   checkboxControl<SwitchPlaygroundState>('label', 'Label'),

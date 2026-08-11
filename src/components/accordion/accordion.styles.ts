@@ -1,13 +1,13 @@
 import { cva } from 'class-variance-authority';
-import { disabledStyles } from '../styles';
+import { disabledStyles, motion } from '../shared/styles';
 
-export const accordionStyles = cva('w-full rounded-lg', {
+export const accordionStyles = cva('w-full rounded-xl overflow-hidden', {
   variants: {
     variant: {
-      default: 'border border-neutral-300 bg-neutral-100',
-      filled: 'bg-white',
-      outline: 'border border-black',
-      ghost: '',
+      default: 'bg-surface border border-border-subtle',
+      filled: 'bg-sunken border border-transparent',
+      outline: 'bg-transparent border border-border',
+      ghost: 'bg-transparent',
     },
   },
   defaultVariants: {
@@ -16,22 +16,27 @@ export const accordionStyles = cva('w-full rounded-lg', {
 });
 
 export const accordionItemStyles =
-  'overflow-hidden border-b border-black last:border-b-0';
+  'overflow-hidden border-b border-border-subtle last:border-b-0';
 
 export const triggerStyles = cva(
-  `flex w-full items-center justify-between
-  rounded-md px-4 py-4 text-left font-medium
-  cursor-pointer transition-colors duration-200
-  ${disabledStyles.html}
-  [&[data-state=open]>svg]:rotate-180
-  `,
+  [
+    'flex w-full items-center justify-between gap-4',
+    'px-5 py-4 text-start',
+    'text-body-md font-medium text-fg',
+    'cursor-pointer transition-colors',
+    motion.fast,
+    'focus-visible:outline-none focus-visible:shadow-[inset_var(--focus-ring)]',
+    '[&[data-state=open]>svg]:rotate-180',
+    disabledStyles.html,
+    'disabled:text-fg-disabled',
+  ].join(' '),
   {
     variants: {
       variant: {
-        default: 'hover:bg-neutral-200/80',
-        filled: 'hover:bg-neutral-100',
-        outline: 'hover:text-neutral-500',
-        ghost: 'hover:bg-neutral-100/70',
+        default: 'enabled:hover:bg-sunken',
+        filled: 'enabled:hover:bg-hover',
+        outline: 'enabled:hover:bg-subtle',
+        ghost: 'enabled:hover:bg-subtle',
       },
     },
     defaultVariants: {
@@ -40,4 +45,11 @@ export const triggerStyles = cva(
   },
 );
 
-export const accordionContentStyles = `overflow-hidden text-sm text-muted-foreground px-4 pb-4`;
+export const accordionIconStyles = [
+  'shrink-0 text-fg-tertiary',
+  'transition-transform',
+  motion.base,
+].join(' ');
+
+export const accordionContentStyles =
+  'overflow-hidden px-5 pb-4 text-body-md leading-[var(--leading-body-lg)] text-fg-secondary';

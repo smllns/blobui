@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { ChevronDown } from '../../ui/ChevronDown';
+import { ThemeControls } from './ThemeControls';
+import { ChevronDown } from '@/ui/icons/ChevronDown';
 
 const navItems = [
   { label: 'Button', to: '/button' },
@@ -21,28 +22,31 @@ const navItems = [
 
 export function Sidebar() {
   return (
-    <aside className='w-64 border-r border-neutral-200 bg-neutral-200 p-6'>
-      <NavLink to='/' className='block text-xl font-semibold'>
+    <aside className='sticky top-0 flex h-screen w-64 shrink-0 flex-col gap-6 overflow-y-auto border-e border-border-subtle bg-surface p-6'>
+      <NavLink
+        to='/'
+        className='block text-heading-lg font-semibold text-fg no-underline'
+      >
         blobui
       </NavLink>
 
       <div>
-        <p className='text-xs font-semibold uppercase tracking-wider text-neutral-500'>
-          Components
-        </p>
+        <p className='text-micro uppercase text-fg-tertiary'>Components</p>
 
-        <nav className='flex flex-col gap-2 pt-4'>
+        <nav className='flex flex-col gap-0.5 pt-3'>
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
                 [
-                  'flex items-center justify-between rounded-md border px-3 py-2 transition-colors duration-300',
-                  'border-olive-500/20',
+                  'flex items-center justify-between rounded-sm px-2.5 py-2',
+                  'text-body-md no-underline',
+                  'transition-colors duration-(--duration-instant) ease-out',
+                  'focus-visible:focus-ring',
                   isActive
-                    ? 'bg-olive-400/60 text-neutral-900 shadow-sm'
-                    : 'bg-olive-400/30 hover:bg-olive-400/50',
+                    ? 'bg-primary-muted font-medium text-primary-fg'
+                    : 'text-fg-secondary hover:bg-subtle hover:text-fg',
                 ].join(' ')
               }
             >
@@ -50,14 +54,16 @@ export function Sidebar() {
                 <>
                   <span>{item.label}</span>
 
-                  {isActive && (
-                    <ChevronDown className='ml-2 h-4 w-4 text-neutral-800 -rotate-90' />
-                  )}
+                  {isActive && <ChevronDown size='sm' className='-rotate-90' />}
                 </>
               )}
             </NavLink>
           ))}
         </nav>
+      </div>
+
+      <div className='mt-auto border-t border-border-subtle pt-6'>
+        <ThemeControls />
       </div>
     </aside>
   );

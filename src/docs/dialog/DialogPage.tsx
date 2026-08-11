@@ -11,7 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '../../components/dialog/Dialog';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { dialogs } from './dialog.data';
 import { getInstallation } from '../utils/getInstallation';
 

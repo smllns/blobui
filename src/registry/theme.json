@@ -1,0 +1,26 @@
+{
+  "name": "theme",
+  "type": "registry:theme",
+  "registryDependencies": [],
+  "dependencies": [
+    "tailwindcss"
+  ],
+  "files": [
+    {
+      "path": "styles/palette.css",
+      "type": "theme"
+    },
+    {
+      "path": "styles/tokens.css",
+      "type": "theme"
+    },
+    {
+      "path": "styles/theme.css",
+      "type": "theme"
+    },
+    {
+      "path": "styles/base.css",
+      "type": "theme"
+    }
+  ]
+}

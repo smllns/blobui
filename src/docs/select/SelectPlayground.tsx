@@ -5,7 +5,7 @@ import { ControlsRenderer } from '../components/playground/controls/ControlsRend
 import { Select } from '../../components/select/Select';
 import { SelectItem } from '../../components/select/SelectItem';
 import { CodeBlock } from '../components/CodeBlock';
-import { usePlaygroundState } from '../../hooks/usePlaygroundState';
+import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 
 export function SelectPlayground() {
   const { state, update } = usePlaygroundState(SELECT_INITIAL_STATE);
@@ -24,6 +24,8 @@ export function SelectPlayground() {
           variant={state.variant}
           size={state.size}
           width={state.width}
+          labelPlacement={state.labelPlacement}
+          label='Framework'
           disabled={state.disabled}
           error={state.error}
           placeholder='Choose option'

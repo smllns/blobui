@@ -5,7 +5,7 @@ import {
   errorProp,
   fieldProps,
   fullWidthProp,
-  leftIconProp,
+  iconProp,
 } from './commonProps';
 import { prop } from './helpers';
 
@@ -19,17 +19,14 @@ export const checkboxProps = [
     'Change handler for checkbox state',
   ),
 
-  prop(
-    'size',
-    "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    'md',
-    'Controls checkbox and label size',
-  ),
+  prop('size', "'md' | 'lg'", 'md', 'Controls checkbox size'),
+
+  prop('indeterminate', 'boolean', 'false', 'Neither checked nor unchecked'),
 
   errorProp,
   fullWidthProp,
   ...fieldProps,
-  leftIconProp,
+  iconProp,
   disabledProp,
   classNameProp,
   childrenProp,

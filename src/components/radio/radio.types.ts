@@ -1,13 +1,12 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import type { VariantProps } from 'class-variance-authority';
-import { radioStyles } from './radio.styles';
+import type { ChoiceSize } from '../shared/types';
 
 type NativeRadioProps = Omit<ComponentPropsWithoutRef<'input'>, 'size'>;
 
-export interface RadioProps
-  extends NativeRadioProps, VariantProps<typeof radioStyles> {
+export interface RadioProps extends NativeRadioProps {
   label?: ReactNode;
   description?: ReactNode;
+  size?: ChoiceSize;
   error?: boolean;
   errorMessage?: ReactNode;
 }

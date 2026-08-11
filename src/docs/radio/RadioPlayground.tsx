@@ -47,7 +47,6 @@ export function RadioPlayground() {
       preview={
         <div className='flex items-center justify-center p-20'>
           <Radio
-            variant={state.variant}
             checked={state.checked}
             disabled={state.disabled}
             size={state.size}

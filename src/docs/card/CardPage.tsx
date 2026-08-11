@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Card } from '../../components/card/Card';
 import { CardPlayground } from './CardPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { cardVariants } from './card.data';
 import { getInstallation } from '../utils/getInstallation';
 
@@ -12,12 +12,14 @@ export function CardDocs() {
       description='Cards are used to display a small piece of information.'
       preview={
         <>
-          {cardVariants.map(({ variant, title, description }) => (
-            <Card key={variant} variant={variant}>
-              <h3 className='mb-2 text-lg font-semibold'>{title}</h3>
-              <p className='text-sm text-neutral-600'>{description}</p>
-            </Card>
-          ))}
+          <div className=' flex flex-row gap-6'>
+            {cardVariants.map(({ variant, title, description }) => (
+              <Card key={variant} variant={variant}>
+                <h3 className='mb-2 text-heading-md'>{title}</h3>
+                <p className='text-body-sm text-fg-tertiary'>{description}</p>
+              </Card>
+            ))}
+          </div>
         </>
       }
       playground={<CardPlayground />}

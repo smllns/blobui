@@ -1,7 +1,7 @@
 {
   "name": "popover",
   "type": "registry:ui",
-  "registryDependencies": [],
+  "registryDependencies": ["theme"],
   "dependencies": [
     "@radix-ui/react-popover",
     "gsap",
@@ -33,6 +33,10 @@
     {
       "path": "hooks/useAnimatedOpen.ts",
       "type": "hook"
+    },
+    {
+      "path": "components/shared/surface.styles.ts",
+      "type": "style"
     }
   ]
 }

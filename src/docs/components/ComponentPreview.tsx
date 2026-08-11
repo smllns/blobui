@@ -13,12 +13,12 @@ export function ComponentPreview({
 }: ComponentPreviewProps) {
   return (
     <section className='space-y-4'>
-      <h2 className='text-xl font-semibold pb-2'>Preview</h2>
+      <h2 className='text-heading-lg pb-2 text-fg'>Preview</h2>
 
       <div
         className={`
-          rounded-xl border border-neutral-200
-          bg-olive-400/10 p-8
+          rounded-xl border border-border-subtle
+          bg-surface p-8
           ${className ?? ''}
         `}
       >

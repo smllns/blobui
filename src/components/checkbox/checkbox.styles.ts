@@ -1,101 +1,86 @@
 import { cva } from 'class-variance-authority';
-import { disabledStyles } from '../styles';
+import { motion, transitionControl } from '../shared/styles';
 
-export const checkboxWrapperStyles = cva(
+export const checkboxStyles = cva(
   [
-    'flex items-center gap-2 rounded-md',
-    'transition-all duration-200',
-    'cursor-pointer select-none',
+    'relative inline-grid place-items-center shrink-0 m-0 appearance-none cursor-pointer',
+    'size-[var(--cb-size)]',
+    'mt-[calc((var(--leading-body-md)-var(--cb-size))/2)]',
+
+    'bg-input border border-border-strong rounded-xs',
+    transitionControl,
+    motion.fast,
+    'enabled:hover:border-primary enabled:hover:bg-primary-muted',
+    'focus-visible:focus-ring',
+
+    'checked:bg-primary checked:border-primary',
+    'indeterminate:bg-primary indeterminate:border-primary',
+    'enabled:checked:hover:bg-primary-hover enabled:checked:hover:border-primary-hover',
+
+    'disabled:bg-disabled disabled:border-border-disabled disabled:cursor-not-allowed',
   ].join(' '),
   {
     variants: {
       size: {
-        xs: 'text-xs',
-        sm: 'text-sm',
-        md: 'text-base',
-        lg: 'text-lg',
-        xl: 'text-xl',
-      },
-
-      disabled: {
-        true: disabledStyles.base,
+        md: '[--cb-size:1.125rem]',
+        lg: '[--cb-size:1.375rem]',
       },
 
       error: {
-        true: 'text-red-600',
-      },
-
-      fullWidth: {
-        true: 'w-full',
+        true: [
+          'border-danger-border',
+          'enabled:hover:border-danger enabled:hover:bg-danger-subtle',
+          'checked:bg-danger checked:border-danger',
+          'enabled:checked:hover:bg-danger-hover enabled:checked:hover:border-danger-hover',
+          'focus-visible:focus-ring-danger',
+        ].join(' '),
       },
     },
 
     defaultVariants: {
       size: 'md',
-      disabled: false,
       error: false,
-      fullWidth: false,
     },
   },
 );
 
-export const checkboxBoxStyles = cva(
-  [
-    'shrink-0 rounded border',
-    'flex items-center justify-center',
-    'transition-all duration-200',
-  ].join(' '),
+export const checkboxRowStyles = 'flex items-start gap-2.5';
+
+export const checkboxLabelStyles = cva(
+  'text-body-md font-medium text-fg cursor-pointer',
   {
     variants: {
-      size: {
-        xs: 'h-3 w-3',
-        sm: 'h-3.5 w-3.5',
-        md: 'h-4 w-4',
-        lg: 'h-5 w-5',
-        xl: 'h-6 w-6',
-      },
-
-      checked: {
-        true: '',
-        false: '',
-      },
-
-      error: {
-        true: '',
-      },
-
       disabled: {
-        true: 'opacity-50',
+        true: 'text-fg-disabled cursor-not-allowed',
       },
-    },
-
-    compoundVariants: [
-      {
-        checked: true,
-        error: false,
-        class: 'bg-neutral-900 border-neutral-900',
-      },
-      {
-        checked: true,
-        error: true,
-        class: 'bg-red-500 border-red-500',
-      },
-      {
-        checked: false,
-        error: true,
-        class: 'border-red-300 bg-red-50',
-      },
-      {
-        checked: false,
-        error: false,
-        class: 'bg-white border-neutral-300',
-      },
-    ],
-
-    defaultVariants: {
-      size: 'md',
-      checked: false,
-      error: false,
     },
   },
 );
+
+export const checkboxHelperStyles = cva('', {
+  variants: {
+    size: {
+      md: 'ps-7', // 18 + 10
+      lg: 'ps-8', // 22 + 10
+    },
+  },
+  defaultVariants: { size: 'md' },
+});
+
+export const checkboxCheckStyles = [
+  '[--cb-size:1.125rem]',
+  '[--cb-stroke:calc(var(--cb-size)*0.1)]',
+
+  'pointer-events-none absolute',
+  'top-1/2 left-1/2',
+  '-translate-x-1/2 -translate-y-[90%]',
+  'w-[calc(var(--cb-size)*0.28)]',
+  'h-[calc(var(--cb-size)*0.5)]',
+  'rotate-45',
+  'border-r-[length:var(--cb-stroke)]',
+  'border-b-[length:var(--cb-stroke)]',
+  'border-on-primary',
+  'opacity-0',
+  'peer-checked:opacity-100',
+  'peer-indeterminate:opacity-0',
+].join(' ');

@@ -5,7 +5,9 @@ import { ControlsRenderer } from '../components/playground/controls/ControlsRend
 import { Tooltip } from '../../components/tooltip/Tooltip';
 import { Button } from '../../components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
-import { usePlaygroundState } from '../../hooks/usePlaygroundState';
+import { usePlaygroundState } from '@/hooks/usePlaygroundState';
+import { Sun } from '@/ui/icons/Sun';
+import { Moon } from '@/ui/icons/Moon';
 
 export function TooltipPlayground() {
   const { state, update } = usePlaygroundState(TOOLTIP_INITIAL_STATE);
@@ -27,8 +29,16 @@ export function TooltipPlayground() {
             size={state.size}
             side={state.side}
             align={state.align}
-            startIcon={state.startIcon ? <span>💖</span> : undefined}
-            endIcon={state.endIcon ? <span>✨</span> : undefined}
+            startIcon={
+              state.startIcon ? (
+                <Sun className='text-orange-400  h-4 w-4 ' />
+              ) : undefined
+            }
+            endIcon={
+              state.endIcon ? (
+                <Moon className='text-sky-400  h-4 w-4 ' />
+              ) : undefined
+            }
           >
             <Button>Hover me</Button>
           </Tooltip>

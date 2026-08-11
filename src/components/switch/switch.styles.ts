@@ -1,58 +1,74 @@
 import { cva } from 'class-variance-authority';
-import { disabledStyles } from '../styles';
+import { disabledStyles, motion } from '../shared/styles';
 
 export const switchStyles = cva(
   [
-    'relative inline-flex items-center flex-shrink-0',
-    'rounded-full transition-colors duration-300 cursor-pointer',
-    'focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300',
+    '[--sw-w:2.25rem] [--sw-h:1.25rem] [--sw-thumb:1rem]', // 36 x 20, md
+    '[--sw-pad:0.125rem]',
+
+    'group relative inline-flex shrink-0 items-center cursor-pointer',
+    'w-[var(--sw-w)] h-[var(--sw-h)] rounded-full',
+    'mt-[calc((var(--leading-body-md)-var(--sw-h))/2)]',
+
+    'bg-control-off',
+    'transition-[background-color,box-shadow]',
+    motion.base,
+
+    'enabled:hover:bg-control-off-hover',
+    'focus-visible:focus-ring',
+
+    'data-[state=checked]:bg-primary',
+    'enabled:hover:data-[state=checked]:bg-primary-hover',
+
+    'disabled:bg-active',
+    'disabled:opacity-60',
     disabledStyles.html,
   ].join(' '),
   {
     variants: {
       size: {
-        sm: 'h-4 w-8',
-        md: 'h-5 w-10',
-        lg: 'h-6 w-12',
-      },
-
-      variant: {
-        default: 'bg-neutral-200 data-[state=checked]:bg-neutral-900',
-
-        filled: 'bg-neutral-100 data-[state=checked]:bg-neutral-700',
-
-        outline:
-          'bg-transparent border border-neutral-300 data-[state=checked]:bg-neutral-300 data-[state=checked]:border-neutral-400',
-
-        ghost: 'bg-neutral-100 data-[state=checked]:bg-neutral-300',
+        sm: '[--sw-w:1.875rem] [--sw-h:1.0625rem] [--sw-thumb:0.8125rem]', // 30 x 17
+        md: '[--sw-w:2.25rem] [--sw-h:1.25rem] [--sw-thumb:1rem]', //         36 x 20
+        lg: '[--sw-w:2.75rem] [--sw-h:1.5rem] [--sw-thumb:1.25rem]', //       44 x 24
+        xl: '[--sw-w:3.25rem] [--sw-h:1.75rem] [--sw-thumb:1.5rem]', //       52 x 28
       },
 
       error: {
-        true: 'data-[state=checked]:bg-red-500 bg-red-300 border-red-400 focus-visible:ring-red-200',
+        true: [
+          'bg-danger-border',
+          'enabled:hover:bg-danger',
+          'data-[state=checked]:bg-danger',
+          'enabled:hover:data-[state=checked]:bg-danger-hover',
+          'focus-visible:focus-ring-danger',
+        ].join(' '),
       },
     },
 
     defaultVariants: {
       size: 'md',
-      variant: 'default',
+      error: false,
     },
   },
 );
 
-export const switchThumbStyles = cva(
-  [
-    'inline-block bg-white rounded-full shadow-sm transform transition-transform duration-300 translate-x-1',
-  ].join(' '),
+export const switchThumbStyles = [
+  'absolute top-[var(--sw-pad)] start-[var(--sw-pad)]',
+  'size-[var(--sw-thumb)] rounded-full bg-control-thumb shadow-sm',
+  'transition-transform',
+  motion.spring,
+  'data-[state=checked]:translate-x-[calc(var(--sw-w)-var(--sw-thumb)-var(--sw-pad)*2)]',
+  'group-disabled:shadow-none',
+].join(' ');
+
+export const switchRowStyles = 'flex items-start gap-2.5';
+
+export const switchLabelStyles = cva(
+  'text-body-md font-medium text-fg cursor-pointer',
   {
     variants: {
-      size: {
-        sm: 'h-3 w-3 data-[state=checked]:translate-x-4',
-        md: 'h-4 w-4 data-[state=checked]:translate-x-5',
-        lg: 'h-5 w-5 data-[state=checked]:translate-x-6',
+      disabled: {
+        true: 'text-fg-disabled cursor-not-allowed',
       },
-    },
-    defaultVariants: {
-      size: 'md',
     },
   },
 );

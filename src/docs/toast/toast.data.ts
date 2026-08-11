@@ -2,30 +2,26 @@ import type { ToastProps } from '../../components/toast/toast.types';
 
 export const previewToasts: Pick<
   ToastProps,
-  'variant' | 'title' | 'description' | 'icon'
+  'tone' | 'title' | 'description' | 'icon'
 >[] = [
   {
-    variant: 'default',
+    tone: 'neutral',
     title: 'Default toast',
     description: 'This is a default notification',
-    icon: '🔔',
   },
   {
-    variant: 'success',
+    tone: 'success',
     title: 'Success',
     description: 'Everything worked correctly',
-    icon: '✅',
   },
   {
-    variant: 'warning',
+    tone: 'warning',
     title: 'Warning',
     description: 'Something might need attention',
-    icon: '⚠️',
   },
   {
-    variant: 'destructive',
+    tone: 'danger',
     title: 'Error',
     description: 'Something went wrong',
-    icon: '❌',
   },
 ];

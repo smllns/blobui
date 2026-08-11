@@ -23,6 +23,13 @@ export const selectProps = [
     'Controls select width',
   ),
 
+  prop(
+    'labelPlacement',
+    "'above' | 'infield'",
+    'above',
+    'Where the label sits. infield lifts it on focus. Pins the trigger to xl',
+  ),
+
   errorProp,
 
   prop(

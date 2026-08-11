@@ -9,6 +9,7 @@ import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { Checkbox } from '../../components/checkbox/CheckBox';
 import { CodeBlock } from '../components/CodeBlock';
+import { Sun } from '@/ui/icons/Sun';
 
 export function CheckboxPlayground() {
   const [state, setState] = useState(CHECKBOX_INITIAL_STATE);
@@ -53,6 +54,7 @@ export function CheckboxPlayground() {
           <Checkbox
             size={state.size}
             checked={state.checked}
+            indeterminate={state.indeterminate}
             disabled={state.disabled}
             error={state.error}
             label={state.label ? 'Label' : undefined}
@@ -60,7 +62,11 @@ export function CheckboxPlayground() {
             errorMessage={
               state.errorMessage ? 'Something went wrong' : undefined
             }
-            leftIcon={state.leftIcon ? <span>💖</span> : undefined}
+            icon={
+              state.icon ? (
+                <Sun className='text-orange-400  h-5 w-5 ' />
+              ) : undefined
+            }
           />
         </div>
       }

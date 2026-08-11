@@ -4,11 +4,13 @@ import {
   dropdownMenuContentStyles,
   dropdownMenuTriggerStyles,
 } from './dropdown-menu.styles';
+import { cn } from '@/lib/cn';
 import {
   animateDropdownEnter,
   animateDropdownExit,
 } from './dropdown-menu.animation';
 import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
+import { menuLabelStyles, menuShortcutStyles } from '../shared/surface.styles';
 
 export function DropdownMenu({
   children,
@@ -27,10 +29,12 @@ export function DropdownMenu({
   return (
     <DropdownMenuPrimitive.Root open={open} onOpenChange={handleOpenChange}>
       <DropdownMenuPrimitive.Trigger
-        className={dropdownMenuTriggerStyles({
-          variant,
-          size,
-        })}
+        className={cn(
+          dropdownMenuTriggerStyles({
+            variant,
+            size,
+          }),
+        )}
       >
         {trigger}
       </DropdownMenuPrimitive.Trigger>
@@ -47,4 +51,23 @@ export function DropdownMenu({
       </DropdownMenuPrimitive.Portal>
     </DropdownMenuPrimitive.Root>
   );
+}
+
+export function DropdownMenuLabel({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>) {
+  return (
+    <DropdownMenuPrimitive.Label
+      className={cn(menuLabelStyles, className)}
+      {...props}
+    />
+  );
+}
+
+export function DropdownMenuShortcut({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'span'>) {
+  return <span className={cn(menuShortcutStyles, className)} {...props} />;
 }

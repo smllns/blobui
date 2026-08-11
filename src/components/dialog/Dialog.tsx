@@ -8,12 +8,13 @@ import {
   useState,
 } from 'react';
 import { cn } from '@/lib/cn';
-import CloseX from '../../ui/CloseX';
+import { Close } from '@/ui/icons/Close';
 
 import type {
   DialogContentProps,
   DialogOverlayProps,
   DialogHeaderProps,
+  DialogBodyProps,
   DialogFooterProps,
   DialogTitleProps,
   DialogDescriptionProps,
@@ -23,6 +24,7 @@ import {
   dialogOverlayStyles,
   dialogContentStyles,
   dialogHeaderStyles,
+  dialogBodyStyles,
   dialogFooterStyles,
   dialogTitleStyles,
   dialogDescriptionStyles,
@@ -106,15 +108,21 @@ const DialogPortal = DialogPrimitive.Portal;
 const DialogClose = forwardRef<
   HTMLButtonElement,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close>
->(({ className, ...props }, ref) => (
+>(({ className, asChild, children, ...props }, ref) => (
   <DialogPrimitive.Close
     ref={ref}
-    className={cn(dialogCloseStyles, className)}
+    asChild={asChild}
+    className={cn(!asChild && dialogCloseStyles, className)}
     {...props}
   >
-    <CloseX />
-
-    <span className='sr-only'>Close</span>
+    {asChild ? (
+      children
+    ) : (
+      <>
+        <Close />
+        <span className='sr-only'>Close</span>
+      </>
+    )}
   </DialogPrimitive.Close>
 ));
 
@@ -196,8 +204,17 @@ function DialogHeader({ className, ...props }: DialogHeaderProps) {
   return <div className={cn(dialogHeaderStyles, className)} {...props} />;
 }
 
-function DialogFooter({ className, ...props }: DialogFooterProps) {
-  return <div className={cn(dialogFooterStyles, className)} {...props} />;
+function DialogBody({ className, ...props }: DialogBodyProps) {
+  return <div className={cn(dialogBodyStyles, className)} {...props} />;
+}
+
+function DialogFooter({ className, surface, ...props }: DialogFooterProps) {
+  return (
+    <div
+      className={cn(dialogFooterStyles({ surface }), className)}
+      {...props}
+    />
+  );
 }
 
 const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
@@ -229,6 +246,7 @@ export {
   DialogClose,
   DialogContent,
   DialogHeader,
+  DialogBody,
   DialogFooter,
   DialogTitle,
   DialogDescription,

@@ -2,8 +2,13 @@ import type { SelectWidth } from '../../components/select/select.types';
 import type {
   CommonStylingVariant,
   ExtendedSize,
-} from '../../components/types';
-import { COMMON_VARIANTS, SIZE_OPTIONS } from '../../lib/options';
+  LabelPlacement,
+} from '../../components/shared/types';
+import {
+  COMMON_VARIANTS,
+  LABEL_PLACEMENT_OPTIONS,
+  SIZE_OPTIONS,
+} from '@/lib/options';
 import {
   checkboxControl,
   selectControl,
@@ -13,6 +18,7 @@ export type SelectPlaygroundState = {
   variant: CommonStylingVariant;
   size: ExtendedSize;
   width: SelectWidth;
+  labelPlacement: LabelPlacement;
   disabled: boolean;
   error: boolean;
 };
@@ -21,6 +27,7 @@ export const SELECT_INITIAL_STATE: SelectPlaygroundState = {
   variant: 'default',
   size: 'md',
   width: 'md',
+  labelPlacement: 'above',
   disabled: false,
   error: false,
 };
@@ -35,6 +42,11 @@ export const SELECT_CONTROLS = [
     'lg',
     'full',
   ]),
+  selectControl<SelectPlaygroundState>(
+    'labelPlacement',
+    'Label placement',
+    LABEL_PLACEMENT_OPTIONS,
+  ),
   checkboxControl<SelectPlaygroundState>('disabled', 'Disabled'),
   checkboxControl<SelectPlaygroundState>('error', 'Error'),
 ];

@@ -3,6 +3,7 @@ import type { InputPlaygroundState } from './inputConstants';
 export function generateInputCode({
   variant,
   size,
+  labelPlacement,
   fullWidth,
   error,
   leftIcon,
@@ -16,6 +17,7 @@ export function generateInputCode({
 
   if (variant !== 'default') props.push(`variant="${variant}"`);
   if (size !== 'md') props.push(`size="${size}"`);
+  if (labelPlacement !== 'above') props.push(`labelPlacement="${labelPlacement}"`);
   if (fullWidth) props.push('fullWidth');
   if (error) props.push('error');
 

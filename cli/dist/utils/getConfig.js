@@ -1,5 +1,8 @@
 import { readFile } from 'node:fs/promises';
 import { getConfigPath } from './getConfigPath.js';
+function isValidAlias(value) {
+    return typeof value === 'string' && value.length > 0;
+}
 export async function getConfig() {
     const configPath = getConfigPath();
     let content;
@@ -13,9 +16,14 @@ export async function getConfig() {
     }
     try {
         const config = JSON.parse(content);
-        if (!config.aliases?.components ||
-            !config.aliases?.lib ||
-            !config.aliases?.hooks) {
+        const aliases = config.aliases;
+        if (!aliases ||
+            !isValidAlias(aliases.components) ||
+            !isValidAlias(aliases.shared) ||
+            !isValidAlias(aliases.lib) ||
+            !isValidAlias(aliases.hooks) ||
+            !isValidAlias(aliases.styles) ||
+            !isValidAlias(aliases.ui)) {
             throw new Error('Invalid components.json format.');
         }
         return config;

@@ -2,7 +2,7 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import type { TooltipProps } from './tooltip.types';
 import {
   tooltipArrowStyles,
-  tooltipContentStyles,
+  tooltipStyles,
   tooltipInnerStyles,
 } from './tooltip.styles';
 import { cn } from '@/lib/cn';
@@ -43,7 +43,7 @@ export function Tooltip({
             side={side}
             align={align}
             sideOffset={8}
-            className={cn(tooltipContentStyles({ variant, size }), className)}
+            className={cn(tooltipStyles({ variant, size }), className)}
             {...props}
           >
             <div className={tooltipInnerStyles}>

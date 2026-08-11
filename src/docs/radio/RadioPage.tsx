@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Radio } from '../../components/radio/Radio';
 import { RadioPlayground } from './RadioPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
 
 export function RadioDocs() {
@@ -11,20 +11,15 @@ export function RadioDocs() {
       description='Radio buttons allow users to select one option from a set of mutually exclusive options.'
       preview={
         <>
-          <Radio name='radio' value='primary' label='Primary' />
+          <Radio name='radio' value='daily' label='Daily' defaultChecked />
           <Radio
             name='radio'
-            value='secondary'
-            variant='filled'
-            label='Filled'
+            value='weekly'
+            label='Weekly'
+            description='A digest every Monday morning'
           />
-          <Radio
-            name='radio'
-            value='outline'
-            variant='outline'
-            label='Outline'
-          />
-          <Radio name='radio' value='ghost' variant='ghost' label='Ghost' />
+          <Radio name='radio' value='never' label='Never' />
+          <Radio name='radio' value='large' label='Large' size='lg' />
         </>
       }
       playground={<RadioPlayground />}

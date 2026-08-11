@@ -40,6 +40,12 @@ export const leftIconProp = prop(
   '-',
   'Icon displayed before content',
 );
+export const iconProp = prop(
+  'icon',
+  'ReactNode',
+  '-',
+  'Icon displayed before content',
+);
 
 export const rightIconProp = prop(
   'rightIcon',

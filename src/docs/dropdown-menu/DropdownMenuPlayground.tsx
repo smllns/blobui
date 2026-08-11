@@ -9,7 +9,7 @@ import { DropdownMenu } from '../../components/dropdown-menu/DropdownMenu';
 import { DropdownMenuItem } from '../../components/dropdown-menu/DropdownMenuItem';
 import { DropdownMenuSeparator } from '../../components/dropdown-menu/DropdownMenuSeparator';
 import { CodeBlock } from '../components/CodeBlock';
-import { usePlaygroundState } from '../../hooks/usePlaygroundState';
+import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 
 export function DropdownMenuPlayground() {
   const { state, update } = usePlaygroundState(DROPDOWN_MENU_INITIAL_STATE);

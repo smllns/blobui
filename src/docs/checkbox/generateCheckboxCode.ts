@@ -8,7 +8,7 @@ export function generateCheckboxCode({
   label,
   description,
   errorMessage,
-  leftIcon,
+  icon,
 }: CheckboxPlaygroundState) {
   const props: string[] = [];
   if (size) props.push(`size="${size}"`);
@@ -19,7 +19,7 @@ export function generateCheckboxCode({
   if (label) props.push(`label="Subscribe"`);
   if (description) props.push(`description="Helper text"`);
   if (errorMessage) props.push(`errorMessage="Something went wrong"`);
-  if (leftIcon) props.push(`leftIcon={<Icon/>}`);
+  if (icon) props.push(`icon={<Sun/>}`);
 
   if (!props.length) {
     return `<Checkbox />`;

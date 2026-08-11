@@ -1,0 +1,50 @@
+@layer base {
+   :root {
+      color-scheme: light;
+   }
+   [data-theme="dark"] {
+      color-scheme: dark;
+   }
+
+   html {
+      -webkit-text-size-adjust: 100%;
+   }
+
+   body {
+      min-width: 320px;
+      min-height: 100vh;
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: var(--text-body-md);
+      line-height: var(--leading-body-md);
+      letter-spacing: var(--tracking-body-md);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "cv11", "ss01";
+   }
+
+   :focus-visible {
+      outline: none;
+   }
+
+   svg {
+      display: block;
+      flex-shrink: 0;
+   }
+}
+
+@utility focus-ring {
+   box-shadow: var(--focus-ring);
+}
+
+@utility focus-ring-danger {
+   box-shadow:
+      0 0 0 var(--focus-ring-offset) var(--bg-surface),
+      0 0 0 calc(var(--focus-ring-offset) + var(--focus-ring-width)) var(--danger-border);
+}
+
+@utility tabular {
+   font-variant-numeric: tabular-nums;
+}

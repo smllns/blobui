@@ -5,7 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '../../components/popover/Popover';
-import type { CommonStylingVariant } from '../../components/types';
+import type { CommonStylingVariant } from '../../components/shared/types';
 
 export const PreviewPopover = ({
   variant,
@@ -31,7 +31,7 @@ export const PreviewPopover = ({
     >
       <h4 className='mb-2 font-semibold'>{title}</h4>
 
-      <p className='text-sm text-neutral-600'>{description}</p>
+      <p className='text-body-sm text-fg-tertiary'>{description}</p>
 
       <PopoverArrow variant={variant} />
     </PopoverContent>

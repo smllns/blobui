@@ -21,8 +21,11 @@ export function BadgePlayground() {
       preview={
         <div className='flex items-center justify-center '>
           <Badge
-            variant={state.variant}
+            tone={state.tone}
+            emphasis={state.emphasis}
+            shape={state.shape}
             size={state.size}
+            dot={state.dot}
             leftIcon={state.leftIcon ? <span>🔥</span> : undefined}
             rightIcon={state.rightIcon ? <span>⚡</span> : undefined}
           >

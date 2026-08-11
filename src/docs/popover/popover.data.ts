@@ -1,4 +1,4 @@
-import type { CommonStylingVariant } from '../../components/types';
+import type { CommonStylingVariant } from '../../components/shared/types';
 
 export const previewPopovers: {
   variant: CommonStylingVariant;

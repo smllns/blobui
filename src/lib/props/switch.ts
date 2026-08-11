@@ -16,7 +16,12 @@ export const switchProps = [
     '-',
     'Callback fired when switch state changes',
   ),
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls switch size'),
+  prop(
+    'size',
+    "'sm' | 'md' | 'lg' | 'xl'",
+    'md',
+    'Controls switch size',
+  ),
 
   errorProp,
   ...fieldProps,

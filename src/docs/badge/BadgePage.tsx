@@ -1,6 +1,6 @@
 import { DocsPage } from '../components/DocsPage';
 import { Badge } from '../../components/badge/Badge';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { BadgePlayground } from './BadgePlayground';
 import { getInstallation } from '../utils/getInstallation';
 
@@ -11,10 +11,17 @@ export function BadgeDocs() {
       description='Badges are used to display a small piece of information.'
       preview={
         <>
-          <Badge variant='default'>Default</Badge>
-          <Badge variant='secondary'>Secondary</Badge>
-          <Badge variant='outline'>Outline</Badge>
-          <Badge variant='ghost'>Ghost</Badge>
+          <Badge tone='neutral'>Neutral</Badge>
+          <Badge tone='accent'>Accent</Badge>
+          <Badge tone='success' dot>
+            Success
+          </Badge>
+          <Badge tone='warning' emphasis='solid'>
+            Warning
+          </Badge>
+          <Badge tone='danger' emphasis='outline'>
+            Danger
+          </Badge>
         </>
       }
       playground={<BadgePlayground />}

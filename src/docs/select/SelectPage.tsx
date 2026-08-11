@@ -1,6 +1,6 @@
 import { DocsPage } from '../components/DocsPage';
 import { SelectPlayground } from './SelectPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { SelectPreview } from './SelectPreview';
 import { getInstallation } from '../utils/getInstallation';
 

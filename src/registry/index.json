@@ -1,6 +1,10 @@
 {
   "components": [
     {
+      "name": "theme",
+      "path": "./theme.json"
+    },
+    {
       "name": "accordion",
       "path": "./accordion.json"
     },

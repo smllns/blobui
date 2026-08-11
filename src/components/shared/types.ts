@@ -1,0 +1,11 @@
+export type BasicSize = 'sm' | 'md' | 'lg';
+export type ExtendedSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Side = 'top' | 'right' | 'bottom' | 'left';
+export type Align = 'start' | 'center' | 'end';
+export type CommonStylingVariant = 'default' | 'filled' | 'outline' | 'ghost';
+export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type Tone = 'neutral' | 'accent' | 'success' | 'warning' | 'danger';
+export type Emphasis = 'soft' | 'solid' | 'outline';
+export type Shape = 'pill' | 'square';
+export type ChoiceSize = 'md' | 'lg';
+export type LabelPlacement = 'above' | 'infield';

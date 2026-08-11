@@ -1,50 +1,45 @@
 import { cva } from 'class-variance-authority';
+import { surfaceStyles } from '../shared/surface.styles';
 
-export const popoverContentStyles = cva(
-  'z-50 w-72 border p-4 shadow-lg outline-none',
-  {
-    variants: {
-      variant: {
-        default: 'bg-neutral-100 border-neutral-300',
-
-        filled: 'bg-white border-white',
-
-        outline: 'bg-transparent  border-neutral-300 backdrop-blur-md',
-
-        ghost: 'bg-transparent border-transparent backdrop-blur-md',
-      },
-
-      size: {
-        sm: 'w-56 p-3',
-        md: 'w-72 p-4',
-        lg: 'w-96 p-5',
-      },
-
-      rounded: {
-        sm: 'rounded-md',
-        md: 'rounded-xl',
-        lg: 'rounded-2xl',
-      },
-    },
-
-    defaultVariants: {
-      variant: 'default',
-      size: 'md',
-      rounded: 'md',
-    },
-  },
-);
-
-export const popoverArrowStyles = cva('', {
+export const popoverContentStyles = cva('z-50 outline-none', {
   variants: {
     variant: {
-      default: 'fill-neutral-100',
+      default: '',
+      filled: '',
+      outline: '',
+      ghost: '',
+    },
+    size: {
+      sm: 'w-56 p-3',
+      md: 'w-72 p-4',
+      lg: 'w-96 p-5',
+    },
 
-      filled: 'fill-white',
+    rounded: {
+      sm: '',
+      md: '',
+      lg: '',
+    },
+  },
 
-      outline: 'fill-neutral-100/20 ',
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+    rounded: 'md',
+  },
+});
 
-      ghost: 'fill-neutral-100/20 ',
+export const popoverContent = (
+  args: Parameters<typeof popoverContentStyles>[0],
+) => [surfaceStyles(args), popoverContentStyles(args)].join(' ');
+
+export const popoverArrowStyles = cva('block,stroke-2 ', {
+  variants: {
+    variant: {
+      default: 'fill-overlay stroke-border ',
+      filled: 'fill-surface stroke-border',
+      outline: 'fill-overlay stroke-border-strong',
+      ghost: 'fill-overlay ',
     },
   },
 
@@ -52,3 +47,8 @@ export const popoverArrowStyles = cva('', {
     variant: 'default',
   },
 });
+
+export const popoverTitleStyles = 'm-0 mb-1 text-body-md font-semibold text-fg';
+
+export const popoverDescriptionStyles =
+  'm-0 mb-3 text-body-sm text-fg-tertiary';

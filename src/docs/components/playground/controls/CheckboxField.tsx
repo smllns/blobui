@@ -19,7 +19,7 @@ export function CheckboxField({
       checked={checked}
       onChange={(e) => onChange(e.target.checked)}
       disabled={disabled}
-      size='sm'
+      size='md'
     />
   );
 }

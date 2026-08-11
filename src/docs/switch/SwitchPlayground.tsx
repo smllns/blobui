@@ -1,8 +1,6 @@
 import { useState } from 'react';
-
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { CodeBlock } from '../components/CodeBlock';
-
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { SWITCH_CONTROLS, SWITCH_INITIAL_STATE } from './switchConstants';
 import { generateSwitchCode } from './generateSwitchCode';
@@ -49,7 +47,6 @@ export function SwitchPlayground() {
       preview={
         <div className='flex items-center justify-center p-20'>
           <Switch
-            variant={state.variant}
             checked={state.checked}
             disabled={state.disabled}
             size={state.size}

@@ -1,5 +1,9 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import type { CommonStylingVariant, ExtendedSize } from '../types';
+import type {
+  CommonStylingVariant,
+  ExtendedSize,
+  LabelPlacement,
+} from '../shared/types';
 
 export interface InputProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -7,6 +11,7 @@ export interface InputProps extends Omit<
 > {
   variant?: CommonStylingVariant;
   size?: ExtendedSize;
+  labelPlacement?: LabelPlacement;
   fullWidth?: boolean;
   error?: boolean;
   leftIcon?: ReactNode;
@@ -14,5 +19,6 @@ export interface InputProps extends Omit<
   label?: string;
   description?: string;
   errorMessage?: string;
+  required?: boolean;
   id?: string;
 }

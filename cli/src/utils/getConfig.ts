@@ -4,10 +4,17 @@ import { getConfigPath } from './getConfigPath.js';
 export type Config = {
   aliases: {
     components: string;
+    shared: string;
     lib: string;
     hooks: string;
+    styles: string;
+    ui: string;
   };
 };
+
+function isValidAlias(value: unknown): value is string {
+  return typeof value === 'string' && value.length > 0;
+}
 
 export async function getConfig(): Promise<Config> {
   const configPath = getConfigPath();
@@ -24,11 +31,16 @@ export async function getConfig(): Promise<Config> {
 
   try {
     const config = JSON.parse(content) as Config;
+    const aliases = config.aliases;
 
     if (
-      !config.aliases?.components ||
-      !config.aliases?.lib ||
-      !config.aliases?.hooks
+      !aliases ||
+      !isValidAlias(aliases.components) ||
+      !isValidAlias(aliases.shared) ||
+      !isValidAlias(aliases.lib) ||
+      !isValidAlias(aliases.hooks) ||
+      !isValidAlias(aliases.styles) ||
+      !isValidAlias(aliases.ui)
     ) {
       throw new Error('Invalid components.json format.');
     }

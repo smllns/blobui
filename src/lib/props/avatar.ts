@@ -3,17 +3,24 @@ import { prop } from './helpers';
 
 export const avatarProps = [
   prop(
-    'variant',
-    "'default' | 'outline' | 'soft' | 'ghost'",
-    'default',
-    'Visual style of the avatar',
+    'shape',
+    "'circle' | 'square'",
+    'circle',
+    'Shape of the avatar',
   ),
 
   prop(
     'size',
-    "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+    "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
     'md',
     'Controls avatar size',
+  ),
+
+  prop(
+    'status',
+    "'online' | 'busy' | 'away' | 'offline'",
+    '-',
+    'Presence dot in the bottom-right corner',
   ),
 
   prop('src', 'string', '-', 'Image source URL displayed inside the avatar'),

@@ -4,7 +4,7 @@ import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { Card } from '../../components/card/Card';
 import { CodeBlock } from '../components/CodeBlock';
-import { usePlaygroundState } from '../../hooks/usePlaygroundState';
+import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 
 export function CardPlayground() {
   const { state, update } = usePlaygroundState(CARD_INITIAL_STATE);
@@ -21,9 +21,9 @@ export function CardPlayground() {
       preview={
         <div className='flex items-center justify-center '>
           <Card variant={state.variant} padding={state.padding}>
-            <h3 className='mb-2 text-lg font-semibold'>Card title</h3>
+            <h3 className='mb-2 text-heading-md'>Card title</h3>
 
-            <p className='text-sm text-neutral-600'>
+            <p className='text-body-sm text-fg-tertiary'>
               This is a flexible container for grouping related content.
             </p>
           </Card>

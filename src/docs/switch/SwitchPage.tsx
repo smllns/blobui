@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Switch } from '../../components/switch/Switch';
 import { SwitchPlayground } from './SwitchPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
 
 export function SwitchDocs() {
@@ -11,10 +11,10 @@ export function SwitchDocs() {
       description='Switches are used to toggle a value on or off.'
       preview={
         <>
-          <Switch variant='default' label='Default' />
-          <Switch variant='filled' label='Filled' />
-          <Switch variant='outline' label='Outline' />
-          <Switch variant='ghost' label='Ghost' />
+          <Switch size='sm' label='Small' />
+          <Switch size='md' label='Medium' defaultChecked />
+          <Switch size='lg' label='Large' defaultChecked />
+          <Switch size='xl' label='Extra large' />
         </>
       }
       playground={<SwitchPlayground />}

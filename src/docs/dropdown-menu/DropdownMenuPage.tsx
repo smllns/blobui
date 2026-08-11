@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { DropdownMenu } from '../../components/dropdown-menu/DropdownMenu';
 import { DropdownMenuPlayground } from './DropdownMenuPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { MENU_ITEMS, VARIANTS } from './dropdownMenu.data';
 import { getInstallation } from '../utils/getInstallation';
 

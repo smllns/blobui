@@ -1,7 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
 import { Toast } from '../../components/toast/Toast';
 import { ToastPlayground } from './ToastPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { previewToasts } from './toast.data';
 import { getInstallation } from '../utils/getInstallation';
 
@@ -13,7 +13,7 @@ export function ToastDocs() {
       preview={
         <>
           {previewToasts.map((toast) => (
-            <Toast key={toast.variant} {...toast} />
+            <Toast key={toast.title} {...toast} />
           ))}
         </>
       }

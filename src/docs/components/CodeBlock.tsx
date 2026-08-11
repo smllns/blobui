@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { ChevronDown } from '../../ui/ChevronDown';
 import { Toast } from '../../components/toast/Toast';
 import { Button } from '../../components/button/Button';
+import { cn } from '@/lib/cn';
+import { ChevronDown } from '@/ui/icons/ChevronDown';
 
 type ToastItem = {
   id: string;
@@ -49,9 +50,11 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
   };
 
   return (
-    <div className='rounded-xl border border-neutral-200 bg-olive-400/10 overflow-hidden'>
-      <div className='flex items-center justify-between px-4 py-3 border-b border-neutral-200 bg-olive-500/10'>
-        <p className='text-sm font-semibold'>{title || 'Code'}</p>
+    <div className='overflow-hidden rounded-xl border border-border-subtle bg-sunken'>
+      <div className='flex items-center justify-between border-b border-border-subtle bg-surface px-4 py-3'>
+        <p className='font-mono text-body-sm text-fg-secondary'>
+          {title || 'Code'}
+        </p>
 
         <Button variant='secondary' size='xs' onClick={handleCopy}>
           {copied ? 'Copied' : 'Copy'}
@@ -59,7 +62,7 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
       </div>
       <div
         style={{
-          maxHeight: height,
+          maxHeight: isShortCode ? 'none' : height,
         }}
         className={`
           relative overflow-hidden
@@ -73,13 +76,13 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
             ${open ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-1'}
           `}
         >
-          <pre className='p-4 text-sm text-neutral-800 overflow-x-auto'>
+          <pre className='overflow-x-auto p-4 font-mono text-body-sm text-fg-secondary'>
             <code>{code}</code>
           </pre>
         </div>
 
         {!open && !isShortCode && (
-          <div className='absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-olive-400/10 to-transparent pointer-events-none' />
+          <div className='pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-sunken to-transparent' />
         )}
 
         {!isShortCode && (
@@ -94,14 +97,16 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
               variant='secondary'
               size='xs'
               onClick={() => setOpen((v) => !v)}
-              className='flex items-center gap-1 shadow-md'
+              className='shadow-md'
+              leftIcon={
+                <ChevronDown
+                  className={cn(
+                    'transition-transform duration-(--duration-fast) ease-out',
+                    open && 'rotate-180',
+                  )}
+                />
+              }
             >
-              <ChevronDown
-                className={`w-3 h-3 transition-transform duration-300 ${
-                  open ? 'rotate-180' : ''
-                }`}
-              />
-
               {open ? 'Hide' : 'Show'}
             </Button>
           </div>
@@ -109,15 +114,14 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
       </div>
 
       {toasts.length > 0 && (
-        <div className='fixed bottom-4 right-4 z-50 flex flex-col gap-2'>
+        <div className='fixed inset-e-4 bottom-4 z-(--z-toast) flex flex-col-reverse gap-2'>
           {toasts.map((toast) => (
             <Toast
               key={toast.id}
-              variant='success'
+              tone='success'
               size='md'
               title='Copied!'
               description='Code copied to clipboard'
-              icon='✅'
               closing={toast.closing}
               onClose={() =>
                 setToasts((prev) => prev.filter((t) => t.id !== toast.id))

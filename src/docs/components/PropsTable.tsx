@@ -1,4 +1,4 @@
-import { ChevronDown } from '../../ui/ChevronDown';
+import { ChevronDown } from '@/ui/icons/ChevronDown';
 
 type Prop = {
   name: string;
@@ -15,32 +15,34 @@ type PropsTableProps = {
 export function PropsTable({ title, props }: PropsTableProps) {
   return (
     <section className='space-y-4'>
-      <h2 className='text-xl font-semibold pb-2'>{title} Props Table</h2>
+      <h2 className='text-heading-lg pb-2 text-fg'>{title} Props Table</h2>
 
-      <div className='overflow-hidden rounded-xl border border-neutral-200'>
-        <table className='w-full text-sm'>
-          <thead className='bg-olive-400/30 text-left'>
+      <div className='overflow-x-auto rounded-xl border border-border-subtle'>
+        <table className='w-full text-body-sm'>
+          <thead className='bg-sunken text-start text-fg-secondary'>
             <tr>
-              <th className='p-3 font-medium'>Prop</th>
-              <th className='p-3 font-medium'>Type</th>
-              <th className='p-3 font-medium'>Default</th>
-              <th className='p-3 font-medium'>Description</th>
+              <th className='p-3 text-start font-medium'>Prop</th>
+              <th className='p-3 text-start font-medium'>Type</th>
+              <th className='p-3 text-start font-medium'>Default</th>
+              <th className='p-3 text-start font-medium'>Description</th>
             </tr>
           </thead>
 
-          <tbody className='bg-olive-400/10'>
+          <tbody className='bg-surface'>
             {props.map((prop) => (
-              <tr key={prop.name} className='border-t border-neutral-100'>
-                <td className='p-3 font-medium'>{prop.name}</td>
-                <td className='p-3 text-neutral-600'>{prop.type}</td>
-                <td className='p-3 text-neutral-600'>
+              <tr key={prop.name} className='border-t border-border-subtle'>
+                <td className='p-3 font-medium text-fg'>{prop.name}</td>
+                <td className='p-3 font-mono text-caption text-primary-fg'>
+                  {prop.type}
+                </td>
+                <td className='p-3 text-fg-tertiary'>
                   {prop.default === 'chevron' ? (
                     <ChevronDown />
                   ) : (
                     (prop.default ?? '-')
                   )}
                 </td>
-                <td className='p-3 text-neutral-600'>
+                <td className='p-3 text-fg-tertiary'>
                   {prop.description || '-'}
                 </td>
               </tr>

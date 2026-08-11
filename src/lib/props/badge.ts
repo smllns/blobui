@@ -8,13 +8,34 @@ import { prop } from './helpers';
 
 export const badgeProps = [
   prop(
-    'variant',
-    "'default' | 'secondary' | 'outline' | 'ghost' | 'success' | 'warning' | 'destructive'",
-    'default',
-    'Visual style of the badge',
+    'tone',
+    "'neutral' | 'accent' | 'success' | 'warning' | 'danger'",
+    'neutral',
+    'Meaning of the badge. Composes with emphasis',
   ),
 
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls badge size'),
+  prop(
+    'emphasis',
+    "'soft' | 'solid' | 'outline'",
+    'soft',
+    'How loud the badge is',
+  ),
+
+  prop(
+    'shape',
+    "'pill' | 'square'",
+    'pill',
+    'Corner treatment',
+  ),
+
+  prop('size', "'sm' | 'md' | 'lg' | 'xl'", 'md', 'Controls badge size'),
+
+  prop(
+    'dot',
+    'boolean',
+    'false',
+    'Shows a status dot in the badge own ink',
+  ),
 
   leftIconProp,
   rightIconProp,

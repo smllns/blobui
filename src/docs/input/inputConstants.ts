@@ -1,8 +1,13 @@
 import type {
   CommonStylingVariant,
   ExtendedSize,
-} from '../../components/types';
-import { COMMON_VARIANTS, SIZE_OPTIONS } from '../../lib/options';
+  LabelPlacement,
+} from '../../components/shared/types';
+import {
+  COMMON_VARIANTS,
+  LABEL_PLACEMENT_OPTIONS,
+  SIZE_OPTIONS,
+} from '../../lib/options';
 import {
   checkboxControl,
   selectControl,
@@ -11,6 +16,7 @@ import {
 export type InputPlaygroundState = {
   variant: CommonStylingVariant;
   size: ExtendedSize;
+  labelPlacement: LabelPlacement;
   fullWidth: boolean;
   error: boolean;
   leftIcon: boolean;
@@ -24,6 +30,7 @@ export type InputPlaygroundState = {
 export const INPUT_INITIAL_STATE: InputPlaygroundState = {
   variant: 'default',
   size: 'md',
+  labelPlacement: 'above',
   fullWidth: false,
   error: false,
   leftIcon: false,
@@ -37,6 +44,11 @@ export const INPUT_INITIAL_STATE: InputPlaygroundState = {
 export const INPUT_CONTROLS = [
   selectControl<InputPlaygroundState>('variant', 'Variant', COMMON_VARIANTS),
   selectControl<InputPlaygroundState>('size', 'Size', SIZE_OPTIONS),
+  selectControl<InputPlaygroundState>(
+    'labelPlacement',
+    'Label placement',
+    LABEL_PLACEMENT_OPTIONS,
+  ),
   checkboxControl<InputPlaygroundState>('error', 'Error'),
   checkboxControl<InputPlaygroundState>('disabled', 'Disabled'),
   checkboxControl<InputPlaygroundState>('fullWidth', 'Full width'),

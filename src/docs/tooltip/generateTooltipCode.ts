@@ -10,11 +10,11 @@ export function generateTooltipCode(state: TooltipPlaygroundState) {
   ];
 
   if (state.startIcon) {
-    props.push('startIcon={<Icon />}');
+    props.push('startIcon={<Sun />}');
   }
 
   if (state.endIcon) {
-    props.push('endIcon={<Icon />}');
+    props.push('endIcon={<Moon />}');
   }
 
   return `

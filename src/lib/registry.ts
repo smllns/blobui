@@ -12,9 +12,11 @@ import radio from '../registry/radio.json';
 import select from '../registry/select.json';
 import switchComponent from '../registry/switch.json';
 import toast from '../registry/toast.json';
+import theme from '../registry/theme.json';
 import tooltip from '../registry/tooltip.json';
 
 export const registry = {
+  theme,
   accordion,
   avatar,
   badge,

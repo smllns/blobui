@@ -1,7 +1,7 @@
 {
   "name": "accordion",
   "type": "registry:ui",
-  "registryDependencies": [],
+  "registryDependencies": ["theme"],
   "dependencies": [
     "@radix-ui/react-accordion",
     "gsap",
@@ -31,11 +31,11 @@
       "type": "type"
     },
     {
-      "path": "components/styles.ts",
+      "path": "components/shared/styles.ts",
       "type": "shared"
     },
     {
-      "path": "components/types.ts",
+      "path": "components/shared/types.ts",
       "type": "shared"
     },
     {
@@ -43,8 +43,12 @@
       "type": "lib"
     },
     {
-      "path": "ui/ChevronDown.tsx",
-      "type": "shared"
+      "path": "ui/icons/ChevronDown.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import type { AccordionProps } from '../../components/accordion/accordion.types';
-import type { CommonStylingVariant } from '../../components/types';
-import { COMMON_VARIANTS } from '../../lib/options';
+import type { CommonStylingVariant } from '../../components/shared/types';
+import { COMMON_VARIANTS } from '@/lib/options';
 import {
   checkboxControl,
   selectControl,

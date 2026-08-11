@@ -2,7 +2,7 @@ import { DocsPage } from '../components/DocsPage';
 import { TooltipPlayground } from './TooltipPlayground';
 import { Tooltip } from '../../components/tooltip/Tooltip';
 import { Button } from '../../components/button/Button';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { previewTooltips } from './tooltip.data';
 import { getInstallation } from '../utils/getInstallation';
 

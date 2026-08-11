@@ -1,15 +1,35 @@
 import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { cn } from '@/lib/cn';
-import { toastStyles, toastIconStyles } from './toast.styles';
+import {
+  toastContentStyles,
+  toastDescriptionStyles,
+  toastIconStyles,
+  toastStyles,
+  toastTitleStyles,
+} from './toast.styles';
 import type { ToastProps } from './toast.types';
 import { animateToastIn, animateToastOut } from './toast.animation';
-import { Button } from '../button/Button';
+
 import { mergeRefs } from '@/lib/mergeRefs';
+import { Close } from '@/ui/icons/Close';
+import { Info } from '@/ui/icons/Info';
+import { CheckCircle } from '@/ui/icons/CheckCircle';
+import { AlertTriangle } from '@/ui/icons/AlertTriangle';
+import { CloseCircle } from '@/ui/icons/CloseCircle';
+import { Button } from '../button/Button';
+
+const defaultToastIcons = {
+  neutral: <Info />,
+  success: <CheckCircle />,
+  warning: <AlertTriangle />,
+  danger: <CloseCircle />,
+  info: <Info />,
+};
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
     {
-      variant,
+      tone,
       size,
       title,
       description,
@@ -50,28 +70,38 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       }
     }, [closing, closeToast]);
 
+    const toastIcon =
+      icon !== undefined ? icon : defaultToastIcons[tone ?? 'neutral'];
+
     return (
       <div
         ref={setRefs}
         role='status'
         data-state='open'
-        className={cn(toastStyles({ variant, size }), className)}
+        className={cn(toastStyles({ size }), className)}
       >
-        {icon && <div className={cn(toastIconStyles({ variant }))}>{icon}</div>}
+        {toastIcon && (
+          <div className={toastIconStyles({ tone })}>{toastIcon}</div>
+        )}
 
-        <div className='flex flex-col gap-0.5 flex-1'>
-          <div className='font-medium leading-tight'>{title}</div>
+        <div className={toastContentStyles}>
+          <p className={toastTitleStyles}>{title}</p>
 
           {description && (
-            <div className='text-xs opacity-80'>{description}</div>
+            <p className={toastDescriptionStyles}>{description}</p>
           )}
         </div>
 
-        {action && <div className='ml-auto flex items-center'>{action}</div>}
+        {action && <div className='ms-auto flex items-center'>{action}</div>}
 
         {onClose && (
-          <Button onClick={closeToast} size='xs' variant='outline'>
-            ✕
+          <Button
+            variant='ghost'
+            className='font-extrabold ms-2 shrink-0'
+            aria-label='Dismiss'
+            onClick={closeToast}
+          >
+            <Close size='sm' />
           </Button>
         )}
       </div>

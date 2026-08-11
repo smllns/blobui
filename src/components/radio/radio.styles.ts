@@ -1,40 +1,75 @@
 import { cva } from 'class-variance-authority';
+import { motion, transitionControl } from '../shared/styles';
 
 export const radioStyles = cva(
   [
-    'appearance-none rounded-full border',
-    'transition-all duration-200 cursor-pointer',
-    'focus:outline-none focus:ring-2 focus:ring-olive-400/40',
+    '[--radio-size:1.125rem]', // 18px
+
+    'relative inline-grid place-items-center shrink-0 m-0 appearance-none cursor-pointer',
+    'size-[var(--radio-size)]',
+    'mt-[calc((var(--leading-body-md)-var(--radio-size))/2)]',
+
+    'bg-input border border-border-strong rounded-full',
+    transitionControl,
+    motion.fast,
+
+    'enabled:hover:border-primary enabled:hover:bg-primary-muted',
+    'focus-visible:focus-ring',
+
+    'checked:bg-primary checked:border-primary',
+    'enabled:checked:hover:bg-primary-hover enabled:checked:hover:border-primary-hover',
+
+    "checked:after:content-['']",
+    'checked:after:size-[calc(var(--radio-size)*0.34)]',
+    'checked:after:rounded-full checked:after:bg-on-primary',
+
+    'disabled:bg-disabled disabled:border-border-disabled disabled:cursor-not-allowed',
+    'disabled:checked:after:bg-fg-disabled',
   ].join(' '),
   {
     variants: {
       size: {
-        sm: 'h-3 w-3',
-        md: 'h-4 w-4',
-        lg: 'h-5 w-5',
-      },
-
-      variant: {
-        default:
-          'border-neutral-400 bg-white checked:bg-neutral-700 checked:border-neutral-500',
-
-        filled:
-          'border-neutral-300 bg-neutral-100 checked:bg-neutral-500 checked:border-neutral-500',
-
-        outline:
-          'border-neutral-500 bg-neutral-200 checked:bg-neutral-300 checked:border-neutral-500',
-
-        ghost: 'border-transparent bg-neutral-200 checked:bg-neutral-300',
+        md: '[--radio-size:1.125rem]', // 18px
+        lg: '[--radio-size:1.375rem]', // 22px
       },
 
       error: {
-        true: 'border-red-500 checked:bg-red-500 focus:ring-red-300',
+        true: [
+          'border-danger-border',
+          'enabled:hover:border-danger enabled:hover:bg-danger-subtle',
+          'checked:bg-danger checked:border-danger',
+          'enabled:checked:hover:bg-danger-hover enabled:checked:hover:border-danger-hover',
+          'focus-visible:focus-ring-danger',
+        ].join(' '),
       },
     },
 
     defaultVariants: {
       size: 'md',
-      variant: 'default',
+      error: false,
     },
   },
 );
+
+export const radioRowStyles = 'flex items-start gap-2.5';
+
+export const radioLabelStyles = cva(
+  'text-body-md font-medium text-fg cursor-pointer',
+  {
+    variants: {
+      disabled: {
+        true: 'text-fg-disabled cursor-not-allowed',
+      },
+    },
+  },
+);
+
+export const radioHelperStyles = cva('', {
+  variants: {
+    size: {
+      md: 'ps-7', // 18 + 10
+      lg: 'ps-8', // 22 + 10
+    },
+  },
+  defaultVariants: { size: 'md' },
+});

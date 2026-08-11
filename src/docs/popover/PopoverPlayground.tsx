@@ -66,7 +66,7 @@ export function PopoverPlayground() {
             >
               <h4 className='mb-2 font-semibold'>{state.title}</h4>
 
-              <p className='text-sm text-neutral-600'>{state.description}</p>
+              <p className='text-body-sm text-fg-tertiary'>{state.description}</p>
 
               {state.showArrow && <PopoverArrow variant={state.variant} />}
             </PopoverContent>

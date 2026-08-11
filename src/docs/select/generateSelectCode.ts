@@ -4,6 +4,7 @@ export function generateSelectCode({
   variant,
   size,
   width,
+  labelPlacement,
   disabled,
   error,
 }: SelectPlaygroundState) {
@@ -11,6 +12,8 @@ export function generateSelectCode({
     variant !== 'default' && `variant="${variant}"`,
     size !== 'md' && `size="${size}"`,
     width !== 'md' && `width="${width}"`,
+    `label="Framework"`,
+    labelPlacement !== 'above' && `labelPlacement="${labelPlacement}"`,
     disabled && 'disabled',
     error && 'error',
   ].filter(Boolean);

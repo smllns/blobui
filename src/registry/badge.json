@@ -1,8 +1,14 @@
 {
   "name": "badge",
   "type": "registry:ui",
-  "registryDependencies": [],
-  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "registryDependencies": [
+    "theme"
+  ],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "components/badge/Badge.tsx",

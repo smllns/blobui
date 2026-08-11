@@ -1,47 +1,56 @@
 import { cva } from 'class-variance-authority';
 
+export const toastViewportStyles = [
+  'fixed end-4 bottom-4 z-[var(--z-toast)]',
+  'flex flex-col-reverse gap-2',
+  'w-[min(22rem,calc(100vw-var(--space-7)*2))]',
+].join(' ');
+
 export const toastStyles = cva(
   [
-    'flex items-start gap-3 border',
-    'rounded-lg px-4 py-3 shadow-lg',
-    'animate-in fade-in-0 slide-in-from-bottom-2',
-    'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
+    'flex items-start gap-2.5 p-3',
+    'bg-surface border border-border-subtle rounded-xl shadow-xl',
+    'text-fg',
   ].join(' '),
   {
     variants: {
-      variant: {
-        default: 'bg-white text-neutral-900 border-neutral-200',
-        success: 'bg-green-50 text-green-800 border-green-200',
-        warning: 'bg-yellow-50 text-yellow-800 border-yellow-200',
-        destructive: 'bg-red-50 text-red-800 border-red-200',
-        info: 'bg-blue-50 text-blue-800 border-blue-200',
-      },
-
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: 'text-body-sm',
+        md: 'text-body-md',
+        lg: 'text-body-lg',
       },
     },
 
     defaultVariants: {
-      variant: 'default',
       size: 'md',
     },
   },
 );
 
-export const toastIconStyles = cva('mt-0.5 shrink-0', {
-  variants: {
-    variant: {
-      default: 'text-neutral-500',
-      success: 'text-green-600',
-      warning: 'text-yellow-600',
-      destructive: 'text-red-600',
-      info: 'text-blue-600',
+export const toastIconStyles = cva(
+  ['grid place-items-center shrink-0', 'size-8 rounded-full', 'text-xs'].join(
+    ' ',
+  ),
+  {
+    variants: {
+      tone: {
+        neutral: 'bg-info-subtle text-info-fg',
+        success: 'bg-success-subtle text-success-fg',
+        warning: 'bg-warning-subtle text-warning-fg',
+        danger: 'bg-danger-subtle text-danger-fg',
+        info: 'bg-info-subtle text-info-fg',
+      },
+    },
+
+    defaultVariants: {
+      tone: 'neutral',
     },
   },
-  defaultVariants: {
-    variant: 'default',
-  },
-});
+);
+
+export const toastTitleStyles = 'm-0 text-body-md font-medium leading-tight';
+
+export const toastDescriptionStyles =
+  'm-0 mt-0.5 text-body-sm leading-[var(--leading-body-sm)] text-fg-tertiary';
+
+export const toastContentStyles = 'flex-1 min-w-0';

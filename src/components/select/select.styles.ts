@@ -1,31 +1,22 @@
 import { cva } from 'class-variance-authority';
-import { disabledStyles } from '../styles';
+import { fieldShellStyles } from '../shared/field.styles';
+import {
+  menuItemStyles,
+  menuStyles,
+  surfaceStyles,
+} from '../shared/surface.styles';
+import { motion } from '../shared/styles';
 
 export const selectTriggerStyles = cva(
   [
-    'flex items-center justify-between gap-2 border',
-    'rounded-lg shadow-sm transition-colors duration-300',
-    'focus:outline-none focus:ring-1 focus:ring-neutral-300',
-    disabledStyles.html,
-    'data-[state=open]:ring-1 data-[state=open]:ring-neutral-300',
-  ],
+    'justify-between cursor-pointer text-start text-fg text-field',
+    'data-[state=open]:border-border-focus',
+    'focus-visible:border-border-focus focus-visible:focus-ring',
+    'data-[placeholder]:text-fg-placeholder',
+    'disabled:text-fg-disabled disabled:cursor-not-allowed ',
+  ].join(' '),
   {
     variants: {
-      variant: {
-        default: 'bg-neutral-50 border-white/70 hover:bg-white',
-        filled: 'bg-white border-transparent hover:bg-neutral-50',
-        outline: 'bg-white/20 border-white hover:bg-white/40',
-        ghost: 'bg-transparent border-transparent hover:bg-neutral-50/30',
-      },
-
-      size: {
-        xs: 'h-6 px-2 text-xs',
-        sm: 'h-8 px-3 text-sm',
-        md: 'h-10 px-4 text-base',
-        lg: 'h-12 px-5 text-lg',
-        xl: 'h-14 px-6 text-xl',
-      },
-
       width: {
         auto: 'w-auto',
         sm: 'w-32',
@@ -33,37 +24,38 @@ export const selectTriggerStyles = cva(
         lg: 'w-64',
         full: 'w-full',
       },
-
-      error: {
-        true: 'border-red-300 bg-red-50 focus:ring-red-200',
-      },
     },
 
     defaultVariants: {
-      variant: 'default',
-      size: 'md',
       width: 'md',
-      error: false,
     },
   },
 );
-export const selectContentStyles = [
-  'z-50 w-(--radix-select-trigger-width)',
-  'overflow-hidden rounded-lg shadow-lg',
-  'border border-neutral-200 bg-white p-1',
-  'animate-in fade-in-0',
-  'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
-  'data-[side=bottom]:slide-in-from-top-2',
-  'data-[side=top]:slide-in-from-bottom-2',
+
+export const selectTrigger = (
+  args: Parameters<typeof fieldShellStyles>[0] &
+    Parameters<typeof selectTriggerStyles>[0],
+) => [fieldShellStyles(args), selectTriggerStyles(args)].join(' ');
+
+export const selectCaretStyles = [
+  'shrink-0 text-fg-tertiary',
+  'transition-transform',
+  motion.fast,
+  'group-data-[state=open]:rotate-180',
 ].join(' ');
 
-export const selectViewportStyles = 'max-h-72 overflow-y-auto';
+export const selectContentStyles = [
+  surfaceStyles(),
+  menuStyles,
+  'z-50 w-(--radix-select-trigger-width) overflow-hidden',
+].join(' ');
+
+export const selectViewportStyles = 'max-h-64 overflow-y-auto';
 
 export const selectItemStyles = [
-  'relative flex items-center w-full cursor-pointer',
-  'rounded-md px-3 py-2 text-sm text-neutral-700',
-  'outline-none select-none transition-colors duration-200',
-  'data-[highlighted]:bg-neutral-100 data-[highlighted]:text-neutral-900',
-  'data-[state=checked]:bg-neutral-100 data-[state=checked]:font-medium',
-  disabledStyles.data,
+  menuItemStyles(),
+  'justify-between',
+  'data-[state=checked]:text-primary-fg data-[state=checked]:font-medium',
 ].join(' ');
+
+export const selectCheckSlotStyles = 'size-icon-sm shrink-0';

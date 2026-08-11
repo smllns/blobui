@@ -1,7 +1,7 @@
 {
   "name": "dialog",
   "type": "registry:ui",
-  "registryDependencies": [],
+  "registryDependencies": ["theme"],
   "dependencies": [
     "@radix-ui/react-dialog",
     "gsap",
@@ -27,6 +27,10 @@
       "type": "type"
     },
     {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
       "path": "lib/cn.ts",
       "type": "lib"
     },
@@ -35,8 +39,12 @@
       "type": "lib"
     },
     {
-      "path": "ui/CloseX.tsx",
-      "type": "shared"
+      "path": "ui/icons/Close.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
     }
   ]
 }

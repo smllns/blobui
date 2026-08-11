@@ -4,13 +4,13 @@ import type {
   CommonStylingVariant,
   ExtendedSize,
   Side,
-} from '../../components/types';
+} from '../../components/shared/types';
 import {
   BASIC_SIZE_OPTIONS,
   COMMON_VARIANTS,
   SIDE_OPTIONS,
   SIZE_OPTIONS,
-} from '../../lib/options';
+} from '@/lib/options';
 import {
   checkboxControl,
   selectControl,

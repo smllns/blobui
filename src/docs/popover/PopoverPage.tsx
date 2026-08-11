@@ -1,6 +1,6 @@
 import { DocsPage } from '../components/DocsPage';
 import { PopoverPlayground } from './PopoverPlayground';
-import { componentProps } from '../../lib/props';
+import { componentProps } from '@/lib/props';
 import { previewPopovers } from './popover.data';
 import { PreviewPopover } from './PreviewPopover';
 import { getInstallation } from '../utils/getInstallation';

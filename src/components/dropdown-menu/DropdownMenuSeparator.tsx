@@ -1,5 +1,6 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { cn } from '@/lib/cn';
+import { menuSeparatorStyles } from '../shared/surface.styles';
 
 export function DropdownMenuSeparator({
   className,
@@ -7,7 +8,7 @@ export function DropdownMenuSeparator({
 }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>) {
   return (
     <DropdownMenuPrimitive.Separator
-      className={cn('my-1 h-px bg-neutral-200', className)}
+      className={cn(menuSeparatorStyles, className)}
       {...props}
     />
   );

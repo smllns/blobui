@@ -1,13 +1,13 @@
 import type { ToastProps } from '../../components/toast/toast.types';
-import type { BasicSize } from '../../components/types';
-import { BASIC_SIZE_OPTIONS } from '../../lib/options';
+import type { BasicSize } from '../../components/shared/types';
+import { BASIC_SIZE_OPTIONS, TOAST_TONES } from '@/lib/options';
 import {
   checkboxControl,
   selectControl,
 } from '../components/playground/controls/controlHelpers';
 
 export type ToastPlaygroundState = {
-  variant: NonNullable<ToastProps['variant']>;
+  tone: NonNullable<ToastProps['tone']>;
   size: BasicSize;
   title: string;
   description: boolean;
@@ -17,7 +17,7 @@ export type ToastPlaygroundState = {
 };
 
 export const TOAST_INITIAL_STATE: ToastPlaygroundState = {
-  variant: 'default',
+  tone: 'neutral',
   size: 'md',
   title: 'Notification title',
   description: true,
@@ -27,13 +27,7 @@ export const TOAST_INITIAL_STATE: ToastPlaygroundState = {
 };
 
 export const TOAST_CONTROLS = [
-  selectControl<ToastPlaygroundState>('variant', 'Variant', [
-    'default',
-    'success',
-    'warning',
-    'destructive',
-    'info',
-  ]),
+  selectControl<ToastPlaygroundState>('tone', 'Tone', TOAST_TONES),
   selectControl<ToastPlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
   checkboxControl<ToastPlaygroundState>('description', 'Description'),
   checkboxControl<ToastPlaygroundState>('icon', 'Show Icon'),
