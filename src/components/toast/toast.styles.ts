@@ -15,9 +15,9 @@ export const toastStyles = cva(
   {
     variants: {
       size: {
-        sm: 'text-body-sm',
-        md: 'text-body-md',
-        lg: 'text-body-lg',
+        sm: 'w-70',
+        md: 'w-90',
+        lg: 'w-120',
       },
     },
 
@@ -28,9 +28,7 @@ export const toastStyles = cva(
 );
 
 export const toastIconStyles = cva(
-  ['grid place-items-center shrink-0', 'size-8 rounded-full', 'text-xs'].join(
-    ' ',
-  ),
+  ['grid place-items-center shrink-0', ' rounded-full', 'text-xs'].join(' '),
   {
     variants: {
       tone: {
@@ -40,17 +38,45 @@ export const toastIconStyles = cva(
         danger: 'bg-danger-subtle text-danger-fg',
         info: 'bg-info-subtle text-info-fg',
       },
+      size: {
+        sm: 'size-6',
+        md: 'size-8',
+        lg: 'size-10',
+      },
     },
 
     defaultVariants: {
       tone: 'neutral',
+      size: 'md',
     },
   },
 );
 
-export const toastTitleStyles = 'm-0 text-body-md font-medium leading-tight';
+export const toastTitleStyles = cva('m-0  font-medium leading-tight', {
+  variants: {
+    size: {
+      sm: 'text-body-sm',
+      md: 'text-body-md',
+      lg: 'text-body-lg',
+    },
+  },
 
-export const toastDescriptionStyles =
-  'm-0 mt-0.5 text-body-sm leading-[var(--leading-body-sm)] text-fg-tertiary';
+  defaultVariants: {
+    size: 'md',
+  },
+});
+export const toastDescriptionStyles = cva('m-0 mt-0.5  text-fg-tertiary', {
+  variants: {
+    size: {
+      sm: 'text-caption leading-[var(--leading-caption)]',
+      md: 'text-body-sm leading-[var(--leading-body-sm)]',
+      lg: 'text-body-md leading-[var(--leading-body-md)]',
+    },
+  },
+
+  defaultVariants: {
+    size: 'md',
+  },
+});
 
 export const toastContentStyles = 'flex-1 min-w-0';

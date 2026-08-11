@@ -35,6 +35,12 @@ export const toastProps = [
     '-',
     'Callback triggered when close button is clicked',
   ),
+  prop(
+    'duration',
+    'number',
+    '2000',
+    'Time in milliseconds before the toast is automatically dismissed.',
+  ),
 
   classNameProp,
 ];

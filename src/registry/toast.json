@@ -14,6 +14,10 @@
       "type": "component"
     },
     {
+      "path": "components/toast/ToastContainer.tsx",
+      "type": "component"
+    },
+    {
       "path": "components/toast/toast.animation.ts",
       "type": "lib"
     },
@@ -56,6 +60,10 @@
     {
       "path": "ui/Icon.tsx",
       "type": "ui"
+    },
+    {
+      "path": "hooks/useToast.ts",
+      "type": "hook"
     }
   ]
 }

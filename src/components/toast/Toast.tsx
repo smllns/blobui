@@ -81,18 +81,18 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         className={cn(toastStyles({ size }), className)}
       >
         {toastIcon && (
-          <div className={toastIconStyles({ tone })}>{toastIcon}</div>
+          <div className={toastIconStyles({ tone, size })}>{toastIcon}</div>
         )}
 
         <div className={toastContentStyles}>
-          <p className={toastTitleStyles}>{title}</p>
+          <p className={toastTitleStyles({ size })}>{title}</p>
 
           {description && (
-            <p className={toastDescriptionStyles}>{description}</p>
+            <p className={toastDescriptionStyles({ size })}>{description}</p>
           )}
         </div>
 
-        {action && <div className='ms-auto flex items-center'>{action}</div>}
+        {action && <div className=' flex items-center'>{action}</div>}
 
         {onClose && (
           <Button

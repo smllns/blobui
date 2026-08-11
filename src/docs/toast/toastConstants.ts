@@ -14,6 +14,7 @@ export type ToastPlaygroundState = {
   icon: boolean;
   action: boolean;
   showClose: boolean;
+  duration: number;
 };
 
 export const TOAST_INITIAL_STATE: ToastPlaygroundState = {
@@ -24,11 +25,19 @@ export const TOAST_INITIAL_STATE: ToastPlaygroundState = {
   icon: true,
   action: false,
   showClose: true,
+  duration: 2000,
 };
 
 export const TOAST_CONTROLS = [
   selectControl<ToastPlaygroundState>('tone', 'Tone', TOAST_TONES),
   selectControl<ToastPlaygroundState>('size', 'Size', BASIC_SIZE_OPTIONS),
+  selectControl<ToastPlaygroundState>('duration', 'Duration', [
+    '1000',
+    '2000',
+    '3000',
+    '4000',
+    '5000',
+  ]),
   checkboxControl<ToastPlaygroundState>('description', 'Description'),
   checkboxControl<ToastPlaygroundState>('icon', 'Show Icon'),
   checkboxControl<ToastPlaygroundState>('action', 'Show Action Button'),

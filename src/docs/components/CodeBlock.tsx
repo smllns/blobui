@@ -1,24 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
-import { Toast } from '../../components/toast/Toast';
-import { Button } from '../../components/button/Button';
+import { Button } from '@/components/button/Button';
 import { cn } from '@/lib/cn';
 import { ChevronDown } from '@/ui/icons/ChevronDown';
-
-type ToastItem = {
-  id: string;
-  closing?: boolean;
-};
+import { useToast } from '@/hooks/useToast';
+import { ToastContainer } from '@/components/toast/ToastContainer';
 
 type CodeBlockProps = {
   code: string;
   title?: string;
+  hideDownload?: boolean;
 };
 
-export function CodeBlock({ code, title }: CodeBlockProps) {
+export function CodeBlock({
+  code,
+  title,
+  hideDownload = false,
+}: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const { toasts, showToast, dismissToast } = useToast();
   const [height, setHeight] = useState('60px');
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -34,19 +36,42 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
     await navigator.clipboard.writeText(code);
 
     setCopied(true);
-
-    const id = crypto.randomUUID();
-    setToasts((prev) => [...prev, { id }]);
-
-    setTimeout(() => {
-      setToasts((prev) =>
-        prev.map((toast) =>
-          toast.id === id ? { ...toast, closing: true } : toast,
-        ),
-      );
-    }, 2000);
-
+    showToast({
+      tone: 'success',
+      title: 'Copied!',
+      description: 'Code copied to clipboard',
+      showClose: true,
+    });
     setTimeout(() => setCopied(false), 1500);
+  };
+
+  const handleDownload = () => {
+    if (!title) return;
+
+    const fileName = title.split('/').pop() ?? title;
+
+    const blob = new Blob([code], {
+      type: 'text/plain;charset=utf-8',
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = fileName;
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+    setDownloaded(true);
+
+    showToast({
+      tone: 'success',
+      title: 'Downloaded!',
+      description: `${fileName} downloaded`,
+      showClose: true,
+    });
+    setTimeout(() => setDownloaded(false), 1500);
   };
 
   return (
@@ -56,9 +81,17 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
           {title || 'Code'}
         </p>
 
-        <Button variant='secondary' size='xs' onClick={handleCopy}>
-          {copied ? 'Copied' : 'Copy'}
-        </Button>
+        <div className='flex items-center gap-2'>
+          {!hideDownload && title && (
+            <Button variant='secondary' size='xs' onClick={handleDownload}>
+              {downloaded ? 'Downloaded' : 'Download'}
+            </Button>
+          )}
+
+          <Button variant='secondary' size='xs' onClick={handleCopy}>
+            {copied ? 'Copied' : 'Copy'}
+          </Button>
+        </div>
       </div>
       <div
         style={{
@@ -113,23 +146,7 @@ export function CodeBlock({ code, title }: CodeBlockProps) {
         )}
       </div>
 
-      {toasts.length > 0 && (
-        <div className='fixed inset-e-4 bottom-4 z-(--z-toast) flex flex-col-reverse gap-2'>
-          {toasts.map((toast) => (
-            <Toast
-              key={toast.id}
-              tone='success'
-              size='md'
-              title='Copied!'
-              description='Code copied to clipboard'
-              closing={toast.closing}
-              onClose={() =>
-                setToasts((prev) => prev.filter((t) => t.id !== toast.id))
-              }
-            />
-          ))}
-        </div>
-      )}
+      <ToastContainer toasts={toasts} onClose={dismissToast} />
     </div>
   );
 }

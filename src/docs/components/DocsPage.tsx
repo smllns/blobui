@@ -2,18 +2,14 @@ import type { ReactNode } from 'react';
 import PageHeader from './PageHeader';
 import { ComponentPreview } from './ComponentPreview';
 import { PropsTable } from './PropsTable';
-import { InstallationBlock } from './InstallationBlock';
+import { InstallationBlock } from './installation/InstallationBlock';
+import type { InstallationFile } from './installation/installation.types';
 
 type ComponentProp = {
   name: string;
   type: string;
   default: string;
   description: string;
-};
-
-export type InstallationFile = {
-  path: string;
-  code: string;
 };
 
 type Props = {

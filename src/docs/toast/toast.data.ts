@@ -1,9 +1,6 @@
-import type { ToastProps } from '../../components/toast/toast.types';
+import type { ToastOptions } from '@/hooks/useToast';
 
-export const previewToasts: Pick<
-  ToastProps,
-  'tone' | 'title' | 'description' | 'icon'
->[] = [
+export const previewToasts: ToastOptions[] = [
   {
     tone: 'neutral',
     title: 'Default toast',

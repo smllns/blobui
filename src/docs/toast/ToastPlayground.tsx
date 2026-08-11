@@ -3,13 +3,35 @@ import { ControlsRenderer } from '../components/playground/controls/ControlsRend
 import { CodeBlock } from '../components/CodeBlock';
 import { TOAST_CONTROLS, TOAST_INITIAL_STATE } from './toastConstants';
 import { generateToastCode } from './generateToastCode';
-import { Toast } from '../../components/toast/Toast';
-import { Button } from '../../components/button/Button';
+import { Button } from '@/components/button/Button';
 import { usePlaygroundState } from '@/hooks/usePlaygroundState';
+import { useToast } from '@/hooks/useToast';
+import { ToastContainer } from '@/components/toast/ToastContainer';
+import { Reply } from '@/ui/icons/Reply';
 
 export function ToastPlayground() {
   const { state, update } = usePlaygroundState(TOAST_INITIAL_STATE);
+  const { toasts, showToast, dismissToast } = useToast();
+
   const code = generateToastCode(state);
+
+  const handleShowToast = () => {
+    showToast({
+      tone: state.tone,
+      size: state.size,
+      title: state.title,
+      description: state.description ? 'This is a toast message' : undefined,
+      icon: state.icon ? undefined : null,
+      action: state.action ? (
+        <Button size='md' variant='ghost' className='font-extrabold shrink-0'>
+          <Reply />
+        </Button>
+      ) : undefined,
+      showClose: state.showClose,
+      duration: state.duration,
+    });
+  };
+
   return (
     <PlaygroundShell
       controls={
@@ -20,39 +42,13 @@ export function ToastPlayground() {
         />
       }
       preview={
-        <div className='flex items-center justify-center '>
-          <Toast
-            tone={state.tone}
-            size={state.size}
-            title={state.title}
-            icon={state.icon ? undefined : null}
-            description={
-              state.description ? 'This is a toast message' : undefined
-            }
-            action={
-              state.action || state.showClose ? (
-                <div className='flex gap-2'>
-                  {state.action && (
-                    <Button size='xs' variant='secondary'>
-                      Undo
-                    </Button>
-                  )}
+        <>
+          <Button size='sm' variant='primary' onClick={handleShowToast}>
+            Show toast
+          </Button>
 
-                  {state.showClose && (
-                    <Button
-                      size='xs'
-                      variant='ghost'
-                      className='font-extrabold shrink-0'
-                      aria-label='Dismiss'
-                    >
-                      ✕
-                    </Button>
-                  )}
-                </div>
-              ) : undefined
-            }
-          />
-        </div>
+          <ToastContainer toasts={toasts} onClose={dismissToast} />
+        </>
       }
       code={<CodeBlock code={code} />}
     />
