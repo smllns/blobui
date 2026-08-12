@@ -7,6 +7,10 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smllns/blobui.git"
+  },
   "aliases": {
     "components": "src/components/ui",
     "lib": "src/lib",
