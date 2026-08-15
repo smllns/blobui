@@ -1,12 +1,5 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import {
-  createContext,
-  forwardRef,
-  useCallback,
-  useContext,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, useCallback, useRef, useState } from 'react';
 import { cn } from '@/lib/cn';
 import { Close } from '@/ui/icons/Close';
 
@@ -38,23 +31,15 @@ import {
   animateOverlayExit,
 } from './dialog.animations';
 import { mergeRefs } from '@/lib/mergeRefs';
+import { createStrictContext } from '@/lib/createContext';
 
 type DialogContextValue = {
   contentRef: React.RefObject<HTMLDivElement | null>;
   overlayRef: React.RefObject<HTMLDivElement | null>;
 };
 
-const DialogContext = createContext<DialogContextValue | null>(null);
-
-function useDialogContext() {
-  const context = useContext(DialogContext);
-
-  if (!context) {
-    throw new Error('Dialog components must be used inside Dialog');
-  }
-
-  return context;
-}
+const [DialogContext, useDialogContext] =
+  createStrictContext<DialogContextValue>('Dialog');
 
 const Dialog = ({ children, ...props }: DialogPrimitive.DialogProps) => {
   const [open, setOpen] = useState(false);

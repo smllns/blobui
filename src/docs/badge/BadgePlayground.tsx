@@ -1,10 +1,12 @@
+import { ArrowRight } from '@/ui/icons/ArrowRight';
+import { Check } from '@/ui/icons/Check';
 import { BADGE_CONTROLS, BADGE_INITIAL_STATE } from './badgeConstants';
 import { generateBadgeCode } from './generateBadgeCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
-import { Badge } from '../../components/badge/Badge';
+import { Badge } from '@/components/badge/Badge';
 import { CodeBlock } from '../components/CodeBlock';
-import { usePlaygroundState } from '../../hooks/usePlaygroundState';
+import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 
 export function BadgePlayground() {
   const { state, update } = usePlaygroundState(BADGE_INITIAL_STATE);
@@ -26,8 +28,8 @@ export function BadgePlayground() {
             shape={state.shape}
             size={state.size}
             dot={state.dot}
-            leftIcon={state.leftIcon ? <span>🔥</span> : undefined}
-            rightIcon={state.rightIcon ? <span>⚡</span> : undefined}
+            leftIcon={state.leftIcon ? <Check /> : undefined}
+            rightIcon={state.rightIcon ? <ArrowRight /> : undefined}
           >
             Badge
           </Badge>

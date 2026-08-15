@@ -1,7 +1,7 @@
 /* DESIGN TOKENS */
 :root {
-  /* --- Backgrounds and surfaces -----------------------------------------
-  --bg-canvas:        var(--white);        /* the page floor                 */
+  /* /* --- Backgrounds and surfaces ----------------------------------------- */
+  --bg-canvas: var(--white); /* the page floor                 */
   --bg-sunken: var(--surface-50); /* wells, code blocks, columns    */
   --bg-surface: var(--white); /* default card / panel           */
   --bg-raised: var(--white); /* emphasised, draggable card     */
@@ -70,6 +70,7 @@
   --danger-border: var(--red-500);
   --danger-solid: var(--red-600);
   --danger-solid-hover: var(--red-700);
+  --danger-solid-active: var(--red-800);
   --danger-text: var(--red-700);
 
   --info-subtle: var(--sky-50);
@@ -156,6 +157,7 @@
   --danger-border: var(--red-400);
   --danger-solid: var(--red-600);
   --danger-solid-hover: var(--red-500);
+  --danger-solid-active: var(--red-400);
   --danger-text: var(--red-300);
 
   --info-subtle: var(--sky-950);

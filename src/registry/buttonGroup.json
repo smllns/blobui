@@ -1,0 +1,32 @@
+{
+  "name": "buttonGroup",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "button"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/button-group/ButtonGroup.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/button-group/button-group.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/button-group/button-group.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    }
+  ]
+}

@@ -1,4 +1,7 @@
+import { useRef } from 'react';
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/cn';
+import { specimenStyles, stageStyles } from './componentPreview.styles';
 
 type ComponentPreviewProps = {
   children: ReactNode;
@@ -11,19 +14,17 @@ export function ComponentPreview({
   className,
   name,
 }: ComponentPreviewProps) {
+  const stageRef = useRef<HTMLDivElement>(null);
   return (
     <section className='space-y-4'>
-      <h2 className='text-heading-lg pb-2 text-fg'>Preview</h2>
+      <h2 className='text-heading-lg pb-2 text-fg'>The range</h2>
 
-      <div
-        className={`
-          rounded-xl border border-border-subtle
-          bg-surface p-8
-          ${className ?? ''}
-        `}
-      >
+      <div ref={stageRef} className={cn(stageStyles, className)}>
         <div
-          className={`flex flex-wrap justify-center ${name === 'biggerGap' ? 'gap-8' : 'gap-4'}`}
+          className={cn(
+            specimenStyles,
+            name === 'biggerGap' ? 'gap-8' : 'gap-4',
+          )}
         >
           {children}
         </div>

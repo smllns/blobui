@@ -9,10 +9,6 @@
       "type": "component"
     },
     {
-      "path": "components/input/input.styles.ts",
-      "type": "style"
-    },
-    {
       "path": "components/input/input.types.ts",
       "type": "type"
     },

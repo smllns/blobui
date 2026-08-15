@@ -92,7 +92,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
           )}
         </div>
 
-        {action && <div className=' flex items-center'>{action}</div>}
+        {action && <div className='ms-auto flex items-center'>{action}</div>}
 
         {onClose && (
           <Button

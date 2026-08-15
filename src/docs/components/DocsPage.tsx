@@ -1,37 +1,14 @@
-import type { ReactNode } from 'react';
-import PageHeader from './PageHeader';
+import { PageHeader } from './PageHeader';
 import { ComponentPreview } from './ComponentPreview';
 import { PropsTable } from './PropsTable';
+import { StateMatrix } from './StateMatrix';
 import { InstallationBlock } from './installation/InstallationBlock';
-import type { InstallationFile } from './installation/installation.types';
-
-type ComponentProp = {
-  name: string;
-  type: string;
-  default: string;
-  description: string;
-};
-
-type Props = {
-  header: string;
-  description: string;
-  preview?: ReactNode;
-  playground?: ReactNode;
-  props?: ComponentProp[];
-  subElementProps?: ComponentProp[];
-  subElementHeader?: string;
-  secondSubElementProps?: ComponentProp[];
-  secondSubElementHeader?: string;
-  installation?: {
-    component: string;
-    files: InstallationFile[];
-    dependencies?: string[];
-  };
-};
+import type { DocsPageProps } from './docsPage.types';
 
 export function DocsPage({
   header,
   description,
+  states,
   preview,
   playground,
   props,
@@ -40,7 +17,7 @@ export function DocsPage({
   secondSubElementProps,
   secondSubElementHeader,
   installation,
-}: Props) {
+}: DocsPageProps) {
   return (
     <div className='flex flex-col gap-4'>
       <PageHeader header={header} description={description} />
@@ -60,6 +37,8 @@ export function DocsPage({
         </ComponentPreview>
       )}
 
+      {states && <StateMatrix specimens={states} />}
+
       {playground}
 
       {installation && (
@@ -70,13 +49,16 @@ export function DocsPage({
         />
       )}
 
-      {props && <PropsTable title={header} props={props} />}
+      {props && <PropsTable title='Props' props={props} />}
       {subElementProps && (
-        <PropsTable title={subElementHeader} props={subElementProps} />
+        <PropsTable
+          title={`${subElementHeader} props`}
+          props={subElementProps}
+        />
       )}
       {secondSubElementProps && (
         <PropsTable
-          title={secondSubElementHeader}
+          title={`${secondSubElementHeader} props`}
           props={secondSubElementProps}
         />
       )}

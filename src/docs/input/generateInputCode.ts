@@ -21,8 +21,8 @@ export function generateInputCode({
   if (fullWidth) props.push('fullWidth');
   if (error) props.push('error');
 
-  if (leftIcon) props.push('leftIcon={<Icon />}');
-  if (rightIcon) props.push('rightIcon={<Icon />}');
+  if (leftIcon) props.push('leftIcon={<Search />}');
+  if (rightIcon) props.push('rightIcon={<Eye />}');
   if (disabled) props.push('disabled');
   if (label) props.push('label="Label"');
 

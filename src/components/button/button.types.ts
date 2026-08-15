@@ -8,6 +8,8 @@ export type ButtonVariant =
   | 'outline'
   | 'ghost'
   | 'destructive'
+  | 'underline'
+  | 'unstyled'
   | 'link';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,4 +21,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   iconOnly?: boolean;
+  forceState?: 'hover' | 'active' | 'focus';
 }

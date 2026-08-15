@@ -31,6 +31,10 @@
       "type": "lib"
     },
     {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    },
+    {
       "path": "hooks/useAnimatedOpen.ts",
       "type": "hook"
     },

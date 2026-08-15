@@ -1,6 +1,6 @@
 import { DocsPage } from '../components/DocsPage';
 import { CheckboxPlayground } from './CheckBoxPlayground';
-import { Checkbox } from '../../components/checkbox/CheckBox';
+import { Checkbox } from '@/components/checkbox/CheckBox';
 import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
 
@@ -11,10 +11,10 @@ export function CheckboxDocs() {
       description='A checkbox component for selecting options.'
       preview={
         <>
-          <Checkbox label='Unchecked' checked={false} />
-          <Checkbox label='Checked' checked />
+          <Checkbox label='Unchecked' checked={false} onChange={() => {}} />
+          <Checkbox label='Checked' checked onChange={() => {}} />
           <Checkbox label='Disabled' disabled />
-          <Checkbox label='Error' error checked />
+          <Checkbox label='Error' checked error onChange={() => {}} />
         </>
       }
       playground={<CheckboxPlayground />}

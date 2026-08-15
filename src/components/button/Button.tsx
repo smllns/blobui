@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import type { MouseEvent } from 'react';
 import type { ButtonProps } from './button.types';
 import { buttonStyles, buttonLabelStyles } from './button.styles';
 import { cn } from '@/lib/cn';
@@ -8,26 +9,43 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      variant,
+      variant = 'primary',
       size,
       fullWidth,
       loading,
       leftIcon,
       rightIcon,
       iconOnly,
+      forceState,
       className,
       disabled,
+      onClick,
+      type = 'button',
       ...props
     },
     ref,
   ) => {
-    const isDisabled = disabled || loading;
     const lead = loading ? <Spinner /> : leftIcon;
-
+    const isBusy = Boolean(loading) && !disabled;
     return (
       <button
         ref={ref}
-        disabled={isDisabled}
+        type={type}
+        disabled={disabled}
+        {...props}
+        aria-disabled={isBusy || undefined}
+        aria-busy={loading || undefined}
+        onClick={(event: MouseEvent<HTMLButtonElement>) => {
+          if (isBusy) {
+            event.preventDefault();
+            event.stopPropagation();
+            return;
+          }
+
+          onClick?.(event);
+        }}
+        data-variant={variant}
+        data-force={forceState}
         data-loading={loading || undefined}
         data-icon-only={iconOnly || undefined}
         data-lead={!iconOnly && lead ? '' : undefined}
@@ -37,11 +55,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             variant,
             size,
             fullWidth,
-            state: isDisabled ? (loading ? 'loading' : 'disabled') : 'idle',
+            state: disabled ? 'disabled' : isBusy ? 'loading' : 'idle',
           }),
           className,
         )}
-        {...props}
       >
         {lead}
 
@@ -54,7 +71,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           </span>
         )}
 
-        {iconOnly && children}
+        {iconOnly && !loading && children}
 
         {!iconOnly && rightIcon}
       </button>

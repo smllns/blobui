@@ -1,3 +1,5 @@
+import { ArrowRight } from '@/ui/icons/ArrowRight';
+import { Plus } from '@/ui/icons/Plus';
 import { useState } from 'react';
 import { Button } from '../../components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
@@ -41,8 +43,8 @@ export function ButtonPlayground() {
           loading={state.loading}
           disabled={state.disabled}
           fullWidth={state.fullWidth}
-          leftIcon={state.leftIcon ? <span>💖</span> : undefined}
-          rightIcon={state.rightIcon ? <span>💖</span> : undefined}
+          leftIcon={state.leftIcon ? <Plus /> : undefined}
+          rightIcon={state.rightIcon ? <ArrowRight /> : undefined}
         >
           Preview Button
         </Button>

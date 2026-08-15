@@ -14,12 +14,19 @@ import { CardDocs } from '../docs/card/CardPage';
 import { CheckboxDocs } from '../docs/checkbox/CheckboxPage';
 import { DropdownMenuDocs } from '../docs/dropdown-menu/DropdownMenuPage';
 import { TooltipDocs } from '../docs/tooltip/TooltipPage';
+import { ButtonGroupDocs } from '../docs/button-group/ButtonGroupPage';
+import { InputOtpDocs } from '../docs/input-otp/InputOtpPage';
+import { HoverCardDocs } from '../docs/hover-card/HoverCardPage';
+import { NavigationMenuDocs } from '../docs/navigation-menu/NavigationMenuPage';
+import { ResizableDocs } from '../docs/resizable/ResizablePage';
 
 export const docsRoutes = [
   { path: '/', element: Home, index: true },
 
   { path: 'button', element: ButtonDocs, index: false },
+  { path: 'button-group', element: ButtonGroupDocs, index: false },
   { path: 'input', element: InputDocs, index: false },
+  { path: 'input-otp', element: InputOtpDocs, index: false },
   { path: 'select', element: SelectDocs, index: false },
   { path: 'checkbox', element: CheckboxDocs, index: false },
   { path: 'radio', element: RadioDocs, index: false },
@@ -33,4 +40,7 @@ export const docsRoutes = [
   { path: 'accordion', element: AccordionDocs, index: false },
   { path: 'dialog', element: DialogDocs, index: false },
   { path: 'popover', element: PopoverDocs, index: false },
+  { path: 'hover-card', element: HoverCardDocs, index: false },
+  { path: 'navigation-menu', element: NavigationMenuDocs, index: false },
+  { path: 'resizable', element: ResizableDocs, index: false },
 ];

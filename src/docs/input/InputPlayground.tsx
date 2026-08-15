@@ -1,6 +1,8 @@
+import { Eye } from '@/ui/icons/Eye';
+import { Search } from '@/ui/icons/Search';
 import { useState } from 'react';
 import { CodeBlock } from '../components/CodeBlock';
-import { Input } from '../../components/input/Input';
+import { Input } from '@/components/input/Input';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { generateInputCode } from './generateInputCode';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
@@ -67,8 +69,8 @@ export function InputPlayground() {
           labelPlacement={state.labelPlacement}
           fullWidth={state.fullWidth}
           error={state.error}
-          leftIcon={state.leftIcon ? <span>💖</span> : undefined}
-          rightIcon={state.rightIcon ? <span>💖</span> : undefined}
+          leftIcon={state.leftIcon ? <Search /> : undefined}
+          rightIcon={state.rightIcon ? <Eye /> : undefined}
           disabled={state.disabled}
           label={state.label ? 'Label' : undefined}
           description={

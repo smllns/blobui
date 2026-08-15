@@ -45,7 +45,9 @@ export const BUTTON_VARIANTS: ButtonVariant[] = [
   'outline',
   'ghost',
   'destructive',
+  'underline',
   'link',
+  'unstyled',
 ];
 
 export const TONE_OPTIONS: Tone[] = [

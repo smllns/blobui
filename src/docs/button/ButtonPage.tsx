@@ -1,8 +1,9 @@
 import { DocsPage } from '../components/DocsPage';
-import { ButtonPlayground } from './ButtonPlayground';
-import { Button } from '../../components/button/Button';
-import { componentProps } from '../../lib/props';
 import { getInstallation } from '../utils/getInstallation';
+import { ButtonPlayground } from './ButtonPlayground';
+import { Button } from '@/components/button/Button';
+import { componentProps } from '@/lib/props';
+import { BTN_STATES } from './buttonStates';
 
 export function ButtonDocs() {
   return (
@@ -18,6 +19,7 @@ export function ButtonDocs() {
           <Button variant='destructive'>Destructive</Button>
         </>
       }
+      states={BTN_STATES}
       playground={<ButtonPlayground />}
       installation={getInstallation('button')}
       props={componentProps.button}

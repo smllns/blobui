@@ -36,13 +36,13 @@
 }
 
 @utility focus-ring {
-   box-shadow: var(--focus-ring);
+   outline: var(--focus-ring-width) solid var(--border-focus);
+   outline-offset: var(--focus-ring-offset);
 }
 
 @utility focus-ring-danger {
-   box-shadow:
-      0 0 0 var(--focus-ring-offset) var(--bg-surface),
-      0 0 0 calc(var(--focus-ring-offset) + var(--focus-ring-width)) var(--danger-border);
+   outline: var(--focus-ring-width) solid var(--danger-border);
+   outline-offset: var(--focus-ring-offset);
 }
 
 @utility tabular {

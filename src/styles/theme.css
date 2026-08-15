@@ -79,6 +79,7 @@
 
   --color-danger: var(--danger-solid);
   --color-danger-hover: var(--danger-solid-hover);
+  --color-danger-active: var(--danger-solid-active);
   --color-danger-subtle: var(--danger-subtle);
   --color-danger-subtle-hover: var(--danger-subtle-hover);
   --color-danger-border: var(--danger-border);
@@ -552,4 +553,20 @@
   --color-alpha-white-8: var(--alpha-white-8);
   --color-alpha-white-16: var(--alpha-white-16);
   --color-alpha-white-70: var(--alpha-white-70);
+
+  /* ======================================================================
+     KEYFRAMES
+     ====================================================================== */
+  --animate-otp-caret: otp-caret 1s steps(1) infinite;
+
+  @keyframes otp-caret {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
 }

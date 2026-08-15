@@ -1,38 +1,26 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { createContext, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { cn } from '@/lib/cn';
+import { mergeRefs } from '@/lib/mergeRefs';
 import type { PopoverArrowProps, PopoverContentProps } from './popover.types';
 import { popoverArrowStyles, popoverContent } from './popover.styles';
 import { animatePopoverEnter, animatePopoverExit } from './popover.animations';
 import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
 
-type PopoverContextValue = {
-  contentRef: React.RefObject<HTMLDivElement | null>;
-};
-
-const PopoverContext = createContext<PopoverContextValue | null>(null);
-
 const Popover = ({ children, ...props }: PopoverPrimitive.PopoverProps) => {
-  const { open, contentRef, handleOpenChange } =
-    useAnimatedOpen<HTMLDivElement>({
-      animateEnter: animatePopoverEnter,
-      animateExit: animatePopoverExit,
-    });
+  const { open, handleOpenChange } = useAnimatedOpen<HTMLDivElement>({
+    animateEnter: animatePopoverEnter,
+    animateExit: animatePopoverExit,
+  });
 
   return (
-    <PopoverContext.Provider
-      value={{
-        contentRef,
-      }}
+    <PopoverPrimitive.Root
+      open={open}
+      onOpenChange={handleOpenChange}
+      {...props}
     >
-      <PopoverPrimitive.Root
-        open={open}
-        onOpenChange={handleOpenChange}
-        {...props}
-      >
-        {children}
-      </PopoverPrimitive.Root>
-    </PopoverContext.Provider>
+      {children}
+    </PopoverPrimitive.Root>
   );
 };
 
@@ -45,7 +33,7 @@ const PopoverPortal = PopoverPrimitive.Portal;
 const PopoverContent = forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
->(({ className, variant, size, rounded, sideOffset = 8, ...props }) => {
+>(({ className, variant, size, rounded, sideOffset = 8, ...props }, ref) => {
   const { setContentRef } = useAnimatedOpen<HTMLDivElement>({
     animateEnter: animatePopoverEnter,
     animateExit: animatePopoverExit,
@@ -54,7 +42,7 @@ const PopoverContent = forwardRef<
   return (
     <PopoverPortal>
       <PopoverPrimitive.Content
-        ref={setContentRef}
+        ref={mergeRefs(setContentRef, ref)}
         sideOffset={sideOffset}
         className={cn(
           popoverContent({

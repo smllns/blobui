@@ -15,8 +15,8 @@ export function generateButtonCode({
     loading && 'loading',
     disabled && 'disabled',
     fullWidth && 'fullWidth',
-    leftIcon && 'leftIcon={<Icon/>}',
-    rightIcon && 'rightIcon={<Icon/>}',
+    leftIcon && 'leftIcon={<Plus />}',
+    rightIcon && 'rightIcon={<ArrowRight />}',
   ].filter(Boolean);
 
   if (props.length === 0) {

@@ -1,0 +1,82 @@
+{
+  "name": "navigationMenu",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": [
+    "@radix-ui/react-navigation-menu",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/navigation-menu/NavigationMenu.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/navigation-menu/NavigationMenuItem.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/navigation-menu/NavigationMenuLink.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/navigation-menu/NavigationMenuCard.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/navigation-menu/NavigationMenuFeature.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/navigation-menu/navigation-menu.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/navigation-menu/navigation-menu.context.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/navigation-menu/navigation-menu.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/navigation-menu/navigation-menu.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/surface.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "hooks/useAnimatedOpen.ts",
+      "type": "hook"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/createContext.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/ChevronDown.tsx",
+      "type": "ui"
+    }
+  ]
+}

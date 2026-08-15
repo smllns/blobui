@@ -1,0 +1,46 @@
+{
+  "name": "inputOtp",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "theme"
+  ],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/input-otp/InputOtp.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/input-otp/input-otp.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/input-otp/input-otp.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/field.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    }
+  ]
+}

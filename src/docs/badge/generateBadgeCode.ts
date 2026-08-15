@@ -7,8 +7,8 @@ export function generateBadgeCode(state: BadgePlaygroundState) {
     state.shape !== 'pill' && `shape="${state.shape}"`,
     state.size !== 'md' && `size="${state.size}"`,
     state.dot && 'dot',
-    state.leftIcon && 'leftIcon={<span>🔥</span>}',
-    state.rightIcon && 'rightIcon={<span>⚡</span>}',
+    state.leftIcon && 'leftIcon={<Check />}',
+    state.rightIcon && 'rightIcon={<ArrowRight />}',
   ].filter(Boolean);
 
   return `

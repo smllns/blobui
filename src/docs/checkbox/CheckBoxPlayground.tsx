@@ -54,6 +54,7 @@ export function CheckboxPlayground() {
           <Checkbox
             size={state.size}
             checked={state.checked}
+            onChange={(event) => update('checked', event.target.checked)}
             indeterminate={state.indeterminate}
             disabled={state.disabled}
             error={state.error}

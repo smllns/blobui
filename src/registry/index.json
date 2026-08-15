@@ -21,6 +21,10 @@
       "path": "./button.json"
     },
     {
+      "name": "buttonGroup",
+      "path": "./buttonGroup.json"
+    },
+    {
       "name": "card",
       "path": "./card.json"
     },
@@ -37,8 +41,20 @@
       "path": "./dropdownMenu.json"
     },
     {
+      "name": "hoverCard",
+      "path": "./hoverCard.json"
+    },
+    {
       "name": "input",
       "path": "./input.json"
+    },
+    {
+      "name": "inputOtp",
+      "path": "./inputOtp.json"
+    },
+    {
+      "name": "navigationMenu",
+      "path": "./navigationMenu.json"
     },
     {
       "name": "popover",
@@ -47,6 +63,10 @@
     {
       "name": "radio",
       "path": "./radio.json"
+    },
+    {
+      "name": "resizable",
+      "path": "./resizable.json"
     },
     {
       "name": "select",

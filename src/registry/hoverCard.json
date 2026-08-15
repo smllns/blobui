@@ -1,0 +1,62 @@
+{
+  "name": "hoverCard",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "button"],
+  "dependencies": [
+    "@radix-ui/react-hover-card",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/hover-card/HoverCard.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/hover-card/hover-card.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/hover-card/hover-card.pointer.ts",
+      "type": "hook"
+    },
+    {
+      "path": "components/hover-card/hover-card.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/hover-card/hover-card.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/surface.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "hooks/useAnimatedOpen.ts",
+      "type": "hook"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/createContext.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/Close.tsx",
+      "type": "ui"
+    }
+  ]
+}

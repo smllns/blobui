@@ -4,7 +4,7 @@ import { CodeBlock } from '../components/CodeBlock';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { RADIO_INITIAL_STATE, RADIO_CONTROLS } from './radioConstants';
 import { generateRadioCode } from './generateRadioCode';
-import { Radio } from '../../components/radio/Radio';
+import { Radio } from '@/components/radio/Radio';
 
 export function RadioPlayground() {
   const [state, setState] = useState(RADIO_INITIAL_STATE);
@@ -48,6 +48,7 @@ export function RadioPlayground() {
         <div className='flex items-center justify-center p-20'>
           <Radio
             checked={state.checked}
+            onChange={(event) => update('checked', event.target.checked)}
             disabled={state.disabled}
             size={state.size}
             label={state.label ? 'Radio label' : undefined}

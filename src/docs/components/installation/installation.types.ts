@@ -19,7 +19,12 @@ export type FileGroupName =
   | 'Shared'
   | 'Icons';
 
-export type FileGroup = {
+export type MeasuredFile = InstallationFile & {
+  bytes: number;
+  lines: number;
+};
+
+export type FileGroup<T extends InstallationFile = InstallationFile> = {
   name: FileGroupName;
-  files: InstallationFile[];
+  files: T[];
 };

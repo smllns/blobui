@@ -36,6 +36,12 @@ export const buttonProps = [
     'false',
     'Square icon-only button. Needs an aria-label',
   ),
+  prop(
+    'forceState',
+    "'hover' | 'active' | 'focus'",
+    'undefined',
+    'Forces a specific visual state for the button',
+  ),
 
   fullWidthProp,
   leftIconProp,

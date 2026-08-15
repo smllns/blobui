@@ -1,0 +1,45 @@
+{
+  "name": "resizable",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": [
+    "react-resizable-panels",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/resizable/Resizable.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/resizable/ResizableHandle.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/resizable/resizable.breakpoint.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/resizable/resizable.keyboard.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/resizable/resizable.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/resizable/resizable.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

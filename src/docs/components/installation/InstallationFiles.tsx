@@ -1,114 +1,316 @@
-import { gsap } from 'gsap';
-import { CodeBlock } from '../CodeBlock';
-import { ChevronDown } from '@/ui/icons/ChevronDown';
-import type { InstallationFile } from './installation.types';
-import { groupFiles } from './installation.utils';
+import { useEffect, useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
+import { Button } from '@/components/button/Button';
+import { Input } from '@/components/input/Input';
+import { cn } from '@/lib/cn';
+import { ChevronRight } from '@/ui/icons/ChevronRight';
+import { Search } from '@/ui/icons/Search';
+import type { InstallationFile, MeasuredFile } from './installation.types';
+import { formatBytes, groupFiles, measureFiles } from './installation.utils';
+import {
+  browserActionsStyles,
+  browserBarStyles,
+  browserCountStyles,
+  browserEmptyStyles,
+  browserSearchStyles,
+  groupCountStyles,
+  groupListStyles,
+  groupStyles,
+  groupTitleStyles,
+  rowBarStyles,
+  rowBodyStyles,
+  rowChevronOpenStyles,
+  rowChevronStyles,
+  rowHeadStyles,
+  rowMarkStyles,
+  rowOpenStyles,
+  rowPathStyles,
+  rowSizeStyles,
+  rowStyles,
+} from './installation.styles';
+import { ToastContainer } from '@/components/toast/ToastContainer';
+import { useToast } from '@/hooks/useToast';
+
+const FEEDBACK_MS = 1500;
+
+function highlight(path: string, query: string): ReactNode {
+  if (!query) return path;
+
+  const at = path.toLowerCase().indexOf(query);
+  if (at < 0) return path;
+
+  return (
+    <>
+      {path.slice(0, at)}
+      <mark className={rowMarkStyles}>{path.slice(at, at + query.length)}</mark>
+      {path.slice(at + query.length)}
+    </>
+  );
+}
 
 export function InstallationFiles({ files }: { files: InstallationFile[] }) {
-  const groups = groupFiles(files);
+  const [query, setQuery] = useState('');
+  const [openPaths, setOpenPaths] = useState<ReadonlySet<string>>(
+    () => new Set(),
+  );
+  const [copiedPath, setCopiedPath] = useState<string | null>(null);
+  const [downloadedPath, setDownloadedPath] = useState<string | null>(null);
+  const [copiedCount, setCopiedCount] = useState(0);
+  const { toasts, showToast, dismissToast } = useToast();
 
-  const handleToggle = (event: React.MouseEvent<HTMLMapElement>) => {
-    event.preventDefault();
+  const measured = useMemo(() => measureFiles(files), [files]);
 
-    const summary = event.currentTarget;
-    const details = summary.parentElement as HTMLDetailsElement | null;
+  const needle = query.trim().toLowerCase();
 
-    if (!details) return;
+  const matches = useMemo(
+    () =>
+      needle
+        ? measured.filter((file) => file.path.toLowerCase().includes(needle))
+        : measured,
+    [measured, needle],
+  );
 
-    const content = details.querySelector<HTMLElement>('[data-content]');
-    const icon = details.querySelector<SVGElement>('[data-chevron]');
+  const groups = useMemo(() => groupFiles(matches), [matches]);
 
-    if (!content || !icon) return;
+  const matchedBytes = matches.reduce((total, file) => total + file.bytes, 0);
 
-    const isOpen = details.open;
+  const count = needle
+    ? `${matches.length} of ${measured.length} · ${formatBytes(matchedBytes)}`
+    : `${measured.length} files · ${formatBytes(matchedBytes)}`;
 
-    if (!isOpen) {
-      details.open = true;
+  const allOpen =
+    matches.length > 0 && matches.every((file) => openPaths.has(file.path));
 
-      gsap.fromTo(
-        content,
-        {
-          height: 0,
-          opacity: 0,
-        },
-        {
-          height: 'auto',
-          opacity: 1,
-          duration: 0.25,
-          ease: 'power2.out',
-        },
-      );
+  useEffect(() => {
+    if (!copiedPath) return;
 
-      gsap.to(icon, {
-        rotate: 180,
-        duration: 0.25,
-        ease: 'power2.out',
-      });
+    const timer = window.setTimeout(() => setCopiedPath(null), FEEDBACK_MS);
 
-      return;
-    }
+    return () => window.clearTimeout(timer);
+  }, [copiedPath]);
 
-    const currentHeight = content.offsetHeight;
+  useEffect(() => {
+    if (!copiedCount) return;
 
-    gsap.fromTo(
-      content,
-      {
-        height: currentHeight,
-        opacity: 1,
-      },
-      {
-        height: 0,
-        opacity: 0,
-        duration: 0.2,
-        ease: 'power2.in',
-        onComplete: () => {
-          details.open = false;
-        },
-      },
-    );
+    const timer = window.setTimeout(() => setCopiedCount(0), FEEDBACK_MS);
 
-    gsap.to(icon, {
-      rotate: 0,
-      duration: 0.2,
-      ease: 'power2.in',
+    return () => window.clearTimeout(timer);
+  }, [copiedCount]);
+
+  const toggleRow = (path: string) => {
+    setOpenPaths((previous) => {
+      const next = new Set(previous);
+
+      if (!next.delete(path)) next.add(path);
+
+      return next;
+    });
+  };
+
+  const toggleAll = () => {
+    setOpenPaths((previous) => {
+      const next = new Set(previous);
+
+      for (const file of matches) {
+        if (allOpen) next.delete(file.path);
+        else next.add(file.path);
+      }
+
+      return next;
+    });
+  };
+
+  const copyFile = async (file: MeasuredFile) => {
+    await navigator.clipboard.writeText(file.code);
+    setCopiedPath(file.path);
+    const fileName =
+      file.path
+        .split('/')
+        .at(-1)
+        ?.replace(/\.zip$/, '') ?? file.path;
+    showToast({
+      tone: 'success',
+      title: 'Copied!',
+      description: `${fileName} has been copied.`,
+      showClose: true,
+    });
+  };
+
+  const downloadFile = (file: MeasuredFile) => {
+    const blob = new Blob([file.code], {
+      type: 'text/plain;charset=utf-8',
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = file.path.split('/').pop() ?? 'file.txt';
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+    setDownloadedPath(file.path);
+    const fileName =
+      file.path
+        .split('/')
+        .at(-1)
+        ?.replace(/\.zip$/, '') ?? file.path;
+    showToast({
+      tone: 'success',
+      title: 'Downloaded!',
+      description: `${fileName} has been downloaded.`,
+      showClose: true,
+    });
+  };
+
+  const copyAll = async () => {
+    if (!matches.length) return;
+
+    const text = matches
+      .map((file) => `/* ─── ${file.path} ─── */\n${file.code}`)
+      .join('\n\n');
+
+    await navigator.clipboard.writeText(text);
+    setCopiedCount(matches.length);
+
+    showToast({
+      tone: 'success',
+      title: 'Copied!',
+      description: `All files have been copied.`,
+      showClose: true,
     });
   };
 
   return (
-    <div className='flex flex-col gap-2'>
+    <div>
+      <div className={browserBarStyles}>
+        <div className={browserSearchStyles}>
+          <Input
+            fullWidth
+            type='search'
+            size='sm'
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            leftIcon={<Search className='text-fg-placeholder' />}
+            placeholder='Filter files — try styles, or .tsx'
+            aria-label='Filter files'
+          />
+        </div>
+
+        <span className={browserCountStyles}>{count}</span>
+
+        <div className={browserActionsStyles}>
+          <Button
+            variant='ghost'
+            size='sm'
+            onClick={toggleAll}
+            disabled={!matches.length}
+          >
+            {allOpen ? 'Collapse all' : 'Expand all'}
+          </Button>
+
+          <Button
+            variant='secondary'
+            size='sm'
+            onClick={copyAll}
+            disabled={!matches.length}
+          >
+            {copiedCount ? `Copied ${copiedCount}` : 'Copy all'}
+          </Button>
+        </div>
+      </div>
+
       {groups.map((group) => (
-        <details
-          key={group.name}
-          className='overflow-hidden rounded-lg border border-border-subtle bg-surface'
-        >
-          <summary
-            onClick={handleToggle}
-            className='flex cursor-pointer list-none items-center gap-2 p-3 transition-colors hover:bg-subtle [&::-webkit-details-marker]:hidden'
-          >
-            <ChevronDown
-              data-chevron
-              className='size-icon-sm text-fg-tertiary'
-            />
+        <section key={group.name} className={groupStyles}>
+          <h4 className={groupTitleStyles}>
+            {group.name}{' '}
+            <span className={groupCountStyles}>· {group.files.length}</span>
+          </h4>
 
-            <span className='flex-1 text-body-md font-medium text-fg'>
-              {group.name}
-            </span>
+          <div className={groupListStyles}>
+            {group.files.map((file) => {
+              const isOpen = openPaths.has(file.path);
+              const bodyId = `install-${file.path.replace(/[^a-zA-Z0-9]+/g, '-')}`;
 
-            <span className='text-body-sm text-fg-tertiary'>
-              {group.files.length} {group.files.length === 1 ? 'file' : 'files'}
-            </span>
-          </summary>
+              return (
+                <article
+                  key={file.path}
+                  className={cn(rowStyles, isOpen && rowOpenStyles)}
+                >
+                  <div className='flex items-center'>
+                    <button
+                      type='button'
+                      aria-expanded={isOpen}
+                      aria-controls={bodyId}
+                      onClick={() => toggleRow(file.path)}
+                      className={rowHeadStyles}
+                    >
+                      <ChevronRight
+                        className={cn(
+                          rowChevronStyles,
+                          isOpen && rowChevronOpenStyles,
+                        )}
+                      />
 
-          <div
-            data-content
-            className='flex flex-col gap-4 overflow-hidden border-t border-border-subtle p-3'
-          >
-            {group.files.map((file) => (
-              <CodeBlock key={file.path} code={file.code} title={file.path} />
-            ))}
+                      <span className={rowPathStyles}>
+                        {highlight(file.path, needle)}
+                      </span>
+
+                      <span className={rowSizeStyles}>
+                        {formatBytes(file.bytes)} · {file.lines} lines
+                      </span>
+                    </button>
+
+                    <div className={rowBarStyles}>
+                      <Button
+                        variant='ghost'
+                        size='xs'
+                        aria-label={`Copy ${file.path}`}
+                        onClick={() => copyFile(file)}
+                      >
+                        {copiedPath === file.path ? 'Copied' : 'Copy'}
+                      </Button>
+
+                      <Button
+                        variant='ghost'
+                        size='xs'
+                        aria-label={`Download ${file.path}`}
+                        onClick={() => downloadFile(file)}
+                      >
+                        {downloadedPath === file.path
+                          ? 'Downloaded'
+                          : 'Download'}
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div
+                    id={bodyId}
+                    className={cn(
+                      'grid transition-[grid-template-rows] duration-600 ease-out',
+                      isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+                    )}
+                  >
+                    <div className='min-h-0 overflow-hidden'>
+                      <pre className={rowBodyStyles}>{file.code}</pre>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-        </details>
+        </section>
       ))}
+
+      {!matches.length && (
+        <p className={browserEmptyStyles}>
+          Nothing matches that. Clear the filter to see all {measured.length}.
+        </p>
+      )}
+      <ToastContainer toasts={toasts} onClose={dismissToast} />
     </div>
   );
 }

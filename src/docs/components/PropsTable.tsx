@@ -15,7 +15,7 @@ type PropsTableProps = {
 export function PropsTable({ title, props }: PropsTableProps) {
   return (
     <section className='space-y-4'>
-      <h2 className='text-heading-lg pb-2 text-fg'>{title} Props Table</h2>
+      <h2 className='text-heading-lg pb-2 text-fg'>{title}</h2>
 
       <div className='overflow-x-auto rounded-xl border border-border-subtle'>
         <table className='w-full text-body-sm'>

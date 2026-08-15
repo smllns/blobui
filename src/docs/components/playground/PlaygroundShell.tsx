@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { specimenStyles, stageStyles } from '../componentPreview.styles';
 
 type PlaygroundShellProps = {
   controls: ReactNode;
@@ -12,17 +13,20 @@ export function PlaygroundShell({
   code,
 }: PlaygroundShellProps) {
   return (
-    <section className='space-y-4'>
-      <h2 className='text-heading-lg pb-4 text-fg'>Playground</h2>
-      <div className='flex flex-col gap-2 rounded-xl border border-border-subtle bg-surface p-6'>
-        <div className='grid gap-6 p-6 md:grid-cols-2'>
-          <div className='flex flex-col gap-4'>{controls}</div>
-          <div className='flex items-center justify-center rounded-lg border border-dashed border-border bg-sunken p-6'>
-            {preview}
-          </div>
+    <section className='flex flex-col gap-4'>
+      <h2 className='text-heading-lg text-fg'>Try it</h2>
+
+      <div className='grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]'>
+        <div className={stageStyles}>
+          <div className={specimenStyles}>{preview}</div>
         </div>
-        {code}
+
+        <aside className='flex flex-col gap-5 rounded-2xl border border-border-subtle bg-surface p-6'>
+          {controls}
+        </aside>
       </div>
+
+      {code}
     </section>
   );
 }

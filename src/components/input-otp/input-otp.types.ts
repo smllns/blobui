@@ -1,0 +1,30 @@
+import type { InputHTMLAttributes } from 'react';
+import type {
+  CommonStylingVariant,
+  ExtendedSize,
+} from '@/components/shared/types';
+
+export type InputOtpCharset = 'numeric' | 'alnum';
+
+export type InputOtpSize = Exclude<ExtendedSize, 'xs'>;
+
+export interface InputOtpProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'size' | 'value' | 'defaultValue'
+> {
+  variant?: CommonStylingVariant;
+  size?: InputOtpSize;
+  charset?: InputOtpCharset;
+  length?: number;
+  groupSize?: number;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  onComplete?: (value: string) => void;
+  error?: boolean;
+  label?: string;
+  description?: string;
+  errorMessage?: string;
+  required?: boolean;
+  id?: string;
+}
