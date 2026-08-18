@@ -14,11 +14,11 @@ export const switchStyles = cva(
     'transition-[background-color,box-shadow]',
     motion.base,
 
-    'enabled:hover:bg-control-off-hover',
-    'focus-visible:focus-ring',
+    'enabled:hovered:bg-control-off-hover',
+    'focused:focus-ring',
 
-    'data-[state=checked]:bg-primary',
-    'enabled:hover:data-[state=checked]:bg-primary-hover',
+    'not-aria-invalid:data-[state=checked]:bg-primary',
+    'enabled:hovered:not-aria-invalid:data-[state=checked]:bg-primary-hover',
 
     'disabled:bg-active',
     'disabled:opacity-60',
@@ -36,10 +36,10 @@ export const switchStyles = cva(
       error: {
         true: [
           'bg-danger-border',
-          'enabled:hover:bg-danger',
+          'enabled:hovered:bg-danger',
           'data-[state=checked]:bg-danger',
-          'enabled:hover:data-[state=checked]:bg-danger-hover',
-          'focus-visible:focus-ring-danger',
+          'enabled:hovered:data-[state=checked]:bg-danger-hover',
+          'focused:focus-ring-danger',
         ].join(' '),
       },
     },

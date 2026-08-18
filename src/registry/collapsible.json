@@ -1,0 +1,53 @@
+{
+  "name": "collapsible",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "button"],
+  "dependencies": [
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/collapsible/Collapsible.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/collapsible/collapsible.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/collapsible/collapsible.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/collapsible/collapsible.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/prefersReducedMotion.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/icons/ChevronDown.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    }
+  ]
+}

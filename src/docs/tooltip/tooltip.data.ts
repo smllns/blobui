@@ -1,4 +1,4 @@
-import type { TooltipProps } from '../../components/tooltip/tooltip.types';
+import type { TooltipProps } from '@/components/tooltip/tooltip.types';
 
 export const previewTooltips: Pick<
   TooltipProps,

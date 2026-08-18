@@ -28,6 +28,12 @@ export const hoverCardContentStyles = [
 export const hoverCardContent = (args: Parameters<typeof surfaceStyles>[0]) =>
   [surfaceStyles(args), hoverCardContentStyles].join(' ');
 
+export const hoverCardTriggerStyles = [
+  'hovered:decoration-primary',
+  'data-[state=open]:decoration-primary',
+  'focused:focus-ring',
+].join(' ');
+
 export const hoverCardHeaderStyles =
   'mb-3 flex items-start gap-3 pointer-coarse:pe-9';
 

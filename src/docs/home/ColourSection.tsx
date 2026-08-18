@@ -1,9 +1,9 @@
 import { cn } from '@/lib/cn';
+import { Alert } from '@/components/alert/Alert';
+import { Card } from '@/components/card/Card';
 import type { RoleReading } from './useTokenReadings';
 import {
-  cardStyles,
   codeStyles,
-  ruleStyles,
   ruleTextStyles,
   sectionLedeStyles,
   sectionStyles,
@@ -26,7 +26,7 @@ export function ColourSection({ roles }: Props) {
         inverts, the mirror table does.
       </p>
 
-      <div className={cardStyles}>
+      <Card padding='lg' className='mt-4'>
         <div className='grid grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-x-5 gap-y-4'>
           {roles.map(({ name, swatch, value }) => (
             <div key={name} className='flex items-center gap-3'>
@@ -49,9 +49,9 @@ export function ColourSection({ roles }: Props) {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
-      <div className={ruleStyles}>
+      <Alert emphasis='bare' tone='info' icon={null} className='mt-5'>
         <p className={ruleTextStyles}>
           Flip the theme in the sidebar and watch the swatches move while the
           names stay put. <code className={codeStyles}>gray/900</code> is dark
@@ -60,7 +60,7 @@ export function ColourSection({ roles }: Props) {
           and starts pointing at <code className={codeStyles}>surface/950</code>
           .
         </p>
-      </div>
+      </Alert>
     </section>
   );
 }

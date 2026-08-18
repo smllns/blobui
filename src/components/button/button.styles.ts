@@ -23,11 +23,9 @@ export const buttonStyles = cva(
 
     transitionControl,
     motion.fast,
-    'focus-visible:focus-ring',
-    'enabled:not-aria-busy:active:focus-ring',
-    'enabled:not-aria-busy:active:translate-y-[0.5px]',
-    'data-[force=focus]:focus-ring',
-    'data-[force=active]:focus-ring data-[force=active]:translate-y-[0.5px]',
+    'focused:focus-ring',
+    'enabled:not-aria-busy:pressed:focus-ring',
+    'enabled:not-aria-busy:pressed:translate-y-[0.5px]',
   ].join(' '),
   {
     variants: {
@@ -77,51 +75,46 @@ export const buttonStyles = cva(
         primary: [
           'bg-primary text-on-primary',
           'shadow-[var(--shadow-xs),inset_0_1px_0_0_var(--alpha-white-16)]',
-          'enabled:hover:bg-primary-hover data-[force=hover]:bg-primary-hover',
-          'enabled:not-aria-busy:active:bg-primary-active enabled:not-aria-busy:active:shadow-none',
-          'data-[force=active]:bg-primary-active data-[force=active]:shadow-none',
+          'enabled:hovered:bg-primary-hover',
+          'enabled:not-aria-busy:pressed:bg-primary-active enabled:not-aria-busy:pressed:shadow-none',
           'disabled:bg-disabled disabled:text-fg-disabled disabled:shadow-none',
         ].join(' '),
 
         secondary: [
           'bg-surface border-border text-fg shadow-xs',
-          'enabled:hover:bg-hover enabled:hover:border-border-strong',
-          'data-[force=hover]:bg-hover data-[force=hover]:border-border-strong',
-          'enabled:not-aria-busy:active:bg-active enabled:not-aria-busy:active:shadow-none',
-          'data-[force=active]:bg-active data-[force=active]:shadow-none',
+          'enabled:hovered:bg-hover enabled:hovered:border-border-strong',
+          'enabled:not-aria-busy:pressed:bg-active enabled:not-aria-busy:pressed:shadow-none',
           'disabled:bg-surface disabled:border-border-disabled disabled:text-fg-disabled disabled:shadow-none',
         ].join(' '),
 
         soft: [
           'bg-primary-muted text-primary-fg',
-          'enabled:hover:bg-primary-muted-hover data-[force=hover]:bg-primary-muted-hover',
-          'enabled:not-aria-busy:active:bg-primary-muted-active data-[force=active]:bg-primary-muted-active',
+          'enabled:hovered:bg-primary-muted-hover',
+          'enabled:not-aria-busy:pressed:bg-primary-muted-active',
           'disabled:bg-disabled disabled:text-fg-disabled',
         ].join(' '),
 
         outline: [
           'bg-transparent border-border-strong text-fg',
-          'enabled:hover:bg-subtle data-[force=hover]:bg-subtle',
-          'enabled:not-aria-busy:active:bg-hover data-[force=active]:bg-hover',
+          'enabled:hovered:bg-subtle',
+          'enabled:not-aria-busy:pressed:bg-hover',
           'disabled:border-border-disabled disabled:text-fg-disabled',
         ].join(' '),
 
         ghost: [
           'bg-transparent text-fg-secondary',
-          'enabled:hover:bg-subtle enabled:hover:text-fg',
-          'data-[force=hover]:bg-subtle data-[force=hover]:text-fg',
-          'enabled:not-aria-busy:active:bg-hover data-[force=active]:bg-hover',
+          'enabled:hovered:bg-subtle enabled:hovered:text-fg',
+          'enabled:not-aria-busy:pressed:bg-hover',
           'disabled:text-fg-disabled',
         ].join(' '),
 
         destructive: [
           'bg-danger text-on-solid',
           'shadow-[var(--shadow-xs),inset_0_1px_0_0_var(--alpha-white-16)]',
-          'enabled:hover:bg-danger-hover data-[force=hover]:bg-danger-hover',
-          'enabled:not-aria-busy:active:bg-danger-active enabled:not-aria-busy:active:shadow-none',
-          'data-[force=active]:bg-danger-active data-[force=active]:shadow-none',
-          'focus-visible:focus-ring-danger data-[force=focus]:focus-ring-danger',
-          'enabled:not-aria-busy:active:focus-ring-danger data-[force=active]:focus-ring-danger',
+          'enabled:hovered:bg-danger-hover',
+          'enabled:not-aria-busy:pressed:bg-danger-active enabled:not-aria-busy:pressed:shadow-none',
+          'focused:focus-ring-danger',
+          'enabled:not-aria-busy:pressed:focus-ring-danger',
           'disabled:bg-disabled disabled:text-fg-disabled disabled:shadow-none',
         ].join(' '),
         underline: [
@@ -130,21 +123,21 @@ export const buttonStyles = cva(
           'cursor-help',
           'underline decoration-dotted decoration-border-strong underline-offset-[3px]',
           'hover:decoration-primary',
-          'focus-visible:focus-ring',
+          'focused:focus-ring',
           'aria-expanded:decoration-primary',
         ].join(' '),
         unstyled: 'rounded-none bg-transparent p-0 m-0 text-inherit',
         link: [
           '[--btn-px:0px] [--btn-trim:0px]',
           'h-auto rounded-xs bg-transparent text-primary-fg',
-          'enabled:hover:underline data-[force=hover]:underline underline-offset-[3px]',
+          'enabled:hovered:underline underline-offset-[3px]',
           'disabled:text-fg-disabled',
         ].join(' '),
       },
 
       state: {
         idle: 'cursor-pointer',
-        loading: 'cursor-wait',
+        loading: 'cursor-wait opacity-60',
         disabled: 'cursor-not-allowed',
       },
 
@@ -162,4 +155,4 @@ export const buttonStyles = cva(
 );
 
 export const buttonLabelStyles =
-  'inline-flex items-center gap-[var(--btn-gap)] data-[loading]:opacity-70';
+  'inline-flex items-center gap-[var(--btn-gap)]';

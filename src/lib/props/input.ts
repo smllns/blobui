@@ -3,6 +3,7 @@ import {
   disabledProp,
   errorProp,
   fieldProps,
+  forceStateProp,
   fullWidthProp,
   leftIconProp,
   rightIconProp,
@@ -56,5 +57,6 @@ export const inputProps = [
 
   ...fieldProps,
   disabledProp,
+  forceStateProp,
   classNameProp,
 ];

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/cn';
+import { Card } from '@/components/card/Card';
 import type { TypeReading } from './useTokenReadings';
 import {
-  cardStyles,
   sectionLedeStyles,
   sectionStyles,
   subsectionTitleStyles,
@@ -23,7 +23,7 @@ export function TypeSection({ type }: Props) {
         a window does.
       </p>
 
-      <div className={cardStyles}>
+      <Card padding='lg' className='mt-4'>
         <div className='flex flex-col gap-4'>
           {type.map(({ name, sample, size, leading }) => (
             <div
@@ -42,7 +42,7 @@ export function TypeSection({ type }: Props) {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
     </section>
   );
 }

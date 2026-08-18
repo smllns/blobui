@@ -1,5 +1,5 @@
-import { DropdownMenuItem } from '../../components/dropdown-menu/DropdownMenuItem';
-import { DropdownMenuSeparator } from '../../components/dropdown-menu/DropdownMenuSeparator';
+import { DropdownMenuItem } from '@/components/dropdown-menu/DropdownMenuItem';
+import { DropdownMenuSeparator } from '@/components/dropdown-menu/DropdownMenuSeparator';
 
 export const MENU_ITEMS = (
   <>

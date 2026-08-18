@@ -5,7 +5,9 @@ import { popoverArrowStyles, popoverContentStyles } from './popover.styles';
 export interface PopoverContentProps
   extends
     PopoverPrimitive.PopoverContentProps,
-    VariantProps<typeof popoverContentStyles> {}
+    VariantProps<typeof popoverContentStyles> {
+  portal?: boolean;
+}
 
 export interface PopoverArrowProps
   extends

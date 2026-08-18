@@ -1,4 +1,4 @@
-import type { ExtendedSize } from '../../components/shared/types';
+import type { ExtendedSize } from '@/components/shared/types';
 import { SWITCH_SIZE_OPTIONS } from '@/lib/options';
 import {
   checkboxControl,

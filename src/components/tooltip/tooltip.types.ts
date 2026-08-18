@@ -14,4 +14,7 @@ export interface TooltipProps
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   delayDuration?: number;
+  open?: boolean;
+  portal?: boolean;
+  avoidCollisions?: boolean;
 }

@@ -12,8 +12,8 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogClose,
-} from '../../components/dialog/Dialog';
-import { Button } from '../../components/button/Button';
+} from '@/components/dialog/Dialog';
+import { Button } from '@/components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
 import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 

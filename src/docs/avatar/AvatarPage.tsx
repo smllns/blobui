@@ -1,8 +1,9 @@
 import { DocsPage } from '../components/DocsPage';
 import { AvatarPlayground } from './AvatarPlayground';
-import { Avatar } from '../../components/avatar/Avatar';
+import { Avatar } from '@/components/avatar/Avatar';
 import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
+import { AVATAR_STATES } from './avatarStates';
 
 export function AvatarDocs() {
   return (
@@ -17,6 +18,7 @@ export function AvatarDocs() {
           <Avatar fallback='D' status='busy' />
         </>
       }
+      states={AVATAR_STATES}
       playground={<AvatarPlayground />}
       installation={getInstallation('avatar')}
       props={componentProps.avatar}

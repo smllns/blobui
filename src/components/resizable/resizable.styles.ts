@@ -36,7 +36,8 @@ export const resizablePanelStyles = [
 export const resizableHandleStyles = cva(
   [
     'relative z-10 shrink-0 self-stretch rounded-xs outline-none',
-    'focus-visible:focus-ring',
+
+    'focused:focus-ring',
     transitionControl,
     motion.fast,
 
@@ -69,8 +70,8 @@ export const resizableHandleStyles = cva(
       disabled: {
         false: [
           'after:bg-border-subtle',
-          'hover:after:bg-primary',
-          'focus-visible:after:bg-border-focus',
+          'hovered:after:bg-primary',
+          'focused:after:bg-border-focus',
           'group-data-[dragging]:after:bg-primary',
         ].join(' '),
 
@@ -83,8 +84,8 @@ export const resizableHandleStyles = cva(
         orientation: 'horizontal',
         disabled: false,
         class: [
-          'hover:after:w-[var(--border-width-thick)]',
-          'focus-visible:after:w-[var(--border-width-thick)]',
+          'hovered:after:w-[var(--border-width-thick)]',
+          'focused:after:w-[var(--border-width-thick)]',
           'group-data-[dragging]:after:w-[var(--border-width-thick)]',
         ].join(' '),
       },
@@ -92,8 +93,8 @@ export const resizableHandleStyles = cva(
         orientation: 'vertical',
         disabled: false,
         class: [
-          'hover:after:h-[var(--border-width-thick)]',
-          'focus-visible:after:h-[var(--border-width-thick)]',
+          'hovered:after:h-[var(--border-width-thick)]',
+          'focused:after:h-[var(--border-width-thick)]',
           'group-data-[dragging]:after:h-[var(--border-width-thick)]',
         ].join(' '),
       },

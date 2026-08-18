@@ -17,6 +17,7 @@ export function NavigationMenuItem({
   columns = 2,
   rows = 'auto',
   disabled,
+  forceState,
   className,
   panelClassName,
   gridClassName,
@@ -51,6 +52,7 @@ export function NavigationMenuItem({
           event.preventDefault();
           event.currentTarget.click();
         }}
+        data-force={forceState}
         className={cn(navigationMenuRowStyles(), className)}
       >
         {label}

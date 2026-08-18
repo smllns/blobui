@@ -2,6 +2,7 @@ import {
   alignProp,
   childrenProp,
   classNameProp,
+  forceStateProp,
   sideProp,
 } from './commonProps';
 import { prop } from './helpers';
@@ -29,6 +30,12 @@ export const hoverCardProps = [
   ),
 
   childrenProp,
+  prop(
+    'open',
+    'boolean',
+    'undefined',
+    'Controls the card, so a specimen can stand open',
+  ),
 ];
 
 export const hoverCardTriggerProps = [
@@ -53,6 +60,7 @@ export const hoverCardTriggerProps = [
     'Renders the trigger as the child element instead of an anchor',
   ),
 
+  forceStateProp,
   classNameProp,
   childrenProp,
 ];
@@ -94,6 +102,13 @@ export const hoverCardContentProps = [
     'boolean',
     'coarse pointer',
     'Shows a close control. Defaults on where the pointer is coarse, because there is no "move the pointer away" on a touch screen',
+  ),
+
+  prop(
+    'portal',
+    'boolean',
+    'true',
+    "Renders the panel in the trigger's own subtree instead of a portal to <body>, so it clips and scrolls with its container. For specimens and clipped contexts; a live page keeps the default",
   ),
 
   classNameProp,

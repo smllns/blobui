@@ -4,6 +4,7 @@ import {
   disabledProp,
   errorProp,
   fieldProps,
+  forceStateProp,
 } from './commonProps';
 import { prop } from './helpers';
 
@@ -16,13 +17,8 @@ export const switchProps = [
     '-',
     'Callback fired when switch state changes',
   ),
-  prop(
-    'size',
-    "'sm' | 'md' | 'lg' | 'xl'",
-    'md',
-    'Controls switch size',
-  ),
-
+  prop('size', "'sm' | 'md' | 'lg' | 'xl'", 'md', 'Controls switch size'),
+  forceStateProp,
   errorProp,
   ...fieldProps,
   disabledProp,

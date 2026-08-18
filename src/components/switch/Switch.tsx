@@ -21,6 +21,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
       errorMessage,
       size = 'md',
       disabled,
+      forceState,
       className,
       id,
       ...props
@@ -63,6 +64,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
               description || errorMessage ? `${switchId}-helper` : undefined
             }
             data-state={state}
+            data-force={forceState}
             disabled={disabled}
             onClick={handleToggle}
             className={cn(switchStyles({ size, error: isError }))}

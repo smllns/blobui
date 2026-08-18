@@ -1,0 +1,28 @@
+{
+  "name": "progress",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/progress/Progress.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/progress/progress.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/progress/progress.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

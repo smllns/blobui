@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const tooltipStyles = cva(
-  'max-w-64 rounded-md shadow-md leading-[var(--leading-body-sm)]',
+  'z-50 max-w-64 rounded-md shadow-md leading-[var(--leading-body-sm)]',
   {
     variants: {
       variant: {

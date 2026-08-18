@@ -17,6 +17,7 @@ export function NavigationMenuFeature({
   children,
   active,
   asChild,
+  forceState,
   onSelect,
   ...props
 }: NavigationMenuFeatureProps) {
@@ -46,6 +47,7 @@ export function NavigationMenuFeature({
         {...props}
         data-active={active ? '' : undefined}
         aria-current={active ? 'page' : undefined}
+        data-force={forceState}
         className={classes}
       >
         {body}
@@ -59,6 +61,7 @@ export function NavigationMenuFeature({
       asChild={asChild}
       onSelect={onSelect}
       active={active}
+      data-force={forceState}
       className={classes}
     >
       {body}

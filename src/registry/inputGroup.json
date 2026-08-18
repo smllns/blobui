@@ -1,0 +1,44 @@
+{
+  "name": "inputGroup",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "input"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/input-group/InputGroup.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/input-group/input-group.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/input-group/input-group.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/field.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/icons/Spinner.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    }
+  ]
+}

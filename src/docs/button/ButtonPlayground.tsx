@@ -1,7 +1,7 @@
 import { ArrowRight } from '@/ui/icons/ArrowRight';
 import { Plus } from '@/ui/icons/Plus';
 import { useState } from 'react';
-import { Button } from '../../components/button/Button';
+import { Button } from '@/components/button/Button';
 import { CodeBlock } from '../components/CodeBlock';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';

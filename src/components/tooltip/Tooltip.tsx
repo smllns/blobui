@@ -20,6 +20,8 @@ export function Tooltip({
   startIcon,
   endIcon,
   className,
+  open: openProp,
+  portal = true,
   ...props
 }: TooltipProps) {
   const { open, setContentRef, handleOpenChange } =
@@ -28,39 +30,48 @@ export function Tooltip({
       animateExit: animateTooltipOut,
     });
 
+  const controlled = openProp !== undefined;
+
   return (
     <TooltipPrimitive.Provider delayDuration={delayDuration}>
       <TooltipPrimitive.Root
-        open={open}
-        onOpenChange={handleOpenChange}
+        open={controlled ? openProp : open}
+        onOpenChange={controlled ? undefined : handleOpenChange}
         delayDuration={delayDuration}
       >
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
+        {(() => {
+          const bubble = (
+            <TooltipPrimitive.Content
+              ref={setContentRef}
+              side={side}
+              align={align}
+              sideOffset={8}
+              className={cn(tooltipStyles({ variant, size }), className)}
+              {...props}
+            >
+              <div className={tooltipInnerStyles}>
+                {startIcon && <span className='shrink-0'>{startIcon}</span>}
 
-        <TooltipPrimitive.Portal>
-          <TooltipPrimitive.Content
-            ref={setContentRef}
-            side={side}
-            align={align}
-            sideOffset={8}
-            className={cn(tooltipStyles({ variant, size }), className)}
-            {...props}
-          >
-            <div className={tooltipInnerStyles}>
-              {startIcon && <span className='shrink-0'>{startIcon}</span>}
+                <span>{content}</span>
 
-              <span>{content}</span>
+                {endIcon && <span className='shrink-0'>{endIcon}</span>}
+              </div>
 
-              {endIcon && <span className='shrink-0'>{endIcon}</span>}
-            </div>
+              <TooltipPrimitive.Arrow
+                width={10}
+                height={5}
+                className={tooltipArrowStyles({ variant })}
+              />
+            </TooltipPrimitive.Content>
+          );
 
-            <TooltipPrimitive.Arrow
-              width={10}
-              height={5}
-              className={tooltipArrowStyles({ variant })}
-            />
-          </TooltipPrimitive.Content>
-        </TooltipPrimitive.Portal>
+          return portal ? (
+            <TooltipPrimitive.Portal>{bubble}</TooltipPrimitive.Portal>
+          ) : (
+            bubble
+          );
+        })()}
       </TooltipPrimitive.Root>
     </TooltipPrimitive.Provider>
   );

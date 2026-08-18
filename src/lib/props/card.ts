@@ -1,4 +1,4 @@
-import { childrenProp, classNameProp } from './commonProps';
+import { childrenProp, classNameProp, forceStateProp } from './commonProps';
 import { prop } from './helpers';
 
 export const cardProps = [
@@ -23,6 +23,7 @@ export const cardProps = [
     'Makes the whole surface a target: hover lift and focus ring',
   ),
 
+  forceStateProp,
   classNameProp,
   childrenProp,
 ];

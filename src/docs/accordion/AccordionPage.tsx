@@ -1,8 +1,9 @@
 import { DocsPage } from '../components/DocsPage';
-import { Accordion } from '../../components/accordion/Accordion';
+import { Accordion } from '@/components/accordion/Accordion';
 import { AccordionPlayground } from './AccordionPlayground';
 import { componentProps } from '@/lib/props';
 import { AccordionItems } from './accordion.data';
+import { ACCORDION_STATES } from './accordionStates';
 import { getInstallation } from '../utils/getInstallation';
 
 export function AccordionDocs() {
@@ -29,6 +30,7 @@ export function AccordionDocs() {
           />
         </div>
       }
+      states={ACCORDION_STATES}
       playground={<AccordionPlayground />}
       installation={getInstallation('accordion')}
       props={componentProps.accordion}

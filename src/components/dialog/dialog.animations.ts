@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { motionDuration } from '@/lib/prefersReducedMotion';
 
 export function animateDialogEnter(node: HTMLDivElement) {
   gsap.fromTo(
@@ -10,7 +11,7 @@ export function animateDialogEnter(node: HTMLDivElement) {
     {
       opacity: 1,
       scale: 1,
-      duration: 0.25,
+      duration: motionDuration(0.25),
       ease: 'power3.out',
       clearProps: 'all',
     },
@@ -24,7 +25,7 @@ export function animateDialogExit(
   gsap.to(node, {
     opacity: 0,
     scale: 0.92,
-    duration: 0.18,
+    duration: motionDuration(0.18),
     ease: 'power3.in',
     onComplete,
   });
@@ -38,7 +39,7 @@ export function animateOverlayEnter(node: HTMLDivElement) {
     },
     {
       opacity: 1,
-      duration: 0.25,
+      duration: motionDuration(0.25),
       ease: 'power2.out',
     },
   );
@@ -50,7 +51,7 @@ export function animateOverlayExit(
 ) {
   gsap.to(node, {
     opacity: 0,
-    duration: 0.2,
+    duration: motionDuration(0.2),
     ease: 'power2.in',
     onComplete,
   });

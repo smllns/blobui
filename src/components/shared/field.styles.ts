@@ -32,22 +32,22 @@ export const fieldShellStyles = cva(
       variant: {
         default: [
           'bg-input border-border-strong shadow-xs text-fg-tertiary',
-          'data-[interactive]:hover:border-primary-border',
+          'data-[interactive]:hovered:border-primary-border',
         ].join(' '),
 
         filled: [
           'bg-subtle border-transparent text-fg-tertiary',
-          'data-[interactive]:hover:bg-hover',
+          'data-[interactive]:hovered:bg-hover',
         ].join(' '),
 
         outline: [
           'bg-transparent border-border-strong text-fg-tertiary',
-          'data-[interactive]:hover:border-primary-border',
+          'data-[interactive]:hovered:border-primary-border',
         ].join(' '),
 
         ghost: [
           'bg-transparent border-transparent text-fg-tertiary',
-          'data-[interactive]:hover:bg-subtle',
+          'data-[interactive]:hovered:bg-subtle',
         ].join(' '),
       },
 
@@ -56,7 +56,7 @@ export const fieldShellStyles = cva(
       },
 
       invalid: {
-        true: 'border-danger-border data-[interactive]:hover:border-danger',
+        true: 'border-danger-border data-[interactive]:hovered:border-danger',
       },
 
       disabled: {

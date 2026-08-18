@@ -355,6 +355,8 @@
   --control-height-lg: 2.75rem; /* 44px */
   --control-height-xl: 3.125rem; /* 50px */
 
+  --row-height-touch: 2.75rem; /* 44px */
+
   /* --- Z-index --------------------------------------------------------------- */
   --z-base: 0;
   --z-dropdown: 100;

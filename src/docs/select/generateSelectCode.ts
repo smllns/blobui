@@ -6,13 +6,14 @@ export function generateSelectCode({
   width,
   labelPlacement,
   disabled,
+  label,
   error,
 }: SelectPlaygroundState) {
   const props = [
     variant !== 'default' && `variant="${variant}"`,
     size !== 'md' && `size="${size}"`,
     width !== 'md' && `width="${width}"`,
-    `label="Framework"`,
+    label && `label="Framework"`,
     labelPlacement !== 'above' && `labelPlacement="${labelPlacement}"`,
     disabled && 'disabled',
     error && 'error',

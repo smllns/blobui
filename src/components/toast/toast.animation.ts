@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { motionDuration } from '@/lib/prefersReducedMotion';
 
 export const animateToastIn = (element: HTMLDivElement) => {
   gsap.killTweensOf(element);
@@ -14,7 +15,7 @@ export const animateToastIn = (element: HTMLDivElement) => {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: 0.25,
+      duration: motionDuration(0.25),
       ease: 'power2.out',
     },
   );
@@ -30,7 +31,7 @@ export const animateToastOut = (
     opacity: 0,
     y: 16,
     scale: 0.96,
-    duration: 0.2,
+    duration: motionDuration(0.2),
     ease: 'power2.in',
     onComplete,
   });

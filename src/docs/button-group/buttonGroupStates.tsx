@@ -1,5 +1,5 @@
-import { ButtonGroup } from '../../components/button-group/ButtonGroup';
-import { Button } from '../../components/button/Button';
+import { ButtonGroup } from '@/components/button-group/ButtonGroup';
+import { Button } from '@/components/button/Button';
 import type { StateSpecimen } from '../components/docsPage.types';
 const MEMBER = 'secondary' as const;
 
@@ -13,6 +13,7 @@ export const GROUP_STATES: StateSpecimen[] = [
         <Button variant={MEMBER}>Share</Button>
       </ButtonGroup>
     ),
+    note: 'a connected row of buttons sharing one visual group',
   },
   {
     name: 'hover',
@@ -25,7 +26,7 @@ export const GROUP_STATES: StateSpecimen[] = [
         <Button variant={MEMBER}>Share</Button>
       </ButtonGroup>
     ),
-    note: 'fill only — the perimeter belongs to the group, not to the member',
+    note: 'the hovered button gets interaction feedback without breaking the group outline',
   },
   {
     name: 'focus · end',
@@ -38,7 +39,7 @@ export const GROUP_STATES: StateSpecimen[] = [
         </Button>
       </ButtonGroup>
     ),
-    note: 'rounded on the outer corners',
+    note: 'the focused end button keeps the group’s outer corner radius',
   },
   {
     name: 'focus · middle',
@@ -51,7 +52,7 @@ export const GROUP_STATES: StateSpecimen[] = [
         <Button variant={MEMBER}>Share</Button>
       </ButtonGroup>
     ),
-    note: 'square, and lifted above both neighbours',
+    note: 'the focused middle button stays square and remains visually connected to its neighbours',
   },
   {
     name: 'disabled',
@@ -62,7 +63,7 @@ export const GROUP_STATES: StateSpecimen[] = [
         <Button variant={MEMBER}>Share</Button>
       </ButtonGroup>
     ),
-    note: 'one attribute takes the whole row out of the tab order',
+    note: 'the entire group is disabled and cannot be interacted with',
   },
   {
     name: 'loading',
@@ -75,5 +76,6 @@ export const GROUP_STATES: StateSpecimen[] = [
         <Button variant={MEMBER}>Share</Button>
       </ButtonGroup>
     ),
+    note: 'the active button shows a loading state while the group remains in place',
   },
 ];

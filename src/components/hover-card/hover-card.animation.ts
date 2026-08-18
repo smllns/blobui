@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { motionDuration } from '@/lib/prefersReducedMotion';
 
 const enterOffset = {
   top: { x: 0, y: 6 },
@@ -45,7 +46,7 @@ export const animateHoverCardEnter = (element: HTMLElement) => {
       scale: 1,
       x: 0,
       y: 0,
-      duration: 0.18,
+      duration: motionDuration(0.18),
       ease: 'power2.out',
     },
   );
@@ -62,7 +63,7 @@ export const animateHoverCardExit = (
     scale: 0.96,
     x,
     y,
-    duration: 0.12,
+    duration: motionDuration(0.12),
     ease: 'power2.in',
     onComplete,
   });

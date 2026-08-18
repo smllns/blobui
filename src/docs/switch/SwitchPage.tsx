@@ -1,8 +1,9 @@
 import { DocsPage } from '../components/DocsPage';
-import { Switch } from '../../components/switch/Switch';
+import { Switch } from '@/components/switch/Switch';
 import { SwitchPlayground } from './SwitchPlayground';
 import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
+import { SWITCH_STATES } from './switchStates';
 
 export function SwitchDocs() {
   return (
@@ -17,6 +18,7 @@ export function SwitchDocs() {
           <Switch size='xl' label='Extra large' />
         </>
       }
+      states={SWITCH_STATES}
       playground={<SwitchPlayground />}
       installation={getInstallation('switch')}
       props={componentProps.switch}

@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { motionDuration } from '@/lib/prefersReducedMotion';
 
 export function animatePopoverEnter(node: HTMLDivElement) {
   const side = node.dataset.side;
@@ -25,7 +26,7 @@ export function animatePopoverEnter(node: HTMLDivElement) {
       scale: 1,
       x: 0,
       y: 0,
-      duration: 0.2,
+      duration: motionDuration(0.2),
       ease: 'power3.out',
       clearProps: 'all',
     },
@@ -52,7 +53,7 @@ export function animatePopoverExit(
     scale: 0.96,
     x: position.x,
     y: position.y,
-    duration: 0.15,
+    duration: motionDuration(0.15),
     ease: 'power3.in',
     onComplete,
   });

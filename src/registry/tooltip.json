@@ -35,6 +35,10 @@
       "type": "lib"
     },
     {
+      "path": "lib/prefersReducedMotion.ts",
+      "type": "lib"
+    },
+    {
       "path": "hooks/useAnimatedOpen.ts",
       "type": "hook"
     }

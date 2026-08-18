@@ -1,10 +1,10 @@
 import { cn } from '@/lib/cn';
+import { Alert } from '@/components/alert/Alert';
+import { Card } from '@/components/card/Card';
 import { LIFTS } from './home.data';
 import {
   captionLabelStyles,
-  cardStyles,
   codeStyles,
-  ruleStyles,
   ruleTextStyles,
   sectionLedeStyles,
   sectionStyles,
@@ -21,7 +21,7 @@ export function ElevationSection() {
         twelve shadows has no shadows.
       </p>
 
-      <div className={cardStyles}>
+      <Card padding='lg' className='mt-4'>
         <div className='grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-5'>
           {LIFTS.map(({ name, lift }) => (
             <div key={name}>
@@ -35,9 +35,9 @@ export function ElevationSection() {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
-      <div className={ruleStyles}>
+      <Alert emphasis='bare' tone='info' icon={null} className='mt-5'>
         <p className={ruleTextStyles}>
           In dark mode lightness does the work, not the shadow —{' '}
           <code className={codeStyles}>bg/surface</code>,{' '}
@@ -46,7 +46,7 @@ export function ElevationSection() {
           the one beneath. Switch the theme and watch these cards separate by
           colour instead of by shade.
         </p>
-      </div>
+      </Alert>
     </section>
   );
 }

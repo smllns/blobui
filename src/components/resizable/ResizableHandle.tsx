@@ -11,6 +11,7 @@ export function ResizableHandle({
   disabled,
   label,
   onDragging,
+  forceState,
   className,
 }: ResizableHandleProps) {
   return (
@@ -27,6 +28,7 @@ export function ResizableHandle({
       }
       aria-disabled={disabled || undefined}
       data-disabled={disabled || undefined}
+      data-force={forceState}
       className={cn(
         resizableHandleStyles({ orientation, disabled }),
         className,

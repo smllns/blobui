@@ -13,11 +13,11 @@ export const radioStyles = cva(
     transitionControl,
     motion.fast,
 
-    'enabled:hover:border-primary enabled:hover:bg-primary-muted',
-    'focus-visible:focus-ring',
+    'enabled:hovered:border-primary enabled:hovered:bg-primary-muted',
+    'focused:focus-ring',
 
     'checked:bg-primary checked:border-primary',
-    'enabled:checked:hover:bg-primary-hover enabled:checked:hover:border-primary-hover',
+    'enabled:checked:hovered:bg-primary-hover enabled:checked:hovered:border-primary-hover',
 
     "checked:after:content-['']",
     'checked:after:size-[calc(var(--radio-size)*0.34)]',
@@ -36,10 +36,10 @@ export const radioStyles = cva(
       error: {
         true: [
           'border-danger-border',
-          'enabled:hover:border-danger enabled:hover:bg-danger-subtle',
+          'enabled:hovered:border-danger enabled:hovered:bg-danger-subtle',
           'checked:bg-danger checked:border-danger',
-          'enabled:checked:hover:bg-danger-hover enabled:checked:hover:border-danger-hover',
-          'focus-visible:focus-ring-danger',
+          'enabled:checked:hovered:bg-danger-hover enabled:checked:hovered:border-danger-hover',
+          'focused:focus-ring-danger',
         ].join(' '),
       },
     },

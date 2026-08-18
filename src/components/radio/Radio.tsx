@@ -20,6 +20,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       disabled,
       className,
       id,
+      forceState,
       ...props
     },
     ref,
@@ -43,6 +44,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             }
             className={cn(radioStyles({ size, error: isError }))}
             {...props}
+            data-force={forceState}
           />
           <div className='flex flex-col'>
             {label && (

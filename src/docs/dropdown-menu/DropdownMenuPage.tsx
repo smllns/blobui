@@ -1,6 +1,7 @@
 import { DocsPage } from '../components/DocsPage';
-import { DropdownMenu } from '../../components/dropdown-menu/DropdownMenu';
+import { DropdownMenu } from '@/components/dropdown-menu/DropdownMenu';
 import { DropdownMenuPlayground } from './DropdownMenuPlayground';
+import { DROPDOWN_MENU_STATES } from './dropdownMenuStates';
 import { componentProps } from '@/lib/props';
 import { MENU_ITEMS, VARIANTS } from './dropdownMenu.data';
 import { getInstallation } from '../utils/getInstallation';
@@ -24,6 +25,7 @@ export function DropdownMenuDocs() {
           ))}
         </>
       }
+      states={DROPDOWN_MENU_STATES}
       playground={<DropdownMenuPlayground />}
       installation={getInstallation('dropdownMenu')}
       props={componentProps.dropdown.root}

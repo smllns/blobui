@@ -4,6 +4,7 @@ import { Badge } from '@/components/badge/Badge';
 import { Button } from '@/components/button/Button';
 import { Checkbox } from '@/components/checkbox/CheckBox';
 import { Input } from '@/components/input/Input';
+import { InputGroup } from '@/components/input-group/InputGroup';
 import { Switch } from '@/components/switch/Switch';
 import { INSTALL_COMMAND, STATS } from './home.data';
 
@@ -51,14 +52,18 @@ export function Hero() {
           Start here
         </Button>
 
-        <span className='inline-flex items-center gap-4 rounded-lg border border-border-subtle bg-sunken py-1.5 pe-1.5 ps-4 font-mono text-body-sm'>
-          <span className='text-fg-placeholder'>$</span>
-          <span>{INSTALL_COMMAND}</span>
-
-          <Button variant='ghost' size='sm' onClick={handleCopy}>
-            {copied ? 'Copied' : 'Copy'}
-          </Button>
-        </span>
+        <InputGroup
+          className='w-104 max-w-full font-mono'
+          aria-label='Install command'
+          value={INSTALL_COMMAND}
+          readOnly
+          leading='$'
+          trailing={
+            <Button variant='ghost' size='sm' onClick={handleCopy}>
+              {copied ? 'Copied' : 'Copy'}
+            </Button>
+          }
+        />
       </div>
 
       <div className='mt-10 flex flex-wrap items-center justify-center gap-4 rounded-2xl border border-border-subtle bg-surface px-6 py-8'>

@@ -14,4 +14,5 @@ export interface CheckboxProps extends Omit<
   fullWidth?: boolean;
   indeterminate?: boolean;
   icon?: ReactNode;
+  forceState?: 'hover' | 'active' | 'focus';
 }

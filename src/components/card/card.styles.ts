@@ -12,11 +12,16 @@ export const cardStyles = cva(
   {
     variants: {
       variant: {
-        default: 'bg-surface border-border-subtle shadow-sm',
-        filled: 'bg-sunken border-border-subtle',
-        outline: 'bg-transparent border-border',
-        ghost: 'bg-transparent border-transparent',
-        elevated: 'bg-raised border-border-subtle shadow-lg',
+        default:
+          'bg-surface border-border-subtle shadow-sm [--card-shadow-hover:var(--shadow-md)]',
+        filled:
+          'bg-sunken border-border-subtle [--card-shadow-hover:var(--shadow-sm)]',
+        outline:
+          'bg-transparent border-border [--card-shadow-hover:var(--shadow-sm)]',
+        ghost:
+          'bg-transparent border-transparent [--card-shadow-hover:var(--shadow-sm)]',
+        elevated:
+          'bg-raised border-border-subtle shadow-lg [--card-shadow-hover:var(--shadow-xl)]',
       },
       padding: {
         none: 'p-0',
@@ -29,8 +34,8 @@ export const cardStyles = cva(
           'cursor-pointer text-left',
           'transition-[border-color,box-shadow,transform]',
           motion.base,
-          'hover:border-border hover:shadow-md hover:-translate-y-0.5',
-          'focus-visible:focus-ring',
+          'hover:border-border hover:-translate-y-0.5',
+          'hover:shadow-[var(--card-shadow-hover,var(--shadow-md))]',
         ].join(' '),
       },
     },

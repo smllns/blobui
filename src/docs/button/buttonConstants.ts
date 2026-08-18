@@ -1,5 +1,5 @@
-import type { ButtonVariant } from '../../components/button/button.types';
-import type { ExtendedSize } from '../../components/shared/types';
+import type { ButtonVariant } from '@/components/button/button.types';
+import type { ExtendedSize } from '@/components/shared/types';
 import { BUTTON_VARIANTS, SIZE_OPTIONS } from '@/lib/options';
 import {
   checkboxControl,

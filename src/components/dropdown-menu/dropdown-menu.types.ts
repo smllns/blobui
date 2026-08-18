@@ -13,6 +13,10 @@ export type DropdownMenuProps = React.ComponentPropsWithoutRef<
   variant?: CommonStylingVariant;
   size?: ExtendedSize;
   side?: Side;
+  disabled?: boolean;
+  forceState?: 'hover' | 'focus';
+  portal?: boolean;
+  positioning?: 'floating' | 'static';
 };
 
 export type DropdownMenuItemVariant = 'default' | 'destructive';
@@ -22,4 +26,5 @@ export type DropdownMenuItemProps = React.ComponentPropsWithoutRef<
 > & {
   variant?: DropdownMenuItemVariant;
   size?: BasicSize;
+  highlighted?: boolean;
 };

@@ -6,6 +6,7 @@ interface AccordionItemProps {
   title: ReactNode;
   children: ReactNode;
   disabled?: boolean;
+  forceState?: 'hover' | 'active' | 'focus';
 }
 
 interface BaseAccordionProps {

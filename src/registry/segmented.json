@@ -1,0 +1,40 @@
+{
+  "name": "segmented",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/segmented/Segmented.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/segmented/segmented.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/segmented/segmented.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/Spinner.tsx",
+      "type": "ui"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-import type { DialogContentProps } from '../../components/dialog/dialog.types';
-import type { CommonStylingVariant } from '../../components/shared/types';
+import type { DialogContentProps } from '@/components/dialog/dialog.types';
+import type { CommonStylingVariant } from '@/components/shared/types';
 import { COMMON_VARIANTS } from '@/lib/options';
 import {
   checkboxControl,

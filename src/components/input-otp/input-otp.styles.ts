@@ -1,8 +1,10 @@
 import { cva } from 'class-variance-authority';
 import { fieldShellStyles } from '@/components/shared/field.styles';
 
-export const inputOtpRowStyles =
-  '[--otp-gap:var(--space-4)] relative inline-flex items-center gap-[var(--otp-gap)]';
+export const inputOtpRowStyles = [
+  '[--otp-gap:var(--space-4)] relative inline-flex items-center gap-[var(--otp-gap)]',
+  'data-[loading]:pointer-events-none data-[loading]:cursor-wait',
+].join(' ');
 
 export const inputOtpControlStyles = [
   'absolute inset-0 size-full p-0 border-0 bg-transparent outline-none',
@@ -39,9 +41,12 @@ export const inputOtpSlotStyles = cva(
       disabled: {
         true: 'text-fg-disabled cursor-not-allowed',
       },
-
-      dimmed: {
-        true: 'opacity-60',
+      waiting: {
+        true: [
+          'bg-disabled border-border-disabled shadow-none',
+          'text-fg-secondary',
+          'motion-safe:animate-otp-wave',
+        ].join(' '),
       },
     },
 
@@ -49,7 +54,7 @@ export const inputOtpSlotStyles = cva(
       size: 'md',
       charset: 'numeric',
       disabled: false,
-      dimmed: false,
+      waiting: false,
     },
   },
 );

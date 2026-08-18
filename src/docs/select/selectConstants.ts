@@ -1,9 +1,9 @@
-import type { SelectWidth } from '../../components/select/select.types';
+import type { SelectWidth } from '@/components/select/select.types';
 import type {
   CommonStylingVariant,
   ExtendedSize,
   LabelPlacement,
-} from '../../components/shared/types';
+} from '@/components/shared/types';
 import {
   COMMON_VARIANTS,
   LABEL_PLACEMENT_OPTIONS,
@@ -21,6 +21,7 @@ export type SelectPlaygroundState = {
   labelPlacement: LabelPlacement;
   disabled: boolean;
   error: boolean;
+  label: React.ReactNode;
 };
 
 export const SELECT_INITIAL_STATE: SelectPlaygroundState = {
@@ -30,6 +31,7 @@ export const SELECT_INITIAL_STATE: SelectPlaygroundState = {
   labelPlacement: 'above',
   disabled: false,
   error: false,
+  label: '',
 };
 
 export const SELECT_CONTROLS = [
@@ -49,4 +51,5 @@ export const SELECT_CONTROLS = [
   ),
   checkboxControl<SelectPlaygroundState>('disabled', 'Disabled'),
   checkboxControl<SelectPlaygroundState>('error', 'Error'),
+  checkboxControl<SelectPlaygroundState>('label', 'Label'),
 ];

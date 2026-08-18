@@ -1,4 +1,9 @@
-import { childrenProp, classNameProp, disabledProp } from './commonProps';
+import {
+  childrenProp,
+  classNameProp,
+  disabledProp,
+  forceStateProp,
+} from './commonProps';
 import { prop } from './helpers';
 
 export const resizableProps = [
@@ -51,7 +56,7 @@ export const resizableProps = [
   ),
 
   prop('id', 'string', '-', 'Identifier written to the split container'),
-
+  forceStateProp,
   classNameProp,
 ];
 

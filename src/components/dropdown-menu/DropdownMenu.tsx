@@ -21,6 +21,11 @@ export function DropdownMenu({
   variant = 'default',
   size = 'md',
   side = 'bottom',
+  open: openProp,
+  disabled,
+  forceState,
+  portal = true,
+  positioning = 'floating',
 }: DropdownMenuProps & {
   trigger: React.ReactNode;
 }) {
@@ -29,9 +34,18 @@ export function DropdownMenu({
       animateEnter: animateDropdownEnter,
       animateExit: animateDropdownExit,
     });
+  const pinned = openProp !== undefined;
+  const isStatic = positioning === 'static';
+
   return (
-    <DropdownMenuPrimitive.Root open={open} onOpenChange={handleOpenChange}>
+    <DropdownMenuPrimitive.Root
+      open={openProp ?? open}
+      onOpenChange={pinned ? undefined : handleOpenChange}
+      modal={pinned ? false : undefined}
+    >
       <DropdownMenuPrimitive.Trigger
+        disabled={disabled}
+        data-force={forceState}
         className={cn(
           dropdownMenuTriggerStyles({
             variant,
@@ -42,16 +56,27 @@ export function DropdownMenu({
         {trigger}
       </DropdownMenuPrimitive.Trigger>
 
-      <DropdownMenuPrimitive.Portal>
-        <DropdownMenuPrimitive.Content
-          ref={setContentRef}
-          side={side}
-          sideOffset={6}
-          className={dropdownMenuContentStyles}
-        >
-          {children}
-        </DropdownMenuPrimitive.Content>
-      </DropdownMenuPrimitive.Portal>
+      {(() => {
+        const content = (
+          <DropdownMenuPrimitive.Content
+            ref={setContentRef}
+            side={isStatic ? undefined : side}
+            sideOffset={isStatic ? 0 : 6}
+            avoidCollisions={!isStatic}
+            className={cn(
+              dropdownMenuContentStyles,
+              isStatic && 'relative mt-1',
+            )}
+          >
+            {children}
+          </DropdownMenuPrimitive.Content>
+        );
+        return portal ? (
+          <DropdownMenuPrimitive.Portal>{content}</DropdownMenuPrimitive.Portal>
+        ) : (
+          content
+        );
+      })()}
     </DropdownMenuPrimitive.Root>
   );
 }

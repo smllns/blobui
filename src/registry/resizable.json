@@ -22,10 +22,6 @@
       "type": "lib"
     },
     {
-      "path": "components/resizable/resizable.keyboard.ts",
-      "type": "lib"
-    },
-    {
       "path": "components/resizable/resizable.styles.ts",
       "type": "style"
     },

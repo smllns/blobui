@@ -18,12 +18,16 @@ import type {
 } from './card.types';
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ variant, padding, interactive, className, children, ...props }, ref) => {
+  (
+    { variant, padding, interactive, forceState, className, children, ...props },
+    ref,
+  ) => {
     return (
       <div
         ref={ref}
         className={cn(cardStyles({ variant, padding, interactive }), className)}
         {...props}
+        data-force={forceState}
       >
         {children}
       </div>

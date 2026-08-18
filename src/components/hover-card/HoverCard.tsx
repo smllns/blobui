@@ -20,6 +20,7 @@ import {
   hoverCardSkeletonStyles,
   hoverCardSubtitleStyles,
   hoverCardTitleStyles,
+  hoverCardTriggerStyles,
 } from './hover-card.styles';
 import type {
   HoverCardBodyProps,
@@ -33,7 +34,7 @@ import type {
   HoverCardTriggerProps,
 } from './hover-card.types';
 import { createStrictContext } from '@/lib/createContext';
-import { Button } from '../button/Button';
+import { Button } from '@/components/button/Button';
 
 const [HoverCardContext, useHoverCardContext] =
   createStrictContext<HoverCardContextValue>('HoverCard');
@@ -43,6 +44,7 @@ function HoverCard({
   openDelay = 300,
   closeDelay = 150,
   onOpenChange,
+  open: openProp,
   ...props
 }: HoverCardProps) {
   const { open, setContentRef, handleOpenChange } =
@@ -61,10 +63,13 @@ function HoverCard({
     onOpenChange?.(next);
   };
 
+  const pinned = openProp !== undefined;
+  const isOpen = openProp ?? open;
+
   return (
     <HoverCardContext.Provider
       value={{
-        open,
+        open: isOpen,
         coarse,
         contentId,
         setContentRef,
@@ -72,8 +77,8 @@ function HoverCard({
       }}
     >
       <HoverCardPrimitive.Root
-        open={open}
-        onOpenChange={handleChange}
+        open={isOpen}
+        onOpenChange={pinned ? undefined : handleChange}
         openDelay={openDelay}
         closeDelay={closeDelay}
         {...props}
@@ -118,7 +123,7 @@ function HoverCardTrigger({
     <HoverCardPrimitive.Trigger asChild>
       <Button
         variant={variant}
-        className={className}
+        className={cn(hoverCardTriggerStyles, className)}
         aria-describedby={describedBy}
         aria-expanded={expanded}
         aria-controls={controls}
@@ -139,14 +144,18 @@ function HoverCardContent({
   side = 'bottom',
   align = 'start',
   sideOffset = 6,
+  positioning = 'floating',
   loading = false,
   showCloseButton,
+  portal = true,
   style,
   children,
   ...props
 }: HoverCardContentProps) {
   const { coarse, contentId, setContentRef, handleOpenChange } =
     useHoverCardContext();
+
+  const isStatic = positioning === 'static';
 
   const withClose = showCloseButton ?? coarse;
 
@@ -155,36 +164,42 @@ function HoverCardContent({
     '--hover-card-offset': `${sideOffset}px`,
   } as CSSProperties;
 
-  return (
-    <HoverCardPrimitive.Portal>
-      <HoverCardPrimitive.Content
-        ref={setContentRef}
-        id={contentId}
-        side={side}
-        align={align}
-        sideOffset={sideOffset}
-        data-loading={loading || undefined}
-        aria-busy={loading || undefined}
-        style={contentStyle}
-        className={cn(hoverCardContent({ variant, rounded }), className)}
-        {...props}
-      >
-        {loading ? <HoverCardSkeleton /> : children}
+  const content = (
+    <HoverCardPrimitive.Content
+      ref={isStatic ? undefined : setContentRef}
+      id={contentId}
+      side={isStatic ? undefined : side}
+      align={isStatic ? undefined : align}
+      sideOffset={isStatic ? 0 : sideOffset}
+      avoidCollisions={!isStatic}
+      data-positioning={positioning}
+      data-loading={loading || undefined}
+      aria-busy={loading || undefined}
+      style={contentStyle}
+      className={cn(hoverCardContent({ variant, rounded }), className)}
+      {...props}
+    >
+      {loading ? <HoverCardSkeleton /> : children}
 
-        {withClose && (
-          <Button
-            variant='ghost'
-            size='sm'
-            iconOnly
-            aria-label='Close'
-            className={hoverCardCloseStyles}
-            onClick={() => handleOpenChange(false)}
-          >
-            <Close size='sm' />
-          </Button>
-        )}
-      </HoverCardPrimitive.Content>
-    </HoverCardPrimitive.Portal>
+      {withClose && (
+        <Button
+          variant='ghost'
+          size='sm'
+          iconOnly
+          aria-label='Close'
+          className={hoverCardCloseStyles}
+          onClick={() => handleOpenChange(false)}
+        >
+          <Close size='sm' />
+        </Button>
+      )}
+    </HoverCardPrimitive.Content>
+  );
+
+  return portal ? (
+    <HoverCardPrimitive.Portal>{content}</HoverCardPrimitive.Portal>
+  ) : (
+    content
   );
 }
 

@@ -1,0 +1,32 @@
+{
+  "name": "tabs",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/tabs/Tabs.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/tabs/tabs.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/tabs/tabs.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

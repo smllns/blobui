@@ -1,4 +1,5 @@
 import { DocsPage } from '../components/DocsPage';
+import { NAVIGATION_MENU_STATES } from './navigationMenuStates';
 import { NavigationMenuPlayground } from './NavigationMenuPlayground';
 import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
@@ -14,6 +15,7 @@ export function NavigationMenuDocs() {
           <NavigationMenuPreview />
         </div>
       }
+      states={NAVIGATION_MENU_STATES}
       playground={<NavigationMenuPlayground />}
       installation={getInstallation('navigationMenu')}
       props={componentProps.navigationMenu.root}

@@ -1,9 +1,10 @@
 import { DocsPage } from '../components/DocsPage';
-import { Card } from '../../components/card/Card';
+import { Card } from '@/components/card/Card';
 import { CardPlayground } from './CardPlayground';
 import { componentProps } from '@/lib/props';
 import { cardVariants } from './card.data';
 import { getInstallation } from '../utils/getInstallation';
+import { CARD_STATES } from './cardStates';
 
 export function CardDocs() {
   return (
@@ -22,6 +23,7 @@ export function CardDocs() {
           </div>
         </>
       }
+      states={CARD_STATES}
       playground={<CardPlayground />}
       installation={getInstallation('card')}
       props={componentProps.card}

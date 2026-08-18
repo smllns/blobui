@@ -1,5 +1,5 @@
-import type { ToastProps } from '../../components/toast/toast.types';
-import type { BasicSize } from '../../components/shared/types';
+import type { ToastProps } from '@/components/toast/toast.types';
+import type { BasicSize } from '@/components/shared/types';
 import { BASIC_SIZE_OPTIONS, TOAST_TONES } from '@/lib/options';
 import {
   checkboxControl,

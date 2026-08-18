@@ -1,0 +1,36 @@
+{
+  "name": "toggle",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "button"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/toggle/Toggle.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/toggle/toggle.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/toggle/toggle.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/icons/Spinner.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    }
+  ]
+}

@@ -9,4 +9,5 @@ export interface RadioProps extends NativeRadioProps {
   size?: ChoiceSize;
   error?: boolean;
   errorMessage?: ReactNode;
+  forceState?: 'hover' | 'active' | 'focus';
 }

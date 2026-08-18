@@ -16,7 +16,7 @@ import { Info } from '@/ui/icons/Info';
 import { CheckCircle } from '@/ui/icons/CheckCircle';
 import { AlertTriangle } from '@/ui/icons/AlertTriangle';
 import { CloseCircle } from '@/ui/icons/CloseCircle';
-import { Button } from '../button/Button';
+import { Button } from '@/components/button/Button';
 
 const defaultToastIcons = {
   neutral: <Info />,

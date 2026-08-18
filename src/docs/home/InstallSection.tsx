@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
+import { Alert } from '@/components/alert/Alert';
 import { REGISTRY_OUTPUT } from './home.data';
 import {
   codeStyles,
-  ruleStyles,
   ruleTextStyles,
   sectionLedeStyles,
   sectionStyles,
@@ -89,7 +89,7 @@ export function InstallSection() {
         </Step>
       </div>
 
-      <div className={ruleStyles}>
+      <Alert emphasis='bare' tone='info' icon={null} className='mt-5'>
         <p className={ruleTextStyles}>
           <strong className='font-semibold text-fg'>One thing to know.</strong>{' '}
           The token layer is a registry dependency of every component, so the
@@ -97,7 +97,7 @@ export function InstallSection() {
           with it. Import them once in your entry stylesheet, in the order the
           CLI writes them — palette, tokens, theme, base — and never again.
         </p>
-      </div>
+      </Alert>
     </section>
   );
 }

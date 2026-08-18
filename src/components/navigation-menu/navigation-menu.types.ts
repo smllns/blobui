@@ -8,6 +8,8 @@ export type NavigationMenuColumns = 1 | 2 | 3;
 
 export type NavigationMenuRows = 'auto' | 2 | 3;
 
+export type NavigationMenuForceState = 'hover' | 'active' | 'focus';
+
 export type NavigationMenuProps = Omit<
   ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>,
   'value' | 'onValueChange'
@@ -24,6 +26,7 @@ export type NavigationMenuItemProps = {
   columns?: NavigationMenuColumns;
   rows?: NavigationMenuRows;
   disabled?: boolean;
+  forceState?: NavigationMenuForceState;
   className?: string;
   panelClassName?: string;
   gridClassName?: string;
@@ -36,6 +39,7 @@ export type NavigationMenuLinkProps = Omit<
 > & {
   current?: boolean;
   disabled?: boolean;
+  forceState?: NavigationMenuForceState;
 };
 
 type NavigationMenuCardContent = {
@@ -48,7 +52,9 @@ export type NavigationMenuCardProps = Omit<
   ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>,
   'title' | 'children'
 > &
-  NavigationMenuCardContent;
+  NavigationMenuCardContent & {
+    forceState?: NavigationMenuForceState;
+  };
 
 export type NavigationMenuFeatureProps = Omit<
   ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>,
@@ -56,4 +62,5 @@ export type NavigationMenuFeatureProps = Omit<
 > &
   NavigationMenuCardContent & {
     span?: 'column' | 'cell';
+    forceState?: NavigationMenuForceState;
   };

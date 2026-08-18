@@ -3,6 +3,8 @@ import type { ImperativePanelHandle } from 'react-resizable-panels';
 
 export type ResizableOrientation = 'horizontal' | 'vertical';
 
+export type ResizableForceState = 'hover' | 'focus' | 'dragging';
+
 export interface ResizablePanelItem {
   id: string;
   children: ReactNode;
@@ -22,6 +24,7 @@ export interface ResizableProps {
   autoSaveId?: string;
   onLayout?: (sizes: number[]) => void;
   onCollapse?: (panelId: string, collapsed: boolean) => void;
+  forceState?: ResizableForceState;
   id?: string;
   className?: string;
 }
@@ -32,5 +35,6 @@ export interface ResizableHandleProps {
   label: string;
   getPanel: () => ImperativePanelHandle | null;
   onDragging: (dragging: boolean) => void;
+  forceState?: 'hover' | 'focus';
   className?: string;
 }

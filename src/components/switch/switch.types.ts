@@ -16,4 +16,5 @@ export interface SwitchProps
   description?: ReactNode;
   errorMessage?: ReactNode;
   disabled?: boolean;
+  forceState?: 'hover' | 'active' | 'focus';
 }

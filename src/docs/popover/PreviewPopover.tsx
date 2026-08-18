@@ -1,11 +1,11 @@
-import { Button } from '../../components/button/Button';
+import { Button } from '@/components/button/Button';
 import {
   Popover,
   PopoverArrow,
   PopoverContent,
   PopoverTrigger,
-} from '../../components/popover/Popover';
-import type { CommonStylingVariant } from '../../components/shared/types';
+} from '@/components/popover/Popover';
+import type { CommonStylingVariant } from '@/components/shared/types';
 
 export const PreviewPopover = ({
   variant,
@@ -28,6 +28,7 @@ export const PreviewPopover = ({
       side='bottom'
       align='center'
       sideOffset={10}
+      portal={false}
     >
       <h4 className='mb-2 font-semibold'>{title}</h4>
 

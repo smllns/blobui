@@ -4,6 +4,7 @@ import {
   disabledProp,
   errorProp,
   fieldProps,
+  forceStateProp,
 } from './commonProps';
 import { prop } from './helpers';
 
@@ -22,16 +23,12 @@ export const radioProps = [
     'Callback fired when radio selection changes',
   ),
 
-  prop(
-    'size',
-    "'md' | 'lg'",
-    'md',
-    'Controls radio button size',
-  ),
+  prop('size', "'md' | 'lg'", 'md', 'Controls radio button size'),
 
   errorProp,
   ...fieldProps,
   disabledProp,
+  forceStateProp,
   classNameProp,
   childrenProp,
 ];

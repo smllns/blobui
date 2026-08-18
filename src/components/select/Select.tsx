@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import type { SelectProps } from './select.types';
 import {
@@ -36,8 +36,17 @@ export function Select({
   disabled,
   placeholder,
   className,
+  forceState,
+  id,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
+  'aria-describedby': ariaDescribedBy,
   ...props
 }: SelectProps) {
+  const autoId = useId();
+  const triggerId = id ?? autoId;
+  const labelId = `${triggerId}-label`;
+  const helperId = `${triggerId}-helper`;
   const { open, setContentRef, handleOpenChange } =
     useAnimatedOpen<HTMLDivElement>({
       animateEnter: animateSelectEnter,
@@ -54,7 +63,7 @@ export function Select({
   return (
     <div className={cn(fieldStackStyles, width === 'full' && 'w-full')}>
       {label && !isInfield && (
-        <label className={labelStyles}>
+        <label id={labelId} className={labelStyles}>
           {label}
           {required && (
             <span aria-hidden='true' className={requiredStyles}>
@@ -75,12 +84,23 @@ export function Select({
         }}
       >
         <SelectPrimitive.Trigger
+          id={triggerId}
+          aria-label={ariaLabel}
+          aria-labelledby={
+            ariaLabelledBy ?? (label && !isInfield ? labelId : undefined)
+          }
+          aria-describedby={
+            ariaDescribedBy ??
+            (description || errorMessage ? helperId : undefined)
+          }
+          aria-required={required || undefined}
           aria-invalid={isError || undefined}
           data-focused={open || undefined}
           data-filled={filled || undefined}
           data-invalid={isError || undefined}
           data-disabled={disabled || undefined}
           data-interactive={!disabled ? '' : undefined}
+          data-force={forceState}
           className={cn(
             selectTrigger({
               variant,
@@ -134,7 +154,10 @@ export function Select({
       </SelectPrimitive.Root>
 
       {(description || errorMessage) && (
-        <p className={errorMessage ? helperErrorStyles : helperStyles}>
+        <p
+          id={helperId}
+          className={errorMessage ? helperErrorStyles : helperStyles}
+        >
           {errorMessage ?? description}
         </p>
       )}

@@ -3,6 +3,8 @@ import { motion, transitionControl } from '@/components/shared/styles';
 
 export const checkboxStyles = cva(
   [
+    '[--cb-stroke:calc(var(--cb-size)*0.1)]',
+
     'relative inline-grid place-items-center shrink-0 m-0 appearance-none cursor-pointer',
     'size-[var(--cb-size)]',
     'mt-[calc((var(--leading-body-md)-var(--cb-size))/2)]',
@@ -10,12 +12,19 @@ export const checkboxStyles = cva(
     'bg-input border border-border-strong rounded-xs',
     transitionControl,
     motion.fast,
-    'enabled:hover:border-primary enabled:hover:bg-primary-muted',
-    'focus-visible:focus-ring',
+
+    'enabled:hovered:border-primary enabled:hovered:bg-primary-muted',
+    'focused:focus-ring',
 
     'checked:bg-primary checked:border-primary',
     'indeterminate:bg-primary indeterminate:border-primary',
-    'enabled:checked:hover:bg-primary-hover enabled:checked:hover:border-primary-hover',
+    'enabled:checked:hovered:bg-primary-hover enabled:checked:hovered:border-primary-hover',
+
+    "indeterminate:after:content-['']",
+    'indeterminate:after:w-[calc(var(--cb-size)*0.44)]',
+    'indeterminate:after:h-[var(--cb-stroke)]',
+    'indeterminate:after:rounded-full indeterminate:after:bg-on-primary',
+    'disabled:indeterminate:after:bg-fg-disabled',
 
     'disabled:bg-disabled disabled:border-border-disabled disabled:cursor-not-allowed',
   ].join(' '),
@@ -29,10 +38,11 @@ export const checkboxStyles = cva(
       error: {
         true: [
           'border-danger-border',
-          'enabled:hover:border-danger enabled:hover:bg-danger-subtle',
+          'enabled:hovered:border-danger enabled:hovered:bg-danger-subtle',
           'checked:bg-danger checked:border-danger',
-          'enabled:checked:hover:bg-danger-hover enabled:checked:hover:border-danger-hover',
-          'focus-visible:focus-ring-danger',
+          'indeterminate:bg-danger indeterminate:border-danger',
+          'enabled:checked:hovered:bg-danger-hover enabled:checked:hovered:border-danger-hover',
+          'focused:focus-ring-danger',
         ].join(' '),
       },
     },

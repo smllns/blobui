@@ -1,9 +1,9 @@
 import { cn } from '@/lib/cn';
+import { Card } from '@/components/card/Card';
 import { RADII } from './home.data';
 import type { SpaceReading } from './useTokenReadings';
 import {
   captionLabelStyles,
-  cardStyles,
   sectionLedeStyles,
   sectionStyles,
   subsectionTitleStyles,
@@ -27,7 +27,7 @@ export function SpaceSection({ space }: Props) {
         step smaller.
       </p>
 
-      <div className={cardStyles}>
+      <Card padding='lg' className='mt-4'>
         <div className='flex flex-col gap-2'>
           {space.map(({ name, value, ratio }) => (
             <div
@@ -44,9 +44,9 @@ export function SpaceSection({ space }: Props) {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
-      <div className={cardStyles}>
+      <Card padding='lg' className='mt-4'>
         <div className='flex flex-wrap gap-5'>
           {RADII.map(({ name, corner }) => (
             <div key={name}>
@@ -65,7 +65,7 @@ export function SpaceSection({ space }: Props) {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
     </section>
   );
 }

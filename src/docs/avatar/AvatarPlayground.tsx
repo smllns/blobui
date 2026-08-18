@@ -2,7 +2,7 @@ import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { CodeBlock } from '../components/CodeBlock';
 import { generateAvatarCode } from './generateAvatarCode';
-import { Avatar } from '../../components/avatar/Avatar';
+import { Avatar } from '@/components/avatar/Avatar';
 import { AVATAR_CONTROLS, AVATAR_INITIAL_STATE } from './avatarConstants';
 import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 

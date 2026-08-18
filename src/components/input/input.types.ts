@@ -21,4 +21,5 @@ export interface InputProps extends Omit<
   errorMessage?: string;
   required?: boolean;
   id?: string;
+  forceState?: 'hover' | 'active' | 'focus';
 }

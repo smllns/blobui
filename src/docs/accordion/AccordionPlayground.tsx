@@ -3,7 +3,7 @@ import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
 import { CodeBlock } from '../components/CodeBlock';
 import { generateAccordionCode } from './generateAccordionCode';
-import { Accordion } from '../../components/accordion/Accordion';
+import { Accordion } from '@/components/accordion/Accordion';
 import {
   ACCORDION_CONTROLS,
   ACCORDION_INITIAL_STATE,

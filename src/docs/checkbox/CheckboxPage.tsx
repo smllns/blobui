@@ -3,6 +3,7 @@ import { CheckboxPlayground } from './CheckBoxPlayground';
 import { Checkbox } from '@/components/checkbox/CheckBox';
 import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
+import { CHECKBOX_STATES } from './checkboxStates';
 
 export function CheckboxDocs() {
   return (
@@ -17,6 +18,7 @@ export function CheckboxDocs() {
           <Checkbox label='Error' checked error onChange={() => {}} />
         </>
       }
+      states={CHECKBOX_STATES}
       playground={<CheckboxPlayground />}
       installation={getInstallation('checkbox')}
       props={componentProps.checkbox}

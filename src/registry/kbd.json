@@ -1,0 +1,32 @@
+{
+  "name": "kbd",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/kbd/Kbd.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/kbd/kbd.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/kbd/kbd.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

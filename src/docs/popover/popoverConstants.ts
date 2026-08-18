@@ -3,7 +3,7 @@ import type {
   BasicSize,
   CommonStylingVariant,
   Side,
-} from '../../components/shared/types';
+} from '@/components/shared/types';
 import {
   ALIGN_OPTIONS,
   BASIC_SIZE_OPTIONS,

@@ -32,6 +32,19 @@ export const tooltipProps = [
 
   prop('delayDuration', 'number', '200', 'Delay before tooltip appears (ms)'),
 
+  prop(
+    'open',
+    'boolean',
+    'undefined',
+    'Controls the tooltip instead of hover/focus. Lets a specimen stand open without the reader having to point at it and wait',
+  ),
+
   classNameProp,
   childrenProp,
+  prop(
+    'portal',
+    'boolean',
+    'true',
+    "Renders the panel in the trigger's own subtree instead of a portal to <body>, so it clips and scrolls with its container. For specimens and clipped contexts; a live page keeps the default",
+  ),
 ];

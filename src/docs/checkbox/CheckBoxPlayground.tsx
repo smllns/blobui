@@ -7,7 +7,7 @@ import {
 import { generateCheckboxCode } from './generateCheckboxCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
-import { Checkbox } from '../../components/checkbox/CheckBox';
+import { Checkbox } from '@/components/checkbox/CheckBox';
 import { CodeBlock } from '../components/CodeBlock';
 import { Sun } from '@/ui/icons/Sun';
 

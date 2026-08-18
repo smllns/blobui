@@ -20,12 +20,16 @@ const SAMPLE: Record<InputOtpCharset, string> = {
 export const sampleCode = (charset: InputOtpCharset, length: string) =>
   SAMPLE[charset].slice(0, Number(length));
 
+export const partialCode = (charset: InputOtpCharset, length: string) =>
+  SAMPLE[charset].slice(0, Math.max(1, Number(length) - 2));
+
 export type InputOtpPlaygroundState = {
   variant: CommonStylingVariant;
   size: InputOtpSize;
   charset: InputOtpCharset;
   length: string;
   error: boolean;
+  loading: boolean;
   disabled: boolean;
   readOnly: boolean;
   label: boolean;
@@ -39,6 +43,7 @@ export const INPUT_OTP_INITIAL_STATE: InputOtpPlaygroundState = {
   charset: 'numeric',
   length: '6',
   error: false,
+  loading: false,
   disabled: false,
   readOnly: false,
   label: false,
@@ -60,6 +65,7 @@ export const INPUT_OTP_CONTROLS = [
     OTP_LENGTH_OPTIONS,
   ),
   checkboxControl<InputOtpPlaygroundState>('error', 'Error'),
+  checkboxControl<InputOtpPlaygroundState>('loading', 'Loading'),
   checkboxControl<InputOtpPlaygroundState>('disabled', 'Disabled'),
   checkboxControl<InputOtpPlaygroundState>('readOnly', 'Read only'),
   checkboxControl<InputOtpPlaygroundState>('label', 'Label'),

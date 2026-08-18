@@ -81,3 +81,9 @@ export const alignProp = prop(
   'center',
   'Alignment of the component relative to trigger',
 );
+export const forceStateProp = prop(
+  'forceState',
+  "'hover' | 'active' | 'focus'",
+  'undefined',
+  'Paints a pointer state on the trigger that a document cannot produce. Docs and visual tests only',
+);

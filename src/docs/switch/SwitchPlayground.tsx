@@ -4,7 +4,7 @@ import { CodeBlock } from '../components/CodeBlock';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { SWITCH_CONTROLS, SWITCH_INITIAL_STATE } from './switchConstants';
 import { generateSwitchCode } from './generateSwitchCode';
-import { Switch } from '../../components/switch/Switch';
+import { Switch } from '@/components/switch/Switch';
 
 export function SwitchPlayground() {
   const [state, setState] = useState(SWITCH_INITIAL_STATE);

@@ -45,6 +45,8 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
       onValueChange,
       onComplete,
       error,
+      loading,
+      loadingLabel = 'Verifying code',
       disabled,
       readOnly,
       label,
@@ -53,6 +55,7 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
       required,
       id,
       className,
+      forceState,
       onChange,
       onFocus,
       onBlur,
@@ -77,8 +80,16 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
     const [caret, setCaret] = useState(0);
 
     const isError = error || !!errorMessage;
+    const busy = loading || undefined;
     const code = sanitize(value ?? uncontrolledValue, charset, length);
-    const activeIndex = focused ? Math.min(caret, length - 1) : -1;
+
+    const caretIndex = Math.min(code.length, length - 1);
+    const forcedIndex = forceState ? caretIndex : -1;
+    const activeIndex = focused
+      ? Math.min(caret, length - 1)
+      : forceState === 'focus'
+        ? caretIndex
+        : -1;
     const grouped =
       groupSize > 0 && length > groupSize && length % groupSize === 0;
 
@@ -90,7 +101,7 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
     };
 
     const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-      if (disabled) return;
+      if (disabled || loading) return;
 
       event.preventDefault();
       inputRef.current?.focus();
@@ -149,6 +160,8 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
 
         <div
           data-charset={charset}
+          data-loading={busy}
+          aria-busy={busy}
           className={cn(inputOtpRowStyles, className)}
           onPointerDown={handlePointerDown}
         >
@@ -183,7 +196,8 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
           {Array.from({ length }, (_, index) => {
             const char = code[index] ?? '';
             const isActive = index === activeIndex;
-            const showCaret = isActive && !char && !disabled && !readOnly;
+            const showCaret =
+              isActive && !char && !disabled && !readOnly && !loading;
 
             return (
               <Fragment key={index}>
@@ -200,7 +214,13 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
                   data-invalid={isError || undefined}
                   data-disabled={disabled || undefined}
                   data-readonly={readOnly || undefined}
-                  data-interactive={!disabled && !readOnly ? '' : undefined}
+                  data-interactive={
+                    !disabled && !readOnly && !loading ? '' : undefined
+                  }
+                  data-force={index === forcedIndex ? forceState : undefined}
+                  style={
+                    loading ? { animationDelay: `${index * 120}ms` } : undefined
+                  }
                   className={cn(
                     inputOtpSlot({
                       variant,
@@ -210,7 +230,7 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
                       invalid: isError,
                       disabled,
                       readOnly,
-                      dimmed: !char,
+                      waiting: Boolean(loading),
                     }),
                   )}
                 >
@@ -222,6 +242,10 @@ export const InputOtp = forwardRef<HTMLInputElement, InputOtpProps>(
             );
           })}
         </div>
+
+        <span role='status' aria-live='polite' className='sr-only'>
+          {loading ? loadingLabel : ''}
+        </span>
 
         {(description || errorMessage) && (
           <p

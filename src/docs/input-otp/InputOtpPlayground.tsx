@@ -7,6 +7,7 @@ import { ControlsRenderer } from '../components/playground/controls/ControlsRend
 import {
   INPUT_OTP_CONTROLS,
   INPUT_OTP_INITIAL_STATE,
+  partialCode,
   sampleCode,
   type InputOtpPlaygroundState,
 } from './inputOtpConstants';
@@ -16,7 +17,11 @@ export function InputOtpPlayground() {
 
   const code = generateInputOtpCode(state);
 
-  const prefilled = state.readOnly;
+  const seeded = state.readOnly
+    ? sampleCode(state.charset, state.length)
+    : state.loading
+      ? partialCode(state.charset, state.length)
+      : undefined;
 
   const update = <K extends keyof InputOtpPlaygroundState>(
     key: K,
@@ -57,15 +62,15 @@ export function InputOtpPlayground() {
       }
       preview={
         <InputOtp
-          key={`${state.charset}-${state.length}-${String(prefilled)}`}
-          defaultValue={
-            prefilled ? sampleCode(state.charset, state.length) : undefined
-          }
+          key={`${state.charset}-${state.length}-${seeded ?? ''}`}
+          defaultValue={seeded}
           variant={state.variant}
           size={state.size}
           charset={state.charset}
           length={Number(state.length)}
           error={state.error}
+          loading={state.loading}
+          loadingLabel='Verifying code…'
           disabled={state.disabled}
           readOnly={state.readOnly}
           label={state.label ? 'Verification code' : undefined}

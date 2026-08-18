@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import type * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import type { VariantProps } from 'class-variance-authority';
 import type { Align, Side } from '@/components/shared/types';
-import type { ButtonProps } from '../button/button.types';
+import type { ButtonProps } from '@/components/button/button.types';
 import type { surfaceStyles } from '@/components/shared/surface.styles';
 
 export interface HoverCardProps extends Omit<
@@ -10,6 +10,7 @@ export interface HoverCardProps extends Omit<
   'open' | 'defaultOpen'
 > {
   children: ReactNode;
+  open?: boolean;
 }
 
 export type HoverCardContextValue = {
@@ -36,6 +37,8 @@ export interface HoverCardContentProps
   align?: Align;
   loading?: boolean;
   showCloseButton?: boolean;
+  portal?: boolean;
+  positioning?: 'floating' | 'static';
 }
 
 export type HoverCardHeaderProps = HTMLAttributes<HTMLDivElement>;

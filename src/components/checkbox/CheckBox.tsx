@@ -26,6 +26,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       className,
       icon,
       id,
+      forceState,
       ...props
     },
     ref,
@@ -64,6 +65,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               }
               className={cn('peer', checkboxStyles({ size, error: isError }))}
               {...props}
+              data-force={forceState}
             />
             <Check
               aria-hidden='true'

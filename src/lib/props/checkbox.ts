@@ -4,6 +4,7 @@ import {
   disabledProp,
   errorProp,
   fieldProps,
+  forceStateProp,
   fullWidthProp,
   iconProp,
 } from './commonProps';
@@ -28,6 +29,7 @@ export const checkboxProps = [
   ...fieldProps,
   iconProp,
   disabledProp,
+  forceStateProp,
   classNameProp,
   childrenProp,
 ];

@@ -1,4 +1,9 @@
-import { childrenProp, classNameProp, iconProp } from './commonProps';
+import {
+  childrenProp,
+  classNameProp,
+  forceStateProp,
+  iconProp,
+} from './commonProps';
 import { prop } from './helpers';
 
 export const navigationMenuProps = [
@@ -82,6 +87,7 @@ export const navigationMenuItemProps = [
   ),
 
   childrenProp,
+  forceStateProp,
   classNameProp,
 ];
 
@@ -103,6 +109,7 @@ export const navigationMenuLinkProps = [
   ),
 
   childrenProp,
+  forceStateProp,
   classNameProp,
 ];
 
@@ -119,6 +126,7 @@ export const navigationMenuCardProps = [
   prop('href', 'string', '-', 'Destination of the card'),
 
   iconProp,
+  forceStateProp,
   classNameProp,
 ];
 

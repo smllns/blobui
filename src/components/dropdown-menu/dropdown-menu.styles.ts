@@ -19,7 +19,7 @@ export const dropdownMenuTriggerStyles = cva(
     'text-body-md font-medium leading-none whitespace-nowrap',
     transitionControl,
     motion.fast,
-    'focus-visible:focus-ring',
+    'focused:focus-ring',
     'data-[state=open]:border-border-focus',
     disabledStyles.html,
   ].join(' '),
@@ -28,22 +28,22 @@ export const dropdownMenuTriggerStyles = cva(
       variant: {
         default: [
           'bg-surface border-border text-fg shadow-xs',
-          'enabled:hover:bg-hover enabled:hover:border-border-strong',
+          'enabled:hovered:bg-hover enabled:hovered:border-border-strong',
         ].join(' '),
 
         filled: [
           'bg-primary-muted border-transparent text-primary-fg',
-          'enabled:hover:bg-primary-muted-hover',
+          'enabled:hovered:bg-primary-muted-hover',
         ].join(' '),
 
         outline: [
           'bg-transparent border-border-strong text-fg',
-          'enabled:hover:bg-subtle',
+          'enabled:hovered:bg-subtle',
         ].join(' '),
 
         ghost: [
           'bg-transparent border-transparent text-fg-secondary',
-          'enabled:hover:bg-subtle enabled:hover:text-fg',
+          'enabled:hovered:bg-subtle enabled:hovered:text-fg',
         ].join(' '),
       },
       size: {

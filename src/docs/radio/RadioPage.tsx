@@ -1,8 +1,9 @@
 import { DocsPage } from '../components/DocsPage';
-import { Radio } from '../../components/radio/Radio';
+import { Radio } from '@/components/radio/Radio';
 import { RadioPlayground } from './RadioPlayground';
 import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
+import { RADIO_STATES } from './radioStates';
 
 export function RadioDocs() {
   return (
@@ -22,6 +23,7 @@ export function RadioDocs() {
           <Radio name='radio' value='large' label='Large' size='lg' />
         </>
       }
+      states={RADIO_STATES}
       playground={<RadioPlayground />}
       installation={getInstallation('radio')}
       props={componentProps.radio}

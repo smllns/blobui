@@ -1,8 +1,9 @@
 import { DocsPage } from '../components/DocsPage';
 import { InputPlayground } from './InputPlayground';
-import { Input } from '../../components/input/Input';
+import { Input } from '@/components/input/Input';
 import { componentProps } from '@/lib/props';
 import { getInstallation } from '../utils/getInstallation';
+import { INPUT_STATES } from './inputStates';
 
 export function InputDocs() {
   return (
@@ -17,6 +18,7 @@ export function InputDocs() {
           <Input variant='ghost' placeholder='Ghost' />
         </>
       }
+      states={INPUT_STATES}
       playground={<InputPlayground />}
       installation={getInstallation('input')}
       props={componentProps.input}

@@ -1,0 +1,42 @@
+{
+  "name": "pagination",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "button", "select"],
+  "dependencies": [
+    "@radix-ui/react-select",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/pagination/Pagination.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/pagination/pagination.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/pagination/pagination.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/ChevronLeft.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/ChevronRight.tsx",
+      "type": "ui"
+    }
+  ]
+}

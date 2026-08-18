@@ -25,7 +25,6 @@ export const triggerStyles = cva(
     'text-body-md font-medium text-fg',
     'cursor-pointer transition-colors',
     motion.fast,
-    'focus-visible:outline-none focus-visible:shadow-[inset_var(--focus-ring)]',
     '[&[data-state=open]>svg]:rotate-180',
     disabledStyles.html,
     'disabled:text-fg-disabled',
@@ -33,10 +32,10 @@ export const triggerStyles = cva(
   {
     variants: {
       variant: {
-        default: 'enabled:hover:bg-sunken',
-        filled: 'enabled:hover:bg-hover',
-        outline: 'enabled:hover:bg-subtle',
-        ghost: 'enabled:hover:bg-subtle',
+        default: 'enabled:hovered:bg-sunken',
+        filled: 'enabled:hovered:bg-hover',
+        outline: 'enabled:hovered:bg-subtle',
+        ghost: 'enabled:hovered:bg-subtle',
       },
     },
     defaultVariants: {

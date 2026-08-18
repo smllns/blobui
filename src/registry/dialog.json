@@ -43,6 +43,10 @@
       "type": "lib"
     },
     {
+      "path": "lib/prefersReducedMotion.ts",
+      "type": "lib"
+    },
+    {
       "path": "ui/icons/Close.tsx",
       "type": "ui"
     },

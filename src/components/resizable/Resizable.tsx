@@ -19,6 +19,7 @@ export function Resizable({
   autoSaveId,
   onLayout,
   onCollapse,
+  forceState,
   id,
   className,
 }: ResizableProps) {
@@ -62,7 +63,7 @@ export function Resizable({
       autoSaveId={autoSaveId}
       onLayout={onLayout}
       data-orientation={orientation}
-      data-dragging={dragging || undefined}
+      data-dragging={dragging || forceState === 'dragging' || undefined}
       className={cn(resizableStyles({ orientation }), className)}
     >
       {panels.map((panel, index) => {
@@ -102,6 +103,7 @@ export function Resizable({
                 label={handleLabel}
                 getPanel={() => panelHandles.current.get(panel.id) ?? null}
                 onDragging={setDragging}
+                forceState={forceState === 'dragging' ? undefined : forceState}
               />
             )}
           </Fragment>

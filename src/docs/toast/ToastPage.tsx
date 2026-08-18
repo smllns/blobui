@@ -6,6 +6,7 @@ import { getInstallation } from '../utils/getInstallation';
 import { Button } from '@/components/button/Button';
 import { ToastContainer } from '@/components/toast/ToastContainer';
 import { useToast } from '@/hooks/useToast';
+import { TOAST_STATES } from './toastStates';
 
 export function ToastDocs() {
   const { toasts, showToast, dismissToast } = useToast();
@@ -31,6 +32,7 @@ export function ToastDocs() {
           <ToastContainer toasts={toasts} onClose={dismissToast} />
         </>
       }
+      states={TOAST_STATES}
       playground={<ToastPlayground />}
       installation={getInstallation('toast')}
       props={componentProps.toast}

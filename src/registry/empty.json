@@ -1,0 +1,44 @@
+{
+  "name": "empty",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/empty/Empty.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/empty/empty.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/empty/empty.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/icons/Inbox.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/Search.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/AlertTriangle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/CloseCircle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    }
+  ]
+}

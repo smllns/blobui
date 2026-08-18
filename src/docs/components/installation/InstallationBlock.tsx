@@ -1,35 +1,23 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 import JSZip from 'jszip';
 import { CodeBlock } from '../CodeBlock';
 import { Button } from '@/components/button/Button';
+import { Tabs } from '@/components/tabs/Tabs';
 import { useToast } from '@/hooks/useToast';
 import type { InstallationBlockProps } from './installation.types';
 import { InstallationFiles } from './InstallationFiles';
 import {
-  tabPanelStyles,
-  tabRowStyles,
-  tabStyles,
   zipMetaStyles,
   zipNoteStyles,
   zipPanelStyles,
 } from './installation.styles';
 import { ToastContainer } from '@/components/toast/ToastContainer';
 
-const TABS = [
-  { id: 'cli', label: 'CLI' },
-  { id: 'manual', label: 'Manual' },
-  { id: 'zip', label: 'Download .zip' },
-] as const;
-
-type Tab = (typeof TABS)[number]['id'];
-
 export function InstallationBlock({
   component,
   files,
   dependencies,
 }: InstallationBlockProps) {
-  const [tab, setTab] = useState<Tab>('cli');
-
   const { toasts, showToast, dismissToast } = useToast();
 
   const handleDownloadAll = async () => {
@@ -68,58 +56,23 @@ export function InstallationBlock({
     }
   };
 
-  return (
-    <section>
-      <div>
-        <h2 className='text-heading-lg text-fg'>Take it</h2>
-
-        <p className='py-2 text-fg-secondary'>
-          The files land in your repository and stop being ours. There is no
-          package to upgrade and nothing to eject from.
-        </p>
-      </div>
-
-      <div className={tabRowStyles} role='tablist' aria-label='Installation'>
-        {TABS.map((t) => (
-          <button
-            key={t.id}
-            id={`install-tab-${t.id}`}
-            type='button'
-            role='tab'
-            aria-selected={tab === t.id}
-            aria-controls={`install-panel-${t.id}`}
-            onClick={() => setTab(t.id)}
-            className={tabStyles(tab === t.id)}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
-      <div
-        role='tabpanel'
-        id='install-panel-cli'
-        aria-labelledby='install-tab-cli'
-        hidden={tab !== 'cli'}
-        className={tabPanelStyles}
-      >
-        {
-          <CodeBlock
-            hideDownload
-            title='npm'
-            code={`blobui add ${component}`}
-          />
-        }
-      </div>
-
-      <div
-        role='tabpanel'
-        id='install-panel-manual'
-        aria-labelledby='install-tab-manual'
-        hidden={tab !== 'manual'}
-        className={tabPanelStyles}
-      >
-        {
+  /* The library's own Tabs, not a hand-rolled tablist. The previous markup had
+     role="tab" without any arrow-key handling, so it announced itself as a
+     tablist and then behaved like three separate tab stops — the docs shipped
+     worse keyboard support than the component they document. */
+  const items = useMemo(
+    () => [
+      {
+        value: 'cli',
+        label: 'CLI',
+        content: (
+          <CodeBlock hideDownload title='npm' code={`blobui add ${component}`} />
+        ),
+      },
+      {
+        value: 'manual',
+        label: 'Manual',
+        content: (
           <div className='flex flex-col gap-6'>
             <div>
               <p className='mb-3 text-body-lg text-fg-secondary'>
@@ -148,17 +101,12 @@ export function InstallationBlock({
               <InstallationFiles files={files} />
             </div>
           </div>
-        }
-      </div>
-
-      <div
-        role='tabpanel'
-        id='install-panel-zip'
-        aria-labelledby='install-tab-zip'
-        hidden={tab !== 'zip'}
-        className={tabPanelStyles}
-      >
-        {
+        ),
+      },
+      {
+        value: 'zip',
+        label: 'Download .zip',
+        content: (
           <div className={zipPanelStyles}>
             <p className={zipNoteStyles}>
               Every file behind this component in one archive, with the token
@@ -176,8 +124,25 @@ export function InstallationBlock({
               Download {component}.zip
             </Button>
           </div>
-        }
+        ),
+      },
+    ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [component, files, dependencies],
+  );
+
+  return (
+    <section>
+      <div>
+        <h2 className='text-heading-lg text-fg'>Take it</h2>
+
+        <p className='py-2 text-fg-secondary'>
+          The files land in your repository and stop being ours. There is no
+          package to upgrade and nothing to eject from.
+        </p>
       </div>
+
+      <Tabs aria-label='Installation' items={items} defaultValue='cli' />
 
       <ToastContainer toasts={toasts} onClose={dismissToast} />
     </section>

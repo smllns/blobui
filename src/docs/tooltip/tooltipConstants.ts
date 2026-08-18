@@ -1,5 +1,5 @@
-import type { TooltipProps } from '../../components/tooltip/tooltip.types';
-import type { Align, BasicSize, Side } from '../../components/shared/types';
+import type { TooltipProps } from '@/components/tooltip/tooltip.types';
+import type { Align, BasicSize, Side } from '@/components/shared/types';
 import { ALIGN_OPTIONS, BASIC_SIZE_OPTIONS, SIDE_OPTIONS } from '@/lib/options';
 import {
   checkboxControl,

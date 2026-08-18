@@ -19,6 +19,18 @@ import { InputOtpDocs } from '../docs/input-otp/InputOtpPage';
 import { HoverCardDocs } from '../docs/hover-card/HoverCardPage';
 import { NavigationMenuDocs } from '../docs/navigation-menu/NavigationMenuPage';
 import { ResizableDocs } from '../docs/resizable/ResizablePage';
+import { AlertDocs } from '../docs/alert/AlertPage';
+import { BreadcrumbDocs } from '../docs/breadcrumb/BreadcrumbPage';
+import { CollapsibleDocs } from '../docs/collapsible/CollapsiblePage';
+import { EmptyDocs } from '../docs/empty/EmptyPage';
+import { InputGroupDocs } from '../docs/input-group/InputGroupPage';
+import { KbdDocs } from '../docs/kbd/KbdPage';
+import { PaginationDocs } from '../docs/pagination/PaginationPage';
+import { ProgressDocs } from '../docs/progress/ProgressPage';
+import { SegmentedDocs } from '../docs/segmented/SegmentedPage';
+import { SliderDocs } from '../docs/slider/SliderPage';
+import { TabsDocs } from '../docs/tabs/TabsPage';
+import { ToggleDocs } from '../docs/toggle/TogglePage';
 
 export const docsRoutes = [
   { path: '/', element: Home, index: true },
@@ -43,4 +55,16 @@ export const docsRoutes = [
   { path: 'hover-card', element: HoverCardDocs, index: false },
   { path: 'navigation-menu', element: NavigationMenuDocs, index: false },
   { path: 'resizable', element: ResizableDocs, index: false },
+  { path: 'toggle', element: ToggleDocs, index: false },
+  { path: 'progress', element: ProgressDocs, index: false },
+  { path: 'slider', element: SliderDocs, index: false },
+  { path: 'breadcrumb', element: BreadcrumbDocs, index: false },
+  { path: 'pagination', element: PaginationDocs, index: false },
+  { path: 'kbd', element: KbdDocs, index: false },
+  { path: 'alert', element: AlertDocs, index: false },
+  { path: 'collapsible', element: CollapsibleDocs, index: false },
+  { path: 'tabs', element: TabsDocs, index: false },
+  { path: 'segmented', element: SegmentedDocs, index: false },
+  { path: 'input-group', element: InputGroupDocs, index: false },
+  { path: 'empty', element: EmptyDocs, index: false },
 ];

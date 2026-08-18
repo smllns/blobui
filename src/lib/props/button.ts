@@ -2,6 +2,7 @@ import {
   childrenProp,
   classNameProp,
   disabledProp,
+  forceStateProp,
   fullWidthProp,
   leftIconProp,
   rightIconProp,
@@ -27,7 +28,7 @@ export const buttonProps = [
     'loading',
     'boolean',
     'false',
-    'Shows a spinner in place of the leading icon and disables interaction',
+    'Shows a spinner in place of the leading icon, dims the whole control and disables interaction',
   ),
 
   prop(
@@ -36,13 +37,7 @@ export const buttonProps = [
     'false',
     'Square icon-only button. Needs an aria-label',
   ),
-  prop(
-    'forceState',
-    "'hover' | 'active' | 'focus'",
-    'undefined',
-    'Forces a specific visual state for the button',
-  ),
-
+  forceStateProp,
   fullWidthProp,
   leftIconProp,
   rightIconProp,

@@ -9,12 +9,20 @@
       "path": "./accordion.json"
     },
     {
+      "name": "alert",
+      "path": "./alert.json"
+    },
+    {
       "name": "avatar",
       "path": "./avatar.json"
     },
     {
       "name": "badge",
       "path": "./badge.json"
+    },
+    {
+      "name": "breadcrumb",
+      "path": "./breadcrumb.json"
     },
     {
       "name": "button",
@@ -33,12 +41,20 @@
       "path": "./checkbox.json"
     },
     {
+      "name": "collapsible",
+      "path": "./collapsible.json"
+    },
+    {
       "name": "dialog",
       "path": "./dialog.json"
     },
     {
       "name": "dropdownMenu",
       "path": "./dropdownMenu.json"
+    },
+    {
+      "name": "empty",
+      "path": "./empty.json"
     },
     {
       "name": "hoverCard",
@@ -49,16 +65,32 @@
       "path": "./input.json"
     },
     {
+      "name": "inputGroup",
+      "path": "./inputGroup.json"
+    },
+    {
       "name": "inputOtp",
       "path": "./inputOtp.json"
+    },
+    {
+      "name": "kbd",
+      "path": "./kbd.json"
     },
     {
       "name": "navigationMenu",
       "path": "./navigationMenu.json"
     },
     {
+      "name": "pagination",
+      "path": "./pagination.json"
+    },
+    {
       "name": "popover",
       "path": "./popover.json"
+    },
+    {
+      "name": "progress",
+      "path": "./progress.json"
     },
     {
       "name": "radio",
@@ -69,16 +101,32 @@
       "path": "./resizable.json"
     },
     {
+      "name": "segmented",
+      "path": "./segmented.json"
+    },
+    {
       "name": "select",
       "path": "./select.json"
+    },
+    {
+      "name": "slider",
+      "path": "./slider.json"
     },
     {
       "name": "switch",
       "path": "./switch.json"
     },
     {
+      "name": "tabs",
+      "path": "./tabs.json"
+    },
+    {
       "name": "toast",
       "path": "./toast.json"
+    },
+    {
+      "name": "toggle",
+      "path": "./toggle.json"
     },
     {
       "name": "tooltip",

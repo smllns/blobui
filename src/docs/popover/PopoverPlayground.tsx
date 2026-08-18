@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Button } from '../../components/button/Button';
+import { Button } from '@/components/button/Button';
 import {
   Popover,
   PopoverArrow,
   PopoverContent,
   PopoverTrigger,
-} from '../../components/popover/Popover';
+} from '@/components/popover/Popover';
 import { CodeBlock } from '../components/CodeBlock';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
@@ -66,7 +66,9 @@ export function PopoverPlayground() {
             >
               <h4 className='mb-2 font-semibold'>{state.title}</h4>
 
-              <p className='text-body-sm text-fg-tertiary'>{state.description}</p>
+              <p className='text-body-sm text-fg-tertiary'>
+                {state.description}
+              </p>
 
               {state.showArrow && <PopoverArrow variant={state.variant} />}
             </PopoverContent>

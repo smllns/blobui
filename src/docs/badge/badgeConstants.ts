@@ -1,5 +1,5 @@
-import type { BadgeProps } from '../../components/badge/badge.types';
-import type { ExtendedSize } from '../../components/shared/types';
+import type { BadgeProps } from '@/components/badge/badge.types';
+import type { ExtendedSize } from '@/components/shared/types';
 import { EMPHASIS_OPTIONS, SHAPE_OPTIONS, TONE_OPTIONS } from '@/lib/options';
 import {
   checkboxControl,

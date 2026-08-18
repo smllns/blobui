@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/cn';
 import { specimenStyles, stageStyles } from '../componentPreview.styles';
 
 type PlaygroundShellProps = {
@@ -18,7 +19,11 @@ export function PlaygroundShell({
 
       <div className='grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]'>
         <div className={stageStyles}>
-          <div className={specimenStyles}>{preview}</div>
+          {/* The stage centres a shrink-to-fit box, so a specimen that asks for
+              `w-full` would otherwise measure its own content — a progress bar
+              or a slider rail ends up at zero. The row takes the whole stage
+              and `justify-center` keeps intrinsic specimens centred. */}
+          <div className={cn(specimenStyles, 'w-full')}>{preview}</div>
         </div>
 
         <aside className='flex flex-col gap-5 rounded-2xl border border-border-subtle bg-surface p-6'>

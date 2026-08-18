@@ -1,4 +1,4 @@
-import type { NavigationMenuAlign } from '../../components/navigation-menu/navigation-menu.types';
+import type { NavigationMenuAlign } from '@/components/navigation-menu/navigation-menu.types';
 import {
   checkboxControl,
   selectControl,
@@ -50,10 +50,7 @@ export const NAVIGATION_MENU_CONTROLS = [
     NAVIGATION_MENU_ROW_OPTIONS,
   ),
   checkboxControl<NavigationMenuPlaygroundState>('withIcons', 'Card Icons'),
-  checkboxControl<NavigationMenuPlaygroundState>(
-    'withFeature',
-    'Feature Cell',
-  ),
+  checkboxControl<NavigationMenuPlaygroundState>('withFeature', 'Feature Cell'),
   checkboxControl<NavigationMenuPlaygroundState>('current', 'Current Row'),
   checkboxControl<NavigationMenuPlaygroundState>('disabled', 'Disabled Row'),
 ];

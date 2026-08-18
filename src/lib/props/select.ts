@@ -1,4 +1,9 @@
-import { childrenProp, disabledProp, errorProp } from './commonProps';
+import {
+  childrenProp,
+  disabledProp,
+  errorProp,
+  forceStateProp,
+} from './commonProps';
 import { prop } from './helpers';
 
 export const selectProps = [
@@ -52,6 +57,7 @@ export const selectProps = [
 
   disabledProp,
   childrenProp,
+  forceStateProp,
 ];
 
 export const selectItemProps = [

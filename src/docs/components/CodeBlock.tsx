@@ -21,7 +21,7 @@ export function CodeBlock({
   const [open, setOpen] = useState(false);
 
   const { toasts, showToast, dismissToast } = useToast();
-  const [height, setHeight] = useState('60px');
+  const [height, setHeight] = useState('0px');
   const contentRef = useRef<HTMLDivElement>(null);
 
   const isShortCode = code.split('\n').length <= 5;
@@ -29,7 +29,7 @@ export function CodeBlock({
   useEffect(() => {
     if (!contentRef.current || isShortCode) return;
 
-    setHeight(open ? `${contentRef.current.scrollHeight}px` : '60px');
+    setHeight(open ? `${contentRef.current.scrollHeight}px` : '0px');
   }, [open, isShortCode]);
 
   const handleCopy = async () => {
@@ -82,6 +82,29 @@ export function CodeBlock({
         </p>
 
         <div className='flex items-center gap-2'>
+          {/* Closed means closed: the panel leaks no truncated first lines, so
+              a page shows the component and offers the code, never a random
+              fragment of it. The toggle lives in the header where the reader
+              already looks for Copy. */}
+          {!isShortCode && (
+            <Button
+              variant='secondary'
+              size='xs'
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              leftIcon={
+                <ChevronDown
+                  className={cn(
+                    'transition-transform duration-(--duration-fast) ease-out',
+                    open && 'rotate-180',
+                  )}
+                />
+              }
+            >
+              {open ? 'Hide' : 'Show'}
+            </Button>
+          )}
+
           {!hideDownload && title && (
             <Button variant='secondary' size='xs' onClick={handleDownload}>
               {downloaded ? 'Downloaded' : 'Download'}
@@ -97,53 +120,16 @@ export function CodeBlock({
         style={{
           maxHeight: isShortCode ? 'none' : height,
         }}
-        className={`
-          relative overflow-hidden
-          transition-all duration-300 ease-in-out
-        `}
+        /* `inert` because a scrollable <pre> is a tab stop in some browsers —
+           zero height does not remove it from the tab order, only this does. */
+        inert={!isShortCode && !open}
+        className='overflow-hidden transition-[max-height] duration-(--duration-fast) ease-out'
       >
-        <div
-          ref={contentRef}
-          className={`
-            transition-all duration-900 ease-in-out
-            ${open ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-1'}
-          `}
-        >
+        <div ref={contentRef}>
           <pre className='overflow-x-auto p-4 font-mono text-body-sm text-fg-secondary'>
             <code>{code}</code>
           </pre>
         </div>
-
-        {!open && !isShortCode && (
-          <div className='pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-sunken to-transparent' />
-        )}
-
-        {!isShortCode && (
-          <div
-            className={`
-            absolute left-1/2 -translate-x-1/2
-            transition-all duration-300 ease-in-out
-            ${open ? 'bottom-2' : 'bottom-1/2 translate-y-1/2'}
-          `}
-          >
-            <Button
-              variant='secondary'
-              size='xs'
-              onClick={() => setOpen((v) => !v)}
-              className='shadow-md'
-              leftIcon={
-                <ChevronDown
-                  className={cn(
-                    'transition-transform duration-(--duration-fast) ease-out',
-                    open && 'rotate-180',
-                  )}
-                />
-              }
-            >
-              {open ? 'Hide' : 'Show'}
-            </Button>
-          </div>
-        )}
       </div>
 
       <ToastContainer toasts={toasts} onClose={dismissToast} />

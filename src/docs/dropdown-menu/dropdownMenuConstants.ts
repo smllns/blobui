@@ -1,10 +1,10 @@
-import type { DropdownMenuItemVariant } from '../../components/dropdown-menu/dropdown-menu.types';
+import type { DropdownMenuItemVariant } from '@/components/dropdown-menu/dropdown-menu.types';
 import type {
   BasicSize,
   CommonStylingVariant,
   ExtendedSize,
   Side,
-} from '../../components/shared/types';
+} from '@/components/shared/types';
 import {
   BASIC_SIZE_OPTIONS,
   COMMON_VARIANTS,

@@ -5,6 +5,7 @@ import { cardStyles, cardFooterStyles } from './card.styles';
 export interface CardProps
   extends ComponentPropsWithoutRef<'div'>, VariantProps<typeof cardStyles> {
   children: ReactNode;
+  forceState?: 'hover' | 'active' | 'focus';
 }
 
 export type CardHeaderProps = ComponentPropsWithoutRef<'div'>;

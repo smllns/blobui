@@ -11,7 +11,10 @@ export const selectTriggerStyles = cva(
   [
     'justify-between cursor-pointer text-start text-fg text-field',
     'data-[state=open]:border-border-focus',
-    'focus-visible:border-border-focus focus-visible:focus-ring',
+
+    'focused:border-border-focus focused:focus-ring',
+    'data-[invalid]:focused:focus-ring-danger',
+
     'data-[placeholder]:text-fg-placeholder',
     'disabled:text-fg-disabled disabled:cursor-not-allowed ',
   ].join(' '),

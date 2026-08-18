@@ -7,16 +7,27 @@ import { popoverArrowStyles, popoverContent } from './popover.styles';
 import { animatePopoverEnter, animatePopoverExit } from './popover.animations';
 import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
 
-const Popover = ({ children, ...props }: PopoverPrimitive.PopoverProps) => {
+const Popover = ({
+  children,
+  open: openProp,
+  onOpenChange,
+  ...props
+}: PopoverPrimitive.PopoverProps) => {
   const { open, handleOpenChange } = useAnimatedOpen<HTMLDivElement>({
     animateEnter: animatePopoverEnter,
     animateExit: animatePopoverExit,
   });
 
+  const controlled = openProp !== undefined;
+
   return (
     <PopoverPrimitive.Root
-      open={open}
-      onOpenChange={handleOpenChange}
+      open={controlled ? openProp : open}
+      onOpenChange={(next) => {
+        if (!controlled) handleOpenChange(next);
+
+        onOpenChange?.(next);
+      }}
       {...props}
     >
       {children}
@@ -33,14 +44,25 @@ const PopoverPortal = PopoverPrimitive.Portal;
 const PopoverContent = forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
->(({ className, variant, size, rounded, sideOffset = 8, ...props }, ref) => {
-  const { setContentRef } = useAnimatedOpen<HTMLDivElement>({
-    animateEnter: animatePopoverEnter,
-    animateExit: animatePopoverExit,
-  });
+>(
+  (
+    {
+      className,
+      variant,
+      size,
+      rounded,
+      sideOffset = 8,
+      portal = true,
+      ...props
+    },
+    ref,
+  ) => {
+    const { setContentRef } = useAnimatedOpen<HTMLDivElement>({
+      animateEnter: animatePopoverEnter,
+      animateExit: animatePopoverExit,
+    });
 
-  return (
-    <PopoverPortal>
+    const content = (
       <PopoverPrimitive.Content
         ref={mergeRefs(setContentRef, ref)}
         sideOffset={sideOffset}
@@ -54,9 +76,10 @@ const PopoverContent = forwardRef<
         )}
         {...props}
       />
-    </PopoverPortal>
-  );
-});
+    );
+    return portal ? <PopoverPortal>{content}</PopoverPortal> : content;
+  },
+);
 
 const PopoverArrow = forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Arrow>,

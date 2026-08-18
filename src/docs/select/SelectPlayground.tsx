@@ -2,8 +2,8 @@ import { SELECT_CONTROLS, SELECT_INITIAL_STATE } from './selectConstants';
 import { generateSelectCode } from './generateSelectCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
-import { Select } from '../../components/select/Select';
-import { SelectItem } from '../../components/select/SelectItem';
+import { Select } from '@/components/select/Select';
+import { SelectItem } from '@/components/select/SelectItem';
 import { CodeBlock } from '../components/CodeBlock';
 import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 
@@ -25,9 +25,9 @@ export function SelectPlayground() {
           size={state.size}
           width={state.width}
           labelPlacement={state.labelPlacement}
-          label='Framework'
           disabled={state.disabled}
           error={state.error}
+          label={state.label ? 'Framework' : ''}
           placeholder='Choose option'
           defaultValue='react'
         >

@@ -7,11 +7,6 @@ export const subsectionTitleStyles = 'text-heading-md text-fg';
 export const sectionLedeStyles =
   'mt-2 max-w-prose text-body-md text-fg-tertiary';
 
-export const cardStyles =
-  'mt-4 rounded-xl border border-border-subtle bg-surface p-6';
-
-export const ruleStyles = 'mt-5 border-s-2 border-primary-border ps-5';
-
 export const ruleTextStyles = 'max-w-prose text-body-sm text-fg-secondary';
 
 export const codeStyles =
@@ -28,8 +23,4 @@ export const tokenValueStyles = 'font-mono text-micro text-fg-placeholder';
 
 export const captionLabelStyles = 'font-mono text-caption text-fg-tertiary';
 
-export const linkCardStyles = [
-  'block rounded-xl border border-border-subtle bg-surface p-5 no-underline',
-  'transition-colors duration-(--duration-fast) ease-out',
-  'hover:border-border-strong focus-visible:focus-ring',
-].join(' ');
+export const linkStyles = 'block rounded-xl no-underline focused:focus-ring';

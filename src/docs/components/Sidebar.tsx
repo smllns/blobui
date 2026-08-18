@@ -1,18 +1,31 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Input } from '@/components/input/Input';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ThemeControls } from './ThemeControls';
 import { Logo } from './Logo';
 import { ChevronDown } from '@/ui/icons/ChevronDown';
 import { matchLabel, navGroups, navTotal } from './sidebarNav';
 
-const searchStyles = [
-  'h-control-sm w-full rounded-md ps-8 pe-2.5',
-  'bg-input text-body-sm text-fg placeholder:text-fg-placeholder',
-  'border border-border',
-  'transition-colors duration-(--duration-instant) ease-out',
-  'hover:border-border-strong',
-  'focus-visible:border-border-focus focus-visible:focus-ring focus-visible:outline-none',
-].join(' ');
+/* The magnifier stays local: it is a decoration for one field, not a library
+   icon anything else asks for. */
+function SearchGlyph() {
+  return (
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      aria-hidden='true'
+    >
+      <circle cx='11' cy='11' r='7' />
+      <path d='m20 20-3.5-3.5' />
+    </svg>
+  );
+}
 
 const itemStyles = (isActive: boolean) =>
   [
@@ -144,30 +157,25 @@ export function Sidebar() {
         <Logo size={24} />
       </NavLink>
 
-      <div className='relative flex items-center'>
-        <svg
-          width='16'
-          height='16'
-          viewBox='0 0 24 24'
-          fill='none'
-          stroke='currentColor'
-          strokeWidth='2'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          aria-hidden='true'
-          className='pointer-events-none absolute inset-s-2.5 text-fg-placeholder'
-        >
-          <circle cx='11' cy='11' r='7' />
-          <path d='m20 20-3.5-3.5' />
-        </svg>
+      {/* The field is the library's Input, not a copy of its rules: the border,
+          the hover and the focus ring came from a local style block that could
+          drift from field.css without anyone noticing.
 
-        <input
+          The search never scrolls away — finding a component is what the
+          sidebar is FOR. Sticky with a plate under it: full-bleed against the
+          aside's padding, the sidebar's own surface with a hairline underneath,
+          so the nav sliding under it reads as passing below a shelf instead of
+          colliding with a floating field. */}
+      <div className='sticky top-0 z-10 -mx-6 -my-1 border-b border-border-subtle bg-surface px-6 py-3'>
+        <Input
           type='search'
+          size='sm'
+          fullWidth
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder='Search components'
           aria-label='Search components'
-          className={searchStyles}
+          leftIcon={<SearchGlyph />}
         />
       </div>
 

@@ -1,0 +1,40 @@
+{
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/breadcrumb/Breadcrumb.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/breadcrumb/breadcrumb.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/breadcrumb/breadcrumb.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/ChevronRight.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/MoreHorizontal.tsx",
+      "type": "ui"
+    }
+  ]
+}

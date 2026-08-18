@@ -33,6 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       required,
       id,
       className,
+      forceState,
       onFocus,
       onBlur,
       onChange,
@@ -47,6 +48,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const isInfield = labelPlacement === 'infield' && !!label;
 
     const [focused, setFocused] = useState(false);
+
+    const isFocused = focused || forceState === 'focus';
 
     const [hasValue, setHasValue] = useState(() =>
       props.value !== undefined
@@ -78,16 +81,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
         <div
           data-leading={leftIcon ? '' : undefined}
-          data-focused={focused || undefined}
+          data-focused={isFocused || undefined}
           data-filled={filled || undefined}
           data-invalid={isError || undefined}
           data-disabled={disabled || undefined}
+          data-readonly={readOnly || undefined}
           data-interactive={!disabled && !readOnly ? '' : undefined}
+          data-force={forceState}
           className={cn(
             fieldShellStyles({
               variant,
               size: isInfield ? 'xl' : size,
-              focused,
+              focused: isFocused,
               invalid: isError,
               disabled,
               readOnly,

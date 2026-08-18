@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { motionDuration } from '@/lib/prefersReducedMotion';
 
 export const animateAccordionOpen = (element: HTMLDivElement) => {
   gsap.killTweensOf(element);
@@ -12,7 +13,7 @@ export const animateAccordionOpen = (element: HTMLDivElement) => {
     {
       height: element.scrollHeight,
       opacity: 1,
-      duration: 0.25,
+      duration: motionDuration(0.25),
       ease: 'power2.out',
       onComplete: () => {
         gsap.set(element, {
@@ -31,7 +32,7 @@ export const animateAccordionClose = (element: HTMLDivElement) => {
   gsap.to(element, {
     height: 0,
     opacity: 0,
-    duration: 0.2,
+    duration: motionDuration(0.2),
     ease: 'power2.in',
   });
 };

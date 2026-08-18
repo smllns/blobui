@@ -17,7 +17,7 @@ export const navigationMenuRowStyles = cva(
     'text-fg-secondary outline-none',
     'transition-[background-color,color]',
     motion.fast,
-    'focus-visible:focus-ring',
+    'focused:focus-ring',
     'max-md:h-control-lg max-md:w-full max-md:justify-between max-md:px-2.5',
   ].join(' '),
   {
@@ -25,8 +25,8 @@ export const navigationMenuRowStyles = cva(
       disabled: {
         false: [
           'cursor-pointer',
-          'hover:bg-subtle hover:text-fg',
-          'active:bg-hover',
+          'hovered:bg-subtle hovered:text-fg',
+          'pressed:bg-hover',
           'data-[state=open]:bg-subtle data-[state=open]:text-fg',
           'aria-expanded:bg-subtle aria-expanded:text-fg',
           'aria-[current=page]:bg-primary-muted aria-[current=page]:text-primary-fg',
@@ -101,7 +101,7 @@ export const navigationMenuGridStyles = cva(
 const cardIconStyles = [
   '[&>svg]:size-icon-lg [&>svg]:text-fg-tertiary',
   '[&>svg]:transition-colors [&>svg]:duration-[var(--duration-instant)] [&>svg]:ease-out',
-  'hover:[&>svg]:text-primary focus-visible:[&>svg]:text-primary',
+  'hovered:[&>svg]:text-primary focused:[&>svg]:text-primary',
 ].join(' ');
 
 export const navigationMenuCardStyles = cva(
@@ -111,8 +111,8 @@ export const navigationMenuCardStyles = cva(
     'text-fg no-underline outline-none',
     'transition-[background-color,color]',
     motion.instant,
-    'hover:bg-subtle',
-    'focus-visible:focus-ring',
+    'hovered:bg-subtle',
+    'focused:focus-ring',
     '[&>svg]:row-span-2',
     cardIconStyles,
   ].join(' '),
@@ -137,8 +137,8 @@ export const navigationMenuFeatureStyles = cva(
     'text-fg no-underline outline-none',
     'transition-[background-color,color]',
     motion.instant,
-    'hover:bg-hover',
-    'focus-visible:focus-ring',
+    'hovered:bg-hover',
+    'focused:focus-ring',
     cardIconStyles,
   ].join(' '),
   {

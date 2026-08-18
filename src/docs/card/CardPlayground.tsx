@@ -2,7 +2,7 @@ import { CARD_CONTROLS, CARD_INITIAL_STATE } from './cardConstants';
 import { generateCardCode } from './generateCardCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
-import { Card } from '../../components/card/Card';
+import { Card } from '@/components/card/Card';
 import { CodeBlock } from '../components/CodeBlock';
 import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 

@@ -3,6 +3,7 @@ import {
   disabledProp,
   errorProp,
   fieldProps,
+  forceStateProp,
 } from './commonProps';
 import { prop } from './helpers';
 
@@ -71,5 +72,21 @@ export const inputOtpProps = [
 
   ...fieldProps,
   disabledProp,
+  forceStateProp,
+
+  prop(
+    'loading',
+    'boolean',
+    'false',
+    'The code is being verified. The row wears the disabled paint and a wave runs along the boxes; semantics stay read-only so focus never moves, and the digits keep readable ink',
+  ),
+
+  prop(
+    'loadingLabel',
+    'string',
+    "'Checking your code'",
+    'Sentence announced while loading. aria-busy suppresses announcements rather than making them, so this text is the only thing a screen reader gets',
+  ),
+
   classNameProp,
 ];

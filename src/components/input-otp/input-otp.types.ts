@@ -22,9 +22,12 @@ export interface InputOtpProps extends Omit<
   onValueChange?: (value: string) => void;
   onComplete?: (value: string) => void;
   error?: boolean;
+  loading?: boolean;
+  loadingLabel?: string;
   label?: string;
   description?: string;
   errorMessage?: string;
   required?: boolean;
   id?: string;
+  forceState?: 'hover' | 'active' | 'focus';
 }

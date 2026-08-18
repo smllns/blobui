@@ -5,9 +5,9 @@ import {
 import { generateDropdownMenuCode } from './generateDropdownMenuCode';
 import { PlaygroundShell } from '../components/playground/PlaygroundShell';
 import { ControlsRenderer } from '../components/playground/controls/ControlsRenderer';
-import { DropdownMenu } from '../../components/dropdown-menu/DropdownMenu';
-import { DropdownMenuItem } from '../../components/dropdown-menu/DropdownMenuItem';
-import { DropdownMenuSeparator } from '../../components/dropdown-menu/DropdownMenuSeparator';
+import { DropdownMenu } from '@/components/dropdown-menu/DropdownMenu';
+import { DropdownMenuItem } from '@/components/dropdown-menu/DropdownMenuItem';
+import { DropdownMenuSeparator } from '@/components/dropdown-menu/DropdownMenuSeparator';
 import { CodeBlock } from '../components/CodeBlock';
 import { usePlaygroundState } from '@/hooks/usePlaygroundState';
 

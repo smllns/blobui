@@ -1,0 +1,60 @@
+{
+  "name": "alert",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "button"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/alert/Alert.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/alert/alert.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/alert/alert.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/Close.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/Info.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/CheckCircle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/AlertTriangle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/CloseCircle.tsx",
+      "type": "ui"
+    }
+  ]
+}

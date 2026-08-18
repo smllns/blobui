@@ -15,6 +15,7 @@ export function NavigationMenuCard({
   className,
   active,
   asChild,
+  forceState,
   onSelect,
   ...props
 }: NavigationMenuCardProps) {
@@ -45,6 +46,7 @@ export function NavigationMenuCard({
         {...props}
         data-active={active ? '' : undefined}
         aria-current={active ? 'page' : undefined}
+        data-force={forceState}
         className={classes}
       >
         {body}
@@ -58,6 +60,7 @@ export function NavigationMenuCard({
       asChild={asChild}
       onSelect={onSelect}
       active={active}
+      data-force={forceState}
       className={classes}
     >
       {body}

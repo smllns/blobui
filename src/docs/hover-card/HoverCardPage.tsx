@@ -1,5 +1,6 @@
 import { DocsPage } from '../components/DocsPage';
 import { HoverCardPlayground } from './HoverCardPlayground';
+import { HOVER_CARD_STATES } from './hoverCardStates';
 import { componentProps } from '@/lib/props';
 import { previewHoverCards } from './hoverCard.data';
 import { PreviewHoverCard } from './PreviewHoverCard';
@@ -17,6 +18,7 @@ export function HoverCardDocs() {
           ))}
         </>
       }
+      states={HOVER_CARD_STATES}
       playground={<HoverCardPlayground />}
       installation={getInstallation('hoverCard')}
       props={componentProps.hoverCard.root}

@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
+import { Segmented } from '@/components/segmented/Segmented';
 
 type Theme = 'light' | 'dark';
+
+const THEMES = [
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+];
 
 const ACCENTS = ['brand', 'violet', 'teal', 'orange'];
 type Accent = (typeof ACCENTS)[number];
@@ -33,25 +39,17 @@ export function ThemeControls() {
     <div className='flex flex-col gap-3'>
       <p className='text-micro uppercase text-fg-tertiary'>Theme</p>
 
-      <div className='flex gap-1 rounded-lg border border-border-subtle bg-sunken p-1'>
-        {(['light', 'dark'] as Theme[]).map((option) => (
-          <button
-            key={option}
-            type='button'
-            onClick={() => setTheme(option)}
-            className={cn(
-              'flex-1 rounded-md px-2 py-1 text-body-sm capitalize cursor-pointer',
-              'transition-colors duration-(--duration-fast) ease-out',
-              'focus-visible:focus-ring',
-              theme === option
-                ? 'bg-surface text-fg shadow-xs'
-                : 'text-fg-tertiary hover:text-fg',
-            )}
-          >
-            {option}
-          </button>
-        ))}
-      </div>
+      {/* This was a hand-rolled copy of Segmented down to the sunken track and
+          the lifted active item. It is the component now, so the sidebar gets
+          the arrow-key behaviour and the ring placement for free. */}
+      <Segmented
+        aria-label='Theme'
+        size='sm'
+        block
+        items={THEMES}
+        value={theme}
+        onValueChange={(value) => setTheme(value as Theme)}
+      />
 
       <p className='text-micro uppercase text-fg-tertiary'>Accent</p>
 

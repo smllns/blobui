@@ -22,4 +22,9 @@ export type SelectProps = React.ComponentPropsWithoutRef<
   required?: boolean;
   error?: boolean;
   className?: string;
+  forceState?: 'hover' | 'active' | 'focus';
+  id?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  'aria-describedby'?: string;
 };

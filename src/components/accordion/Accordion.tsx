@@ -44,6 +44,7 @@ export function Accordion(props: AccordionProps) {
         >
           <AccordionPrimitive.Header>
             <AccordionPrimitive.Trigger
+              data-force={item.forceState}
               className={cn(triggerStyles({ variant }))}
             >
               <span>{item.title}</span>

@@ -1,0 +1,32 @@
+{
+  "name": "slider",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+  "files": [
+    {
+      "path": "components/slider/Slider.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/slider/slider.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/slider/slider.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/field.styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    }
+  ]
+}

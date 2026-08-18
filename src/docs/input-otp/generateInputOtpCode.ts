@@ -1,4 +1,8 @@
-import { sampleCode, type InputOtpPlaygroundState } from './inputOtpConstants';
+import {
+  partialCode,
+  sampleCode,
+  type InputOtpPlaygroundState,
+} from './inputOtpConstants';
 
 export function generateInputOtpCode({
   variant,
@@ -6,6 +10,7 @@ export function generateInputOtpCode({
   charset,
   length,
   error,
+  loading,
   disabled,
   readOnly,
   label,
@@ -21,9 +26,12 @@ export function generateInputOtpCode({
 
   if (readOnly) {
     props.push(`defaultValue="${sampleCode(charset, length)}"`);
+  } else if (loading) {
+    props.push(`defaultValue="${partialCode(charset, length)}"`);
   }
 
   if (error) props.push('error');
+  if (loading) props.push('loading');
   if (disabled) props.push('disabled');
   if (readOnly) props.push('readOnly');
   if (label) props.push('label="Verification code"');

@@ -6,6 +6,7 @@ import type { NavigationMenuLinkProps } from './navigation-menu.types';
 export function NavigationMenuLink({
   current,
   disabled,
+  forceState,
   href,
   className,
   children,
@@ -22,6 +23,7 @@ export function NavigationMenuLink({
         tabIndex={disabled ? 0 : undefined}
         aria-disabled={disabled || undefined}
         data-disabled={disabled ? '' : undefined}
+        data-force={forceState}
         onClick={(event) => {
           if (disabled) {
             event.preventDefault();

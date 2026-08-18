@@ -6,9 +6,12 @@ import { menuItemStyles } from '@/components/shared/surface.styles';
 export function DropdownMenuItem({
   variant,
   size,
+  highlighted,
   className,
   ...props
 }: DropdownMenuItemProps) {
+  const highlight = highlighted ? { 'data-highlighted': '' } : {};
+
   return (
     <DropdownMenuPrimitive.Item
       className={cn(
@@ -19,6 +22,7 @@ export function DropdownMenuItem({
         className,
       )}
       {...props}
+      {...highlight}
     />
   );
 }

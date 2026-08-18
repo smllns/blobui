@@ -6,7 +6,7 @@ export const accordionProps = [
     'items',
     'AccordionItemProps[]',
     '-',
-    'List of accordion items to display',
+    'List of accordion items to display. Each item also accepts forceState: "hover" | "active" | "focus", which paints a pointer state on that item\'s trigger for documentation and visual tests',
   ),
 
   prop(

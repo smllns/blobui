@@ -1,5 +1,5 @@
 import type { ChoiceSize } from '@/components/shared/types';
-import { CHOICE_SIZE_OPTIONS } from '../../lib/options';
+import { CHOICE_SIZE_OPTIONS } from '@/lib/options';
 import {
   checkboxControl,
   selectControl,

@@ -1,4 +1,4 @@
-import type { CardProps } from '../../components/card/card.types';
+import type { CardProps } from '@/components/card/card.types';
 import { selectControl } from '../components/playground/controls/controlHelpers';
 
 export type CardPlaygroundState = {

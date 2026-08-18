@@ -2,12 +2,12 @@ import type {
   CommonStylingVariant,
   ExtendedSize,
   LabelPlacement,
-} from '../../components/shared/types';
+} from '@/components/shared/types';
 import {
   COMMON_VARIANTS,
   LABEL_PLACEMENT_OPTIONS,
   SIZE_OPTIONS,
-} from '../../lib/options';
+} from '@/lib/options';
 import {
   checkboxControl,
   selectControl,
