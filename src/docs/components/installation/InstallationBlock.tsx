@@ -56,17 +56,17 @@ export function InstallationBlock({
     }
   };
 
-  /* The library's own Tabs, not a hand-rolled tablist. The previous markup had
-     role="tab" without any arrow-key handling, so it announced itself as a
-     tablist and then behaved like three separate tab stops — the docs shipped
-     worse keyboard support than the component they document. */
   const items = useMemo(
     () => [
       {
         value: 'cli',
         label: 'CLI',
         content: (
-          <CodeBlock hideDownload title='npm' code={`blobui add ${component}`} />
+          <CodeBlock
+            hideDownload
+            title='npm'
+            code={`blobui add ${component}`}
+          />
         ),
       },
       {

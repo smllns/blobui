@@ -82,10 +82,6 @@ export function CodeBlock({
         </p>
 
         <div className='flex items-center gap-2'>
-          {/* Closed means closed: the panel leaks no truncated first lines, so
-              a page shows the component and offers the code, never a random
-              fragment of it. The toggle lives in the header where the reader
-              already looks for Copy. */}
           {!isShortCode && (
             <Button
               variant='secondary'
@@ -120,8 +116,6 @@ export function CodeBlock({
         style={{
           maxHeight: isShortCode ? 'none' : height,
         }}
-        /* `inert` because a scrollable <pre> is a tab stop in some browsers —
-           zero height does not remove it from the tab order, only this does. */
         inert={!isShortCode && !open}
         className='overflow-hidden transition-[max-height] duration-(--duration-fast) ease-out'
       >

@@ -39,9 +39,6 @@ export function ThemeControls() {
     <div className='flex flex-col gap-3'>
       <p className='text-micro uppercase text-fg-tertiary'>Theme</p>
 
-      {/* This was a hand-rolled copy of Segmented down to the sunken track and
-          the lifted active item. It is the component now, so the sidebar gets
-          the arrow-key behaviour and the ring placement for free. */}
       <Segmented
         aria-label='Theme'
         size='sm'

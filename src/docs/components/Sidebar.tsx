@@ -5,38 +5,8 @@ import { ThemeControls } from './ThemeControls';
 import { Logo } from './Logo';
 import { ChevronDown } from '@/ui/icons/ChevronDown';
 import { matchLabel, navGroups, navTotal } from './sidebarNav';
-
-/* The magnifier stays local: it is a decoration for one field, not a library
-   icon anything else asks for. */
-function SearchGlyph() {
-  return (
-    <svg
-      width='16'
-      height='16'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      aria-hidden='true'
-    >
-      <circle cx='11' cy='11' r='7' />
-      <path d='m20 20-3.5-3.5' />
-    </svg>
-  );
-}
-
-const itemStyles = (isActive: boolean) =>
-  [
-    'flex items-center justify-between rounded-sm px-2.5 py-2',
-    'text-body-md no-underline',
-    'transition-colors duration-(--duration-instant) ease-out',
-    'focus-visible:focus-ring',
-    isActive
-      ? 'bg-primary-muted font-medium text-primary-fg'
-      : 'text-fg-secondary hover:bg-subtle hover:text-fg',
-  ].join(' ');
+import { Search } from '@/ui/icons/Search';
+import { itemStyles } from './sidebar.styles';
 
 export function Sidebar() {
   const location = useLocation();
@@ -157,15 +127,6 @@ export function Sidebar() {
         <Logo size={24} />
       </NavLink>
 
-      {/* The field is the library's Input, not a copy of its rules: the border,
-          the hover and the focus ring came from a local style block that could
-          drift from field.css without anyone noticing.
-
-          The search never scrolls away — finding a component is what the
-          sidebar is FOR. Sticky with a plate under it: full-bleed against the
-          aside's padding, the sidebar's own surface with a hairline underneath,
-          so the nav sliding under it reads as passing below a shelf instead of
-          colliding with a floating field. */}
       <div className='sticky top-0 z-10 -mx-6 -my-1 border-b border-border-subtle bg-surface px-6 py-3'>
         <Input
           type='search'
@@ -175,7 +136,7 @@ export function Sidebar() {
           onChange={(event) => setQuery(event.target.value)}
           placeholder='Search components'
           aria-label='Search components'
-          leftIcon={<SearchGlyph />}
+          leftIcon={<Search />}
         />
       </div>
 

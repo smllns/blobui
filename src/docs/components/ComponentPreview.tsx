@@ -20,10 +20,6 @@ export function ComponentPreview({
       <h2 className='text-heading-lg pb-2 text-fg'>The range</h2>
 
       <div ref={stageRef} className={cn(stageStyles, className)}>
-        {/* The stage centres a shrink-to-fit box, so a specimen asking for
-            `w-full` would measure its own content instead — a progress bar
-            comes out at zero width. The row takes the whole stage and
-            `justify-center` keeps intrinsic specimens centred. */}
         <div
           className={cn(
             specimenStyles,

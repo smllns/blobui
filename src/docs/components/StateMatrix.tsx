@@ -8,29 +8,10 @@ type StateMatrixProps = {
   specimens: StateSpecimen[];
 };
 
-/* How much of the table stays on screen while collapsed: the header and the
-   first rows, cut mid-row so the fade reads as "there is more", not as the
-   end of the table. */
 const PEEK = '15rem';
 
-/* The most rows the peek window can show — thin specimens like Progress fit
-   four, tall ones fit two. Rows past this are inert while collapsed: the cut
-   rows stay real DOM under `overflow: hidden`, which does not take them out of
-   the tab order, so without this Tab would walk into specimens nobody can see.
-   The count errs high rather than exact, because inert on a VISIBLE row would
-   kill the hover the notes invite, which is worse than a hidden tab stop or
-   two on the tall pages. A table this short or shorter never collapses. */
 const PEEK_ROWS = 4;
 
-/* Only the states the component can actually be in — the same table idiom as
-   PropsTable, so the two read as one system. A state that does not exist is
-   not a row: the source matrix in *States.tsx still lists it with its reason,
-   which is the record that keeps "cannot exist" distinguishable from "forgot",
-   but the page shows components, not absences.
-
-   A long table collapses to a peek with the trigger sitting on the cut itself
-   (the CodeBlock mechanic): the section leads with real specimens, and one
-   press opens the rest in place. */
 export function StateMatrix({ specimens }: StateMatrixProps) {
   const shown = specimens.filter((specimen) => specimen.node != null);
   const count = shown.length;
@@ -49,20 +30,14 @@ export function StateMatrix({ specimens }: StateMatrixProps) {
   return (
     <section className='space-y-4'>
       <h2 className='text-heading-lg pb-2 text-fg'>
-        States{' '}
-        <span className='font-normal text-fg-tertiary'>({count})</span>
+        States <span className='font-normal text-fg-tertiary'>({count})</span>
       </h2>
 
       <div>
         <div
           ref={clipRef}
           style={{ maxHeight: collapsible ? height : undefined }}
-          /* [contain:paint] makes this box the containing block for the
-             fixed-position panels Radix draws (popover, tooltip, menu — used
-             with portal={false} in their specimens). Without it a hidden row's
-             trigger is clipped away while its panel, positioned against the
-             viewport, keeps painting over whatever section is below. */
-          className='relative overflow-hidden transition-[max-height] duration-(--duration-fast) ease-out [contain:paint]'
+          className='relative overflow-hidden transition-[max-height] duration-(--duration-fast) ease-out contain-[paint]'
         >
           <div className='overflow-x-auto rounded-xl border border-border-subtle'>
             <table className='w-full text-body-sm'>
