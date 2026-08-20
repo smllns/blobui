@@ -21,6 +21,10 @@
       "type": "shared"
     },
     {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
       "path": "lib/cn.ts",
       "type": "lib"
     },

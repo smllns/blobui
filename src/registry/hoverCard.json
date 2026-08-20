@@ -55,6 +55,10 @@
       "type": "lib"
     },
     {
+      "path": "lib/createStyledElement.ts",
+      "type": "lib"
+    },
+    {
       "path": "ui/Icon.tsx",
       "type": "ui"
     },

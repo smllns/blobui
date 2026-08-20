@@ -26,7 +26,7 @@ export function RadioDocs() {
       states={RADIO_STATES}
       playground={<RadioPlayground />}
       installation={getInstallation('radio')}
-      props={componentProps.radio}
+      propSections={componentProps.radio}
     />
   );
 }

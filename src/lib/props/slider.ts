@@ -1,10 +1,15 @@
 import {
+  BASIC_SIZES,
   classNameProp,
+  disabledProp,
   errorProp,
-  fieldProps,
+  fieldPropsOf,
   forceStateProp,
+  readOnlyProp,
+  requiredProp,
+  sizeProp,
 } from './commonProps';
-import { prop } from './helpers';
+import { describe, prop } from './helpers';
 
 export const sliderProps = [
   prop(
@@ -53,17 +58,13 @@ export const sliderProps = [
     'Distance Page Up and Page Down cover',
   ),
 
-  prop(
-    'size',
-    "'sm' | 'md' | 'lg'",
+  sizeProp(
+    BASIC_SIZES,
     'md',
     'Shrinks the rail and the thumb, never the 44px hit area',
   ),
 
-  prop(
-    'readOnly',
-    'boolean',
-    'false',
+  readOnlyProp(
     'The value is content: it keeps its paint, its tab stop and its announcement, only the drag is gone',
   ),
 
@@ -89,12 +90,12 @@ export const sliderProps = [
   ),
 
   errorProp,
-  ...fieldProps,
+  ...fieldPropsOf('ReactNode'),
 
-  prop(
-    'disabled',
-    'boolean',
-    'false',
+  requiredProp('Marks the label with an asterisk'),
+
+  describe(
+    disabledProp,
     'The fill drops to the neutral ramp so the value stays readable',
   ),
   forceStateProp,

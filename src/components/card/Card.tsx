@@ -8,18 +8,20 @@ import {
   cardStyles,
   cardTitleStyles,
 } from './card.styles';
-import type {
-  CardBodyProps,
-  CardDescriptionProps,
-  CardFooterProps,
-  CardHeaderProps,
-  CardProps,
-  CardTitleProps,
-} from './card.types';
+import type { CardFooterProps, CardHeaderProps, CardProps } from './card.types';
+import { createStyledElement } from '@/lib/createStyledElement';
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
-    { variant, padding, interactive, forceState, className, children, ...props },
+    {
+      variant,
+      padding,
+      interactive,
+      forceState,
+      className,
+      children,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -44,18 +46,10 @@ export function CardHeader({ className, ...props }: CardHeaderProps) {
     />
   );
 }
-
-export function CardTitle({ className, ...props }: CardTitleProps) {
-  return <h3 className={cn(cardTitleStyles, className)} {...props} />;
-}
-
-export function CardDescription({ className, ...props }: CardDescriptionProps) {
-  return <p className={cn(cardDescriptionStyles, className)} {...props} />;
-}
-
-export function CardBody({ className, ...props }: CardBodyProps) {
-  return <div className={cn(cardBodyStyles, className)} {...props} />;
-}
+/* eslint-disable react-refresh/only-export-components */
+export const CardTitle = createStyledElement('h3', cardTitleStyles);
+export const CardDescription = createStyledElement('p', cardDescriptionStyles);
+export const CardBody = createStyledElement('div', cardBodyStyles);
 
 export function CardFooter({
   className,

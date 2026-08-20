@@ -22,7 +22,7 @@ function preview({
   loading?: boolean;
 } = {}) {
   return (
-    <span className='text-body-md text-fg-secondary '>
+    <span className='text-body-md text-fg-secondary'>
       Reviewed by{' '}
       <HoverCard open={open}>
         <HoverCardTrigger forceState={force}>@priya</HoverCardTrigger>
@@ -52,7 +52,7 @@ function preview({
 }
 
 const room = (children: ReactNode) => (
-  <div className='min-h-50 w-full pt-1'>{children}</div>
+  <div className='min-h-50 pt-1'>{children}</div>
 );
 
 export const HOVER_CARD_STATES: StateSpecimen[] = [

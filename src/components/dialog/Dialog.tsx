@@ -1,13 +1,16 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { forwardRef, useCallback, useRef, useState } from 'react';
+import { forwardRef } from 'react';
+
 import { cn } from '@/lib/cn';
 import { Close } from '@/ui/icons/Close';
+import { mergeRefs } from '@/lib/mergeRefs';
+import { createStrictContext } from '@/lib/createContext';
+import { useDialogAnimation } from '@/hooks/useDialogAnimation';
+import type { DialogContextValue } from '@/components/shared/types';
 
 import type {
   DialogContentProps,
   DialogOverlayProps,
-  DialogHeaderProps,
-  DialogBodyProps,
   DialogFooterProps,
   DialogTitleProps,
   DialogDescriptionProps,
@@ -19,62 +22,49 @@ import {
   dialogHeaderStyles,
   dialogBodyStyles,
   dialogFooterStyles,
-  dialogTitleStyles,
-  dialogDescriptionStyles,
   dialogCloseStyles,
 } from './dialog.styles';
-
+import { createStyledElement } from '@/lib/createStyledElement';
 import {
-  animateDialogEnter,
-  animateDialogExit,
-  animateOverlayEnter,
-  animateOverlayExit,
-} from './dialog.animations';
-import { mergeRefs } from '@/lib/mergeRefs';
-import { createStrictContext } from '@/lib/createContext';
-
-type DialogContextValue = {
-  contentRef: React.RefObject<HTMLDivElement | null>;
-  overlayRef: React.RefObject<HTMLDivElement | null>;
-};
+  dialogDescriptionStyles,
+  dialogPositionerStyles,
+  dialogTitleStyles,
+} from '@/components/shared/styles';
 
 const [DialogContext, useDialogContext] =
   createStrictContext<DialogContextValue>('Dialog');
 
-const Dialog = ({ children, ...props }: DialogPrimitive.DialogProps) => {
-  const [open, setOpen] = useState(false);
-
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const overlayRef = useRef<HTMLDivElement | null>(null);
-
-  const handleOpenChange = (next: boolean) => {
-    if (next) {
-      setOpen(true);
-      return;
-    }
-
-    const content = contentRef.current;
-    const overlay = overlayRef.current;
-
-    if (!content) {
-      setOpen(false);
-      return;
-    }
-
-    animateDialogExit(content, () => {
-      setOpen(false);
-    });
-
-    if (overlay) {
-      animateOverlayExit(overlay, () => {});
-    }
-  };
+const Dialog = ({
+  children,
+  open: openProp,
+  defaultOpen,
+  onOpenChange,
+  ...props
+}: DialogPrimitive.DialogProps) => {
+  const {
+    open,
+    contentRef,
+    overlayRef,
+    setContentRef,
+    setOverlayRef,
+    isExiting,
+    requestOpen,
+    handleOpenChange,
+  } = useDialogAnimation({
+    open: openProp,
+    defaultOpen,
+    onOpenChange,
+  });
 
   return (
     <DialogContext.Provider
       value={{
         contentRef,
         overlayRef,
+        setContentRef,
+        setOverlayRef,
+        isExiting,
+        requestOpen,
       }}
     >
       <DialogPrimitive.Root
@@ -88,7 +78,23 @@ const Dialog = ({ children, ...props }: DialogPrimitive.DialogProps) => {
   );
 };
 
-const DialogTrigger = DialogPrimitive.Trigger;
+const DialogTrigger = forwardRef<
+  React.ComponentRef<typeof DialogPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>
+>(({ onClick, ...props }, ref) => {
+  const { isExiting, requestOpen } = useDialogContext();
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    onClick?.(event);
+
+    if (event.defaultPrevented || !isExiting()) return;
+
+    event.preventDefault();
+    requestOpen();
+  };
+
+  return <DialogPrimitive.Trigger ref={ref} onClick={handleClick} {...props} />;
+});
 const DialogPortal = DialogPrimitive.Portal;
 const DialogClose = forwardRef<
   HTMLButtonElement,
@@ -141,57 +147,37 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
     },
     forwardedRef,
   ) => {
-    const { contentRef, overlayRef } = useDialogContext();
+    const { setContentRef, setOverlayRef } = useDialogContext();
 
-    const setContentRef = useCallback(
-      (node: HTMLDivElement | null) => {
-        mergeRefs(contentRef, forwardedRef)(node);
-
-        if (node) {
-          animateDialogEnter(node);
-        }
-      },
-      [contentRef, forwardedRef],
-    );
-
-    const setOverlayRef = (node: HTMLDivElement | null) => {
-      overlayRef.current = node;
-
-      if (node) {
-        animateOverlayEnter(node);
-      }
-    };
     return (
       <DialogPortal>
         <DialogOverlay ref={setOverlayRef} overlay={overlay} />
 
-        <DialogPrimitive.Content
-          className={cn(
-            dialogContentStyles({
-              size,
-              padding,
-              variant,
-            }),
-            className,
-          )}
-          {...props}
-        >
-          <div ref={setContentRef}>{children}</div>
+        <div className={dialogPositionerStyles}>
+          <DialogPrimitive.Content
+            ref={mergeRefs(setContentRef, forwardedRef)}
+            className={cn(
+              dialogContentStyles({
+                size,
+                padding,
+                variant,
+              }),
+              className,
+            )}
+            {...props}
+          >
+            {children}
 
-          {showCloseButton && <DialogClose />}
-        </DialogPrimitive.Content>
+            {showCloseButton && <DialogClose />}
+          </DialogPrimitive.Content>
+        </div>
       </DialogPortal>
     );
   },
 );
 
-function DialogHeader({ className, ...props }: DialogHeaderProps) {
-  return <div className={cn(dialogHeaderStyles, className)} {...props} />;
-}
-
-function DialogBody({ className, ...props }: DialogBodyProps) {
-  return <div className={cn(dialogBodyStyles, className)} {...props} />;
-}
+const DialogHeader = createStyledElement('div', dialogHeaderStyles);
+const DialogBody = createStyledElement('div', dialogBodyStyles);
 
 function DialogFooter({ className, surface, ...props }: DialogFooterProps) {
   return (

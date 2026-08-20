@@ -14,6 +14,7 @@ import {
   menuLabelStyles,
   menuShortcutStyles,
 } from '@/components/shared/surface.styles';
+import { createStyledElement } from '@/lib/createStyledElement';
 
 export function DropdownMenu({
   children,
@@ -22,13 +23,12 @@ export function DropdownMenu({
   size = 'md',
   side = 'bottom',
   open: openProp,
+  onOpenChange,
   disabled,
   forceState,
   portal = true,
   positioning = 'floating',
-}: DropdownMenuProps & {
-  trigger: React.ReactNode;
-}) {
+}: DropdownMenuProps) {
   const { open, setContentRef, handleOpenChange } =
     useAnimatedOpen<HTMLDivElement>({
       animateEnter: animateDropdownEnter,
@@ -40,7 +40,11 @@ export function DropdownMenu({
   return (
     <DropdownMenuPrimitive.Root
       open={openProp ?? open}
-      onOpenChange={pinned ? undefined : handleOpenChange}
+      onOpenChange={(next) => {
+        onOpenChange?.(next);
+
+        if (!pinned) handleOpenChange(next);
+      }}
       modal={pinned ? false : undefined}
     >
       <DropdownMenuPrimitive.Trigger
@@ -93,9 +97,8 @@ export function DropdownMenuLabel({
   );
 }
 
-export function DropdownMenuShortcut({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<'span'>) {
-  return <span className={cn(menuShortcutStyles, className)} {...props} />;
-}
+/* eslint-disable react-refresh/only-export-components */
+export const DropdownMenuShortcut = createStyledElement(
+  'div',
+  menuShortcutStyles,
+);

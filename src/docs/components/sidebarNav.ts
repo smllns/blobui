@@ -61,7 +61,10 @@ export const navGroups: NavGroup[] = [
     items: [
       { label: 'Accordion', to: '/accordion' },
       { label: 'Dialog', to: '/dialog' },
+      { label: 'Alert dialog', to: '/alert-dialog' },
+      { label: 'Sheet', to: '/sheet' },
       { label: 'Dropdown', to: '/dropdown' },
+      { label: 'Context menu', to: '/context-menu' },
       { label: 'Popover', to: '/popover' },
       { label: 'Tooltip', to: '/tooltip' },
       { label: 'Hover card', to: '/hover-card' },

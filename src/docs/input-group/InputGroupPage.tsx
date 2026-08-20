@@ -14,9 +14,7 @@ export function InputGroupDocs() {
       states={INPUT_GROUP_STATES}
       playground={<InputGroupPlayground />}
       installation={getInstallation('inputGroup')}
-      props={componentProps.inputGroup.root}
-      subElementHeader='Addon'
-      subElementProps={componentProps.inputGroup.item}
+      propSections={componentProps.inputGroup}
     />
   );
 }

@@ -33,7 +33,7 @@ export function AccordionDocs() {
       states={ACCORDION_STATES}
       playground={<AccordionPlayground />}
       installation={getInstallation('accordion')}
-      props={componentProps.accordion}
+      propSections={componentProps.accordion}
     />
   );
 }

@@ -50,11 +50,11 @@ export const CHECKBOX_STATES: StateSpecimen[] = [
   {
     name: 'disabled',
     node: (
-      <>
+      <div className='flex flex-col gap-2'>
         <Checkbox label='Unchecked' disabled />
         <Checkbox label='Checked' disabled defaultChecked />
         <Checkbox label='Some' disabled indeterminate />
-      </>
+      </div>
     ),
     note: 'disabled state — the current value remains visible but cannot be changed',
   },

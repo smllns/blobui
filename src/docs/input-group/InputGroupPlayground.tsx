@@ -86,32 +86,30 @@ export function InputGroupPlayground() {
         />
       }
       preview={
-        <div className='flex w-full justify-center'>
-          <div className='w-full max-w-md'>
-            <InputGroup
-              variant={state.variant}
-              leading={slotNode(state.leading, 'leading')}
-              trailing={slotNode(state.trailing, 'trailing')}
-              placeholder={INPUT_GROUP_COPY.placeholder}
-              label={state.label ? INPUT_GROUP_COPY.label : undefined}
-              required={state.required}
-              description={
-                state.description && !state.errorMessage
-                  ? INPUT_GROUP_COPY.description
-                  : undefined
-              }
-              errorMessage={
-                state.errorMessage ? INPUT_GROUP_COPY.errorMessage : undefined
-              }
-              error={state.error}
-              loading={state.loading}
-              loadingSide={state.loadingSide}
-              loadingLabel={INPUT_GROUP_COPY.loadingLabel}
-              disabled={state.disabled}
-              readOnly={state.readOnly}
-              fullWidth={state.fullWidth}
-            />
-          </div>
+        <div className='w-full max-w-md'>
+          <InputGroup
+            variant={state.variant}
+            leading={slotNode(state.leading, 'leading')}
+            trailing={slotNode(state.trailing, 'trailing')}
+            placeholder={INPUT_GROUP_COPY.placeholder}
+            label={state.label ? INPUT_GROUP_COPY.label : undefined}
+            required={state.required}
+            description={
+              state.description && !state.errorMessage
+                ? INPUT_GROUP_COPY.description
+                : undefined
+            }
+            errorMessage={
+              state.errorMessage ? INPUT_GROUP_COPY.errorMessage : undefined
+            }
+            error={state.error}
+            loading={state.loading}
+            loadingSide={state.loadingSide}
+            loadingLabel={INPUT_GROUP_COPY.loadingLabel}
+            disabled={state.disabled}
+            readOnly={state.readOnly}
+            fullWidth={state.fullWidth}
+          />
         </div>
       }
       code={<CodeBlock code={generateInputGroupCode(state)} />}

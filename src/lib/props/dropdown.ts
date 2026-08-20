@@ -1,61 +1,60 @@
 import {
+  BASIC_SIZES,
+  COMMON_VARIANTS,
+  EXTENDED_SIZES,
   childrenProp,
   classNameProp,
   disabledProp,
   forceStateProp,
+  onOpenChangeProp,
+  openProp,
+  portalProp,
   sideProp,
+  sizeProp,
+  variantProp,
 } from './commonProps';
-import { prop } from './helpers';
+import { describe, prop } from './helpers';
 
 export const dropdownMenuProps = [
   prop('trigger', 'ReactNode', '-', 'Element used to open the dropdown menu'),
 
-  prop(
-    'variant',
-    "'default' | 'filled' | 'outline' | 'ghost'",
-    'default',
-    'Visual style of the trigger',
-  ),
+  variantProp(COMMON_VARIANTS, 'default', 'Visual style of the trigger'),
 
-  prop(
-    'size',
-    "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    'md',
-    'Controls trigger size',
-  ),
+  sizeProp(EXTENDED_SIZES, 'md', 'Controls trigger size'),
 
   sideProp,
   childrenProp,
+
+  openProp('Controls the menu, so a specimen can stand open', 'undefined'),
+
+  onOpenChangeProp('Called when the menu opens or closes'),
+
+  describe(disabledProp, 'Disables the trigger, so the menu never opens'),
+
+  { ...forceStateProp, type: "'hover' | 'focus'" },
+
   prop(
-    'open',
-    'boolean',
-    'undefined',
-    'Controls the menu, so a specimen can stand open',
+    'positioning',
+    "'floating' | 'static'",
+    'floating',
+    'static drops the floating layer and lays the panel out in flow under the trigger, with no collision handling. For specimens',
   ),
 
-  forceStateProp,
-
-  prop(
-    'portal',
-    'boolean',
-    'true',
-    "Renders the panel in the trigger's own subtree instead of a portal to <body>, so it clips and scrolls with its container. For specimens and clipped contexts; a live page keeps the default",
-  ),
+  portalProp,
 ];
 
 export const dropdownMenuItemProps = [
-  prop(
-    'variant',
-    "'default' | 'destructive'",
+  variantProp(
+    ['default', 'destructive'],
     'default',
     'Visual style of the menu item',
   ),
 
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls menu item size'),
+  sizeProp(BASIC_SIZES, 'md', 'Controls menu item size'),
 
   prop(
     'onSelect',
-    '() => void',
+    '(event: Event) => void',
     '-',
     'Callback fired when the item is selected',
   ),
@@ -68,6 +67,8 @@ export const dropdownMenuItemProps = [
     'undefined',
     'Forces the row highlight. Spread conditionally — writing undefined would clobber the value Radix computes and kill live highlighting',
   ),
+
+  classNameProp,
 ];
 
 export const dropdownMenuSeparatorProps = [classNameProp];

@@ -21,11 +21,7 @@ export function HoverCardDocs() {
       states={HOVER_CARD_STATES}
       playground={<HoverCardPlayground />}
       installation={getInstallation('hoverCard')}
-      props={componentProps.hoverCard.root}
-      subElementHeader='HoverCardTrigger'
-      subElementProps={componentProps.hoverCard.item}
-      secondSubElementHeader='HoverCardContent'
-      secondSubElementProps={componentProps.hoverCard.item2}
+      propSections={componentProps.hoverCard}
     />
   );
 }

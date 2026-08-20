@@ -22,14 +22,30 @@ function NavigationCards({ items }: { items: typeof PRODUCT_ITEMS }) {
 
 export function NavigationMenuPreview() {
   return (
-    <NavigationMenu aria-label='Marketing' defaultValue='product'>
-      <NavigationMenuItem value='product' label='Product' columns={3} rows={2}>
+    <NavigationMenu
+      aria-label='Marketing'
+      defaultValue='product'
+      className='w-full'
+      listClassName='flex-wrap justify-center'
+    >
+      <NavigationMenuItem
+        value='product'
+        label='Product'
+        columns={3}
+        rows={2}
+        panelClassName='max-w-full'
+      >
         <NavigationMenuFeature href='#' {...PRODUCT_FEATURE} />
 
         <NavigationCards items={PRODUCT_ITEMS} />
       </NavigationMenuItem>
 
-      <NavigationMenuItem value='resources' label='Resources' columns={2}>
+      <NavigationMenuItem
+        value='resources'
+        label='Resources'
+        columns={2}
+        panelClassName='max-w-full'
+      >
         <NavigationCards items={RESOURCES_ITEMS} />
       </NavigationMenuItem>
 

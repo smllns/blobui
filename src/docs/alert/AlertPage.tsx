@@ -12,7 +12,7 @@ export function AlertDocs() {
       preview={<AlertPreview />}
       playground={<AlertPlayground />}
       installation={getInstallation('alert')}
-      props={componentProps.alert}
+      propSections={componentProps.alert}
     />
   );
 }

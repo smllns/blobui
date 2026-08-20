@@ -31,6 +31,9 @@ import { SegmentedDocs } from '../docs/segmented/SegmentedPage';
 import { SliderDocs } from '../docs/slider/SliderPage';
 import { TabsDocs } from '../docs/tabs/TabsPage';
 import { ToggleDocs } from '../docs/toggle/TogglePage';
+import { AlertDialogDocs } from '../docs/alert-dialog/AlertDialogPage';
+import { SheetDocs } from '../docs/sheet/SheetPage';
+import { ContextMenuDocs } from '../docs/context-menu/ContextMenuPage';
 
 export const docsRoutes = [
   { path: '/', element: Home, index: true },
@@ -67,4 +70,7 @@ export const docsRoutes = [
   { path: 'segmented', element: SegmentedDocs, index: false },
   { path: 'input-group', element: InputGroupDocs, index: false },
   { path: 'empty', element: EmptyDocs, index: false },
+  { path: 'alert-dialog', element: AlertDialogDocs, index: false },
+  { path: 'sheet', element: SheetDocs, index: false },
+  { path: 'context-menu', element: ContextMenuDocs, index: false },
 ];

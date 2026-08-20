@@ -3,6 +3,7 @@ import type { ToastProps } from '@/components/toast/toast.types';
 import { Button } from '@/components/button/Button';
 import { ToastEnterReplay, ToastExitReplay } from './ToastReplay';
 import type { StateSpecimen } from '../components/docsPage.types';
+import type { ForceState } from '@/components/shared/types';
 
 const sample = (props: Partial<ToastProps> = {}) => (
   <Toast
@@ -14,7 +15,7 @@ const sample = (props: Partial<ToastProps> = {}) => (
   />
 );
 
-const withForcedAction = (force: 'hover' | 'active' | 'focus') =>
+const withForcedAction = (force: ForceState) =>
   sample({
     action: (
       <Button size='xs' variant='ghost' forceState={force}>

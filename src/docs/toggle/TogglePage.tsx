@@ -14,7 +14,7 @@ export function ToggleDocs() {
       states={TOGGLE_STATES}
       playground={<TogglePlayground />}
       installation={getInstallation('toggle')}
-      props={componentProps.toggle}
+      propSections={componentProps.toggle}
     />
   );
 }

@@ -35,17 +35,15 @@ export function TabsPlayground() {
         />
       }
       preview={
-        <div className='flex w-full justify-center'>
-          <div className='w-full max-w-sm'>
-            <Tabs
-              aria-label='Workspace'
-              items={buildItems(state)}
-              orientation={state.orientation}
-              size={state.size}
-              activation={state.activation}
-              block={state.block}
-            />
-          </div>
+        <div className='w-full max-w-sm'>
+          <Tabs
+            aria-label='Workspace'
+            items={buildItems(state)}
+            orientation={state.orientation}
+            size={state.size}
+            activation={state.activation}
+            block={state.block}
+          />
         </div>
       }
       code={<CodeBlock code={generateTabsCode(state)} />}

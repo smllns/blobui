@@ -20,13 +20,7 @@ export function ComponentPreview({
       <h2 className='text-heading-lg pb-2 text-fg'>The range</h2>
 
       <div ref={stageRef} className={cn(stageStyles, className)}>
-        <div
-          className={cn(
-            specimenStyles,
-            'w-full',
-            name === 'biggerGap' ? 'gap-8' : 'gap-4',
-          )}
-        >
+        <div className={cn(specimenStyles, name === 'biggerGap' && 'gap-8')}>
           {children}
         </div>
       </div>

@@ -14,7 +14,7 @@ export function ButtonGroupDocs() {
       states={GROUP_STATES}
       playground={<ButtonGroupPlayground />}
       installation={getInstallation('buttonGroup')}
-      props={componentProps.buttonGroup}
+      propSections={componentProps.buttonGroup}
     />
   );
 }

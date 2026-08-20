@@ -1,12 +1,17 @@
-import { childrenProp, classNameProp } from './commonProps';
+import {
+  BASIC_SIZES,
+  childrenProp,
+  classNameProp,
+  sizeProp,
+  variantProp,
+} from './commonProps';
 import { prop } from './helpers';
 
 export const kbdProps = [
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Height of the cap'),
+  sizeProp(BASIC_SIZES, 'md', 'Height of the cap'),
 
-  prop(
-    'variant',
-    "'default' | 'ghost'",
+  variantProp(
+    ['default', 'ghost'],
     'default',
     'ghost drops the fill and takes its ink from the row around it, for menu and command items',
   ),
@@ -30,11 +35,10 @@ export const kbdGroupProps = [
     'Shorthand for a chord: one Kbd per entry, so a screen reader reads every key',
   ),
 
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Size handed to the keys in keys'),
+  sizeProp(BASIC_SIZES, 'md', 'Size handed to the keys in keys'),
 
-  prop(
-    'variant',
-    "'default' | 'ghost'",
+  variantProp(
+    ['default', 'ghost'],
     'default',
     'Variant handed to the keys in keys',
   ),

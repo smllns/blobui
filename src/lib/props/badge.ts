@@ -3,13 +3,14 @@ import {
   classNameProp,
   leftIconProp,
   rightIconProp,
+  sizeProp,
+  toneProp,
 } from './commonProps';
 import { prop } from './helpers';
 
 export const badgeProps = [
-  prop(
-    'tone',
-    "'neutral' | 'accent' | 'success' | 'warning' | 'danger'",
+  toneProp(
+    ['neutral', 'accent', 'success', 'warning', 'danger'],
     'neutral',
     'Meaning of the badge. Composes with emphasis',
   ),
@@ -28,7 +29,7 @@ export const badgeProps = [
     'Corner treatment',
   ),
 
-  prop('size', "'sm' | 'md' | 'lg' | 'xl'", 'md', 'Controls badge size'),
+  sizeProp(['sm', 'md', 'lg', 'xl'], 'md', 'Controls badge size'),
 
   prop(
     'dot',

@@ -35,6 +35,10 @@
       "type": "lib"
     },
     {
+      "path": "lib/createContext.ts",
+      "type": "lib"
+    },
+    {
       "path": "lib/prefersReducedMotion.ts",
       "type": "lib"
     },

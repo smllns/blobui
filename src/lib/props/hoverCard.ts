@@ -1,9 +1,15 @@
 import {
+  COMMON_VARIANTS,
   alignProp,
   childrenProp,
   classNameProp,
   forceStateProp,
+  loadingProp,
+  onOpenChangeProp,
+  openProp,
+  portalProp,
   sideProp,
+  variantProp,
 } from './commonProps';
 import { prop } from './helpers';
 
@@ -22,56 +28,34 @@ export const hoverCardProps = [
     'How long the card stays open after the pointer leaves — shorter than openDelay, because an arrival has to be intentional and a departure only has to be forgiving',
   ),
 
-  prop(
-    'onOpenChange',
-    '(open: boolean) => void',
-    '-',
-    'Called when the card opens or closes',
-  ),
+  onOpenChangeProp('Called when the card opens or closes'),
 
   childrenProp,
-  prop(
-    'open',
-    'boolean',
-    'undefined',
-    'Controls the card, so a specimen can stand open',
-  ),
+
+  openProp('Controls the card, so a specimen can stand open', 'undefined'),
 ];
 
 export const hoverCardTriggerProps = [
-  prop(
-    'variant',
-    "'underline' | 'bare'",
+  variantProp(
+    ['underline', 'unstyled'],
     'underline',
-    'Dotted underline (the convention for "there is more here if you ask"), or bare for an avatar or a real link that already carries its own affordance',
-  ),
-
-  prop(
-    'href',
-    'string',
-    '-',
-    'Where the trigger leads. The card must never be the only route to its content, so this is the route',
-  ),
-
-  prop(
-    'asChild',
-    'boolean',
-    'false',
-    'Renders the trigger as the child element instead of an anchor',
+    'Dotted underline (the convention for "there is more here if you ask"), or unstyled for an avatar or a real link that already carries its own affordance',
   ),
 
   forceStateProp,
   classNameProp,
   childrenProp,
+
+  prop(
+    '...ButtonProps',
+    "Omit<ButtonProps, 'variant'>",
+    '-',
+    'The trigger is a Button, so size, disabled, loading, fullWidth, leftIcon, rightIcon and iconOnly pass straight through. Only variant is taken over, for the two looks above',
+  ),
 ];
 
 export const hoverCardContentProps = [
-  prop(
-    'variant',
-    "'default' | 'filled' | 'outline' | 'ghost'",
-    'default',
-    'Visual style of the card surface',
-  ),
+  variantProp(COMMON_VARIANTS, 'default', 'Visual style of the card surface'),
 
   prop(
     'rounded',
@@ -90,10 +74,7 @@ export const hoverCardContentProps = [
     'Distance between the card and the trigger. The invisible pointer-safe bridge is written from this same number, so the two can never disagree',
   ),
 
-  prop(
-    'loading',
-    'boolean',
-    'false',
+  loadingProp(
     'Opens the card immediately at its fixed width with inert skeleton rows inside',
   ),
 
@@ -105,11 +86,13 @@ export const hoverCardContentProps = [
   ),
 
   prop(
-    'portal',
-    'boolean',
-    'true',
-    "Renders the panel in the trigger's own subtree instead of a portal to <body>, so it clips and scrolls with its container. For specimens and clipped contexts; a live page keeps the default",
+    'positioning',
+    "'floating' | 'static'",
+    'floating',
+    'static drops the floating layer and lays the card out in flow under the trigger, with no collision handling. For specimens',
   ),
+
+  portalProp,
 
   classNameProp,
   childrenProp,

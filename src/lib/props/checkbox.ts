@@ -1,35 +1,39 @@
 import {
-  childrenProp,
+  CHOICE_SIZES,
+  checkedProp,
   classNameProp,
   disabledProp,
   errorProp,
-  fieldProps,
+  fieldPropsOf,
   forceStateProp,
   fullWidthProp,
   iconProp,
+  onChangeProp,
+  sizeProp,
 } from './commonProps';
-import { prop } from './helpers';
+import { describe, prop } from './helpers';
 
 export const checkboxProps = [
-  prop('checked', 'boolean', 'false', 'Controls checked state of the checkbox'),
+  checkedProp('Controlled checked state of the checkbox'),
 
   prop(
-    'onChange',
-    '(e: React.ChangeEvent<HTMLInputElement>) => void',
-    '-',
-    'Change handler for checkbox state',
+    'defaultChecked',
+    'boolean',
+    'false',
+    'Checked state before any interaction',
   ),
 
-  prop('size', "'md' | 'lg'", 'md', 'Controls checkbox size'),
+  onChangeProp('Change handler for checkbox state'),
+
+  sizeProp(CHOICE_SIZES, 'md', 'Controls checkbox size'),
 
   prop('indeterminate', 'boolean', 'false', 'Neither checked nor unchecked'),
 
   errorProp,
   fullWidthProp,
-  ...fieldProps,
-  iconProp,
+  ...fieldPropsOf('ReactNode'),
+  describe(iconProp, 'Icon displayed before the label'),
   disabledProp,
   forceStateProp,
   classNameProp,
-  childrenProp,
 ];

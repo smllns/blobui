@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { BasicSize } from '@/components/shared/types';
+import type { BasicSize, ForceState } from '@/components/shared/types';
 
 export type SegmentedType = 'single' | 'multiple';
 
@@ -8,7 +8,7 @@ export interface SegmentedItem {
   label: ReactNode;
   icon?: ReactNode;
   disabled?: boolean;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }
 
 export interface SegmentedBaseProps {

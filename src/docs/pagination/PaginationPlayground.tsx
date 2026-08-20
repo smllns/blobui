@@ -23,6 +23,8 @@ export function PaginationPlayground() {
     (control) => control.key !== 'siblings' || state.showPages,
   );
 
+  const withPageSize = state.pageSizePlacement !== 'none';
+
   return (
     <PlaygroundShell
       controls={
@@ -32,18 +34,19 @@ export function PaginationPlayground() {
         <div className='w-full max-w-xl'>
           <Pagination
             page={page}
-            pageSize={pageSize}
+            pageSize={withPageSize ? pageSize : PAGINATION_PAGE_SIZE}
             total={PAGINATION_TOTAL}
             onPageChange={setPage}
             size={state.size}
-            showRange={state.showRange}
+            rangePlacement={state.rangePlacement}
             showPages={state.showPages}
             siblingCount={Number(state.siblings)}
+            pageSizePlacement={state.pageSizePlacement}
             pageSizeOptions={
-              state.pageSizeSelect ? PAGINATION_PAGE_SIZE_OPTIONS : undefined
+              withPageSize ? PAGINATION_PAGE_SIZE_OPTIONS : undefined
             }
             onPageSizeChange={
-              state.pageSizeSelect
+              withPageSize
                 ? (next) => {
                     setPageSize(next);
                     setPage(1);

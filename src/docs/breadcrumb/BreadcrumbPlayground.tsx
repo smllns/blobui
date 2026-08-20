@@ -35,17 +35,15 @@ export function BreadcrumbPlayground() {
         />
       }
       preview={
-        <div className='flex w-full justify-center'>
-          <Breadcrumb
-            items={buildTrail(state)}
-            separator={
-              state.separator === 'chevron'
-                ? undefined
-                : BREADCRUMB_SEPARATOR_CHAR[state.separator]
-            }
-            maxItems={state.collapse === 'off' ? 0 : Number(state.collapse)}
-          />
-        </div>
+        <Breadcrumb
+          items={buildTrail(state)}
+          separator={
+            state.separator === 'chevron'
+              ? undefined
+              : BREADCRUMB_SEPARATOR_CHAR[state.separator]
+          }
+          maxItems={state.collapse === 'off' ? 0 : Number(state.collapse)}
+        />
       }
       code={<CodeBlock code={generateBreadcrumbCode(state)} />}
     />

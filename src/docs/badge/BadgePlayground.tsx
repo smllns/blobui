@@ -21,7 +21,7 @@ export function BadgePlayground() {
         />
       }
       preview={
-        <div className='flex items-center justify-center '>
+        <div className='flex items-center justify-center'>
           <Badge
             tone={state.tone}
             emphasis={state.emphasis}

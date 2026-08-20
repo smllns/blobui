@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import type { ExtendedSize } from '@/components/shared/types';
+import type { ExtendedSize, ForceState } from '@/components/shared/types';
 
 export type ToggleVariant = 'default' | 'outline';
 
@@ -16,5 +16,5 @@ export interface ToggleProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   iconOnly?: boolean;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }

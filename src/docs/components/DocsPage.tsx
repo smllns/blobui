@@ -11,11 +11,7 @@ export function DocsPage({
   states,
   preview,
   playground,
-  props,
-  subElementProps,
-  subElementHeader,
-  secondSubElementProps,
-  secondSubElementHeader,
+  propSections,
   installation,
 }: DocsPageProps) {
   return (
@@ -49,19 +45,13 @@ export function DocsPage({
         />
       )}
 
-      {props && <PropsTable title='Props' props={props} />}
-      {subElementProps && (
+      {propSections?.map((section) => (
         <PropsTable
-          title={`${subElementHeader} props`}
-          props={subElementProps}
+          key={section.title}
+          title={section.title}
+          props={section.props}
         />
-      )}
-      {secondSubElementProps && (
-        <PropsTable
-          title={`${secondSubElementHeader} props`}
-          props={secondSubElementProps}
-        />
-      )}
+      ))}
     </div>
   );
 }

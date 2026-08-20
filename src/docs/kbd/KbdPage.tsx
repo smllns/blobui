@@ -14,9 +14,7 @@ export function KbdDocs() {
       states={KBD_STATES}
       playground={<KbdPlayground />}
       installation={getInstallation('kbd')}
-      props={componentProps.kbd.root}
-      subElementProps={componentProps.kbd.item}
-      subElementHeader='Kbd Group'
+      propSections={componentProps.kbd}
     />
   );
 }

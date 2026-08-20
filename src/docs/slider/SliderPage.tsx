@@ -14,7 +14,7 @@ export function SliderDocs() {
       states={SLIDER_STATES}
       playground={<SliderPlayground />}
       installation={getInstallation('slider')}
-      props={componentProps.slider}
+      propSections={componentProps.slider}
     />
   );
 }

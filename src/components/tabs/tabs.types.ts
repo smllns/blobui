@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import type { BasicSize } from '@/components/shared/types';
+import type { BasicSize, ForceState } from '@/components/shared/types';
 
 export type TabsOrientation = 'horizontal' | 'vertical';
 
@@ -12,7 +12,7 @@ export interface TabItem {
   badge?: ReactNode;
   content?: ReactNode;
   disabled?: boolean;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }
 
 type NativeTabsProps = Omit<

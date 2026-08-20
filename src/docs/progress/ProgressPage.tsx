@@ -22,7 +22,7 @@ export function ProgressDocs() {
       states={PROGRESS_STATES}
       playground={<ProgressPlayground />}
       installation={getInstallation('progress')}
-      props={componentProps.progress}
+      propSections={componentProps.progress}
     />
   );
 }

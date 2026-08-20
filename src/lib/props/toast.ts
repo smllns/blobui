@@ -1,15 +1,17 @@
-import { classNameProp, leftIconProp } from './commonProps';
+import { TOAST_TONES } from '../options';
+import {
+  BASIC_SIZES,
+  classNameProp,
+  iconProp,
+  sizeProp,
+  toneProp,
+} from './commonProps';
 import { prop } from './helpers';
 
-export const toastProps = [
-  prop(
-    'tone',
-    "'neutral' | 'success' | 'warning' | 'danger' | 'info'",
-    'neutral',
-    'Colours the icon. The panel stays neutral',
-  ),
+const toastContentProps = [
+  toneProp(TOAST_TONES, 'neutral', 'Colours the icon. The panel stays neutral'),
 
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls toast size'),
+  sizeProp(BASIC_SIZES, 'md', 'Controls toast size'),
 
   prop('title', 'string', '-', 'Main title text of the toast'),
 
@@ -20,7 +22,12 @@ export const toastProps = [
     'Optional secondary text shown below title',
   ),
 
-  leftIconProp,
+  {
+    ...iconProp,
+    default: 'tone icon',
+    description:
+      'Icon in the leading slot. Defaults to the icon of the tone; pass null to drop it',
+  },
 
   prop(
     'action',
@@ -28,19 +35,42 @@ export const toastProps = [
     '-',
     'Optional action element (button or custom UI)',
   ),
+];
+
+export const toastProps = [
+  ...toastContentProps,
 
   prop(
     'onClose',
     '() => void',
     '-',
-    'Callback triggered when close button is clicked',
+    'Renders the dismiss button, and fires once the exit animation has finished',
   ),
+
+  prop(
+    'closing',
+    'boolean',
+    'false',
+    'Plays the exit animation and then calls onClose. The container sets it; a toast never dismisses itself',
+  ),
+
+  classNameProp,
+];
+
+export const showToastOptions = [
+  ...toastContentProps,
+
+  prop(
+    'showClose',
+    'boolean',
+    'false',
+    'Gives the toast an onClose, so the dismiss button appears',
+  ),
+
   prop(
     'duration',
     'number',
     '2000',
-    'Time in milliseconds before the toast is automatically dismissed.',
+    'Time in milliseconds before the toast is automatically dismissed',
   ),
-
-  classNameProp,
 ];

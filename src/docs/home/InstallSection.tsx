@@ -3,7 +3,6 @@ import { Alert } from '@/components/alert/Alert';
 import { REGISTRY_OUTPUT } from './home.data';
 import {
   codeStyles,
-  ruleTextStyles,
   sectionLedeStyles,
   sectionStyles,
   sectionTitleStyles,
@@ -89,14 +88,17 @@ export function InstallSection() {
         </Step>
       </div>
 
-      <Alert emphasis='bare' tone='info' icon={null} className='mt-5'>
-        <p className={ruleTextStyles}>
-          <strong className='font-semibold text-fg'>One thing to know.</strong>{' '}
-          The token layer is a registry dependency of every component, so the
-          first <code className={codeStyles}>add</code> brings four CSS files
-          with it. Import them once in your entry stylesheet, in the order the
-          CLI writes them — palette, tokens, theme, base — and never again.
-        </p>
+      <Alert
+        emphasis='bare'
+        tone='info'
+        icon={null}
+        className='mt-5 max-w-prose'
+      >
+        <strong className='font-semibold text-fg'>One thing to know.</strong>{' '}
+        The token layer is a registry dependency of every component, so the
+        first <code className={codeStyles}>add</code> brings four CSS files
+        with it. Import them once in your entry stylesheet, in the order the
+        CLI writes them — palette, tokens, theme, base — and never again.
       </Alert>
     </section>
   );

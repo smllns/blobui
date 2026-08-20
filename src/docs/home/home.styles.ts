@@ -7,8 +7,6 @@ export const subsectionTitleStyles = 'text-heading-md text-fg';
 export const sectionLedeStyles =
   'mt-2 max-w-prose text-body-md text-fg-tertiary';
 
-export const ruleTextStyles = 'max-w-prose text-body-sm text-fg-secondary';
-
 export const codeStyles =
   'rounded-xs bg-subtle px-1 py-0.5 font-mono text-caption';
 

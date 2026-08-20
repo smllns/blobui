@@ -2,6 +2,7 @@ import type { InputHTMLAttributes } from 'react';
 import type {
   CommonStylingVariant,
   ExtendedSize,
+  ForceState,
 } from '@/components/shared/types';
 
 export type InputOtpCharset = 'numeric' | 'alnum';
@@ -29,5 +30,5 @@ export interface InputOtpProps extends Omit<
   errorMessage?: string;
   required?: boolean;
   id?: string;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }

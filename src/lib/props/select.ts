@@ -1,25 +1,27 @@
 import {
+  COMMON_VARIANTS,
+  EXTENDED_SIZES,
   childrenProp,
+  classNameProp,
+  controlledValueProps,
   disabledProp,
   errorProp,
+  fieldPropsOf,
   forceStateProp,
+  idProp,
+  onOpenChangeProp,
+  openProp,
+  placeholderProp,
+  requiredProp,
+  sizeProp,
+  variantProp,
 } from './commonProps';
 import { prop } from './helpers';
 
 export const selectProps = [
-  prop(
-    'variant',
-    "'default' | 'filled' | 'outline' | 'ghost'",
-    'default',
-    'Visual style of the select',
-  ),
+  variantProp(COMMON_VARIANTS, 'default', 'Visual style of the select'),
 
-  prop(
-    'size',
-    "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    'md',
-    'Controls select size',
-  ),
+  sizeProp(EXTENDED_SIZES, 'md', 'Controls select size'),
 
   prop(
     'width',
@@ -35,34 +37,62 @@ export const selectProps = [
     'Where the label sits. infield lifts it on focus. Pins the trigger to xl',
   ),
 
-  errorProp,
+  ...controlledValueProps({
+    type: 'string',
+    value:
+      'Selected value. Pass it to control the component; the host then owns the value',
+    defaultValue: 'Selected value on mount, before any interaction',
+    onValueChange: 'Fires when the selection moves to another item',
+  }),
+
+  placeholderProp('Placeholder displayed when no value is selected'),
+
+  ...fieldPropsOf('ReactNode'),
+
+  requiredProp(
+    'Marks the label with an asterisk and sets aria-required on the trigger',
+  ),
+
+  idProp(
+    'Id of the trigger, and the anchor the label and the helper text point at',
+  ),
 
   prop(
-    'placeholder',
+    'aria-label',
     'string',
     '-',
-    'Placeholder displayed when no value is selected',
+    'Names the trigger when there is no visible label',
   ),
-
-  prop('value', 'string', '-', 'Controlled selected value'),
-
-  prop('defaultValue', 'string', '-', 'Initial uncontrolled selected value'),
 
   prop(
-    'onValueChange',
-    '(value: string) => void',
+    'aria-labelledby',
+    'string',
     '-',
-    'Callback fired when selected value changes',
+    'Names the trigger from another element. Overrides the wiring to label',
   ),
 
+  prop(
+    'aria-describedby',
+    'string',
+    '-',
+    'Points the trigger at other help text. Overrides the wiring to description and errorMessage',
+  ),
+
+  openProp('Controls the panel, so the host owns when it stands open', 'undefined'),
+
+  onOpenChangeProp('Called when the panel opens or closes'),
+
+  errorProp,
   disabledProp,
-  childrenProp,
   forceStateProp,
+  classNameProp,
+  childrenProp,
 ];
 
 export const selectItemProps = [
   prop('value', 'string', '-', 'Unique value of the item'),
 
   disabledProp,
+  classNameProp,
   childrenProp,
 ];

@@ -2,10 +2,18 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { forwardRef } from 'react';
 import { cn } from '@/lib/cn';
 import { mergeRefs } from '@/lib/mergeRefs';
+import { createStrictContext } from '@/lib/createContext';
 import type { PopoverArrowProps, PopoverContentProps } from './popover.types';
 import { popoverArrowStyles, popoverContent } from './popover.styles';
 import { animatePopoverEnter, animatePopoverExit } from './popover.animations';
 import { useAnimatedOpen } from '@/hooks/useAnimatedOpen';
+
+type PopoverContextValue = {
+  setContentRef: (element: HTMLDivElement | null) => void;
+};
+
+const [PopoverContext, usePopoverContext] =
+  createStrictContext<PopoverContextValue>('Popover');
 
 const Popover = ({
   children,
@@ -13,25 +21,28 @@ const Popover = ({
   onOpenChange,
   ...props
 }: PopoverPrimitive.PopoverProps) => {
-  const { open, handleOpenChange } = useAnimatedOpen<HTMLDivElement>({
-    animateEnter: animatePopoverEnter,
-    animateExit: animatePopoverExit,
-  });
+  const { open, setContentRef, handleOpenChange } =
+    useAnimatedOpen<HTMLDivElement>({
+      animateEnter: animatePopoverEnter,
+      animateExit: animatePopoverExit,
+    });
 
   const controlled = openProp !== undefined;
 
   return (
-    <PopoverPrimitive.Root
-      open={controlled ? openProp : open}
-      onOpenChange={(next) => {
-        if (!controlled) handleOpenChange(next);
+    <PopoverContext.Provider value={{ setContentRef }}>
+      <PopoverPrimitive.Root
+        open={controlled ? openProp : open}
+        onOpenChange={(next) => {
+          if (!controlled) handleOpenChange(next);
 
-        onOpenChange?.(next);
-      }}
-      {...props}
-    >
-      {children}
-    </PopoverPrimitive.Root>
+          onOpenChange?.(next);
+        }}
+        {...props}
+      >
+        {children}
+      </PopoverPrimitive.Root>
+    </PopoverContext.Provider>
   );
 };
 
@@ -57,10 +68,7 @@ const PopoverContent = forwardRef<
     },
     ref,
   ) => {
-    const { setContentRef } = useAnimatedOpen<HTMLDivElement>({
-      animateEnter: animatePopoverEnter,
-      animateExit: animatePopoverExit,
-    });
+    const { setContentRef } = usePopoverContext();
 
     const content = (
       <PopoverPrimitive.Content

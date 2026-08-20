@@ -3,8 +3,9 @@ import {
   classNameProp,
   disabledProp,
   forceStateProp,
+  orientationProp,
 } from './commonProps';
-import { prop } from './helpers';
+import { describe, prop } from './helpers';
 
 export const resizableProps = [
   prop(
@@ -14,18 +15,14 @@ export const resizableProps = [
     'The panels of the split, in order. A handle is placed between every pair',
   ),
 
-  prop(
-    'orientation',
-    "'horizontal' | 'vertical'",
-    'horizontal',
+  orientationProp(
     'Axis the panels are laid out along. The divider runs across it',
   ),
 
-  {
-    ...disabledProp,
-    description:
-      'Fixes the split. The handle stays focusable and announces itself as disabled, and the panels keep their sizes',
-  },
+  describe(
+    disabledProp,
+    'Fixes the split. The handle stays focusable and announces itself as disabled, and the panels keep their sizes',
+  ),
 
   prop(
     'handleLabel',
@@ -56,7 +53,13 @@ export const resizableProps = [
   ),
 
   prop('id', 'string', '-', 'Identifier written to the split container'),
-  forceStateProp,
+
+  {
+    ...forceStateProp,
+    type: "'hover' | 'focus' | 'dragging'",
+    description:
+      'Paints a pointer or drag state on the handle that a document cannot produce. Docs and visual tests only',
+  },
   classNameProp,
 ];
 
@@ -80,7 +83,7 @@ export const resizablePanelProps = [
   prop(
     'minSize',
     'number',
-    '10',
+    '0',
     'The floor the drag and the Home key both stop at, as a percentage',
   ),
 

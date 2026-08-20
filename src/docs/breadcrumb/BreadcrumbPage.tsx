@@ -14,9 +14,7 @@ export function BreadcrumbDocs() {
       states={BREADCRUMB_STATES}
       playground={<BreadcrumbPlayground />}
       installation={getInstallation('breadcrumb')}
-      props={componentProps.breadcrumb.root}
-      subElementProps={componentProps.breadcrumb.item}
-      subElementHeader='Breadcrumb Item'
+      propSections={componentProps.breadcrumb}
     />
   );
 }

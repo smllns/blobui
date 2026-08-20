@@ -4,7 +4,6 @@ import { Card } from '@/components/card/Card';
 import type { RoleReading } from './useTokenReadings';
 import {
   codeStyles,
-  ruleTextStyles,
   sectionLedeStyles,
   sectionStyles,
   subsectionTitleStyles,
@@ -51,15 +50,18 @@ export function ColourSection({ roles }: Props) {
         </div>
       </Card>
 
-      <Alert emphasis='bare' tone='info' icon={null} className='mt-5'>
-        <p className={ruleTextStyles}>
-          Flip the theme in the sidebar and watch the swatches move while the
-          names stay put. <code className={codeStyles}>gray/900</code> is dark
-          in both themes — what changes is that{' '}
-          <code className={codeStyles}>bg/canvas</code> stops pointing at white
-          and starts pointing at <code className={codeStyles}>surface/950</code>
-          .
-        </p>
+      <Alert
+        emphasis='bare'
+        tone='info'
+        icon={null}
+        className='mt-5 max-w-prose'
+      >
+        Flip the theme in the sidebar and watch the swatches move while the
+        names stay put. <code className={codeStyles}>gray/900</code> is dark
+        in both themes — what changes is that{' '}
+        <code className={codeStyles}>bg/canvas</code> stops pointing at white
+        and starts pointing at <code className={codeStyles}>surface/950</code>
+        .
       </Alert>
     </section>
   );

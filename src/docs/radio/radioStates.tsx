@@ -56,7 +56,7 @@ export const RADIO_STATES: StateSpecimen[] = [
   {
     name: 'disabled',
     node: (
-      <>
+      <div className='flex flex-col gap-2'>
         <Radio name='states-disabled-a' label='Unchecked' disabled />
         <Radio
           name='states-disabled-b'
@@ -64,7 +64,7 @@ export const RADIO_STATES: StateSpecimen[] = [
           disabled
           defaultChecked
         />
-      </>
+      </div>
     ),
     note: 'disabled state — the options cannot be changed while their current selection remains visible',
   },

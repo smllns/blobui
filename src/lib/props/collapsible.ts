@@ -1,8 +1,16 @@
+import { BUTTON_VARIANTS } from '../options';
 import {
+  EXTENDED_SIZES,
   childrenProp,
   classNameProp,
+  defaultOpenProp,
   disabledProp,
   forceStateProp,
+  loadingProp,
+  onOpenChangeProp,
+  openProp,
+  sizeProp,
+  variantProp,
 } from './commonProps';
 import { prop } from './helpers';
 
@@ -18,16 +26,11 @@ export const collapsibleProps = [
 
   childrenProp,
 
-  prop('open', 'boolean', '-', 'Controls the open state'),
+  openProp(),
 
-  prop('defaultOpen', 'boolean', 'false', 'Open state before any interaction'),
+  defaultOpenProp(),
 
-  prop(
-    'onOpenChange',
-    '(open: boolean) => void',
-    '-',
-    'Callback fired when the open state changes',
-  ),
+  onOpenChangeProp(),
 
   prop(
     'align',
@@ -43,26 +46,15 @@ export const collapsibleProps = [
     'Keeps three lines of content visible while closed and fades the cut',
   ),
 
-  prop(
-    'variant',
-    "'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'link'",
+  variantProp(
+    BUTTON_VARIANTS,
     'ghost',
-    'Button variant of the trigger',
+    'Button variant of the trigger. The value goes straight to Button, so the whole set is available',
   ),
 
-  prop(
-    'size',
-    "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    'md',
-    'Button size of the trigger',
-  ),
+  sizeProp(EXTENDED_SIZES, 'md', 'Button size of the trigger'),
 
-  prop(
-    'loading',
-    'boolean',
-    'false',
-    'Shows a spinner in the trigger while the content is fetched',
-  ),
+  loadingProp('Shows a spinner in the trigger while the content is fetched'),
 
   prop(
     'headingLevel',

@@ -1,14 +1,12 @@
 import type * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import type { Align } from '@/components/shared/types';
+import type { Align, ForceState } from '@/components/shared/types';
 
 export type NavigationMenuAlign = Extract<Align, 'start' | 'end'>;
 
 export type NavigationMenuColumns = 1 | 2 | 3;
 
 export type NavigationMenuRows = 'auto' | 2 | 3;
-
-export type NavigationMenuForceState = 'hover' | 'active' | 'focus';
 
 export type NavigationMenuProps = Omit<
   ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>,
@@ -26,7 +24,7 @@ export type NavigationMenuItemProps = {
   columns?: NavigationMenuColumns;
   rows?: NavigationMenuRows;
   disabled?: boolean;
-  forceState?: NavigationMenuForceState;
+  forceState?: ForceState;
   className?: string;
   panelClassName?: string;
   gridClassName?: string;
@@ -39,7 +37,7 @@ export type NavigationMenuLinkProps = Omit<
 > & {
   current?: boolean;
   disabled?: boolean;
-  forceState?: NavigationMenuForceState;
+  forceState?: ForceState;
 };
 
 type NavigationMenuCardContent = {
@@ -53,7 +51,7 @@ export type NavigationMenuCardProps = Omit<
   'title' | 'children'
 > &
   NavigationMenuCardContent & {
-    forceState?: NavigationMenuForceState;
+    forceState?: ForceState;
   };
 
 export type NavigationMenuFeatureProps = Omit<
@@ -62,5 +60,5 @@ export type NavigationMenuFeatureProps = Omit<
 > &
   NavigationMenuCardContent & {
     span?: 'column' | 'cell';
-    forceState?: NavigationMenuForceState;
+    forceState?: ForceState;
   };

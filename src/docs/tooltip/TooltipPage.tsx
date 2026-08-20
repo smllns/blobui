@@ -29,7 +29,7 @@ export function TooltipDocs() {
       states={TOOLTIP_STATES}
       playground={<TooltipPlayground />}
       installation={getInstallation('tooltip')}
-      props={componentProps.tooltip}
+      propSections={componentProps.tooltip}
     />
   );
 }

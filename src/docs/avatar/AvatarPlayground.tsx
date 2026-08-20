@@ -20,7 +20,7 @@ export function AvatarPlayground() {
         />
       }
       preview={
-        <div className='flex items-center justify-center  gap-6'>
+        <div className='flex items-center justify-center gap-6'>
           <Avatar
             shape={state.shape}
             size={state.size}

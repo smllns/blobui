@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import type { VariantProps } from 'class-variance-authority';
 import type { Align, Side } from '@/components/shared/types';
@@ -40,13 +40,3 @@ export interface HoverCardContentProps
   portal?: boolean;
   positioning?: 'floating' | 'static';
 }
-
-export type HoverCardHeaderProps = HTMLAttributes<HTMLDivElement>;
-
-export type HoverCardTitleProps = HTMLAttributes<HTMLParagraphElement>;
-
-export type HoverCardSubtitleProps = HTMLAttributes<HTMLParagraphElement>;
-
-export type HoverCardBodyProps = HTMLAttributes<HTMLParagraphElement>;
-
-export type HoverCardFooterProps = HTMLAttributes<HTMLDivElement>;

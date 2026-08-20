@@ -14,9 +14,7 @@ export function ResizableDocs() {
       states={RESIZABLE_STATES}
       playground={<ResizablePlayground />}
       installation={getInstallation('resizable')}
-      props={componentProps.resizable.root}
-      subElementHeader='ResizablePanelItem'
-      subElementProps={componentProps.resizable.item}
+      propSections={componentProps.resizable}
     />
   );
 }

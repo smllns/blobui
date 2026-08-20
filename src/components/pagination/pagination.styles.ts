@@ -6,10 +6,14 @@ export const paginationStyles = [
   'data-[loading]:pointer-events-none',
 ].join(' ');
 
-export const paginationLeadStyles = [
-  'flex items-center gap-[var(--space-5)] me-auto min-w-0',
-  'max-[640px]:w-full max-[640px]:me-0',
-].join(' ');
+export const paginationGroupStyles =
+  'flex flex-wrap items-center gap-[var(--space-5)] min-w-0';
+
+export const paginationLeadStyles =
+  'me-auto max-[640px]:w-full max-[640px]:me-0';
+
+export const paginationTrailStyles =
+  'ms-auto max-[640px]:w-full max-[640px]:ms-0';
 
 export const paginationRangeStyles = [
   'text-body-sm text-fg-tertiary tabular whitespace-nowrap',
@@ -23,7 +27,7 @@ export const paginationSizeLabelStyles =
   'text-body-sm text-fg-tertiary whitespace-nowrap';
 
 export const paginationControlsStyles =
-  'flex items-center gap-[var(--space-4)]';
+  'flex flex-wrap items-center justify-center gap-[var(--space-4)]';
 
 export const paginationPagesStyles = [
   'flex items-center gap-[var(--space-1)]',

@@ -35,7 +35,7 @@ export function ToastDocs() {
       states={TOAST_STATES}
       playground={<ToastPlayground />}
       installation={getInstallation('toast')}
-      props={componentProps.toast}
+      propSections={componentProps.toast}
     />
   );
 }

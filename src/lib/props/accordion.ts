@@ -1,4 +1,8 @@
-import { classNameProp, disabledProp } from './commonProps';
+import {
+  COMMON_VARIANTS,
+  controlledValueProps,
+  variantProp,
+} from './commonProps';
 import { prop } from './helpers';
 
 export const accordionProps = [
@@ -6,15 +10,10 @@ export const accordionProps = [
     'items',
     'AccordionItemProps[]',
     '-',
-    'List of accordion items to display. Each item also accepts forceState: "hover" | "active" | "focus", which paints a pointer state on that item\'s trigger for documentation and visual tests',
+    'The panels, in order: value, title and children, plus optional disabled and forceState: "hover" | "active" | "focus", which paints a pointer state on the trigger of that item for documentation and visual tests',
   ),
 
-  prop(
-    'variant',
-    "'default' | 'outline' | 'ghost'",
-    'default',
-    'Visual style of the accordion',
-  ),
+  variantProp(COMMON_VARIANTS, 'default', 'Visual style of the accordion'),
 
   prop(
     'type',
@@ -26,31 +25,16 @@ export const accordionProps = [
   prop(
     'collapsible',
     'boolean',
-    'true',
+    'false',
     'Allows the opened item to be closed. Works only with single type',
   ),
 
-  prop(
-    'defaultValue',
-    'string | string[]',
-    '-',
-    'The item or items opened by default',
-  ),
-
-  prop(
-    'value',
-    'string | string[]',
-    '-',
-    'Controls the currently opened item or items',
-  ),
-
-  prop(
-    'onValueChange',
-    '(value: string | string[]) => void',
-    '-',
-    'Callback fired when the opened item or items change',
-  ),
-
-  disabledProp,
-  classNameProp,
+  ...controlledValueProps({
+    type: 'string | string[]',
+    value: 'Controls the currently opened item or items',
+    defaultValue: 'The item or items opened by default',
+    onValueChange:
+      'Callback fired when the opened item or items change. A string for single, an array for multiple',
+    changeType: '((value: string) => void) | ((value: string[]) => void)',
+  }),
 ];

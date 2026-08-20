@@ -14,9 +14,7 @@ export function SegmentedDocs() {
       states={SEGMENTED_STATES}
       playground={<SegmentedPlayground />}
       installation={getInstallation('segmented')}
-      props={componentProps.segmented.root}
-      subElementProps={componentProps.segmented.item}
-      subElementHeader='Segmented item'
+      propSections={componentProps.segmented}
     />
   );
 }

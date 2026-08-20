@@ -4,7 +4,10 @@ import type {
   ReactNode,
 } from 'react';
 import type { VariantProps } from 'class-variance-authority';
-import type { CommonStylingVariant } from '@/components/shared/types';
+import type {
+  CommonStylingVariant,
+  ForceState,
+} from '@/components/shared/types';
 import { inputGroupAddonStyles } from './input-group.styles';
 
 export type InputGroupSide = 'leading' | 'trailing';
@@ -30,7 +33,7 @@ export interface InputGroupProps extends Omit<
   errorMessage?: string;
   required?: boolean;
   id?: string;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }
 
 export interface InputGroupAddonProps

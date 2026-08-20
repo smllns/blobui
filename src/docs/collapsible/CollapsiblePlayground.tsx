@@ -23,23 +23,21 @@ export function CollapsiblePlayground() {
         />
       }
       preview={
-        <div className='flex w-full justify-center'>
-          <div className='w-full max-w-md'>
-            <Collapsible
-              trigger={COLLAPSIBLE_COPY.trigger}
-              triggerOpen={COLLAPSIBLE_COPY.triggerOpen}
-              variant={state.variant}
-              size={state.size}
-              align={state.align}
-              peek={state.peek}
-              disabled={state.disabled}
-              loading={state.loading}
-              open={state.open}
-              onOpenChange={(open) => update('open', open)}
-            >
-              {COLLAPSIBLE_COPY.body}
-            </Collapsible>
-          </div>
+        <div className='w-full max-w-md'>
+          <Collapsible
+            trigger={COLLAPSIBLE_COPY.trigger}
+            triggerOpen={COLLAPSIBLE_COPY.triggerOpen}
+            variant={state.variant}
+            size={state.size}
+            align={state.align}
+            peek={state.peek}
+            disabled={state.disabled}
+            loading={state.loading}
+            open={state.open}
+            onOpenChange={(open) => update('open', open)}
+          >
+            {COLLAPSIBLE_COPY.body}
+          </Collapsible>
         </div>
       }
       code={<CodeBlock code={generateCollapsibleCode(state)} />}

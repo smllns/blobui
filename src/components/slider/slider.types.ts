@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { sliderStyles } from './slider.styles';
+import type { ForceState } from '@/components/shared/types';
 
 export type SliderValue = number | [number, number];
 
@@ -33,5 +34,5 @@ export interface SliderProps extends NativeSliderProps, SliderVariants {
   showValue?: boolean;
   formatValue?: (value: number) => string;
   thumbLabels?: [string, string];
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }

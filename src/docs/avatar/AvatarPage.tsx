@@ -21,7 +21,7 @@ export function AvatarDocs() {
       states={AVATAR_STATES}
       playground={<AvatarPlayground />}
       installation={getInstallation('avatar')}
-      props={componentProps.avatar}
+      propSections={componentProps.avatar}
     />
   );
 }

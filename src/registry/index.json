@@ -13,6 +13,10 @@
       "path": "./alert.json"
     },
     {
+      "name": "alertDialog",
+      "path": "./alertDialog.json"
+    },
+    {
       "name": "avatar",
       "path": "./avatar.json"
     },
@@ -43,6 +47,10 @@
     {
       "name": "collapsible",
       "path": "./collapsible.json"
+    },
+    {
+      "name": "contextMenu",
+      "path": "./contextMenu.json"
     },
     {
       "name": "dialog",
@@ -107,6 +115,10 @@
     {
       "name": "select",
       "path": "./select.json"
+    },
+    {
+      "name": "sheet",
+      "path": "./sheet.json"
     },
     {
       "name": "slider",

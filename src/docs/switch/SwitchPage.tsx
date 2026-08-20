@@ -21,7 +21,7 @@ export function SwitchDocs() {
       states={SWITCH_STATES}
       playground={<SwitchPlayground />}
       installation={getInstallation('switch')}
-      props={componentProps.switch}
+      propSections={componentProps.switch}
     />
   );
 }

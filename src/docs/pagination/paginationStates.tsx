@@ -1,6 +1,14 @@
-import { Pagination } from '@/components/pagination/Pagination';
+import {
+  Pagination,
+  PaginationControls,
+  PaginationNext,
+  PaginationPages,
+  PaginationPrevious,
+  PaginationRange,
+} from '@/components/pagination/Pagination';
 import type { PaginationForceTarget } from '@/components/pagination/pagination.types';
 import type { StateSpecimen } from '../components/docsPage.types';
+import type { ForceState } from '@/components/shared/types';
 
 const stay = () => undefined;
 
@@ -11,7 +19,7 @@ function strip({
   range,
 }: {
   page?: number;
-  force?: 'hover' | 'active' | 'focus';
+  force?: ForceState;
   target?: PaginationForceTarget;
   range?: boolean;
   loading?: boolean;
@@ -57,5 +65,47 @@ export const PAGINATION_STATES: StateSpecimen[] = [
     name: 'disabled · last',
     node: strip({ page: 5 }),
     note: 'last page — Next is disabled because there is no following page',
+  },
+  {
+    name: 'range · end',
+    node: (
+      <div className='w-full max-w-xl'>
+        <Pagination
+          page={2}
+          pageSize={20}
+          total={100}
+          onPageChange={stay}
+          showPages
+          rangePlacement='end'
+        />
+      </div>
+    ),
+    note: 'rangePlacement="end" — the range is shown after the navigation controls',
+  },
+  {
+    name: 'composed',
+    node: (
+      <div className='w-full max-w-xl'>
+        <Pagination
+          page={2}
+          pageSize={20}
+          total={100}
+          onPageChange={stay}
+          forceState='hover'
+          forceTarget='next'
+        >
+          <PaginationControls>
+            <PaginationPrevious />
+
+            <PaginationPages />
+
+            <PaginationNext />
+          </PaginationControls>
+
+          <PaginationRange className='ms-auto' />
+        </Pagination>
+      </div>
+    ),
+    note: 'composed layout — controls are arranged manually using Pagination subcomponents',
   },
 ];

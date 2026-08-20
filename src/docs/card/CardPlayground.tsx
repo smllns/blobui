@@ -19,7 +19,7 @@ export function CardPlayground() {
         />
       }
       preview={
-        <div className='flex items-center justify-center '>
+        <div className='flex items-center justify-center'>
           <Card variant={state.variant} padding={state.padding}>
             <h3 className='mb-2 text-heading-md'>Card title</h3>
 

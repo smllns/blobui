@@ -26,34 +26,32 @@ export function AlertPlayground() {
         />
       }
       preview={
-        <div className='flex w-full justify-center'>
-          <div className='w-full max-w-xl'>
-            <Alert
-              key={run}
-              tone={state.tone}
-              emphasis={state.emphasis}
-              title={state.title ? ALERT_COPY.title : undefined}
-              icon={state.icon ? undefined : null}
-              onDismiss={
-                state.dismissible ? () => setRun((n) => n + 1) : undefined
-              }
-              actions={
-                state.actions ? (
-                  <>
-                    <Button size='sm' variant='secondary'>
-                      Refresh
-                    </Button>
+        <div className='w-full max-w-xl'>
+          <Alert
+            key={run}
+            tone={state.tone}
+            emphasis={state.emphasis}
+            title={state.title ? ALERT_COPY.title : undefined}
+            icon={state.icon ? undefined : null}
+            onDismiss={
+              state.dismissible ? () => setRun((n) => n + 1) : undefined
+            }
+            actions={
+              state.actions ? (
+                <>
+                  <Button size='sm' variant='secondary'>
+                    Refresh
+                  </Button>
 
-                    <Button size='sm' variant='ghost'>
-                      Keep the old figures
-                    </Button>
-                  </>
-                ) : undefined
-              }
-            >
-              {ALERT_COPY.body}
-            </Alert>
-          </div>
+                  <Button size='sm' variant='ghost'>
+                    Keep the old figures
+                  </Button>
+                </>
+              ) : undefined
+            }
+          >
+            {ALERT_COPY.body}
+          </Alert>
         </div>
       }
       code={<CodeBlock code={generateAlertCode(state)} />}

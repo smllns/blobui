@@ -7,7 +7,7 @@
      tokens.css       the semantic layer + the light/dark mirror table + the
                       accent swap + type / space / radius / elevation / motion
      theme.css        maps the semantic layer onto Tailwind's @theme namespaces
-     base.css         page floor and the focus-ring utility
+     base.css         page floor, the theme cross-fade, the focus-ring utility
    ========================================================================== */
 
 @import "tailwindcss";

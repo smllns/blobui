@@ -12,9 +12,7 @@ export function DialogDocs() {
       preview={<DialogPreview />}
       playground={<DialogPlayground />}
       installation={getInstallation('dialog')}
-      props={componentProps.dialog.root}
-      subElementHeader='Dialog Content'
-      subElementProps={componentProps.dialog.item}
+      propSections={componentProps.dialog}
     />
   );
 }

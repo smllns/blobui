@@ -26,28 +26,26 @@ export function ButtonGroupPlayground() {
         />
       }
       preview={
-        <div className='flex w-full items-center justify-center'>
-          <ButtonGroup
-            aria-label='Export'
-            orientation={state.orientation}
-            gap={state.gap}
-            role={state.role}
-            block={state.block}
-            disabled={state.disabled}
-            loading={state.loading}
-          >
-            {MEMBERS.map((label, index) => (
-              <Button
-                key={label}
-                variant={state.variant}
-                size={state.size}
-                loading={state.loading && index === 0}
-              >
-                {label}
-              </Button>
-            ))}
-          </ButtonGroup>
-        </div>
+        <ButtonGroup
+          aria-label='Export'
+          orientation={state.orientation}
+          gap={state.gap}
+          role={state.role}
+          block={state.block}
+          disabled={state.disabled}
+          loading={state.loading}
+        >
+          {MEMBERS.map((label, index) => (
+            <Button
+              key={label}
+              variant={state.variant}
+              size={state.size}
+              loading={state.loading && index === 0}
+            >
+              {label}
+            </Button>
+          ))}
+        </ButtonGroup>
       }
       code={<CodeBlock code={code} />}
     />

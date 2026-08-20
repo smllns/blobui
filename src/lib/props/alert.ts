@@ -1,10 +1,14 @@
-import { childrenProp, classNameProp, iconProp } from './commonProps';
-import { prop } from './helpers';
+import {
+  childrenProp,
+  classNameProp,
+  iconProp,
+  toneProp,
+} from './commonProps';
+import { describe, prop } from './helpers';
 
 export const alertProps = [
-  prop(
-    'tone',
-    "'neutral' | 'info' | 'success' | 'warning' | 'danger'",
+  toneProp(
+    ['neutral', 'info', 'success', 'warning', 'danger'],
     'neutral',
     'Meaning of the message. Sets the fill, the rule and the icon',
   ),
@@ -18,7 +22,10 @@ export const alertProps = [
 
   prop('title', 'ReactNode', '-', 'Optional heading line above the message'),
 
-  iconProp,
+  describe(
+    iconProp,
+    'Mark before the copy. Falls back to the icon of the tone, and null drops it',
+  ),
 
   prop(
     'actions',

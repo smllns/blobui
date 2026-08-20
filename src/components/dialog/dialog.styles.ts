@@ -19,7 +19,7 @@ export const dialogOverlayStyles = cva(
 
 export const dialogContentStyles = cva(
   [
-    'fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2',
+    'relative pointer-events-auto',
     'w-full max-h-[calc(100vh-var(--space-12))]',
     'rounded-2xl overflow-hidden shadow-2xl border',
     'text-fg',
@@ -56,11 +56,6 @@ export const dialogContentStyles = cva(
 );
 
 export const dialogHeaderStyles = 'flex flex-col gap-1 text-start pe-8';
-
-export const dialogTitleStyles = 'm-0 text-heading-md font-semibold text-fg';
-
-export const dialogDescriptionStyles =
-  'm-0 text-body-sm leading-[var(--leading-body-lg)] text-fg-tertiary';
 
 export const dialogBodyStyles = 'pt-2.5 text-body-md text-fg-secondary';
 

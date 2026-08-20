@@ -1,20 +1,26 @@
 import {
+  BASIC_SIZES,
+  COMMON_VARIANTS,
   alignProp,
   childrenProp,
   classNameProp,
+  onOpenChangeProp,
+  openProp,
+  portalProp,
   sideProp,
+  sizeProp,
+  variantProp,
 } from './commonProps';
 import { prop } from './helpers';
 
 export const popoverProps = [
-  prop(
-    'variant',
-    "'default' | 'filled' | 'outline' | 'ghost'",
+  variantProp(
+    COMMON_VARIANTS,
     'default',
     'Visual style of the popover content',
   ),
 
-  prop('size', "'sm' | 'md' | 'lg'", 'md', 'Controls popover content size'),
+  sizeProp(BASIC_SIZES, 'md', 'Controls popover content size'),
 
   prop(
     'rounded',
@@ -33,12 +39,13 @@ export const popoverProps = [
     'Distance between the popover content and the trigger',
   ),
 
+  openProp(
+    'Controlled open state, on the Popover root. Left out, the popover owns its state and keeps the enter and exit animations',
+  ),
+
+  onOpenChangeProp('Fires when the popover opens or closes'),
+
   classNameProp,
   childrenProp,
-  prop(
-    'portal',
-    'boolean',
-    'true',
-    "Renders the panel in the trigger's own subtree instead of a portal to <body>, so it clips and scrolls with its container. For specimens and clipped contexts; a live page keeps the default",
-  ),
+  portalProp,
 ];

@@ -23,18 +23,14 @@ import {
   hoverCardTriggerStyles,
 } from './hover-card.styles';
 import type {
-  HoverCardBodyProps,
   HoverCardContentProps,
   HoverCardContextValue,
-  HoverCardFooterProps,
-  HoverCardHeaderProps,
   HoverCardProps,
-  HoverCardSubtitleProps,
-  HoverCardTitleProps,
   HoverCardTriggerProps,
 } from './hover-card.types';
 import { createStrictContext } from '@/lib/createContext';
 import { Button } from '@/components/button/Button';
+import { createStyledElement } from '@/lib/createStyledElement';
 
 const [HoverCardContext, useHoverCardContext] =
   createStrictContext<HoverCardContextValue>('HoverCard');
@@ -203,25 +199,12 @@ function HoverCardContent({
   );
 }
 
-function HoverCardHeader({ className, ...props }: HoverCardHeaderProps) {
-  return <div className={cn(hoverCardHeaderStyles, className)} {...props} />;
-}
+const HoverCardHeader = createStyledElement('div', hoverCardHeaderStyles);
+const HoverCardFooter = createStyledElement('div', hoverCardFooterStyles);
 
-function HoverCardTitle({ className, ...props }: HoverCardTitleProps) {
-  return <p className={cn(hoverCardTitleStyles, className)} {...props} />;
-}
-
-function HoverCardSubtitle({ className, ...props }: HoverCardSubtitleProps) {
-  return <p className={cn(hoverCardSubtitleStyles, className)} {...props} />;
-}
-
-function HoverCardBody({ className, ...props }: HoverCardBodyProps) {
-  return <p className={cn(hoverCardBodyStyles, className)} {...props} />;
-}
-
-function HoverCardFooter({ className, ...props }: HoverCardFooterProps) {
-  return <div className={cn(hoverCardFooterStyles, className)} {...props} />;
-}
+const HoverCardTitle = createStyledElement('p', hoverCardTitleStyles);
+const HoverCardSubtitle = createStyledElement('p', hoverCardSubtitleStyles);
+const HoverCardBody = createStyledElement('p', hoverCardBodyStyles);
 
 function HoverCardSkeleton() {
   return (

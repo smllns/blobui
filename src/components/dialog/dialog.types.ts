@@ -20,10 +20,6 @@ export interface DialogOverlayProps
     React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>,
     VariantProps<typeof dialogOverlayStyles> {}
 
-export type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement>;
-
-export type DialogBodyProps = React.HTMLAttributes<HTMLDivElement>;
-
 export interface DialogFooterProps
   extends
     React.HTMLAttributes<HTMLDivElement>,

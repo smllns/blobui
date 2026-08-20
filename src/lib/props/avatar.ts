@@ -1,4 +1,4 @@
-import { classNameProp } from './commonProps';
+import { classNameProp, sizeProp } from './commonProps';
 import { prop } from './helpers';
 
 export const avatarProps = [
@@ -9,12 +9,7 @@ export const avatarProps = [
     'Shape of the avatar',
   ),
 
-  prop(
-    'size',
-    "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-    'md',
-    'Controls avatar size',
-  ),
+  sizeProp(['xs', 'sm', 'md', 'lg', 'xl', '2xl'], 'md', 'Controls avatar size'),
 
   prop(
     'status',
@@ -25,7 +20,7 @@ export const avatarProps = [
 
   prop('src', 'string', '-', 'Image source URL displayed inside the avatar'),
 
-  prop('alt', 'string', '-', 'Alternative text for the avatar image'),
+  prop('alt', 'string', 'avatar', 'Alternative text for the avatar image'),
 
   prop(
     'fallback',

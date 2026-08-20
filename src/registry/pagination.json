@@ -15,6 +15,10 @@
       "type": "component"
     },
     {
+      "path": "components/pagination/pagination.context.ts",
+      "type": "lib"
+    },
+    {
       "path": "components/pagination/pagination.styles.ts",
       "type": "style"
     },
@@ -23,7 +27,19 @@
       "type": "type"
     },
     {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
       "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/createStyledElement.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/createContext.ts",
       "type": "lib"
     },
     {

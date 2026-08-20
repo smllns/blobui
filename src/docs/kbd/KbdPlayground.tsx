@@ -32,15 +32,13 @@ export function KbdPlayground() {
         <ControlsRenderer state={state} update={update} controls={controls} />
       }
       preview={
-        <div className='flex w-full items-center justify-center'>
-          {state.inline ? (
-            <p className='text-body-md text-fg-secondary'>
-              Press {cap} to open the command bar.
-            </p>
-          ) : (
-            cap
-          )}
-        </div>
+        state.inline ? (
+          <p className='text-body-md text-fg-secondary'>
+            Press {cap} to open the command bar.
+          </p>
+        ) : (
+          cap
+        )
       }
       code={<CodeBlock code={generateKbdCode(state)} />}
     />

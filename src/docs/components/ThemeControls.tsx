@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 import { Segmented } from '@/components/segmented/Segmented';
-
-type Theme = 'light' | 'dark';
+import { ACCENTS, useTheme, type Accent, type Theme } from '@/hooks/useTheme';
 
 const THEMES = [
   { value: 'light', label: 'Light' },
   { value: 'dark', label: 'Dark' },
 ];
-
-const ACCENTS = ['brand', 'violet', 'teal', 'orange'];
-type Accent = (typeof ACCENTS)[number];
 
 const swatch: Record<Accent, string> = {
   brand: 'bg-sky-600',
@@ -20,20 +15,7 @@ const swatch: Record<Accent, string> = {
 };
 
 export function ThemeControls() {
-  const [theme, setTheme] = useState<Theme>('light');
-  const [accent, setAccent] = useState<Accent>('brand');
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
-
-  useEffect(() => {
-    if (accent === 'brand') {
-      delete document.documentElement.dataset.accent;
-    } else {
-      document.documentElement.dataset.accent = accent;
-    }
-  }, [accent]);
+  const { theme, accent, setTheme, setAccent } = useTheme();
 
   return (
     <div className='flex flex-col gap-3'>

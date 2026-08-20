@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import type { SelectProps } from './select.types';
 import {
@@ -38,6 +38,9 @@ export function Select({
   className,
   forceState,
   id,
+  open: openProp,
+  onOpenChange,
+  onValueChange,
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,
   'aria-describedby': ariaDescribedBy,
@@ -52,6 +55,17 @@ export function Select({
       animateEnter: animateSelectEnter,
       animateExit: animateSelectExit,
     });
+
+  const controlled = openProp !== undefined;
+
+  const syncedOpen = useRef<boolean | undefined>(undefined);
+
+  useEffect(() => {
+    if (openProp === undefined || openProp === syncedOpen.current) return;
+
+    syncedOpen.current = openProp;
+    handleOpenChange(openProp);
+  }, [openProp, handleOpenChange]);
 
   const isError = error || !!errorMessage;
   const isInfield = labelPlacement === 'infield' && !!label;
@@ -74,13 +88,17 @@ export function Select({
       )}
 
       <SelectPrimitive.Root
-        open={open}
-        onOpenChange={handleOpenChange}
-        disabled={disabled}
         {...props}
+        open={open}
+        onOpenChange={(next) => {
+          if (!controlled) handleOpenChange(next);
+
+          onOpenChange?.(next);
+        }}
+        disabled={disabled}
         onValueChange={(next) => {
           setInternalValue(next);
-          props.onValueChange?.(next);
+          onValueChange?.(next);
         }}
       >
         <SelectPrimitive.Trigger

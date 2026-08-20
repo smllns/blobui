@@ -37,19 +37,17 @@ export function SegmentedPlayground() {
         />
       }
       preview={
-        <div className='flex w-full justify-center'>
-          <div className={state.block ? 'w-full max-w-sm' : ''}>
-            {state.type === 'multiple' ? (
-              <Segmented
-                key='multiple'
-                {...shared}
-                type='multiple'
-                defaultValue={['table']}
-              />
-            ) : (
-              <Segmented key='single' {...shared} defaultValue='table' />
-            )}
-          </div>
+        <div className={state.block ? 'w-full max-w-sm' : ''}>
+          {state.type === 'multiple' ? (
+            <Segmented
+              key='multiple'
+              {...shared}
+              type='multiple'
+              defaultValue={['table']}
+            />
+          ) : (
+            <Segmented key='single' {...shared} defaultValue='table' />
+          )}
         </div>
       }
       code={<CodeBlock code={generateSegmentedCode(state)} />}

@@ -1,0 +1,90 @@
+{
+  "name": "contextMenu",
+  "type": "registry:ui",
+  "registryDependencies": ["theme"],
+  "dependencies": [
+    "@radix-ui/react-context-menu",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/context-menu/ContextMenu.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/context-menu/ContextMenuItem.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/context-menu/ContextMenuSeparator.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/context-menu/ContextMenuSub.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/context-menu/context-menu.animation.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/context-menu/context-menu.context.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/context-menu/context-menu.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/context-menu/context-menu.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/surface.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/createContext.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/createStyledElement.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/prefersReducedMotion.ts",
+      "type": "lib"
+    },
+    {
+      "path": "hooks/useAnimatedOpen.ts",
+      "type": "hook"
+    },
+    {
+      "path": "ui/icons/Check.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/ChevronRight.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    }
+  ]
+}

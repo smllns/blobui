@@ -5,7 +5,6 @@ import { LIFTS } from './home.data';
 import {
   captionLabelStyles,
   codeStyles,
-  ruleTextStyles,
   sectionLedeStyles,
   sectionStyles,
   subsectionTitleStyles,
@@ -37,15 +36,18 @@ export function ElevationSection() {
         </div>
       </Card>
 
-      <Alert emphasis='bare' tone='info' icon={null} className='mt-5'>
-        <p className={ruleTextStyles}>
-          In dark mode lightness does the work, not the shadow —{' '}
-          <code className={codeStyles}>bg/surface</code>,{' '}
-          <code className={codeStyles}>bg/raised</code> and{' '}
-          <code className={codeStyles}>bg/overlay</code> each step lighter than
-          the one beneath. Switch the theme and watch these cards separate by
-          colour instead of by shade.
-        </p>
+      <Alert
+        emphasis='bare'
+        tone='info'
+        icon={null}
+        className='mt-5 max-w-prose'
+      >
+        In dark mode lightness does the work, not the shadow —{' '}
+        <code className={codeStyles}>bg/surface</code>,{' '}
+        <code className={codeStyles}>bg/raised</code> and{' '}
+        <code className={codeStyles}>bg/overlay</code> each step lighter than
+        the one beneath. Switch the theme and watch these cards separate by
+        colour instead of by shade.
       </Alert>
     </section>
   );

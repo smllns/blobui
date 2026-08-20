@@ -24,7 +24,7 @@ export function TabsPreview() {
         />
       </div>
 
-      <div className='w-64 pl-10'>
+      <div className='w-30'>
         <Tabs
           aria-label='Workspace, vertical'
           orientation='vertical'

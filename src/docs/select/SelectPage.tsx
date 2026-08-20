@@ -14,9 +14,7 @@ export function SelectDocs() {
       states={SELECT_STATES}
       playground={<SelectPlayground />}
       installation={getInstallation('select')}
-      props={componentProps.select.root}
-      subElementProps={componentProps.select.item}
-      subElementHeader='Select Item'
+      propSections={componentProps.select}
     />
   );
 }

@@ -9,3 +9,13 @@ export type Emphasis = 'soft' | 'solid' | 'outline';
 export type Shape = 'pill' | 'square';
 export type ChoiceSize = 'md' | 'lg';
 export type LabelPlacement = 'above' | 'infield';
+export type CommonItemVariant = 'default' | 'destructive';
+export type DialogContextValue = {
+  contentRef: React.RefObject<HTMLDivElement | null>;
+  overlayRef: React.RefObject<HTMLDivElement | null>;
+  setContentRef: (node: HTMLDivElement | null) => void;
+  setOverlayRef: (node: HTMLDivElement | null) => void;
+  isExiting: () => boolean;
+  requestOpen: () => void;
+};
+export type ForceState = 'hover' | 'active' | 'focus';

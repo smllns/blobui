@@ -21,7 +21,7 @@ export function PopoverDocs() {
       states={POPOVER_STATES}
       playground={<PopoverPlayground />}
       installation={getInstallation('popover')}
-      props={componentProps.popover}
+      propSections={componentProps.popover}
     />
   );
 }

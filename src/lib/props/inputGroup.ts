@@ -1,4 +1,5 @@
 import {
+  COMMON_VARIANTS,
   childrenProp,
   classNameProp,
   disabledProp,
@@ -6,13 +7,20 @@ import {
   fieldProps,
   forceStateProp,
   fullWidthProp,
+  iconOnlyProp,
+  idProp,
+  loadingProp,
+  onChangeProp,
+  placeholderProp,
+  readOnlyProp,
+  requiredProp,
+  variantProp,
 } from './commonProps';
 import { prop } from './helpers';
 
 export const inputGroupProps = [
-  prop(
-    'variant',
-    "'default' | 'filled' | 'outline' | 'ghost'",
+  variantProp(
+    COMMON_VARIANTS,
     'default',
     'Visual style of the shell, shared with Input',
   ),
@@ -31,10 +39,7 @@ export const inputGroupProps = [
     'Addon after the field, same rules as leading',
   ),
 
-  prop(
-    'loading',
-    'boolean',
-    'false',
+  loadingProp(
     'An addon is resolving something — a domain check, a unit conversion. The spinner takes over a slot, the shell drops to the disabled paint, and the group stops taking pointers',
   ),
 
@@ -52,50 +57,40 @@ export const inputGroupProps = [
     'What a screen reader is told while loading. aria-busy suppresses the group, so this sentence is the only signal — say what is being resolved',
   ),
 
-  prop(
-    'readOnly',
-    'boolean',
-    'false',
+  readOnlyProp(
     'Keeps the value readable and focusable. The addons keep their fill — the value cannot be edited, the frame is not off',
   ),
 
   fullWidthProp,
   errorProp,
 
-  prop(
-    'placeholder',
-    'string',
-    '-',
-    'Placeholder text shown when the field is empty',
-  ),
+  placeholderProp(),
 
   prop('value', 'string', '-', 'Controlled field value'),
 
-  prop(
-    'onChange',
-    '(e: React.ChangeEvent<HTMLInputElement>) => void',
-    '-',
-    'Change handler for the field value',
-  ),
+  onChangeProp('Change handler for the field value'),
 
   ...fieldProps,
+
+  requiredProp(
+    'Marks the label with an asterisk and sets required on the field',
+  ),
+
+  idProp('Id of the field, and the anchor the label and the helper text point at. Falls back to name, then to a generated one'),
+
   disabledProp,
   forceStateProp,
   classNameProp,
 ];
 
 export const inputGroupAddonProps = [
-  prop(
-    'variant',
-    "'fill' | 'bare'",
+  variantProp(
+    ['fill', 'bare'],
     'fill',
     'fill is the sunken block with a partition. bare drops both, for a currency symbol or a unit that reads as part of the value',
   ),
 
-  prop(
-    'iconOnly',
-    'boolean',
-    'false',
+  iconOnlyProp(
     'Squares the addon at the shell height, so a row of icon addons stays on the grid',
   ),
 

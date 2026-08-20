@@ -3,13 +3,15 @@ import type { ReactNode } from 'react';
 import type {
   CommonStylingVariant,
   ExtendedSize,
+  ForceState,
   LabelPlacement,
 } from '@/components/shared/types';
 
 export type SelectWidth = 'auto' | 'sm' | 'md' | 'lg' | 'full';
 
-export type SelectProps = React.ComponentPropsWithoutRef<
-  typeof SelectPrimitive.Root
+export type SelectProps = Omit<
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
+  'defaultOpen'
 > & {
   placeholder?: string;
   variant?: CommonStylingVariant;
@@ -22,7 +24,7 @@ export type SelectProps = React.ComponentPropsWithoutRef<
   required?: boolean;
   error?: boolean;
   className?: string;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
   id?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;

@@ -1,5 +1,12 @@
-import { classNameProp } from './commonProps';
-import { prop } from './helpers';
+import {
+  BASIC_SIZES,
+  childrenProp,
+  classNameProp,
+  iconProp,
+  sizeProp,
+  variantProp,
+} from './commonProps';
+import { describe, prop } from './helpers';
 
 export const emptyProps = [
   prop(
@@ -11,14 +18,14 @@ export const emptyProps = [
 
   prop('title', 'ReactNode', '-', 'The one line the state cannot go without'),
 
-  prop('children', 'ReactNode', '-', 'Explaining paragraph under the title'),
+  describe(childrenProp, 'Explaining paragraph under the title'),
 
-  prop(
-    'icon',
-    'ReactNode',
-    '-',
-    "Overrides the state's default icon. Pass null to drop the tile",
-  ),
+  {
+    ...iconProp,
+    default: 'state icon',
+    description:
+      "Overrides the state's default icon. Pass null to drop the tile",
+  },
 
   prop(
     'actions',
@@ -27,16 +34,14 @@ export const emptyProps = [
     'One or two buttons under the copy: create, clear the filter, retry',
   ),
 
-  prop(
-    'size',
-    "'sm' | 'md' | 'lg'",
+  sizeProp(
+    BASIC_SIZES,
     'md',
     'sm is the in-place version for a table body or a result list; lg is a full page',
   ),
 
-  prop(
-    'variant',
-    "'plain' | 'bordered' | 'sunken'",
+  variantProp(
+    ['plain', 'bordered', 'sunken'],
     'plain',
     'bordered draws the dashed well where the content would have been',
   ),

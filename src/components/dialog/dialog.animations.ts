@@ -1,19 +1,28 @@
 import { gsap } from 'gsap';
 import { motionDuration } from '@/lib/prefersReducedMotion';
 
+const ENTER_DURATION = 0.25;
+const EXIT_DURATION = 0.18;
+const OFFSET = 8;
+const SCALE = 0.96;
+
 export function animateDialogEnter(node: HTMLDivElement) {
+  gsap.killTweensOf(node);
+
   gsap.fromTo(
     node,
     {
       opacity: 0,
-      scale: 0.5,
+      y: OFFSET,
+      scale: SCALE,
     },
     {
       opacity: 1,
+      y: 0,
       scale: 1,
-      duration: motionDuration(0.25),
+      duration: motionDuration(ENTER_DURATION),
       ease: 'power3.out',
-      clearProps: 'all',
+      clearProps: 'opacity,transform',
     },
   );
 }
@@ -22,37 +31,27 @@ export function animateDialogExit(
   node: HTMLDivElement,
   onComplete: () => void,
 ) {
+  gsap.killTweensOf(node);
+
   gsap.to(node, {
     opacity: 0,
-    scale: 0.92,
-    duration: motionDuration(0.18),
+    y: OFFSET,
+    scale: SCALE,
+    duration: motionDuration(EXIT_DURATION),
     ease: 'power3.in',
     onComplete,
   });
 }
 
-export function animateOverlayEnter(node: HTMLDivElement) {
-  gsap.fromTo(
-    node,
-    {
-      opacity: 0,
-    },
-    {
-      opacity: 1,
-      duration: motionDuration(0.25),
-      ease: 'power2.out',
-    },
-  );
-}
+export function animateDialogReopen(node: HTMLDivElement) {
+  gsap.killTweensOf(node);
 
-export function animateOverlayExit(
-  node: HTMLDivElement,
-  onComplete: () => void,
-) {
   gsap.to(node, {
-    opacity: 0,
-    duration: motionDuration(0.2),
-    ease: 'power2.in',
-    onComplete,
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: motionDuration(ENTER_DURATION),
+    ease: 'power3.out',
+    clearProps: 'opacity,transform',
   });
 }

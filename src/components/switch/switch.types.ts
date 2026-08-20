@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { switchStyles } from './switch.styles';
+import type { ForceState } from '@/components/shared/types';
 
 type NativeSwitchProps = Omit<
   ComponentPropsWithoutRef<'button'>,
@@ -16,5 +17,5 @@ export interface SwitchProps
   description?: ReactNode;
   errorMessage?: ReactNode;
   disabled?: boolean;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }

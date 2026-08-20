@@ -21,7 +21,7 @@ export function InputDocs() {
       states={INPUT_STATES}
       playground={<InputPlayground />}
       installation={getInstallation('input')}
-      props={componentProps.input}
+      propSections={componentProps.input}
     />
   );
 }

@@ -1,27 +1,34 @@
 import {
-  childrenProp,
+  checkedProp,
   classNameProp,
   disabledProp,
   errorProp,
-  fieldProps,
+  fieldPropsOf,
   forceStateProp,
+  onChangeProp,
+  sizeProp,
 } from './commonProps';
 import { prop } from './helpers';
 
 export const switchProps = [
-  prop('checked', 'boolean', '-', 'Controlled checked state of the switch'),
+  checkedProp('Controlled checked state of the switch'),
 
   prop(
-    'onChange',
-    '(e: React.ChangeEvent<HTMLInputElement>) => void',
-    '-',
-    'Callback fired when switch state changes',
+    'defaultChecked',
+    'boolean',
+    'false',
+    'Checked state before any interaction',
   ),
-  prop('size', "'sm' | 'md' | 'lg' | 'xl'", 'md', 'Controls switch size'),
+
+  onChangeProp(
+    'Callback fired with the next checked state',
+    '(checked: boolean) => void',
+  ),
+
+  sizeProp(['sm', 'md', 'lg', 'xl'], 'md', 'Controls switch size'),
   forceStateProp,
   errorProp,
-  ...fieldProps,
+  ...fieldPropsOf('ReactNode'),
   disabledProp,
   classNameProp,
-  childrenProp,
 ];

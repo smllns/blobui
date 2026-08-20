@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/button/Button';
 import { ChevronDown } from '@/ui/icons/ChevronDown';
 import { cn } from '@/lib/cn';
+import { stateSpecimenStyles } from './componentPreview.styles';
 import type { StateSpecimen } from './docsPage.types';
 
 type StateMatrixProps = {
@@ -61,7 +62,7 @@ export function StateMatrix({ specimens }: StateMatrixProps) {
                     </td>
 
                     <td className='min-w-64 p-3 align-middle'>
-                      {specimen.node}
+                      <div className={stateSpecimenStyles}>{specimen.node}</div>
                     </td>
 
                     <td className='p-3 align-middle text-fg-tertiary'>

@@ -1,6 +1,5 @@
 import type { ComponentPropsWithoutRef, MouseEvent, ReactNode } from 'react';
-
-export type BreadcrumbForceState = 'hover' | 'active' | 'focus';
+import type { ForceState } from '@/components/shared/types';
 
 export interface BreadcrumbItem {
   label: ReactNode;
@@ -9,7 +8,7 @@ export interface BreadcrumbItem {
   disabled?: boolean;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   className?: string;
-  forceState?: BreadcrumbForceState;
+  forceState?: ForceState;
 }
 
 export interface BreadcrumbProps extends Omit<
@@ -24,5 +23,5 @@ export interface BreadcrumbProps extends Omit<
   itemsAfterCollapse?: number;
   ellipsisLabel?: string;
   renderEllipsis?: (hidden: BreadcrumbItem[]) => ReactNode;
-  ellipsisForceState?: BreadcrumbForceState;
+  ellipsisForceState?: ForceState;
 }

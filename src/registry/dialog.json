@@ -31,7 +31,19 @@
       "type": "shared"
     },
     {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
       "path": "lib/createContext.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/createStyledElement.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/overlay.animations.ts",
       "type": "lib"
     },
     {
@@ -53,6 +65,10 @@
     {
       "path": "ui/Icon.tsx",
       "type": "ui"
+    },
+    {
+      "path": "hooks/useDialogAnimation.ts",
+      "type": "hook"
     }
   ]
 }

@@ -11,7 +11,7 @@ export function InputOtpDocs() {
       header='Input OTP'
       description='One real input, n painted windows onto it — so paste, autofill and the numeric keypad keep working.'
       preview={
-        <div className='flex flex-col gap-8 '>
+        <div className='flex flex-col items-center gap-8'>
           <InputOtp defaultValue='4920' />
           <InputOtp charset='alnum' groupSize={0} defaultValue='A7KQ2M' />
         </div>
@@ -19,7 +19,7 @@ export function InputOtpDocs() {
       states={INPUT_OTP_STATES}
       playground={<InputOtpPlayground />}
       installation={getInstallation('inputOtp')}
-      props={componentProps.inputOtp}
+      propSections={componentProps.inputOtp}
     />
   );
 }

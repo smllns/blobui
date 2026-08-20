@@ -1,12 +1,18 @@
 import type { ReactNode } from 'react';
 import { DropdownMenu } from '@/components/dropdown-menu/DropdownMenu';
 import { DropdownMenuItem } from '@/components/dropdown-menu/DropdownMenuItem';
+import { cn } from '@/lib/cn';
 import { MENU_ITEMS } from './dropdownMenu.data';
 import type { StateSpecimen } from '../components/docsPage.types';
 
 function panel(children: ReactNode, { tall }: { tall?: boolean } = {}) {
   return (
-    <div className={tall ? 'min-h-60 w-full pl-10' : 'min-h-40 w-full pl-10'}>
+    <div
+      className={cn(
+        'flex flex-col items-center',
+        tall ? 'min-h-60' : 'min-h-40',
+      )}
+    >
       <DropdownMenu
         open
         portal={false}

@@ -1,10 +1,12 @@
 import {
   childrenProp,
   classNameProp,
+  disabledProp,
   forceStateProp,
+  hrefProp,
   iconProp,
 } from './commonProps';
-import { prop } from './helpers';
+import { describe, prop } from './helpers';
 
 export const navigationMenuProps = [
   prop(
@@ -65,10 +67,8 @@ export const navigationMenuItemProps = [
     'Explicit row tracks, needed only so a feature cell has rows to span',
   ),
 
-  prop(
-    'disabled',
-    'boolean',
-    'false',
+  describe(
+    disabledProp,
     'Marks the row aria-disabled: it keeps its tab stop and opens nothing',
   ),
 
@@ -92,7 +92,7 @@ export const navigationMenuItemProps = [
 ];
 
 export const navigationMenuLinkProps = [
-  prop('href', 'string', '-', 'Destination of the top-level link'),
+  hrefProp('Destination of the top-level link'),
 
   prop(
     'current',
@@ -101,10 +101,8 @@ export const navigationMenuLinkProps = [
     "Sets aria-current='page' — where you are, not what you are looking at",
   ),
 
-  prop(
-    'disabled',
-    'boolean',
-    'false',
+  describe(
+    disabledProp,
     'Marks the link aria-disabled while keeping it focusable and readable',
   ),
 
@@ -123,7 +121,14 @@ export const navigationMenuCardProps = [
     'One line explaining the destination; a card without one belongs in the bar',
   ),
 
-  prop('href', 'string', '-', 'Destination of the card'),
+  hrefProp('Destination of the card'),
+
+  prop(
+    'active',
+    'boolean',
+    'false',
+    "Sets aria-current='page' on the card and paints it as the destination you are on",
+  ),
 
   iconProp,
   forceStateProp,
@@ -135,7 +140,7 @@ export const navigationMenuFeatureProps = [
 
   prop('description', 'ReactNode', '-', 'One line explaining the destination'),
 
-  prop('href', 'string', '-', 'Destination of the feature cell'),
+  hrefProp('Destination of the feature cell'),
 
   prop(
     'span',
@@ -144,7 +149,15 @@ export const navigationMenuFeatureProps = [
     'Whether the cell spans every row of its column or occupies one',
   ),
 
+  prop(
+    'active',
+    'boolean',
+    'false',
+    "Sets aria-current='page' on the cell and paints it as the destination you are on",
+  ),
+
   iconProp,
   childrenProp,
+  forceStateProp,
   classNameProp,
 ];

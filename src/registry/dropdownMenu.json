@@ -51,6 +51,10 @@
       "type": "lib"
     },
     {
+      "path": "lib/createStyledElement.ts",
+      "type": "lib"
+    },
+    {
       "path": "hooks/useAnimatedOpen.ts",
       "type": "hook"
     },

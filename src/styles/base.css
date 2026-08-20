@@ -33,6 +33,24 @@
       display: block;
       flex-shrink: 0;
    }
+
+   /* --- Theme switch ------------------------------------------------------- */
+
+   ::view-transition-group(root),
+   ::view-transition-old(root),
+   ::view-transition-new(root) {
+      animation-duration: var(--duration-base);
+      animation-timing-function: var(--ease-in-out);
+   }
+
+   :where([data-theme-switching]),
+   :where([data-theme-switching]) *,
+   :where([data-theme-switching]) *::before,
+   :where([data-theme-switching]) *::after {
+      transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+      transition-duration: var(--duration-base);
+      transition-timing-function: var(--ease-in-out);
+   }
 }
 
 @utility focus-ring {

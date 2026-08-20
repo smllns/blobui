@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { ButtonVariant } from '@/components/button/button.types';
-import type { ExtendedSize } from '@/components/shared/types';
+import type { ExtendedSize, ForceState } from '@/components/shared/types';
 
 export type CollapsibleHeadingLevel = 2 | 3 | 4 | 5 | 6;
 
@@ -23,5 +23,5 @@ export interface CollapsibleProps extends Omit<
   size?: ExtendedSize;
   disabled?: boolean;
   loading?: boolean;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }

@@ -1,0 +1,70 @@
+{
+  "name": "alertDialog",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "button", "dialog"],
+  "dependencies": [
+    "@radix-ui/react-alert-dialog",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/alert-dialog/AlertDialog.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/alert-dialog/alert-dialog.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/alert-dialog/alert-dialog.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/createContext.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/prefersReducedMotion.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/overlay.animations",
+      "type": "lib"
+    },
+    {
+      "path": "ui/icons/Trash.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/AlertTriangle.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/icons/Key.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "hooks/useDialogAnimation.ts",
+      "type": "hook"
+    }
+  ]
+}

@@ -14,7 +14,7 @@ export function CollapsibleDocs() {
       preview={<CollapsiblePreview />}
       playground={<CollapsiblePlayground />}
       installation={getInstallation('collapsible')}
-      props={componentProps.collapsible}
+      propSections={componentProps.collapsible}
     />
   );
 }

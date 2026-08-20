@@ -14,9 +14,7 @@ export function TabsDocs() {
       states={TAB_STATES}
       playground={<TabsPlayground />}
       installation={getInstallation('tabs')}
-      props={componentProps.tabs.root}
-      subElementProps={componentProps.tabs.item}
-      subElementHeader='Tab item'
+      propSections={componentProps.tabs}
     />
   );
 }

@@ -28,26 +28,22 @@ export function TogglePlayground() {
         <ControlsRenderer state={state} update={update} controls={controls} />
       }
       preview={
-        <div className='flex w-full items-center justify-center'>
-          <Toggle
-            variant={state.variant}
-            size={state.size}
-            iconOnly={state.iconOnly}
-            aria-label={state.iconOnly ? TOGGLE_COPY.iconLabel : undefined}
-            leftIcon={
-              !state.iconOnly && state.leftIcon ? <Archive /> : undefined
-            }
-            rightIcon={
-              !state.iconOnly && state.rightIcon ? <ChevronDown /> : undefined
-            }
-            loading={state.loading}
-            disabled={state.disabled}
-            pressed={state.pressed}
-            onPressedChange={(pressed) => update('pressed', pressed)}
-          >
-            {state.iconOnly ? <Bold /> : TOGGLE_COPY.label}
-          </Toggle>
-        </div>
+        <Toggle
+          variant={state.variant}
+          size={state.size}
+          iconOnly={state.iconOnly}
+          aria-label={state.iconOnly ? TOGGLE_COPY.iconLabel : undefined}
+          leftIcon={!state.iconOnly && state.leftIcon ? <Archive /> : undefined}
+          rightIcon={
+            !state.iconOnly && state.rightIcon ? <ChevronDown /> : undefined
+          }
+          loading={state.loading}
+          disabled={state.disabled}
+          pressed={state.pressed}
+          onPressedChange={(pressed) => update('pressed', pressed)}
+        >
+          {state.iconOnly ? <Bold /> : TOGGLE_COPY.label}
+        </Toggle>
       }
       code={<CodeBlock code={generateToggleCode(state)} />}
     />

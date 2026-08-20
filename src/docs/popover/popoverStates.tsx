@@ -5,17 +5,22 @@ import {
   PopoverTrigger,
 } from '@/components/popover/Popover';
 import { Button } from '@/components/button/Button';
+import { cn } from '@/lib/cn';
 import type { StateSpecimen } from '../components/docsPage.types';
+import type { ForceState } from '@/components/shared/types';
 
 const sample = ({
   open,
   force,
 }: {
   open?: boolean;
-  force?: 'hover' | 'active' | 'focus';
+  force?: ForceState;
 } = {}) => (
   <div
-    className={`relative h-44 w-72 ${!open && 'flex items-center justify-center'}`}
+    className={cn(
+      'relative flex h-44 w-72 justify-center',
+      open ? 'items-start' : 'items-center',
+    )}
   >
     <Popover open={open}>
       <PopoverTrigger asChild>
@@ -28,7 +33,7 @@ const sample = ({
         size='sm'
         side='bottom'
         avoidCollisions={false}
-        align='start'
+        align='center'
         portal={false}
         onOpenAutoFocus={
           open ? (event: Event) => event.preventDefault() : undefined

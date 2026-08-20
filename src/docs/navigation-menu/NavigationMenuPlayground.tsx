@@ -38,10 +38,15 @@ export function NavigationMenuPlayground() {
         />
       }
       preview={
-        <div className='flex min-h-60  w-full items-start justify-center'>
-          <NavigationMenu aria-label='Playground' defaultValue='product'>
+        <div className='flex min-h-88 w-full min-w-0 items-start max-xl:min-h-112'>
+          <NavigationMenu
+            aria-label='Playground'
+            defaultValue='product'
+            className='w-full'
+            listClassName='flex-wrap justify-center'
+          >
             <NavigationMenuItem
-              className='z-999'
+              panelClassName='max-w-full'
               value='product'
               label='Product'
               align={state.align}

@@ -1,0 +1,78 @@
+{
+  "name": "sheet",
+  "type": "registry:ui",
+  "registryDependencies": ["theme", "dialog"],
+  "dependencies": [
+    "@radix-ui/react-dialog",
+    "gsap",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "components/sheet/Sheet.tsx",
+      "type": "component"
+    },
+    {
+      "path": "components/sheet/sheet.animations.ts",
+      "type": "lib"
+    },
+    {
+      "path": "components/sheet/sheet.styles.ts",
+      "type": "style"
+    },
+    {
+      "path": "components/sheet/sheet.types.ts",
+      "type": "type"
+    },
+    {
+      "path": "components/shared/styles.ts",
+      "type": "shared"
+    },
+    {
+      "path": "components/shared/types.ts",
+      "type": "shared"
+    },
+    {
+      "path": "lib/createContext.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/cn.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/mergeRefs.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/createStyledElement.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/prefersReducedMotion.ts",
+      "type": "lib"
+    },
+    {
+      "path": "lib/overlay.animations.ts",
+      "type": "lib"
+    },
+    {
+      "path": "ui/icons/Close.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "ui/Icon.tsx",
+      "type": "ui"
+    },
+    {
+      "path": "hooks/useSheetAnimation.ts",
+      "type": "hook"
+    },
+    {
+      "path": "hooks/useSheetDrag.ts",
+      "type": "hook"
+    }
+  ]
+}

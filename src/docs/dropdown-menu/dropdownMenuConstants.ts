@@ -1,6 +1,6 @@
-import type { DropdownMenuItemVariant } from '@/components/dropdown-menu/dropdown-menu.types';
 import type {
   BasicSize,
+  CommonItemVariant,
   CommonStylingVariant,
   ExtendedSize,
   Side,
@@ -19,7 +19,7 @@ import {
 export type DropdownMenuPlaygroundState = {
   variant: CommonStylingVariant;
   size: ExtendedSize;
-  itemVariant: DropdownMenuItemVariant;
+  itemVariant: CommonItemVariant;
   itemSize: BasicSize;
   disabled: boolean;
   side: Side;

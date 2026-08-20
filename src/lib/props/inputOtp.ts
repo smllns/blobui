@@ -1,23 +1,29 @@
 import {
+  COMMON_VARIANTS,
   classNameProp,
+  controlledValueProps,
   disabledProp,
   errorProp,
   fieldProps,
   forceStateProp,
+  idProp,
+  loadingProp,
+  readOnlyProp,
+  requiredProp,
+  sizeProp,
+  variantProp,
 } from './commonProps';
 import { prop } from './helpers';
 
 export const inputOtpProps = [
-  prop(
-    'variant',
-    "'default' | 'filled' | 'outline' | 'ghost'",
+  variantProp(
+    COMMON_VARIANTS,
     'default',
     'Visual style of every slot — each box is the field shell',
   ),
 
-  prop(
-    'size',
-    "'sm' | 'md' | 'lg' | 'xl'",
+  sizeProp(
+    ['sm', 'md', 'lg', 'xl'],
     'md',
     'Slot size. The box is square at the field ramp heights: 36 / 40 / 44 / 50',
   ),
@@ -38,21 +44,12 @@ export const inputOtpProps = [
     'Slots per group. A drawn, aria-hidden separator sits on every boundary, and only when the group divides the length evenly; 0 removes it',
   ),
 
-  prop(
-    'value',
-    'string',
-    '-',
-    'Controlled code. Characters outside the charset are dropped',
-  ),
-
-  prop('defaultValue', 'string', '-', 'Uncontrolled starting code'),
-
-  prop(
-    'onValueChange',
-    '(value: string) => void',
-    '-',
-    'Fires with the cleaned code on every edit',
-  ),
+  ...controlledValueProps({
+    type: 'string',
+    value: 'Controlled code. Characters outside the charset are dropped',
+    defaultValue: 'Uncontrolled starting code',
+    onValueChange: 'Fires with the cleaned code on every edit',
+  }),
 
   prop(
     'onComplete',
@@ -61,30 +58,31 @@ export const inputOtpProps = [
     'Fires once the code reaches length — paste and autofill included',
   ),
 
-  prop(
-    'readOnly',
-    'boolean',
-    'false',
+  readOnlyProp(
     'Keeps the code readable and focusable, without the edit affordance',
   ),
 
   errorProp,
 
   ...fieldProps,
+
+  requiredProp(
+    'Marks the label with an asterisk and sets required on the hidden input that carries the code',
+  ),
+
+  idProp('Id of the field, and the anchor the label and the helper text point at. Falls back to name, then to a generated one'),
+
   disabledProp,
   forceStateProp,
 
-  prop(
-    'loading',
-    'boolean',
-    'false',
+  loadingProp(
     'The code is being verified. The row wears the disabled paint and a wave runs along the boxes; semantics stay read-only so focus never moves, and the digits keep readable ink',
   ),
 
   prop(
     'loadingLabel',
     'string',
-    "'Checking your code'",
+    'Verifying code',
     'Sentence announced while loading. aria-busy suppresses announcements rather than making them, so this text is the only thing a screen reader gets',
   ),
 

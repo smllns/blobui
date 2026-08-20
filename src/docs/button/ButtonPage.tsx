@@ -22,7 +22,7 @@ export function ButtonDocs() {
       states={BTN_STATES}
       playground={<ButtonPlayground />}
       installation={getInstallation('button')}
-      props={componentProps.button}
+      propSections={componentProps.button}
     />
   );
 }

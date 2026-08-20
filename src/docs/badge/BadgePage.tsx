@@ -26,7 +26,7 @@ export function BadgeDocs() {
       }
       playground={<BadgePlayground />}
       installation={getInstallation('badge')}
-      props={componentProps.badge}
+      propSections={componentProps.badge}
     />
   );
 }

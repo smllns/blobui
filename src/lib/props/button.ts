@@ -1,42 +1,34 @@
+import { BUTTON_VARIANTS } from '../options';
 import {
+  EXTENDED_SIZES,
   childrenProp,
   classNameProp,
   disabledProp,
   forceStateProp,
   fullWidthProp,
+  iconOnlyProp,
   leftIconProp,
+  loadingProp,
   rightIconProp,
+  sizeProp,
+  variantProp,
 } from './commonProps';
-import { prop } from './helpers';
 
 export const buttonProps = [
-  prop(
-    'variant',
-    "'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'destructive' | 'link'",
+  variantProp(
+    BUTTON_VARIANTS,
     'primary',
-    'Visual style of the button',
+    'Visual style of the button. underline and unstyled drop the button paint entirely, for a trigger that has to read as text — HoverCardTrigger is built on them',
   ),
 
-  prop(
-    'size',
-    "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    'md',
-    'Controls button size',
-  ),
+  sizeProp(EXTENDED_SIZES, 'md', 'Controls button size'),
 
-  prop(
-    'loading',
-    'boolean',
-    'false',
+  loadingProp(
     'Shows a spinner in place of the leading icon, dims the whole control and disables interaction',
   ),
 
-  prop(
-    'iconOnly',
-    'boolean',
-    'false',
-    'Square icon-only button. Needs an aria-label',
-  ),
+  iconOnlyProp('Square icon-only button. Needs an aria-label'),
+
   forceStateProp,
   fullWidthProp,
   leftIconProp,

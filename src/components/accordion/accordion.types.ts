@@ -1,12 +1,15 @@
 import type { ReactNode } from 'react';
-import type { CommonStylingVariant } from '@/components/shared/types';
+import type {
+  CommonStylingVariant,
+  ForceState,
+} from '@/components/shared/types';
 
 interface AccordionItemProps {
   value: string;
   title: ReactNode;
   children: ReactNode;
   disabled?: boolean;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }
 
 interface BaseAccordionProps {

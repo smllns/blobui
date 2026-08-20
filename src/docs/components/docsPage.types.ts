@@ -8,6 +8,11 @@ type ComponentProp = {
   description: string;
 };
 
+export type PropsSection = {
+  title: string;
+  props: ComponentProp[];
+};
+
 export type StateSpecimen = {
   name: string;
   node: ReactNode;
@@ -20,11 +25,7 @@ export type DocsPageProps = {
   states?: StateSpecimen[];
   preview?: ReactNode;
   playground?: ReactNode;
-  props?: ComponentProp[];
-  subElementProps?: ComponentProp[];
-  subElementHeader?: string;
-  secondSubElementProps?: ComponentProp[];
-  secondSubElementHeader?: string;
+  propSections?: PropsSection[];
   installation?: {
     component: string;
     files: InstallationFile[];

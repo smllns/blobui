@@ -28,11 +28,7 @@ export function DropdownMenuDocs() {
       states={DROPDOWN_MENU_STATES}
       playground={<DropdownMenuPlayground />}
       installation={getInstallation('dropdownMenu')}
-      props={componentProps.dropdown.root}
-      subElementProps={componentProps.dropdown.item}
-      subElementHeader='Dropdown Menu Item'
-      secondSubElementProps={componentProps.dropdown.item2}
-      secondSubElementHeader='Dropdown Menu Separator'
+      propSections={componentProps.dropdown}
     />
   );
 }

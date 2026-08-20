@@ -14,7 +14,7 @@ export function PaginationDocs() {
       states={PAGINATION_STATES}
       playground={<PaginationPlayground />}
       installation={getInstallation('pagination')}
-      props={componentProps.pagination}
+      propSections={componentProps.pagination}
     />
   );
 }

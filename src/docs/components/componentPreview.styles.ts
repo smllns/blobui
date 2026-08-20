@@ -1,5 +1,5 @@
 export const stageStyles = [
-  'relative grid min-h-88 place-items-center  p-12',
+  'relative grid min-h-88 place-items-center p-12',
   'rounded-2xl border border-border-subtle bg-sunken',
 
   "before:pointer-events-none before:absolute before:inset-0 before:content-['']",
@@ -10,4 +10,7 @@ export const stageStyles = [
 ].join(' ');
 
 export const specimenStyles =
-  'relative z-1 flex flex-wrap items-center justify-center';
+  'relative z-1 flex w-full flex-wrap items-center justify-center gap-4';
+
+export const stateSpecimenStyles =
+  'flex flex-wrap items-center justify-center gap-4';

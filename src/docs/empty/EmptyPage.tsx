@@ -27,7 +27,7 @@ export function EmptyDocs() {
       }
       playground={<EmptyPlayground />}
       installation={getInstallation('empty')}
-      props={componentProps.empty}
+      propSections={componentProps.empty}
     />
   );
 }

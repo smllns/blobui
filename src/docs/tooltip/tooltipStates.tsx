@@ -1,16 +1,21 @@
 import { Tooltip } from '@/components/tooltip/Tooltip';
 import { Button } from '@/components/button/Button';
+import { cn } from '@/lib/cn';
 import type { StateSpecimen } from '../components/docsPage.types';
+import type { ForceState } from '@/components/shared/types';
 
 const sample = ({
   open,
   force,
 }: {
   open?: boolean;
-  force?: 'hover' | 'active' | 'focus';
+  force?: ForceState;
 } = {}) => (
   <div
-    className={`flex h-24 w-64 ${open ? 'items-start' : 'justify-center items-center'}`}
+    className={cn(
+      'flex h-24 w-64 justify-center',
+      open ? 'items-start' : 'items-center',
+    )}
   >
     <Tooltip
       content='Copied to your clipboard'

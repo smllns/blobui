@@ -1,48 +1,40 @@
-import { classNameProp, disabledProp, forceStateProp } from './commonProps';
-import { prop } from './helpers';
+import {
+  BASIC_SIZES,
+  blockProp,
+  classNameProp,
+  controlledValueProps,
+  disabledProp,
+  forceStateProp,
+  iconProp,
+  orientationProp,
+  sizeProp,
+} from './commonProps';
+import { describe, prop } from './helpers';
 
 export const tabsProps = [
   prop('items', 'TabItem[]', '-', 'The tabs, in order, with their panels'),
 
-  prop(
-    'value',
-    'string',
-    '-',
-    'Selected tab. Pass it to control the component; the host then owns the value',
-  ),
+  ...controlledValueProps({
+    type: 'string',
+    value:
+      'Selected tab. Pass it to control the component; the host then owns the value',
+    defaultValue:
+      'Selected tab on mount. Exactly one tab is selected at all times — a tablist with nothing selected is a bug in the host, not a state',
+    onValueChange: 'Fires when the selection moves to another tab',
+    initial: 'first enabled tab',
+  }),
 
-  prop(
-    'defaultValue',
-    'string',
-    'first enabled tab',
-    'Selected tab on mount. Exactly one tab is selected at all times — a tablist with nothing selected is a bug in the host, not a state',
-  ),
-
-  prop(
-    'onValueChange',
-    '(value: string) => void',
-    '-',
-    'Fires when the selection moves to another tab',
-  ),
-
-  prop(
-    'orientation',
-    "'horizontal' | 'vertical'",
-    'horizontal',
+  orientationProp(
     'Axis of the rail. The marker moves with it, in logical properties, so this is also the RTL story',
   ),
 
-  prop(
-    'size',
-    "'sm' | 'md' | 'lg'",
+  sizeProp(
+    BASIC_SIZES,
     'md',
     'Height and label size of a tab. md matches the control height, so a tab row and the buttons beside it share a baseline',
   ),
 
-  prop(
-    'block',
-    'boolean',
-    'false',
+  blockProp(
     'Gives every tab an equal share of the row. For a two- or three-tab row inside a card, and for mobile',
   ),
 
@@ -61,7 +53,7 @@ export const tabItemProps = [
 
   prop('label', 'ReactNode', '-', 'Text of the tab'),
 
-  prop('icon', 'ReactNode', '-', 'Icon displayed before the label'),
+  describe(iconProp, 'Icon displayed before the label'),
 
   prop(
     'badge',
@@ -77,10 +69,9 @@ export const tabItemProps = [
     'Panel rendered under the rail. Omit it on every item to render the tablist alone and own the panels yourself',
   ),
 
-  {
-    ...disabledProp,
-    description:
-      'Takes the tab out of the arrow-key order. A disabled tab shows no marker even when it is the selected one',
-  },
+  describe(
+    disabledProp,
+    'Takes the tab out of the arrow-key order. A disabled tab shows no marker even when it is the selected one',
+  ),
   forceStateProp,
 ];

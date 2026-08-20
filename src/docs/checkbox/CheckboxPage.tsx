@@ -21,7 +21,7 @@ export function CheckboxDocs() {
       states={CHECKBOX_STATES}
       playground={<CheckboxPlayground />}
       installation={getInstallation('checkbox')}
-      props={componentProps.checkbox}
+      propSections={componentProps.checkbox}
     />
   );
 }

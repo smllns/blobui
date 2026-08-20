@@ -1,11 +1,15 @@
-import { childrenProp, classNameProp, disabledProp } from './commonProps';
+import {
+  blockProp,
+  childrenProp,
+  classNameProp,
+  disabledProp,
+  loadingProp,
+  orientationProp,
+} from './commonProps';
 import { prop } from './helpers';
 
 export const buttonGroupProps = [
-  prop(
-    'orientation',
-    "'horizontal' | 'vertical'",
-    'horizontal',
+  orientationProp(
     'Axis the members are laid out on. The corners follow, in both directions',
   ),
 
@@ -16,10 +20,7 @@ export const buttonGroupProps = [
     'joined welds the members into one object. spaced keeps the grouping and drops the join, so every member stays a separate control',
   ),
 
-  prop(
-    'block',
-    'boolean',
-    'false',
+  blockProp(
     'Stretches the group to its container and gives every member an equal share of it',
   ),
 
@@ -32,10 +33,7 @@ export const buttonGroupProps = [
 
   disabledProp,
 
-  prop(
-    'loading',
-    'boolean',
-    'false',
+  loadingProp(
     'One action is running and none of the others may be started. Members that are not themselves loading recede',
   ),
 

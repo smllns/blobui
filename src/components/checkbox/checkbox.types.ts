@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import type { ChoiceSize } from '@/components/shared/types';
+import type { ChoiceSize, ForceState } from '@/components/shared/types';
 
 export interface CheckboxProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -14,5 +14,5 @@ export interface CheckboxProps extends Omit<
   fullWidth?: boolean;
   indeterminate?: boolean;
   icon?: ReactNode;
-  forceState?: 'hover' | 'active' | 'focus';
+  forceState?: ForceState;
 }

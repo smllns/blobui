@@ -1,12 +1,19 @@
 import { Alert } from '@/components/alert/Alert';
 import { Button } from '@/components/button/Button';
+import { useState } from 'react';
 
 const AlertPreview = () => {
+  const [run, setRun] = useState(0);
   return (
     <div className='flex w-full max-w-xl flex-col gap-4'>
       <Alert tone='info'>Your trial ends on Friday.</Alert>
 
-      <Alert tone='success' title='Invoice sent' onDismiss={() => {}}>
+      <Alert
+        key={run}
+        tone='success'
+        title='Invoice sent'
+        onDismiss={() => setRun((n) => n + 1)}
+      >
         A copy is on its way to billing@acme.com.
       </Alert>
 

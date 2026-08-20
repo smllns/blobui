@@ -2,9 +2,10 @@ import {
   classNameProp,
   disabledProp,
   forceStateProp,
+  hrefProp,
   iconProp,
 } from './commonProps';
-import { prop } from './helpers';
+import { describe, prop } from './helpers';
 
 export const breadcrumbProps = [
   prop(
@@ -19,7 +20,7 @@ export const breadcrumbProps = [
   prop(
     'separator',
     'ReactNode',
-    '<ChevronRight />',
+    "<ChevronRight size='xs' />",
     'Mark drawn between levels. Decorative and never read out',
   ),
 
@@ -58,12 +59,12 @@ export const breadcrumbProps = [
     'Replaces the built-in reveal button, for opening the hidden levels as a menu instead',
   ),
 
-  prop(
-    'ellipsisForceState',
-    "'hover' | 'active' | 'focus'",
-    'undefined',
-    'Paints a pointer state on the reveal button. Docs and visual tests only',
-  ),
+  {
+    ...forceStateProp,
+    name: 'ellipsisForceState',
+    description:
+      'Paints a pointer state on the reveal button. Docs and visual tests only',
+  },
 
   classNameProp,
 ];
@@ -73,20 +74,16 @@ export const breadcrumbItemProps = [
 
   forceStateProp,
 
-  prop(
-    'href',
-    'string',
-    '-',
+  hrefProp(
     'Destination. Without one the level renders as a button, for router navigation',
   ),
 
   iconProp,
 
-  {
-    ...disabledProp,
-    description:
-      'A level the user is not permitted to open. It stays readable and takes the pointer off',
-  },
+  describe(
+    disabledProp,
+    'A level the user is not permitted to open. It stays readable and takes the pointer off',
+  ),
 
   prop(
     'onClick',
