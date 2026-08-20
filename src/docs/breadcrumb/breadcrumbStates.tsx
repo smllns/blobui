@@ -1,12 +1,10 @@
 import { Breadcrumb } from '@/components/breadcrumb/Breadcrumb';
-import type {
-  BreadcrumbForceState,
-  BreadcrumbItem,
-} from '@/components/breadcrumb/breadcrumb.types';
+import type { BreadcrumbItem } from '@/components/breadcrumb/breadcrumb.types';
 import type { StateSpecimen } from '../components/docsPage.types';
 import { disabledTrail, shortTrail, trail } from './breadcrumb.data';
+import type { ForceState } from '@/components/shared/types';
 
-const linkAt = (forceState: BreadcrumbForceState): BreadcrumbItem[] =>
+const linkAt = (forceState: ForceState): BreadcrumbItem[] =>
   shortTrail.map((item, index) =>
     index === 1 ? { ...item, forceState } : item,
   );

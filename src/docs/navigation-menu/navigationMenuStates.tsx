@@ -1,16 +1,16 @@
 import { NavigationMenu } from '@/components/navigation-menu/NavigationMenu';
 import { NavigationMenuCard } from '@/components/navigation-menu/NavigationMenuCard';
 import { NavigationMenuLink } from '@/components/navigation-menu/NavigationMenuLink';
-import type { NavigationMenuForceState } from '@/components/navigation-menu/navigation-menu.types';
 import type { StateSpecimen } from '../components/docsPage.types';
 import { PRODUCT_ITEMS } from './navigationMenu.data';
+import type { ForceState } from '@/components/shared/types';
 
 function row({
   force,
   current,
   disabled,
 }: {
-  force?: NavigationMenuForceState;
+  force?: ForceState;
   current?: boolean;
   disabled?: boolean;
 } = {}) {
@@ -30,7 +30,7 @@ function row({
   );
 }
 
-function card(force?: NavigationMenuForceState) {
+function card(force?: ForceState) {
   return (
     <div className='w-72'>
       <NavigationMenuCard href='#' forceState={force} {...PRODUCT_ITEMS[0]} />
